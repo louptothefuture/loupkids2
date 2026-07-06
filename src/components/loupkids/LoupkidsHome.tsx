@@ -24,7 +24,8 @@ import {
 } from "./conversion";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsAccordion } from "./LoupkidsAccordion";
-import { LoupkidsCompanionSection } from "./LoupkidsCompanionSection";
+import { LoupkidsCallingPricingSection } from "./LoupkidsCallingPricingSection";
+import { LoupkidsSetupCardsSection } from "./LoupkidsSetupCardsSection";
 import { LoupkidsComparisonSection, LoupkidsSpecsSection } from "./LoupkidsSpecsSections";
 import { LoupkidsFooter } from "./LoupkidsFooter";
 import { LoupkidsGallerySection } from "./LoupkidsGallerySection";
@@ -112,7 +113,7 @@ export function LoupkidsHome() {
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.5, ease }}
-            className="flex flex-col gap-1 text-sm text-white/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
+            className="flex flex-col gap-1 text-base text-white/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
           >
             <Link href="/reserve" className="font-medium text-white underline-offset-2 hover:underline">
               {LOUPKIDS_HERO_COPY.waitlist}
@@ -161,23 +162,16 @@ export function LoupkidsHome() {
 
       {/* Chock full of nothing */}
       <section className="lk-section-white lk-section">
-        <div className="lk-container grid items-center gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-2">
+        <div className="lk-container grid items-start gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-2">
           <div className="lk-stack">
             <RevealHeadline as="h2" className="lk-display lk-h2 leading-snug">
               {LOUPKIDS_NOTHING.headline}
             </RevealHeadline>
-            <hr className="lk-rule" />
-            <RevealLines className="lk-stack">
-              {LOUPKIDS_NOTHING.tiles.map((tile) => (
-                <RevealLine key={tile.title}>
-                  <h4 className="lk-label mb-2">{tile.title}</h4>
-                  <p className="lk-prose lk-prose-muted">{tile.body}</p>
-                  <hr className="lk-rule mt-6" />
-                </RevealLine>
-              ))}
-            </RevealLines>
+            <div className="mt-8 sm:mt-10">
+              <LoupkidsAccordion items={LOUPKIDS_NOTHING.items} />
+            </div>
           </div>
-          <FadeIn delay={0.1} y={14} className="relative aspect-[4/5] overflow-hidden bg-neutral-100">
+          <FadeIn delay={0.1} y={14} className="relative aspect-[4/5] overflow-hidden bg-neutral-100 lg:sticky lg:top-28">
             <LoupkidsImage src={LOUPKIDS_IMAGES.kidBw} alt="Kid with Loup" fill sizes="50vw" className="object-cover" />
           </FadeIn>
         </div>
@@ -216,7 +210,7 @@ export function LoupkidsHome() {
 
       <LoupkidsGallerySection />
 
-      <LoupkidsCompanionSection />
+      <LoupkidsSetupCardsSection />
 
       {/* Customizable */}
       <section className="lk-section-black lk-section text-center">
@@ -240,6 +234,7 @@ export function LoupkidsHome() {
       </section>
 
       <LoupkidsSpecsSection />
+      <LoupkidsCallingPricingSection />
 
       {/* Final CTA */}
       <section className="lk-section-white lk-section-content border-t border-[var(--lk-line)]">

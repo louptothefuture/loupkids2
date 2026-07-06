@@ -125,7 +125,7 @@ export const LOUPKIDS_ACCORDION = [
   },
   {
     title: "Pager Mode",
-    body: "Tired of yelling across the house for dinner? Did you do your homework? Where did you hide my keys? Loup has a built-in pager function that you can talk directly into, or ping.",
+    body: "Parents can page their kids at any point for free — call or bell. No yelling across the house, no extra charges.",
   },
   {
     title: "Emergency Calls",
@@ -135,13 +135,14 @@ export const LOUPKIDS_ACCORDION = [
 
 export const LOUPKIDS_NOTHING = {
   headline: "Chock Full of Nothing. No social media. No games. No rabbit holes.",
-  tiles: [
+  items: [
     { title: "Purity of Purpose", body: "No social media. No games. No rabbit holes." },
     { title: "WiFi Only", body: "No SIM card. No cellular bill. Connects over home or school WiFi — simple and affordable." },
-    { title: "Parent Control App", body: "Approve contacts, set call hours and page them directly. Full control from your phone." },
+    { title: "Parent Control App", body: "Approve contacts, set call hours, and page them directly. Full control from your phone." },
     { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive being a kid." },
+    { title: "Data? Closed — you own it.", body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app." },
   ],
-};
+} as const;
 
 export const LOUPKIDS_STORY_TEASER = {
   headline: "Why We Started Loup",
@@ -177,15 +178,15 @@ export const LOUPKIDS_USE_CASES = [
     id: "kids",
     label: "Kids",
     headline: "Your phone. Not a toy.",
-    body: "Real calls to your people. Snap-on plates, a mute button, and a device that looks like something you'd choose — not hide.",
+    body: "Independence and connection without the internet. Real calls to your people — snap-on plates and a device that looks like something you'd choose, not hide.",
     image: LOUPKIDS_IMAGES.kidBw,
     alt: "Kid with Loup",
   },
   {
     id: "community",
     label: "Community",
-    headline: "Connection without the classroom distraction.",
-    body: "Coaches, teachers, and youth leaders stay reachable — without group chats, social feeds, or phones that glow through practice.",
+    headline: "Communities benefit from their own closed loop.",
+    body: "Church groups, homeschool networks, and sports teams stay connected on their terms — without group chats or open phone numbers. For bulk pricing, email hi@loupkids.com.",
     image: LOUPKIDS_IMAGES.friends,
     alt: "Kids with customized Loup devices",
   },
@@ -466,13 +467,13 @@ export const LOUPKIDS_SPECS = [
 export const LOUPKIDS_COMPARISON = {
   columns: ["LOUP", "Smartphone", "Kids smartwatch", "Flip phone"],
   rows: [
-    { label: "Screen time", values: ["Zero", "5+ hrs/day avg", "Creeping in (apps, games)", "Low but growing"] },
+    { label: "Screen time", values: ["Zero", "5+ hrs/day avg", "Small screen, creeping apps", "Low but growing"] },
     { label: "Feeds & algorithms", values: ["None, physically impossible", "The whole product", "Some models", "Browser included"] },
     { label: "Works on Wi-Fi", values: ["Yes — no SIM, no cellular bill", "Yes (cellular)", "Yes (cellular)", "Yes (cellular)"] },
     { label: "Parent-approved contacts only", values: ["Yes, enforced in hardware", "No", "Usually", "No"] },
     { label: "Battery", values: ["5 days", "1 day", "1 day (less if used)", "2–3 days"] },
     { label: "Survives being a kid's", values: ["Built for it, 2-yr warranty", "Add a $60 case & pray", "Mostly", "It's disposable"] },
-    { label: "Kid actually thinks it's cool", values: ["That's the whole design brief", "Yes (that's the problem)", "It's fine", "No"] },
+    { label: "Kid actually thinks it's cool", values: ["That's the whole design brief", "Yes (that's the problem)", "An unnatural way to talk to people", "No"] },
     { label: "Price", values: ["$149", "$400–1,200", "$150–400 + plan", "$40–100"] },
   ],
 } as const;

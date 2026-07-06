@@ -15,8 +15,8 @@ export function LoupkidsCompanionSection() {
           <RevealHeadline as="h2" className="lk-display lk-h2" instant>
             Control from your phone
           </RevealHeadline>
-          <p className="lk-prose-muted mt-4 max-w-xl leading-relaxed">
-            Approve contacts, set quiet hours, and page your kid — all from the Loup parent app. Box to first call in about ten minutes.
+          <p className="lk-prose-muted mt-4 max-w-xl">
+            Easy as 1, 2, 3 — pair Loup, set call rules, and page your kid from the parent app. Box to first call in about ten minutes.
           </p>
           <Link href="/setup" className="lk-read-link mt-6 inline-block">
             View setup guide →

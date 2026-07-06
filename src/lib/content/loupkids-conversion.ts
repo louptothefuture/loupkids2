@@ -21,6 +21,23 @@ export const LOUPKIDS_GUARANTEE = {
   body: "Try Loup at home. Full refund if it's not right for your family.",
 } as const;
 
+export const LOUPKIDS_CALLING_PRICING = {
+  eyebrow: "Calling",
+  title: "What it costs to stay connected",
+  tiers: [
+    {
+      label: "Loup to Loup",
+      price: "Always free",
+      body: "Kid-to-kid and Loup-to-Loup calls are unlimited — no plan, no monthly bill.",
+    },
+    {
+      label: "External numbers in and out",
+      price: "$10/month",
+      body: "Call and receive calls from regular US & Canada phone numbers. Cancel anytime.",
+    },
+  ],
+} as const;
+
 export const LOUPKIDS_TRUST = {
   rating: 4.9,
   reviewCount: 5,
@@ -55,7 +72,7 @@ export const LOUPKIDS_FEATURE_CARDS = [
   {
     icon: "📢",
     title: "Pager Mode",
-    body: "Page them from the parent app. No more yelling up the stairs.",
+    body: "Parents can page their kids at any point for free — call or bell. No yelling across the house.",
   },
   {
     icon: "🚨",

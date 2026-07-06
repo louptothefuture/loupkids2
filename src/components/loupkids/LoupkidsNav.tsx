@@ -6,7 +6,28 @@ import { useEffect, useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_NAV } from "@/lib/content/loupkids-site";
-import { LoupkidsGuaranteeBadge } from "./conversion";
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <span className="relative block h-4 w-5" aria-hidden="true">
+      <span
+        className={`absolute left-0 block h-px w-full bg-current transition-all duration-300 ${
+          open ? "top-2 rotate-45" : "top-0"
+        }`}
+      />
+      <span
+        className={`absolute left-0 top-2 block h-px w-full bg-current transition-opacity duration-300 ${
+          open ? "opacity-0" : "opacity-100"
+        }`}
+      />
+      <span
+        className={`absolute left-0 block h-px w-full bg-current transition-all duration-300 ${
+          open ? "top-2 -rotate-45" : "top-4"
+        }`}
+      />
+    </span>
+  );
+}
 
 export function LoupkidsNav() {
   const pathname = usePathname();
@@ -31,13 +52,16 @@ export function LoupkidsNav() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   const linkClass = transparent
-    ? "text-[0.9375rem] text-white/85 transition-colors hover:text-white"
-    : "text-[0.9375rem] text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]";
+    ? "text-white/85 transition-colors hover:text-white"
+    : "text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]";
   const logoClass = transparent ? "text-white" : "text-[var(--lk-ink)]";
-  const ctaClass = transparent
-    ? "lk-btn lk-btn-sm lk-btn-white"
-    : "lk-btn lk-btn-sm";
+  const ctaClass = transparent ? "lk-btn lk-btn-sm lk-btn-white" : "lk-btn lk-btn-sm";
+  const iconClass = transparent ? "text-white" : "text-[var(--lk-ink)]";
 
   return (
     <>
@@ -53,50 +77,34 @@ export function LoupkidsNav() {
             Loup
           </Link>
 
-          <nav aria-label="Main" className="hidden items-center gap-7 xl:flex">
-            {LOUPKIDS_NAV.map((item) => (
-              <Link key={item.href} href={item.href} className={linkClass}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
           <div className="flex items-center gap-3 sm:gap-4">
-            <Link href="/account" className={`hidden md:inline ${linkClass}`}>
-              Account
-            </Link>
-            <Link href="/shop/loup" className={`hidden sm:inline-flex ${ctaClass}`}>
+            <Link href="/shop/loup" className={ctaClass}>
               {LOUPKIDS_CTA.primaryShort}
             </Link>
             <button
               type="button"
-              onClick={openCart}
-              aria-label={`Cart, ${count} items`}
-              className={`hidden cursor-pointer md:inline ${linkClass}`}
-            >
-              Cart{count > 0 ? ` (${count})` : ""}
-            </button>
-            <button
-              type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
-              className={`cursor-pointer xl:hidden ${linkClass}`}
+              aria-expanded={menuOpen}
+              className={`flex cursor-pointer items-center justify-center p-1 ${iconClass}`}
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              <span className="lk-label">{menuOpen ? "Close" : "Menu"}</span>
+              <MenuIcon open={menuOpen} />
             </button>
           </div>
         </div>
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-white pt-20 xl:hidden">
-          <nav aria-label="Mobile" className="flex flex-col px-8 py-6">
+        <div className="fixed inset-0 z-40 bg-white pt-20">
+          <nav aria-label="Main" className="flex flex-col px-8 py-6">
             {LOUPKIDS_NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-[var(--lk-line)] py-4 text-lg"
+                className={`border-b border-[var(--lk-line)] py-4 text-lg ${
+                  pathname === item.href ? "font-medium text-[var(--lk-ink)]" : "text-[var(--lk-muted)]"
+                }`}
               >
                 {item.label}
               </Link>
@@ -104,28 +112,23 @@ export function LoupkidsNav() {
             <Link
               href="/account"
               onClick={() => setMenuOpen(false)}
-              className="border-b border-[var(--lk-line)] py-4 text-lg"
+              className="border-b border-[var(--lk-line)] py-4 text-lg text-[var(--lk-muted)]"
             >
               Account
             </Link>
-            <Link
-              href="/shop/loup"
-              onClick={() => setMenuOpen(false)}
-              className="lk-btn mt-8 w-full"
-            >
-              {LOUPKIDS_CTA.primary}
-            </Link>
-            <LoupkidsGuaranteeBadge compact className="mt-3" />
             <button
               type="button"
               onClick={() => {
                 openCart();
                 setMenuOpen(false);
               }}
-              className="mt-4 cursor-pointer py-4 text-left text-lg text-[var(--lk-muted)]"
+              className="cursor-pointer border-b border-[var(--lk-line)] py-4 text-left text-lg text-[var(--lk-muted)]"
             >
               Cart{count > 0 ? ` (${count})` : ""}
             </button>
+            <Link href="/shop/loup" onClick={() => setMenuOpen(false)} className="lk-btn mt-8 w-full">
+              {LOUPKIDS_CTA.primary}
+            </Link>
           </nav>
         </div>
       )}

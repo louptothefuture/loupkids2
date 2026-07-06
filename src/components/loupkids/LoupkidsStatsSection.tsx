@@ -20,8 +20,8 @@ export function LoupkidsStatsSection() {
           {LOUPKIDS_STATS.map((item, i) => (
             <FadeIn key={item.title} delay={0.06 + i * 0.04}>
               <div className="grid gap-2 py-5 sm:grid-cols-[10.5rem_1fr] sm:items-start sm:gap-8 sm:py-6">
-                <p className="text-[0.9375rem] font-medium leading-snug text-[var(--lk-ink)]">{item.title}</p>
-                <p className="text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{item.text}</p>
+                <p className="text-base font-medium leading-snug text-[var(--lk-ink)]">{item.title}</p>
+                <p className="lk-prose-muted">{item.text}</p>
               </div>
             </FadeIn>
           ))}

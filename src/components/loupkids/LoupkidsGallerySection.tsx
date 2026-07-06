@@ -11,37 +11,23 @@ export function LoupkidsGallerySection() {
 
   return (
     <section id="gallery" className="lk-section-white border-t border-[var(--lk-line)]">
-      <FadeIn className="lk-container lk-section-content !py-12 sm:!py-14">
+      <FadeIn className="lk-container px-[var(--lk-section-x)] pb-6 pt-12 sm:pb-8 sm:pt-14">
         <p className="lk-eyebrow mb-3">Gallery</p>
         <RevealHeadline as="h2" className="lk-display lk-h2">
           In the wild
         </RevealHeadline>
       </FadeIn>
 
-      <div className="flex gap-3 overflow-x-auto px-[var(--lk-section-x)] pb-4 md:hidden">
+      <div className="flex gap-3 overflow-x-auto px-[var(--lk-section-x)] pb-8 [scrollbar-width:thin]">
         {LOUPKIDS_GALLERY.map((img) => (
           <button
             key={img.src}
             type="button"
             onClick={() => setLightbox(img)}
-            className="relative h-72 w-52 shrink-0 overflow-hidden bg-neutral-100"
+            className="relative h-56 w-40 shrink-0 overflow-hidden bg-neutral-100 sm:h-60 sm:w-44"
           >
-            <LoupkidsImage src={img.src} alt={img.alt} fill sizes="220px" className="object-cover" />
+            <LoupkidsImage src={img.src} alt={img.alt} fill sizes="180px" className="object-cover" />
           </button>
-        ))}
-      </div>
-
-      <div className="mt-2 hidden grid-cols-2 gap-3 px-[var(--lk-section-x)] md:grid lg:grid-cols-3">
-        {LOUPKIDS_GALLERY.map((img, i) => (
-          <FadeIn key={img.src} delay={i * 0.04}>
-            <button
-              type="button"
-              onClick={() => setLightbox(img)}
-              className="lk-image-hover relative aspect-[4/5] w-full overflow-hidden bg-neutral-100"
-            >
-              <LoupkidsImage src={img.src} alt={img.alt} fill sizes="33vw" className="object-cover" />
-            </button>
-          </FadeIn>
         ))}
       </div>
 

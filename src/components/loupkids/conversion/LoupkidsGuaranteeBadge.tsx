@@ -21,7 +21,7 @@ export function LoupkidsGuaranteeBadge({
 
   if (compact) {
     return (
-      <p className={`text-xs ${alignClass} ${text} ${className}`}>
+      <p className={`text-sm ${alignClass} ${text} ${className}`}>
         <span aria-hidden="true">🛡️ </span>
         <strong className={strong}>{LOUPKIDS_GUARANTEE.title}</strong>
         {" — "}
@@ -31,7 +31,7 @@ export function LoupkidsGuaranteeBadge({
   }
 
   return (
-    <p className={`max-w-xs text-xs leading-relaxed ${alignClass} ${text} ${className}`}>
+    <p className={`max-w-xs text-sm leading-relaxed ${alignClass} ${text} ${className}`}>
       <span aria-hidden="true">🛡️ </span>
       <span>
         <strong className={strong}>{LOUPKIDS_GUARANTEE.title}</strong>

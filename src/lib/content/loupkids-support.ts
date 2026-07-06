@@ -203,28 +203,18 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
 export const LOUPKIDS_SETUP_STEPS = [
   {
     step: "1",
-    title: "Unbox & charge",
-    body: "Plug Loup in with the included USB-C cable. While it charges, download the Loup parent app on iOS or Android.",
+    title: "Pair",
+    body: "Connect Loup to Wi-Fi, open the parent app, and create your account.",
   },
   {
     step: "2",
-    title: "Connect to Wi-Fi",
-    body: "Follow the in-app wizard to connect Loup to your home Wi-Fi. School Wi-Fi can be added later from the app.",
+    title: "Set conditions",
+    body: "Choose call hours, quiet times, and every contact your kid is allowed to reach.",
   },
   {
     step: "3",
-    title: "Approve contacts",
-    body: "Add the people your kid can call — parents, grandparents, trusted friends. Only approved contacts can reach Loup.",
-  },
-  {
-    step: "4",
-    title: "Set quiet hours",
-    body: "Homework time, dinner, bedtime — set windows when Loup won't ring or send. You can override anytime.",
-  },
-  {
-    step: "5",
-    title: "First call",
-    body: "Scroll the dial to pick a contact, press the call bar to talk, mute when you need quiet. That's it — a phone, not an app.",
+    title: "Set 'em free",
+    body: "Let them call friends on a closed network — no strangers, spam, or open internet.",
   },
 ] as const;
 

@@ -5,6 +5,7 @@ import { getProduct, getProducts } from "@/lib/shopify";
 import { getSpecs, getTestimonials } from "@/lib/content";
 import { ProductView } from "@/components/product/ProductView";
 import { ProductJsonLd } from "@/components/seo/JsonLd";
+import { LOUPKIDS_COMPARISON } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 300;
@@ -32,19 +33,7 @@ export async function generateMetadata({
   };
 }
 
-const COMPARISON = {
-  columns: ["LOUP", "Smartphone", "Kids smartwatch", "Flip phone"],
-  rows: [
-    { label: "Screen time", values: ["Zero", "5+ hrs/day avg", "Creeping in (apps, games)", "Low but growing"] },
-    { label: "Feeds & algorithms", values: ["None, physically impossible", "The whole product", "Some models", "Browser included"] },
-    { label: "Works on Wi-Fi", values: ["Yes — no SIM, no cellular bill", "Yes (cellular)", "Yes (cellular)", "Yes (cellular)"] },
-    { label: "Parent-approved contacts only", values: ["Yes, enforced in hardware", "No", "Usually", "No"] },
-    { label: "Battery", values: ["5 days", "1 day", "1 day (less if used)", "2–3 days"] },
-    { label: "Survives being a kid's", values: ["Built for it, 2-yr warranty", "Add a $60 case & pray", "Mostly", "It's disposable"] },
-    { label: "Kid actually thinks it's cool", values: ["That's the whole design brief", "Yes (that's the problem)", "It's fine", "No"] },
-    { label: "Price", values: ["$149", "$400–1,200", "$150–400 + plan", "$40–100"] },
-  ],
-};
+const COMPARISON = LOUPKIDS_COMPARISON;
 
 function Section({
   eyebrow,

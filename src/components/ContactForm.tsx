@@ -59,6 +59,7 @@ export function ContactForm() {
             <option>Returns / warranty</option>
             <option>Calling plan</option>
             <option>Press</option>
+            <option>Interest in investing</option>
             <option>Something else</option>
           </select>
         </label>

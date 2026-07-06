@@ -16,8 +16,8 @@ export default function SetupPage() {
     <div>
       <LoupkidsPageHeader
         eyebrow="Support / setup guide"
-        title="Setup guide"
-        description="From box to first call in about ten minutes. Video walkthrough coming at launch — for now, follow these steps."
+        title="Easy as 1, 2, 3"
+        description="Pair Loup, set your conditions, and let your kid call their people — box to first call in about ten minutes."
       />
 
       <section className="lk-section-white lk-page-body">
@@ -28,13 +28,13 @@ export default function SetupPage() {
                 <li className={i > 0 ? "border-t border-[var(--lk-line)] pt-8 mt-8" : ""}>
                   <p className="lk-label mb-2">Step {s.step}</p>
                   <h2 className="lk-display text-xl">{s.title}</h2>
-                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{s.body}</p>
+                  <p className="lk-prose-muted mt-2">{s.body}</p>
                 </li>
               </FadeIn>
             ))}
           </ol>
 
-          <FadeIn delay={0.2} className="mt-12 border-t border-[var(--lk-line)] pt-8 text-[0.9375rem] text-[var(--lk-muted)]">
+          <FadeIn delay={0.2} className="mt-12 border-t border-[var(--lk-line)] pt-8 lk-prose-muted">
             Stuck? Browse the{" "}
             <Link href="/help" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
               knowledge base
