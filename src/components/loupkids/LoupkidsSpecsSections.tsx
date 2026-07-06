@@ -1,3 +1,5 @@
+"use client";
+
 import { LOUPKIDS_COMPARISON, LOUPKIDS_SPECS } from "@/lib/content/loupkids-site";
 import { FadeIn } from "./FadeIn";
 import { RevealHeadline } from "./RevealHeadline";

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { LOUPKIDS_FOOTER, LOUPKIDS_FOOTER_NAV } from "@/lib/content/loupkids-site";
 import { LOUPKIDS_FOOTER_LEGAL, LOUPKIDS_FOOTER_SUPPORT } from "@/lib/content/loupkids-support";
