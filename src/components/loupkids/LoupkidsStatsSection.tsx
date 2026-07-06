@@ -6,29 +6,23 @@ import { RevealHeadline } from "./RevealHeadline";
 
 export function LoupkidsStatsSection() {
   return (
-    <section className="lk-section-white lk-section-content">
-      <div className="lk-container">
-        <FadeIn className="mx-auto max-w-xl text-center">
+    <section className="lk-section-white lk-section">
+      <div className="lk-container grid items-start gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+        <FadeIn>
           <RevealHeadline as="h2" className="lk-display lk-h2" instant>
             {LOUPKIDS_INTRO.subhead}
           </RevealHeadline>
-          <p className="lk-stat-figure mt-8">{LOUPKIDS_INTRO.figure}</p>
-          <p className="lk-stat-text mt-4">{LOUPKIDS_INTRO.body}</p>
-          <p className="lk-stat-tagline">{LOUPKIDS_INTRO.cta}</p>
+          <p className="lk-prose mt-5 max-w-md leading-relaxed text-[var(--lk-ink)]">{LOUPKIDS_INTRO.body}</p>
+          <p className="lk-stat-tagline mt-4">{LOUPKIDS_INTRO.cta}</p>
         </FadeIn>
 
-        <div className="mt-14 grid border border-[var(--lk-line)] sm:mt-16 sm:grid-cols-3">
+        <div className="divide-y border-y border-[var(--lk-line)]">
           {LOUPKIDS_STATS.map((item, i) => (
-            <FadeIn
-              key={item.title}
-              delay={0.08 + i * 0.05}
-              className={`bg-white px-6 py-8 text-center sm:px-8 sm:py-10 ${
-                i > 0 ? "border-t border-[var(--lk-line)] sm:border-t-0 sm:border-l" : ""
-              }`}
-            >
-              <p className="lk-stat-figure-sm">{item.figure}</p>
-              <p className="lk-label mt-5">{item.title}</p>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{item.text}</p>
+            <FadeIn key={item.title} delay={0.06 + i * 0.04}>
+              <div className="grid gap-2 py-5 sm:grid-cols-[10.5rem_1fr] sm:items-start sm:gap-8 sm:py-6">
+                <p className="text-[0.9375rem] font-medium leading-snug text-[var(--lk-ink)]">{item.title}</p>
+                <p className="text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{item.text}</p>
+              </div>
             </FadeIn>
           ))}
         </div>

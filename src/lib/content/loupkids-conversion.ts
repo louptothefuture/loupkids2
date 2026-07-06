@@ -10,9 +10,10 @@ export const LOUPKIDS_CTA = {
 } as const;
 
 export const LOUPKIDS_HERO_COPY = {
-  headline: "Reach your kid anytime — without handing them the internet.",
-  subhead:
-    "Approved contacts only. No apps. No algorithms. You stay in control from your phone.",
+  eyebrow: "Phones for the anti-screen age",
+  headline: "No apps. No feed. Just your people.",
+  waitlist: "Join the 1,000+ families on the waitlist",
+  shipping: "Shipping Q4 2026",
 } as const;
 
 export const LOUPKIDS_GUARANTEE = {

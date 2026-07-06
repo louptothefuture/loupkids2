@@ -12,7 +12,7 @@ export function LoupkidsAccordion({
   dark?: boolean;
   className?: string;
 }) {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
   const border = dark ? "divide-white/15 border-white/15" : "divide-[var(--lk-line)] border-[var(--lk-line)]";
   const bodyText = dark ? "text-white/75" : "text-[var(--lk-muted)]";
   const titleText = dark ? "text-white" : "";

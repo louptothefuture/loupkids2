@@ -5,7 +5,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   LOUPKIDS_ACCORDION,
   LOUPKIDS_CUSTOMIZE,
-  LOUPKIDS_GALLERY,
   LOUPKIDS_IMAGES,
   LOUPKIDS_NEWSLETTER,
   LOUPKIDS_NOTHING,
@@ -19,18 +18,19 @@ import {
 } from "@/lib/content/loupkids-conversion";
 import { SITE } from "@/lib/site";
 import {
+  LoupkidsGuaranteeBadge,
   LoupkidsOrderCta,
-  LoupkidsPressStrip,
-  LoupkidsStarRating,
-  LoupkidsTestimonialStrip,
+  LoupkidsTestimonialCarousel,
 } from "./conversion";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsAccordion } from "./LoupkidsAccordion";
 import { LoupkidsCompanionSection } from "./LoupkidsCompanionSection";
-import { LoupkidsComparisonSection } from "./LoupkidsSpecsSections";
+import { LoupkidsComparisonSection, LoupkidsSpecsSection } from "./LoupkidsSpecsSections";
 import { LoupkidsFooter } from "./LoupkidsFooter";
+import { LoupkidsGallerySection } from "./LoupkidsGallerySection";
 import { LoupkidsImage } from "./LoupkidsImage";
 import { LoupkidsStatsSection } from "./LoupkidsStatsSection";
+import { LoupkidsUseCasesSection } from "./LoupkidsUseCasesSection";
 import { RevealHeadline, RevealLine, RevealLines } from "./RevealHeadline";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -40,7 +40,7 @@ function HeroHeadline({ text }: { text: string }) {
   const words = text.split(" ");
 
   if (reduce) {
-    return <h1 className="lk-display lk-h1 max-w-4xl text-white">{text}</h1>;
+    return <h1 className="lk-display lk-h1 max-w-4xl text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]">{text}</h1>;
   }
 
   return (
@@ -51,7 +51,7 @@ function HeroHeadline({ text }: { text: string }) {
         hidden: {},
         visible: { transition: { staggerChildren: 0.06, delayChildren: 0.3 } },
       }}
-      className="lk-display lk-h1 max-w-4xl text-white"
+      className="lk-display lk-h1 max-w-4xl text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]"
     >
       {words.map((word, i) => (
         <motion.span
@@ -93,40 +93,47 @@ export function LoupkidsHome() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-[50%_62%]"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/65" />
-        <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col items-center justify-center gap-6 px-[var(--lk-section-x)] pb-20 pt-28 text-center">
-          <HeroHeadline text={LOUPKIDS_HERO_COPY.headline} />
+        {/* Darken upper half for type; keep lower frame clear for the device on the table */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 from-0% via-black/35 via-[42%] to-black/5 to-100%" />
+        <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col items-center justify-start gap-5 px-[var(--lk-section-x)] pb-[clamp(10rem,22vh,14rem)] pt-[clamp(6.5rem,14vh,9rem)] text-center">
           <motion.p
-            initial={reduce ? false : { opacity: 0, y: 12 }}
+            initial={reduce ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75, duration: 0.5, ease }}
-            className="mx-auto max-w-xl text-lg text-white/85"
+            transition={{ delay: 0.55, duration: 0.5, ease }}
+            className="lk-eyebrow text-white/80 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
           >
-            {LOUPKIDS_HERO_COPY.subhead}
+            {LOUPKIDS_HERO_COPY.eyebrow}
           </motion.p>
+          <HeroHeadline text={LOUPKIDS_HERO_COPY.headline} />
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.5, ease }}
+            className="flex flex-col gap-1 text-sm text-white/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
           >
-            <LoupkidsStarRating />
+            <Link href="/reserve" className="font-medium text-white underline-offset-2 hover:underline">
+              {LOUPKIDS_HERO_COPY.waitlist}
+            </Link>
+            <p>{LOUPKIDS_HERO_COPY.shipping}</p>
           </motion.div>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.95, duration: 0.6, ease }}
           >
-            <LoupkidsOrderCta variant="dark" />
+            <LoupkidsOrderCta variant="dark" showGuarantee={false} />
           </motion.div>
+        </div>
+        <div className="absolute bottom-5 right-[var(--lk-section-x)] z-10 max-w-[11rem] sm:max-w-xs">
+          <LoupkidsGuaranteeBadge variant="dark" align="end" />
         </div>
       </section>
 
-      <LoupkidsPressStrip />
       <LoupkidsStatsSection />
-      <LoupkidsTestimonialStrip index={0} />
+      <LoupkidsTestimonialCarousel />
 
       {/* Phone + accordion — matches loupkids.com */}
       <section className="lk-section-black lk-section">
@@ -176,6 +183,9 @@ export function LoupkidsHome() {
         </div>
       </section>
 
+      <LoupkidsUseCasesSection />
+      <LoupkidsComparisonSection />
+
       {/* Story — short teaser */}
       <section className="lk-section-black lk-section">
         <div className="lk-container grid items-center gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-2">
@@ -204,14 +214,7 @@ export function LoupkidsHome() {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="lk-section-tight grid grid-cols-1 sm:grid-cols-2">
-        {LOUPKIDS_GALLERY.map((img, i) => (
-          <FadeIn key={img.src} delay={i * 0.05} y={10} className="relative aspect-[4/5] bg-neutral-100">
-            <LoupkidsImage src={img.src} alt={img.alt} fill sizes="50vw" className="object-cover" />
-          </FadeIn>
-        ))}
-      </section>
+      <LoupkidsGallerySection />
 
       <LoupkidsCompanionSection />
 
@@ -236,9 +239,7 @@ export function LoupkidsHome() {
         ))}
       </section>
 
-      <LoupkidsTestimonialStrip index={1} />
-
-      <LoupkidsComparisonSection />
+      <LoupkidsSpecsSection />
 
       {/* Final CTA */}
       <section className="lk-section-white lk-section-content border-t border-[var(--lk-line)]">

@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Contact form intake. Forwards to a webhook (Zapier/Make/Slack) if
- * CONTACT_WEBHOOK_URL is set; otherwise logs so submissions aren't lost
- * during pre-launch.
+ * Contact form intake. Forwards to a webhook (Zapier/Make → Klaviyo, HubSpot, etc.)
+ * when CONTACT_WEBHOOK_URL is set; otherwise logs so submissions aren't lost pre-launch.
+ * Newsletter and waitlist use mailto:hi@loupkids.com until a list provider is wired.
  */
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);

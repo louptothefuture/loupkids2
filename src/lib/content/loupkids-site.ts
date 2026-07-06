@@ -79,27 +79,23 @@ export const LOUPKIDS_HERO = {
 
 export const LOUPKIDS_INTRO = {
   subhead: "You aren't alone in being frustrated.",
-  figure: "8/10",
-  body: "parents hate that they feel \"forced\" into the smartphone trap.",
+  body: "8 out of 10 parents hate that they feel \"forced\" into the smartphone trap.",
   cta: "Loup is the escape hatch.",
 };
 
 /** Section 2 stats — exact copy and order from loupkids.com */
 export const LOUPKIDS_STATS = [
   {
-    figure: "25%",
-    text: "Traditional \"free play\" has declined since smartphones went mainstream.",
     title: "The Vanishing Playground",
+    text: "Traditional \"free play\" has declined by 25% since smartphones went mainstream.",
   },
   {
-    figure: "5.5 hrs",
-    text: "Kids 8–12 now spend per day on entertainment screens.",
-    title: "The Play Gap",
+    title: "The Play Gap.",
+    text: "Kids 8–12 now spend 5.5 hours a day on entertainment screens.",
   },
   {
-    figure: "95%",
-    text: "Of teens say they are \"constantly\" online.",
     title: "It's taken over everything.",
+    text: "95% of teens say they are \"constantly\" online.",
   },
 ] as const;
 
@@ -162,7 +158,40 @@ export const LOUPKIDS_STORY_TEASER = {
 export const LOUPKIDS_GALLERY = [
   { src: LOUPKIDS_IMAGES.kidSmile, alt: "Kid smiling with Loup" },
   { src: LOUPKIDS_IMAGES.kidBw, alt: "Kid with Loup black and white" },
+  { src: LOUPKIDS_IMAGES.kidsPhonesTout, alt: "Kids with Loup phones" },
+  { src: LOUPKIDS_IMAGES.sweater, alt: "Loup in a sweater pocket" },
+  { src: LOUPKIDS_IMAGES.whiteBag, alt: "Loup in a bag" },
+  { src: LOUPKIDS_IMAGES.friends, alt: "Friends with Loup back plates" },
 ] as const;
+
+export const LOUPKIDS_USE_CASES = [
+  {
+    id: "parents",
+    label: "Parents",
+    headline: "Reach them without handing over the internet.",
+    body: "Approved contacts only. Quiet hours you control. A device with nothing to scroll — just voices you trust.",
+    image: LOUPKIDS_IMAGES.heroKitchen,
+    alt: "Parent and kid in the kitchen with Loup",
+  },
+  {
+    id: "kids",
+    label: "Kids",
+    headline: "Your phone. Not a toy.",
+    body: "Real calls to your people. Snap-on plates, a mute button, and a device that looks like something you'd choose — not hide.",
+    image: LOUPKIDS_IMAGES.kidBw,
+    alt: "Kid with Loup",
+  },
+  {
+    id: "community",
+    label: "Community",
+    headline: "Connection without the classroom distraction.",
+    body: "Coaches, teachers, and youth leaders stay reachable — without group chats, social feeds, or phones that glow through practice.",
+    image: LOUPKIDS_IMAGES.friends,
+    alt: "Kids with customized Loup devices",
+  },
+] as const;
+
+export const LOUPKIDS_PRESS_KIT_URL = "/press/loup-press-kit.zip";
 
 export const LOUPKIDS_COMPANION = {
   headline: "Companion App Features",

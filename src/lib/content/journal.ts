@@ -6,6 +6,28 @@ const h2 = (text: string) => ({ kind: "h2" as const, text });
 const AUTHOR = { name: "Thomas O'Connell", role: "Founder" };
 const CATEGORY = { title: "Journal", slug: "journal" };
 
+/** Topic tags for journal filtering — not separate CMS categories yet */
+export const LOUPKIDS_JOURNAL_TOPICS: Record<string, string> = {
+  "the-pickup-paradox-why-100-skims-are-more-dangerous-than-one-movie": "Screen time",
+  "why-spontaneous-talk-is-the-ultimate-brain-food-for-kids": "Development",
+  "wait-until-8th-and-the-strategy-of-collective-bargaining": "Strategy",
+  "the-tactical-surrender-of-the-middle-school-smartphone": "Strategy",
+  "the-parental-control-myth": "Screen time",
+  "why-your-kid-needs-a-paper-phone-e-ink-vs-oled-the-anti-lilypad-guide": "Product",
+  "navigating-the-no-mans-land-of-parenting": "Parenting",
+  "boring-tech-can-be-anything-but": "Product",
+  "the-borrowed-childhood": "Screen time",
+};
+
+export const LOUPKIDS_JOURNAL_TOPIC_FILTERS = [
+  "All",
+  "Screen time",
+  "Parenting",
+  "Strategy",
+  "Product",
+  "Development",
+] as const;
+
 const COVERS = [
   "/images/lifestyle/kids-stoop.jpg",
   "/images/lifestyle/two-girls-room.jpg",

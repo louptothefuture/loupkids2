@@ -4,11 +4,13 @@ import { LOUPKIDS_COMPARISON, LOUPKIDS_SPECS } from "@/lib/content/loupkids-site
 import { FadeIn } from "./FadeIn";
 import { RevealHeadline } from "./RevealHeadline";
 
+const loupCol = "bg-[#0a0a0a] px-5 py-4 text-white sm:px-6 sm:py-5";
+
 export function LoupkidsComparisonSection() {
   const { columns, rows } = LOUPKIDS_COMPARISON;
 
   return (
-    <section className="lk-section-white lk-section-content">
+    <section id="compare" className="lk-section-white lk-section-content">
       <FadeIn className="lk-container">
         <p className="lk-eyebrow mb-3">The honest comparison</p>
         <RevealHeadline as="h2" className="lk-display lk-h2">
@@ -17,14 +19,25 @@ export function LoupkidsComparisonSection() {
 
         <div className="lk-table-wrap mt-10 overflow-x-auto border border-[var(--lk-line)] bg-white sm:mt-12">
           <table className="w-full min-w-[720px] border-collapse text-[0.9375rem] sm:text-base">
+            <colgroup>
+              <col className="w-[22%]" />
+              <col className="w-[22%]" />
+              <col />
+              <col />
+              <col />
+            </colgroup>
             <thead>
-              <tr className="border-b border-[var(--lk-line)] bg-neutral-50/90 text-left">
-                <th className="p-4 sm:p-5" scope="col" />
+              <tr className="border-b border-[var(--lk-line)] text-left">
+                <th className="bg-neutral-50/90 p-4 sm:p-5" scope="col" />
                 {columns.map((col, i) => (
                   <th
                     key={col}
                     scope="col"
-                    className={`p-4 sm:p-5 text-base font-medium sm:text-lg ${i === 0 ? "text-[var(--lk-ink)]" : "text-[var(--lk-muted)]"}`}
+                    className={
+                      i === 0
+                        ? `${loupCol} lk-display text-lg font-medium tracking-wide sm:text-xl`
+                        : "bg-neutral-50/90 p-4 sm:p-5 text-base font-medium text-[var(--lk-muted)] sm:text-lg"
+                    }
                   >
                     {col}
                   </th>
@@ -36,14 +49,18 @@ export function LoupkidsComparisonSection() {
                 <tr key={row.label} className="border-b border-[var(--lk-line)] last:border-0">
                   <th
                     scope="row"
-                    className="p-4 sm:p-5 text-left align-top text-xs font-medium uppercase tracking-wide text-[var(--lk-muted)] sm:text-sm sm:font-normal sm:normal-case sm:tracking-normal"
+                    className="bg-neutral-50/40 p-4 sm:p-5 text-left align-top text-xs font-medium uppercase tracking-wide text-[var(--lk-muted)] sm:text-sm sm:font-normal sm:normal-case sm:tracking-normal"
                   >
                     {row.label}
                   </th>
                   {row.values.map((value, i) => (
                     <td
                       key={i}
-                      className={`p-4 sm:p-5 align-top leading-relaxed ${i === 0 ? "bg-neutral-50/80 font-medium text-[var(--lk-ink)]" : "text-[var(--lk-muted)]"}`}
+                      className={
+                        i === 0
+                          ? `${loupCol} align-top text-[0.9375rem] font-medium leading-relaxed sm:text-base`
+                          : "p-4 align-top leading-relaxed text-[var(--lk-muted)] sm:p-5"
+                      }
                     >
                       {value}
                     </td>

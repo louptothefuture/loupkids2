@@ -62,6 +62,9 @@ export function LoupkidsNav() {
           </nav>
 
           <div className="flex items-center gap-3 sm:gap-4">
+            <Link href="/account" className={`hidden md:inline ${linkClass}`}>
+              Account
+            </Link>
             <Link href="/shop/loup" className={`hidden sm:inline-flex ${ctaClass}`}>
               {LOUPKIDS_CTA.primaryShort}
             </Link>
@@ -98,6 +101,13 @@ export function LoupkidsNav() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/account"
+              onClick={() => setMenuOpen(false)}
+              className="border-b border-[var(--lk-line)] py-4 text-lg"
+            >
+              Account
+            </Link>
             <Link
               href="/shop/loup"
               onClick={() => setMenuOpen(false)}

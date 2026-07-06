@@ -5,6 +5,7 @@ import { LoupkidsPageHeader } from "@/components/loupkids/LoupkidsPageHeader";
 import { getPress } from "@/lib/content";
 import { PRESS_KIT_FACTS } from "@/lib/content/fallback";
 import { LOUPKIDS_PRESS_IMAGES } from "@/lib/content/loupkids-support";
+import { LOUPKIDS_PRESS_KIT_URL } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -29,6 +30,18 @@ export default async function PressPage() {
 
       <section className="lk-section-white lk-section-content">
         <div className="lk-container space-y-10">
+          <FadeIn>
+            <div className="lk-card lk-card-pad flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h2 className="lk-display lk-h3">Download press kit</h2>
+                <p className="lk-prose-muted mt-2">Logo-ready imagery, fast facts, and boilerplate in one zip.</p>
+              </div>
+              <a href={LOUPKIDS_PRESS_KIT_URL} download className="lk-btn inline-flex">
+                Download .zip
+              </a>
+            </div>
+          </FadeIn>
+
           <FadeIn>
             <div className="lk-card lk-card-pad">
               <h2 className="lk-display lk-h3">Fast facts</h2>

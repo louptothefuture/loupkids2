@@ -4,7 +4,7 @@ export const SITE = {
   tagline: "Reach your kid anytime — without handing them the internet.",
   description:
     "Loup is the phone before their first smartphone — approved contacts only, no apps, no algorithms. Reserve yours for $149.",
-  email: "hello@loupkids.com",
+  email: "hi@loupkids.com",
   press: "press@loupkids.com",
   social: {
     instagram: "https://instagram.com/loupkids",
