@@ -1,0 +1,59 @@
+---
+description: Loup site strategy — loupkids fidelity, conversion funnel, no duplicate UI
+alwaysApply: true
+---
+
+# Loup marketing site (V2)
+
+Premium screen-free kid phone ($149) for anxious parents. Stack: Next.js App Router, `loupkids-theme`, `LoupkidsShell`.
+
+## Visual reference
+
+Match **https://loupkids.com** hierarchy: Inter, black/white editorial, minimal. Improve **conversion copy and proof**, not campaign chrome.
+
+- **Public site:** `LoupkidsShell` + `src/components/loupkids/`
+- **Campaign only:** `/launch` (noindex) — bold color blocks; do not spread to `/`, `/shop`, `/journal`, etc.
+- **Do not** add Fable card grids, “Start here” badges, or onboarding widgets to journal/shop pages.
+
+## One funnel
+
+`/` → `/shop/loup` → cart → checkout
+
+- **One CTA verb:** `Reserve Loup — $149` (short: `Order Loup`)
+- Reuse `src/lib/content/loupkids-conversion.ts` and `src/components/loupkids/conversion/` — extend, don’t reinvent
+- **Proof before price:** `LoupkidsStarRating` under hero H1; `LoupkidsGuaranteeBadge` under every buy/checkout button
+- **Depth on PDP only:** comparison, specs, full reviews — not duplicated on homepage
+
+## Homepage limits (~7 sections)
+
+Hero → press/stats → features (`LoupkidsFeatureGrid`) → story (2 sentences + link to `/about`) → testimonials → CTA → footer.
+
+- **One feature section** — loupkids.com accordion on the black phone band (`LoupkidsAccordion` + `LOUPKIDS_ACCORDION`). No emoji cards, no `LoupkidsFeatureGrid` on homepage.
+- Companion section = app GIF + link to `/setup` only
+
+## Information architecture
+
+| Route | Purpose |
+|-------|---------|
+| `/resources` | Parent guides + curated journal links |
+| `/help` | Product setup, app, billing, troubleshooting |
+| `/journal` | Title + article list only (simple, like loupkids.com) |
+| `/about` | Canonical founder story (`/story` redirects here) |
+
+Cross-link Resources ↔ Help in page headers; don’t duplicate Start Here blocks.
+
+## Non-negotiables
+
+1. No fake forms — mailto or remove until backend exists
+2. No new pages, nav items, or markdown docs unless the user asks
+3. No feature-first hero headlines — benefit/emotion + safety/peace of mind
+4. Minimize scope; delete duplicates instead of adding “polish”
+5. `npm run build` must pass after substantive changes
+
+## Agent workflow
+
+**Before editing:** List what you’ll change and what duplicate content you’ll remove.
+
+**When user says “Fable content”:** written copy (guides, KB, media kit) — **not** Fable campaign UI patterns.
+
+**After editing:** Summarize hero + PDP impact only; don’t dump full diffs unless asked.

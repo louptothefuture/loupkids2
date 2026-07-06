@@ -14,12 +14,12 @@ export function LoupkidsPageHeader({
   centered?: boolean;
 }) {
   return (
-    <section className="lk-section-muted lk-section-cards border-b border-[var(--lk-line)]">
-      <FadeIn className={`lk-container-narrow ${centered ? "text-center" : ""}`}>
+    <section className="lk-section-white lk-section-header border-b border-[var(--lk-line)]">
+      <FadeIn className={`lk-container-prose ${centered ? "text-center" : "text-left"}`}>
         {eyebrow ? <p className="lk-eyebrow mb-2">{eyebrow}</p> : null}
         <h1 className="lk-display lk-h2">{title}</h1>
         {description ? (
-          <p className={`lk-lead lk-prose-muted mt-4 max-w-2xl ${centered ? "mx-auto" : ""}`}>{description}</p>
+          <p className={`lk-lead lk-prose-muted mt-4 ${centered ? "mx-auto" : ""}`}>{description}</p>
         ) : null}
       </FadeIn>
     </section>

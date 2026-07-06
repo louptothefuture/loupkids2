@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { trackLead } from "@/lib/analytics";
 
+const inputClass =
+  "w-full border border-[var(--lk-line)] bg-white px-4 py-3 text-base outline-none transition-colors focus:border-[var(--lk-ink)]";
+
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -28,9 +31,9 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border-2 border-ink bg-mint p-10 text-center shadow-sticker">
-        <p className="display text-4xl">Got it. 📬</p>
-        <p className="mt-3 text-ink-soft">
+      <div className="lk-card lk-card-pad text-center">
+        <p className="lk-display lk-h3">Got it.</p>
+        <p className="lk-prose-muted mt-3">
           Your message is in — a human will reply shortly, usually same-day on weekdays.
         </p>
       </div>
@@ -38,33 +41,19 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl border-2 border-ink bg-paper p-8 shadow-sticker">
+    <form onSubmit={handleSubmit} className="lk-card lk-card-pad">
       <div className="grid gap-5">
         <label className="grid gap-2">
-          <span className="label-mono">Your name</span>
-          <input
-            name="name"
-            required
-            autoComplete="name"
-            className="rounded-xl border-2 border-ink/25 bg-paper px-4 py-3 outline-none transition-colors focus:border-ink"
-          />
+          <span className="lk-label">Your name</span>
+          <input name="name" required autoComplete="name" className={inputClass} />
         </label>
         <label className="grid gap-2">
-          <span className="label-mono">Email</span>
-          <input
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            className="rounded-xl border-2 border-ink/25 bg-paper px-4 py-3 outline-none transition-colors focus:border-ink"
-          />
+          <span className="lk-label">Email</span>
+          <input name="email" type="email" required autoComplete="email" className={inputClass} />
         </label>
         <label className="grid gap-2">
-          <span className="label-mono">Topic</span>
-          <select
-            name="topic"
-            className="rounded-xl border-2 border-ink/25 bg-paper px-4 py-3 outline-none transition-colors focus:border-ink"
-          >
+          <span className="lk-label">Topic</span>
+          <select name="topic" className={inputClass}>
             <option>Question before I buy</option>
             <option>Order / shipping</option>
             <option>Returns / warranty</option>
@@ -74,23 +63,14 @@ export function ContactForm() {
           </select>
         </label>
         <label className="grid gap-2">
-          <span className="label-mono">Message</span>
-          <textarea
-            name="message"
-            required
-            rows={5}
-            className="rounded-xl border-2 border-ink/25 bg-paper px-4 py-3 outline-none transition-colors focus:border-ink"
-          />
+          <span className="lk-label">Message</span>
+          <textarea name="message" required rows={5} className={inputClass} />
         </label>
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="btn-sticker justify-center bg-loup-red px-6 py-4 text-lg text-paper disabled:opacity-60"
-        >
-          {status === "sending" ? "Sending…" : "Send it"}
+        <button type="submit" disabled={status === "sending"} className="lk-btn disabled:opacity-60">
+          {status === "sending" ? "Sending…" : "Send message"}
         </button>
         {status === "error" && (
-          <p className="text-sm text-loup-red">
+          <p className="text-sm text-[var(--lk-muted)]">
             Something broke. Email us directly at hello@loupkids.com.
           </p>
         )}

@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Store — Loup Devices & Merch",
-  description: "Pre-order Loup OG, reserve your spot, and shop Strikeout the Algo merch.",
+  description: "Reserve Loup OG for $149 and shop Strikeout the Algo merch.",
   alternates: { canonical: `${SITE.url}/shop` },
 };
 

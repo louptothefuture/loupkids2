@@ -1,91 +1,52 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useState } from "react";
+import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { LoupkidsPageHeader } from "@/components/loupkids/LoupkidsPageHeader";
+import { LoupkidsGuaranteeBadge } from "@/components/loupkids/conversion";
+import { SITE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Cellular Waitlist",
+  description: "Join the cellular Loup waitlist or order Wi-Fi Loup today for $149.",
+  alternates: { canonical: `${SITE.url}/reserve` },
+};
 
 export default function ReservePage() {
-  const [submitted, setSubmitted] = useState(false);
-
   return (
     <div>
       <LoupkidsPageHeader
-        eyebrow="Pre-order / waitlist"
-        title="Reserve your Loup"
-        description="Join the waitlist for cellular Loup or get notified about launch batches. No payment required — we'll email you when it's your turn."
+        eyebrow="Cellular waitlist"
+        title="Join the cellular waitlist"
+        description="Wi-Fi Loup ships now for $149. Join the waitlist if you need cellular — no payment required."
         centered
       />
 
-      <section className="lk-section-cards lk-section-white">
+      <section className="lk-section-white lk-section-content">
         <FadeIn className="lk-container-narrow">
-          {submitted ? (
-            <div className="lk-card lk-card-pad text-center">
-              <p className="lk-display lk-h3">You&apos;re on the list.</p>
-              <p className="lk-prose-muted mt-3">
-                Check your inbox for confirmation. Ready to buy now?{" "}
-                <Link href="/shop/loup" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-                  Pre-order Wi-Fi Loup →
-                </Link>
-              </p>
-            </div>
-          ) : (
-            <form
-              className="lk-card lk-card-pad space-y-5"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
+          <div className="lk-card lk-card-pad text-center">
+            <p className="lk-display lk-h3">Ready to order Wi-Fi Loup?</p>
+            <p className="lk-prose-muted mt-3">
+              Most families start with Wi-Fi Loup at home and school. Ships in 3–5 days.
+            </p>
+            <Link href="/shop/loup" className="lk-btn mt-6 inline-flex">
+              {LOUPKIDS_CTA.primary}
+            </Link>
+            <LoupkidsGuaranteeBadge className="mt-4" />
+          </div>
+
+          <div className="lk-card lk-card-pad mt-6">
+            <p className="lk-display text-xl">Cellular Loup — coming later</p>
+            <p className="lk-prose-muted mt-3">
+              Email us to join the cellular waitlist. We&apos;ll notify you when LTE Loup is ready — no deposit required.
+            </p>
+            <a
+              href={`mailto:${SITE.email}?subject=Cellular%20Loup%20waitlist`}
+              className="lk-btn lk-btn-outline mt-6 inline-flex"
             >
-              <div>
-                <label htmlFor="name" className="lk-label block">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  required
-                  className="mt-2 w-full border border-[var(--lk-line)] px-4 py-3 text-base focus:border-[var(--lk-ink)] focus:outline-none"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="lk-label block">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="mt-2 w-full border border-[var(--lk-line)] px-4 py-3 text-base focus:border-[var(--lk-ink)] focus:outline-none"
-                />
-              </div>
-              <fieldset>
-                <legend className="lk-label">Interested in</legend>
-                <div className="mt-3 space-y-2 text-[0.9375rem]">
-                  <label className="flex gap-2">
-                    <input type="radio" name="tier" value="cellular" defaultChecked />
-                    Cellular Loup waitlist
-                  </label>
-                  <label className="flex gap-2">
-                    <input type="radio" name="tier" value="launch" />
-                    Launch batch notification (Wi-Fi)
-                  </label>
-                </div>
-              </fieldset>
-              <label className="flex gap-2 text-sm text-[var(--lk-muted)]">
-                <input type="checkbox" required className="mt-1" />
-                I agree to receive Loup updates. See{" "}
-                <Link href="/legal/privacy" className="underline underline-offset-4">
-                  Privacy Policy
-                </Link>
-                .
-              </label>
-              <button type="submit" className="lk-btn w-full">
-                Join waitlist
-              </button>
-            </form>
-          )}
+              {LOUPKIDS_CTA.waitlist}
+            </a>
+          </div>
         </FadeIn>
       </section>
     </div>

@@ -1,9 +1,9 @@
 export const SITE = {
   name: "LOUP",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://loupkids.com",
-  tagline: "Phones for the anti-screen age.",
+  tagline: "Reach your kid anytime — without handing them the internet.",
   description:
-    "Loup is the escape hatch from the smartphone trap. The phone before their first smartphone — approved contacts only, no apps, no algorithms, no compromise.",
+    "Loup is the phone before their first smartphone — approved contacts only, no apps, no algorithms. Reserve yours for $149.",
   email: "hello@loupkids.com",
   press: "press@loupkids.com",
   social: {

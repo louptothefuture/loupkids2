@@ -20,36 +20,30 @@ export default function SetupPage() {
         description="From box to first call in about ten minutes. Video walkthrough coming at launch — for now, follow these steps."
       />
 
-      <section className="lk-section-cards lk-section-white">
-        <div className="lk-container-narrow">
-          <ol className="flex flex-col gap-4">
+      <section className="lk-section-white lk-page-body">
+        <div className="lk-container-prose">
+          <ol>
             {LOUPKIDS_SETUP_STEPS.map((s, i) => (
               <FadeIn key={s.step} delay={i * 0.04}>
-                <li className="lk-card lk-card-pad flex gap-5">
-                  <span className="lk-display flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--lk-line)] bg-neutral-50 text-lg">
-                    {s.step}
-                  </span>
-                  <div>
-                    <h2 className="lk-display text-xl">{s.title}</h2>
-                    <p className="mt-2 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{s.body}</p>
-                  </div>
+                <li className={i > 0 ? "border-t border-[var(--lk-line)] pt-8 mt-8" : ""}>
+                  <p className="lk-label mb-2">Step {s.step}</p>
+                  <h2 className="lk-display text-xl">{s.title}</h2>
+                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{s.body}</p>
                 </li>
               </FadeIn>
             ))}
           </ol>
 
-          <FadeIn delay={0.2} className="mt-8">
-            <div className="lk-card lk-card-pad text-[0.9375rem] text-[var(--lk-muted)]">
-              Stuck? Browse the{" "}
-              <Link href="/help" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-                knowledge base
-              </Link>{" "}
-              or{" "}
-              <Link href="/contact" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-                contact support
-              </Link>
-              .
-            </div>
+          <FadeIn delay={0.2} className="mt-12 border-t border-[var(--lk-line)] pt-8 text-[0.9375rem] text-[var(--lk-muted)]">
+            Stuck? Browse the{" "}
+            <Link href="/help" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+              knowledge base
+            </Link>{" "}
+            or{" "}
+            <Link href="/contact" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+              contact support
+            </Link>
+            .
           </FadeIn>
         </div>
       </section>

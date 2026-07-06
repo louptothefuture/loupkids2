@@ -4,12 +4,11 @@ import { FadeIn } from "@/components/loupkids/FadeIn";
 import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
 import { getPosts } from "@/lib/content";
 import { LOUPKIDS_JOURNAL_COVERS, LOUPKIDS_JOURNAL_EXCERPTS } from "@/lib/content/loupkids-site";
-import { LOUPKIDS_JOURNAL_INTRO } from "@/lib/content/loupkids-start-here";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Journal",
-  description: LOUPKIDS_JOURNAL_INTRO.description,
+  description: "Research and essays on screen time, first phones, and raising kids in the anti-screen age.",
   alternates: { canonical: `${SITE.url}/journal` },
 };
 
@@ -29,14 +28,11 @@ export default async function BlogPage() {
 
   return (
     <div>
-      <section className="border-b border-[var(--lk-line)] px-[var(--lk-section-x)] py-10 sm:py-12">
-        <FadeIn className="lk-container max-w-3xl">
+      <section className="lk-section-white lk-section-header border-b border-[var(--lk-line)]">
+        <FadeIn className="lk-container-narrow text-center">
           <h1 className="lk-display lk-h2">Journal</h1>
-          <p className="lk-display mt-4 text-[clamp(1.25rem,2.5vw,1.625rem)] leading-snug">
-            {LOUPKIDS_JOURNAL_INTRO.title}
-          </p>
-          <p className="mt-3 text-[1.0625rem] leading-relaxed text-[var(--lk-muted)]">
-            {LOUPKIDS_JOURNAL_INTRO.description}
+          <p className="lk-lead lk-prose-muted mx-auto mt-4 max-w-xl">
+            Essays on screen time, first phones, and the years before a smartphone.
           </p>
         </FadeIn>
       </section>
@@ -52,7 +48,7 @@ export default async function BlogPage() {
               <article>
                 <Link
                   href={`/journal/${post.slug}`}
-                  className={`lk-container group grid items-start gap-6 py-10 sm:gap-8 sm:py-12 md:grid-cols-[minmax(0,420px)_1fr] ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}
+                  className={`lk-container group grid items-start gap-8 py-14 sm:py-16 md:grid-cols-[minmax(0,45%)_1fr] md:gap-12 ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}
                 >
                   {cover ? (
                     <div className="lk-image-hover relative aspect-[4/3] w-full overflow-hidden bg-neutral-100">
@@ -60,7 +56,7 @@ export default async function BlogPage() {
                         src={cover}
                         alt=""
                         fill
-                        sizes="420px"
+                        sizes="(max-width: 768px) 100vw, 45vw"
                         className="object-cover"
                       />
                     </div>
@@ -68,19 +64,17 @@ export default async function BlogPage() {
                     <div className="aspect-[4/3] bg-neutral-100" />
                   )}
 
-                  <div className="flex min-h-full flex-col pt-1">
-                    <p className="text-sm font-medium text-[var(--lk-muted)]">
+                  <div className="flex min-h-full flex-col justify-center">
+                    <p className="text-sm text-[var(--lk-muted-light)]">
                       {post.author.name} · {formatJournalDate(post.publishedAt)}
                     </p>
-                    <h2 className="lk-display mt-3 text-[clamp(1.375rem,2.5vw,1.875rem)] leading-snug group-hover:opacity-85">
+                    <h2 className="lk-display lk-h3 mt-3 leading-snug group-hover:opacity-80">
                       {post.title}
                     </h2>
                     <p className="mt-4 line-clamp-4 text-[1.0625rem] leading-[1.65] text-[var(--lk-muted)]">
                       {excerpt}
                     </p>
-                    <span className="lk-label mt-6 inline-block group-hover:text-[var(--lk-ink)]">
-                      Read more
-                    </span>
+                    <span className="lk-read-link mt-6 inline-block">Read more →</span>
                   </div>
                 </Link>
               </article>

@@ -29,13 +29,14 @@ function urlFor(source: any): string | null {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  if (!client) {
-    return FALLBACK_POSTS.map((p) => ({
-      ...p,
-      coverImage: LOUPKIDS_JOURNAL_COVERS[p.slug] ?? p.coverImage,
-      excerpt: LOUPKIDS_JOURNAL_EXCERPTS[p.slug] ?? p.excerpt,
-    }));
-  }
+  const enrichedFallback = FALLBACK_POSTS.map((p) => ({
+    ...p,
+    coverImage: LOUPKIDS_JOURNAL_COVERS[p.slug] ?? p.coverImage,
+    excerpt: LOUPKIDS_JOURNAL_EXCERPTS[p.slug] ?? p.excerpt,
+  }));
+
+  if (!client) return enrichedFallback;
+
   const raw = await client.fetch(
     `*[_type == "post"] | order(publishedAt desc) {
       "slug": slug.current, title, excerpt, publishedAt,
@@ -48,6 +49,11 @@ export async function getPosts(): Promise<Post[]> {
     {},
     { next: { revalidate: 300 } },
   );
+
+  if (!raw?.length || raw.length < enrichedFallback.length) {
+    return enrichedFallback;
+  }
+
   return raw.map((r: any) => ({
     ...r,
     author: r.author ?? { name: "LOUP", role: "" },

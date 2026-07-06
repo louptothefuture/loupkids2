@@ -6,7 +6,7 @@ export function LoupkidsComparisonSection() {
   const { columns, rows } = LOUPKIDS_COMPARISON;
 
   return (
-    <section className="lk-section-muted lk-section">
+    <section className="lk-section-white lk-section-content">
       <FadeIn className="lk-container">
         <p className="lk-eyebrow mb-3">The honest comparison</p>
         <RevealHeadline as="h2" className="lk-display lk-h2">

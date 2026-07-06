@@ -4,7 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
+import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_NAV } from "@/lib/content/loupkids-site";
+import { LoupkidsGuaranteeBadge } from "./conversion";
 
 export function LoupkidsNav() {
   const pathname = usePathname();
@@ -61,7 +63,7 @@ export function LoupkidsNav() {
 
           <div className="flex items-center gap-3 sm:gap-4">
             <Link href="/shop/loup" className={`hidden sm:inline-flex ${ctaClass}`}>
-              Pre-order
+              {LOUPKIDS_CTA.primaryShort}
             </Link>
             <button
               type="button"
@@ -101,8 +103,9 @@ export function LoupkidsNav() {
               onClick={() => setMenuOpen(false)}
               className="lk-btn mt-8 w-full"
             >
-              Pre-order — $149
+              {LOUPKIDS_CTA.primary}
             </Link>
+            <LoupkidsGuaranteeBadge compact className="mt-3" />
             <button
               type="button"
               onClick={() => {

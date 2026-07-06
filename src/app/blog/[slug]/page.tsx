@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { getPost, getPosts } from "@/lib/content";
+import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 300;
@@ -116,7 +117,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             Screens are the default. We&apos;re building the alternative. LOUP gives kids a way to stay connected without handing them the internet. Voice-only, parent-controlled, designed for the years before a smartphone makes sense.
           </p>
           <Link href="/shop/loup" className="lk-btn mt-5 inline-flex">
-            Pre-order Loup
+            {LOUPKIDS_CTA.primaryShort}
           </Link>
         </aside>
 

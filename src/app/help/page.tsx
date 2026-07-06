@@ -20,10 +20,10 @@ export default function HelpPage() {
       <LoupkidsPageHeader
         eyebrow="Support / knowledge base"
         title="Help center"
-        description="Guides for setup, the parent app, billing, and everyday troubleshooting."
+        description="Product setup, parent app, billing, and troubleshooting. For parenting guides and research, see the resource hub."
       />
 
-      <section className="lk-section-cards lk-section-muted">
+      <section className="lk-section-white lk-section-content">
         <div className="lk-container">
           <FadeIn className="mb-8">
             <p className="lk-eyebrow mb-2">{LOUPKIDS_START_HERE.eyebrow}</p>
@@ -91,9 +91,9 @@ export default function HelpPage() {
           </div>
         </div>
 
-        <FadeIn delay={0.1} className="lk-container mt-10">
-          <div className="lk-card lk-card-pad mx-auto max-w-xl text-center">
-            <p className="lk-display lk-h3">Still need help?</p>
+        <FadeIn delay={0.1} className="lk-container mt-12 border-t border-[var(--lk-line)] pt-10">
+          <div className="mx-auto max-w-xl text-center">
+            <p className="lk-display text-xl">Still need help?</p>
             <p className="lk-prose-muted mt-2">Our team responds within one business day.</p>
             <Link href="/contact" className="lk-btn mt-5 inline-flex">
               Contact support

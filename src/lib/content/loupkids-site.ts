@@ -65,11 +65,12 @@ export const LOUPKIDS_NAV = [
 /** Footer nav — scraped from loupkids.com homepage footer */
 export const LOUPKIDS_FOOTER_NAV = [
   { href: "/", label: "Home" },
-  { href: "/ode", label: "Ode" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/about", label: "The Story" },
+  { href: "/resources", label: "Resources" },
   { href: "/journal", label: "Journal" },
   { href: "/faq", label: "FAQ" },
+  { href: "/ode", label: "Ode" },
+  { href: "/contact", label: "Contact Us" },
 ] as const;
 
 export const LOUPKIDS_HERO = {
@@ -78,22 +79,26 @@ export const LOUPKIDS_HERO = {
 
 export const LOUPKIDS_INTRO = {
   subhead: "You aren't alone in being frustrated.",
-  body: "8 out of 10 parents hate that they feel \"forced\" into the smartphone trap.",
+  figure: "8/10",
+  body: "parents hate that they feel \"forced\" into the smartphone trap.",
   cta: "Loup is the escape hatch.",
 };
 
 /** Section 2 stats — exact copy and order from loupkids.com */
 export const LOUPKIDS_STATS = [
   {
-    text: "Traditional \"free play\" has declined by 25% since smartphones went mainstream.",
+    figure: "25%",
+    text: "Traditional \"free play\" has declined since smartphones went mainstream.",
     title: "The Vanishing Playground",
   },
   {
-    text: "Kids 8-12 now spend 5.5 hours a day on entertainment screens.",
-    title: "The Play Gap.",
+    figure: "5.5 hrs",
+    text: "Kids 8–12 now spend per day on entertainment screens.",
+    title: "The Play Gap",
   },
   {
-    text: "95% of teens say they are \"constantly\" online.",
+    figure: "95%",
+    text: "Of teens say they are \"constantly\" online.",
     title: "It's taken over everything.",
   },
 ] as const;

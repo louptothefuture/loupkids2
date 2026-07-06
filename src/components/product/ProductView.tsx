@@ -1,11 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/shopify/types";
 import { useCart } from "@/components/cart/CartProvider";
 import { trackViewItem } from "@/lib/analytics";
+import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
+import {
+  LoupkidsGuaranteeBadge,
+  LoupkidsStarRating,
+} from "@/components/loupkids/conversion";
 
 function formatPrice(amount: string, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -20,6 +27,7 @@ export function ProductView({ product }: { product: Product }) {
   const optionName = product.options[0]?.name;
   const [selected, setSelected] = useState(product.variants[0]);
   const [activeImage, setActiveImage] = useState(0);
+  const featuredQuote = FALLBACK_TESTIMONIALS.find((t) => t.featured) ?? FALLBACK_TESTIMONIALS[0];
 
   useEffect(() => {
     trackViewItem({
@@ -95,7 +103,15 @@ export function ProductView({ product }: { product: Product }) {
       <div className="lg:pt-4">
         <p className="lk-label mb-3">Product</p>
         <h1 className="lk-display text-left text-3xl sm:text-4xl">{product.title}</h1>
+        <LoupkidsStarRating variant="light" align="start" className="mt-4" />
         <p className="mt-4 leading-relaxed text-[var(--lk-muted)]">{product.description}</p>
+
+        {featuredQuote ? (
+          <blockquote className="mt-6 border-l-2 border-[var(--lk-line)] pl-4 text-sm leading-relaxed text-[var(--lk-muted)]">
+            &ldquo;{featuredQuote.quote}&rdquo;
+            <footer className="lk-label mt-2">{featuredQuote.attribution}</footer>
+          </blockquote>
+        ) : null}
 
         <div className="mt-6 text-2xl font-medium">
           {formatPrice(selected.price.amount, selected.price.currencyCode)}
@@ -145,12 +161,12 @@ export function ProductView({ product }: { product: Product }) {
           disabled={pending || !selected.availableForSale}
           className="lk-btn mt-8 w-full disabled:opacity-60"
         >
-          {selected.availableForSale ? (pending ? "Adding…" : "Add to bag") : "Sold out"}
+          {selected.availableForSale ? (pending ? "Adding…" : LOUPKIDS_CTA.product) : "Sold out"}
         </button>
+        <LoupkidsGuaranteeBadge className="mt-4" />
 
-        <ul className="mt-6 space-y-2 text-sm text-[var(--lk-muted)]">
-          <li>Free US shipping, arrives in 3–5 days</li>
-          <li>30-day returns, no questions</li>
+        <ul className="mt-4 space-y-2 text-sm text-[var(--lk-muted)]">
+          <li>Free US shipping · arrives in 3–5 days</li>
           <li>2-year kid-proof warranty (drops included)</li>
           <li>Free Loup-to-Loup calls forever · real numbers $10/mo, cancel anytime</li>
         </ul>

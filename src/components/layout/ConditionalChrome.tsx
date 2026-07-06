@@ -8,7 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { LoupkidsShell } from "@/components/loupkids/LoupkidsShell";
 
 /** Routes that keep the bold campaign chrome (no Loupkids shell). */
-const BOLD_ROUTES = ["/launch", "/legacy", "/story"];
+const BOLD_ROUTES = ["/launch", "/legacy"];
 
 function isBoldRoute(pathname: string) {
   return BOLD_ROUTES.some((r) => pathname === r || pathname.startsWith(`${r}/`));

@@ -27,7 +27,7 @@ export default async function PressPage() {
         description={`Everything you need is on this page. For interviews, review units, and anything else: ${SITE.press} — we respond within one business day.`}
       />
 
-      <section className="lk-section-cards lk-section-muted">
+      <section className="lk-section-white lk-section-content">
         <div className="lk-container space-y-10">
           <FadeIn>
             <div className="lk-card lk-card-pad">

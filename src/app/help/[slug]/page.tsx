@@ -30,22 +30,25 @@ export default async function HelpArticlePage({ params }: Props) {
 
   return (
     <div>
-      <section className="lk-section-muted lk-section-cards border-b border-[var(--lk-line)]">
-        <FadeIn className="lk-container-narrow">
-          <Link href="/help" className="lk-label inline-block hover:text-[var(--lk-ink)]">
+      <section className="lk-section-white lk-section-header border-b border-[var(--lk-line)]">
+        <FadeIn className="lk-container-prose text-left">
+          <Link href="/help" className="lk-read-link inline-block">
             ← Help center
           </Link>
-          <p className="lk-eyebrow mt-4 mb-2">{article.category}</p>
+          <p className="lk-eyebrow mt-6 mb-2">{article.category}</p>
           <h1 className="lk-display lk-h2">{article.title}</h1>
           <p className="lk-lead lk-prose-muted mt-4">{article.summary}</p>
         </FadeIn>
       </section>
 
-      <section className="lk-section-cards lk-section-white">
-        <FadeIn className="lk-container-narrow">
-          <div className="flex flex-col gap-4">
+      <section className="lk-section-white lk-page-body">
+        <FadeIn className="lk-container-prose">
+          <div>
             {article.sections.map((section, i) => (
-              <div key={i} className="lk-card lk-card-pad">
+              <div
+                key={i}
+                className={i > 0 ? "border-t border-[var(--lk-line)] pt-8 mt-8" : ""}
+              >
                 {section.heading ? (
                   <h2 className="lk-display mb-3 text-lg sm:text-xl">{section.heading}</h2>
                 ) : null}
@@ -54,16 +57,13 @@ export default async function HelpArticlePage({ params }: Props) {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4 text-[0.9375rem]">
-            <Link href="/setup" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-              Setup guide
-            </Link>
-            <Link href="/faq" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-              FAQ
-            </Link>
-            <Link href="/contact" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-              Contact support
-            </Link>
+          <div className="mt-12 border-t border-[var(--lk-line)] pt-8">
+            <p className="text-sm text-[var(--lk-muted)]">
+              Still stuck?{" "}
+              <Link href="/contact" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+                Contact support
+              </Link>
+            </p>
           </div>
         </FadeIn>
       </section>

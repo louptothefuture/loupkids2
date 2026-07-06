@@ -31,10 +31,10 @@ export default async function ResourcesPage() {
       <LoupkidsPageHeader
         eyebrow="Parent resources"
         title="Resource hub"
-        description="On-site guides and research — no external social feeds, no algorithm. Just the stuff we wish someone had handed us at the pickup line."
+        description="Guides and research for delaying smartphones and choosing a first phone. For setup and troubleshooting, visit the help center."
       />
 
-      <section className="lk-section-cards lk-section-muted">
+      <section className="lk-section-white lk-section-content">
         <div className="lk-container">
           <FadeIn className="mb-6">
             <p className="lk-eyebrow mb-2">{eyebrow}</p>

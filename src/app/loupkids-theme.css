@@ -84,20 +84,37 @@
 
 /* —— Stats —— */
 .loupkids-theme .lk-stat-text {
-  font-size: var(--lk-text-stat);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 1.35;
   letter-spacing: -0.02em;
   color: var(--lk-ink);
-  max-width: 36rem;
-  margin-inline: auto;
+}
+
+.loupkids-theme .lk-stat-figure {
+  font-size: clamp(3rem, 8vw, 4.75rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--lk-ink);
+}
+
+.loupkids-theme .lk-stat-figure-sm {
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--lk-ink);
 }
 
 .loupkids-theme .lk-stat-tagline {
-  margin-top: 0.875rem;
-  font-size: var(--lk-text-lead);
-  line-height: 1.55;
-  color: var(--lk-muted);
+  margin-top: 1.25rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  color: var(--lk-muted-light);
 }
 
 /* —— Cards —— */
@@ -152,8 +169,34 @@
   margin: 0 auto;
 }
 
+/* Editorial pages — header + body share one column edge */
+.loupkids-theme .lk-container-prose {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
 .loupkids-theme .lk-section {
   padding: var(--lk-section-y) var(--lk-section-x);
+}
+
+.loupkids-theme .lk-section-header {
+  padding: clamp(2.5rem, 5vw, 3.25rem) var(--lk-section-x);
+}
+
+.loupkids-theme .lk-section-content {
+  padding: clamp(3rem, 6vw, 4.5rem) var(--lk-section-x);
+}
+
+.loupkids-theme .lk-page-body {
+  padding: clamp(2rem, 4vw, 2.75rem) var(--lk-section-x) clamp(3.5rem, 6vw, 4.5rem);
+}
+
+.loupkids-theme .lk-cta-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
 }
 
 .loupkids-theme .lk-section-tight {
@@ -242,6 +285,36 @@
 
 .loupkids-theme .lk-image-hover:hover img {
   transform: scale(1.03);
+}
+
+.loupkids-theme .lk-read-link {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--lk-muted-light);
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.loupkids-theme .lk-read-link:hover {
+  color: var(--lk-ink);
+  text-decoration: underline;
+}
+
+.loupkids-theme .lk-product-tile {
+  border: 1px solid var(--lk-line);
+  transition: border-color 0.2s ease;
+}
+
+.loupkids-theme .lk-product-tile:hover {
+  border-color: rgba(10, 10, 10, 0.28);
+}
+
+.loupkids-theme .lk-product-tile .lk-image-hover:hover img {
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

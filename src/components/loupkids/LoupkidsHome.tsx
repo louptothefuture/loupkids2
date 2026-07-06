@@ -6,20 +6,30 @@ import {
   LOUPKIDS_ACCORDION,
   LOUPKIDS_CUSTOMIZE,
   LOUPKIDS_GALLERY,
-  LOUPKIDS_HERO,
   LOUPKIDS_IMAGES,
   LOUPKIDS_NEWSLETTER,
   LOUPKIDS_NOTHING,
   LOUPKIDS_PHONE,
   LOUPKIDS_PRODUCT_SHOTS,
-  LOUPKIDS_STORY_TEASER,
 } from "@/lib/content/loupkids-site";
+import {
+  LOUPKIDS_CTA,
+  LOUPKIDS_HERO_COPY,
+  LOUPKIDS_STORY_SHORT,
+} from "@/lib/content/loupkids-conversion";
+import { SITE } from "@/lib/site";
+import {
+  LoupkidsOrderCta,
+  LoupkidsPressStrip,
+  LoupkidsStarRating,
+  LoupkidsTestimonialStrip,
+} from "./conversion";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsAccordion } from "./LoupkidsAccordion";
 import { LoupkidsCompanionSection } from "./LoupkidsCompanionSection";
+import { LoupkidsComparisonSection } from "./LoupkidsSpecsSections";
 import { LoupkidsFooter } from "./LoupkidsFooter";
 import { LoupkidsImage } from "./LoupkidsImage";
-import { LoupkidsComparisonSection, LoupkidsSpecsSection } from "./LoupkidsSpecsSections";
 import { LoupkidsStatsSection } from "./LoupkidsStatsSection";
 import { RevealHeadline, RevealLine, RevealLines } from "./RevealHeadline";
 
@@ -87,26 +97,40 @@ export function LoupkidsHome() {
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/65" />
-        <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col items-center justify-center gap-8 px-[var(--lk-section-x)] pb-20 pt-28 text-center">
-          <HeroHeadline text={LOUPKIDS_HERO.headline} />
+        <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col items-center justify-center gap-6 px-[var(--lk-section-x)] pb-20 pt-28 text-center">
+          <HeroHeadline text={LOUPKIDS_HERO_COPY.headline} />
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, duration: 0.5, ease }}
+            className="mx-auto max-w-xl text-lg text-white/85"
+          >
+            {LOUPKIDS_HERO_COPY.subhead}
+          </motion.p>
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85, duration: 0.5, ease }}
+          >
+            <LoupkidsStarRating />
+          </motion.div>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6, ease }}
+            transition={{ delay: 0.95, duration: 0.6, ease }}
           >
-            <Link href="/shop/loup" className="lk-btn lk-btn-white">
-              Pre-order — $149
-            </Link>
+            <LoupkidsOrderCta variant="dark" />
           </motion.div>
         </div>
       </section>
 
+      <LoupkidsPressStrip />
       <LoupkidsStatsSection />
+      <LoupkidsTestimonialStrip index={0} />
 
-      {/* Phone + accordion */}
+      {/* Phone + accordion — matches loupkids.com */}
       <section className="lk-section-black lk-section">
         <div className="lk-container-narrow lk-stack text-center">
-          <p className="lk-eyebrow text-white/55">The device</p>
           <RevealHeadline as="h2" className="lk-display lk-h2 text-white">
             {LOUPKIDS_PHONE.title}
           </RevealHeadline>
@@ -152,25 +176,25 @@ export function LoupkidsHome() {
         </div>
       </section>
 
-      {/* Story */}
+      {/* Story — short teaser */}
       <section className="lk-section-black lk-section">
         <div className="lk-container grid items-center gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-2">
           <div className="lk-stack">
             <p className="lk-eyebrow text-white/55">Our story</p>
             <RevealHeadline as="h2" className="lk-display lk-h2 text-white">
-              {LOUPKIDS_STORY_TEASER.headline}
+              {LOUPKIDS_STORY_SHORT.headline}
             </RevealHeadline>
             <RevealLines className="lk-stack lk-prose lk-prose-light" delay={0.06}>
-              {LOUPKIDS_STORY_TEASER.paragraphs.map((p) => (
+              {LOUPKIDS_STORY_SHORT.paragraphs.map((p) => (
                 <RevealLine key={p.slice(0, 28)}>{p}</RevealLine>
               ))}
             </RevealLines>
             <FadeIn delay={0.18}>
               <Link
-                href={LOUPKIDS_STORY_TEASER.cta.href}
+                href={LOUPKIDS_STORY_SHORT.cta.href}
                 className="inline-flex border border-white px-8 py-3.5 text-sm font-medium uppercase tracking-wider text-white transition-opacity hover:opacity-80"
               >
-                {LOUPKIDS_STORY_TEASER.cta.label}
+                {LOUPKIDS_STORY_SHORT.cta.label}
               </Link>
             </FadeIn>
           </div>
@@ -212,45 +236,44 @@ export function LoupkidsHome() {
         ))}
       </section>
 
-      <LoupkidsComparisonSection />
-      <LoupkidsSpecsSection />
+      <LoupkidsTestimonialStrip index={1} />
 
-      {/* Pre-order CTA */}
-      <section className="lk-section-muted lk-section">
-        <FadeIn className="lk-container-narrow text-center">
+      <LoupkidsComparisonSection />
+
+      {/* Final CTA */}
+      <section className="lk-section-white lk-section-content border-t border-[var(--lk-line)]">
+        <FadeIn className="lk-container-prose lk-cta-stack">
           <RevealHeadline as="h2" className="lk-display lk-h2">
             Ready when you are.
           </RevealHeadline>
-          <p className="lk-lead lk-prose-muted mx-auto mt-4 max-w-md">
-            Pre-order Loup — the phone before their first smartphone.
+          <p className="lk-lead lk-prose-muted max-w-md">
+            The phone before their first smartphone — free shipping, 30-day returns, 2-year warranty.
           </p>
-          <Link href="/shop/loup" className="lk-btn mt-8 inline-flex">
-            Pre-order — $149
-          </Link>
+          <LoupkidsOrderCta variant="light" />
+          <p className="text-sm text-[var(--lk-muted)]">
+            Need cellular?{" "}
+            <Link href="/reserve" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+              {LOUPKIDS_CTA.waitlist}
+            </Link>
+          </p>
         </FadeIn>
       </section>
 
-      {/* Newsletter + footer */}
+      {/* Newsletter */}
       <section className="lk-section-black px-[var(--lk-section-x)] py-[clamp(4rem,8vw,6rem)] text-white">
         <FadeIn className="mx-auto max-w-lg text-center">
           <RevealHeadline as="h2" className="lk-display lk-h2 text-white">
             {LOUPKIDS_NEWSLETTER.headline}
           </RevealHeadline>
-          <form className="mt-8 flex flex-col gap-3 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              required
-              placeholder="Email address"
-              aria-label="Email address"
-              className="min-w-0 flex-1 border border-white/30 bg-transparent px-4 py-3.5 text-base text-white placeholder:text-white/45 focus:border-white focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="border border-white bg-white px-6 py-3.5 text-sm font-medium uppercase tracking-wider text-black transition-opacity hover:opacity-90"
-            >
-              Sign up
-            </button>
-          </form>
+          <p className="mt-4 text-white/70">
+            Parent updates, launch news, and journal picks — no spam.
+          </p>
+          <a
+            href={`mailto:${SITE.email}?subject=Stay%20in%20The%20Loup`}
+            className="lk-btn lk-btn-white mt-8 inline-flex"
+          >
+            {LOUPKIDS_CTA.newsletter}
+          </a>
         </FadeIn>
       </section>
 
