@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Rubik } from "next/font/google";
+import { Inconsolata, Inter, Rubik } from "next/font/google";
 import "./globals.css";
+import "./loupkids-theme.css";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { ConditionalChrome } from "@/components/layout/ConditionalChrome";
 import { Analytics } from "@/components/Analytics";
@@ -16,6 +17,12 @@ const rubik = Rubik({
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const inconsolata = Inconsolata({
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -52,7 +59,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${rubik.variable} ${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${rubik.variable} ${inter.variable} ${inconsolata.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col">
         <OrganizationJsonLd />
         <CartProvider>

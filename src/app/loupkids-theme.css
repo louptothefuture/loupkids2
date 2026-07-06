@@ -1,0 +1,251 @@
+/* Loupkids.com faithful theme — Inter + Inconsolata, editorial minimal */
+
+.loupkids-theme {
+  --lk-bg: #ffffff;
+  --lk-ink: #0a0a0a;
+  --lk-muted: #444444;
+  --lk-muted-light: #666666;
+  --lk-line: rgba(10, 10, 10, 0.12);
+  --lk-accent: #0a0a0a;
+  --lk-section-y: clamp(4.5rem, 10vw, 7.5rem);
+  --lk-section-x: clamp(1.25rem, 4vw, 3rem);
+  --lk-gap: clamp(1.25rem, 2.5vw, 2rem);
+  --lk-text-base: 1.125rem;
+  --lk-text-lead: clamp(1.125rem, 1.8vw, 1.3125rem);
+  --lk-text-stat: clamp(1.3125rem, 2.4vw, 1.625rem);
+  background: var(--lk-bg);
+  color: var(--lk-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: var(--lk-text-base);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* —— Typography scale —— */
+.loupkids-theme .lk-display {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.loupkids-theme .lk-h1 {
+  font-size: clamp(2.25rem, 6.5vw, 4.75rem);
+  line-height: 1.04;
+}
+
+.loupkids-theme .lk-h2 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.08;
+}
+
+.loupkids-theme .lk-h3 {
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  line-height: 1.15;
+}
+
+.loupkids-theme .lk-lead {
+  font-size: var(--lk-text-lead);
+  line-height: 1.65;
+}
+
+.loupkids-theme .lk-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--lk-muted-light);
+}
+
+.loupkids-theme .lk-eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--lk-muted-light);
+}
+
+.loupkids-theme .lk-prose {
+  font-size: var(--lk-text-base);
+  line-height: 1.7;
+}
+
+.loupkids-theme .lk-prose-muted {
+  color: var(--lk-muted);
+}
+
+.loupkids-theme .lk-prose-light {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* —— Stats —— */
+.loupkids-theme .lk-stat-text {
+  font-size: var(--lk-text-stat);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--lk-ink);
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.loupkids-theme .lk-stat-tagline {
+  margin-top: 0.875rem;
+  font-size: var(--lk-text-lead);
+  line-height: 1.55;
+  color: var(--lk-muted);
+}
+
+/* —— Cards —— */
+.loupkids-theme .lk-card {
+  border: 1px solid var(--lk-line);
+  background: #fff;
+  border-radius: 3px;
+}
+
+.loupkids-theme .lk-card-dark {
+  background: #141414;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.loupkids-theme .lk-card-active {
+  border-color: rgba(10, 10, 10, 0.22);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.loupkids-theme .lk-section-black .lk-card-active {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.loupkids-theme .lk-card-pad {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.loupkids-theme .lk-section-cards {
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--lk-section-x);
+}
+
+/* —— Layout —— */
+.loupkids-theme .lk-rule {
+  border: 0;
+  border-top: 1px solid var(--lk-line);
+}
+
+.loupkids-theme .lk-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lk-gap);
+}
+
+.loupkids-theme .lk-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.loupkids-theme .lk-container-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.loupkids-theme .lk-section {
+  padding: var(--lk-section-y) var(--lk-section-x);
+}
+
+.loupkids-theme .lk-section-tight {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.loupkids-theme .lk-section-black {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.loupkids-theme .lk-section-black .lk-rule {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.loupkids-theme .lk-section-white {
+  background: #fff;
+  color: var(--lk-ink);
+}
+
+.loupkids-theme .lk-section-muted {
+  background: #f5f5f5;
+  color: var(--lk-ink);
+}
+
+.loupkids-theme .lk-section-black .lk-label,
+.loupkids-theme .lk-section-black .lk-eyebrow {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.loupkids-theme .lk-section-black [class*="divide-"] {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* —— Buttons —— */
+.loupkids-theme .lk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--lk-ink);
+  background: var(--lk-ink);
+  color: #fff;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.loupkids-theme .lk-btn:hover {
+  opacity: 0.88;
+}
+
+.loupkids-theme .lk-btn-outline {
+  background: transparent;
+  color: var(--lk-ink);
+}
+
+.loupkids-theme .lk-btn-white {
+  border-color: #fff;
+  background: #fff;
+  color: var(--lk-ink);
+}
+
+.loupkids-theme .lk-btn-sm {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.8125rem;
+}
+
+/* —— Cards & tables —— */
+.loupkids-theme .lk-spec-card {
+  border: 1px solid var(--lk-line);
+  background: #fff;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.loupkids-theme .lk-table-wrap {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.loupkids-theme .lk-image-hover img {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.loupkids-theme .lk-image-hover:hover img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loupkids-theme .lk-image-hover:hover img {
+    transform: none;
+  }
+}

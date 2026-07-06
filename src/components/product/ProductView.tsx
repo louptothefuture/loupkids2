@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/shopify/types";
 import { useCart } from "@/components/cart/CartProvider";
-import { PopLabel, PopPrice } from "@/components/typography/PopType";
 import { trackViewItem } from "@/lib/analytics";
 
 function formatPrice(amount: string, currency: string) {
@@ -54,14 +53,14 @@ export function ProductView({ product }: { product: Product }) {
   return (
     <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
       <div>
-        <div className="pop-card relative aspect-[4/5] overflow-hidden bg-white sm:aspect-[5/4]">
+        <div className="relative aspect-[4/5] overflow-hidden border border-[var(--lk-line)] bg-neutral-50 sm:aspect-[5/4]">
           <AnimatePresence mode="wait">
             <motion.div
               key={shown?.url}
-              initial={{ opacity: 0, scale: 0.96 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.25 }}
+              exit={{ opacity: 0, scale: 1.01 }}
+              transition={{ duration: 0.3 }}
               className="absolute inset-0"
             >
               {shown && (
@@ -83,8 +82,8 @@ export function ProductView({ product }: { product: Product }) {
               key={img.url}
               onClick={() => setActiveImage(i)}
               aria-label={`View image ${i + 1}`}
-              className={`relative h-20 w-16 shrink-0 cursor-pointer overflow-hidden rounded-xl border-3 bg-white transition-transform hover:-translate-y-1 ${
-                i === activeImage ? "border-ink shadow-[3px_3px_0_#0a0a0a]" : "border-ink/20"
+              className={`relative h-20 w-16 shrink-0 cursor-pointer overflow-hidden border bg-white transition-opacity hover:opacity-80 ${
+                i === activeImage ? "border-[var(--lk-ink)]" : "border-[var(--lk-line)]"
               }`}
             >
               <Image src={img.url} alt="" fill sizes="64px" className="object-contain p-1" />
@@ -94,14 +93,14 @@ export function ProductView({ product }: { product: Product }) {
       </div>
 
       <div className="lg:pt-4">
-        <PopLabel className="mb-3 block text-ink/70">The device</PopLabel>
-        <h1 className="display text-left text-4xl sm:text-5xl">{product.title}</h1>
-        <p className="mt-4 text-base font-semibold leading-relaxed text-ink/75">{product.description}</p>
+        <p className="lk-label mb-3">Product</p>
+        <h1 className="lk-display text-left text-3xl sm:text-4xl">{product.title}</h1>
+        <p className="mt-4 leading-relaxed text-[var(--lk-muted)]">{product.description}</p>
 
-        <div className="mt-6">
-          <PopPrice>{formatPrice(selected.price.amount, selected.price.currencyCode)}</PopPrice>
+        <div className="mt-6 text-2xl font-medium">
+          {formatPrice(selected.price.amount, selected.price.currencyCode)}
           {selected.compareAtPrice && (
-            <span className="ml-3 text-xl font-bold text-ink/40 line-through">
+            <span className="ml-3 text-lg text-[var(--lk-muted)] line-through">
               {formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)}
             </span>
           )}
@@ -109,10 +108,10 @@ export function ProductView({ product }: { product: Product }) {
 
         {optionName && (
           <fieldset className="mt-8">
-            <legend className="mb-3 text-sm font-black uppercase tracking-wide text-ink">
-              {optionName}: <span className="text-block-fuchsia">{selected.title}</span>
+            <legend className="lk-label mb-3">
+              {optionName}: {selected.title}
             </legend>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {product.options[0].values.map((value) => {
                 const variant = product.variants.find((v) => v.title === value);
                 const active = selected.title === value;
@@ -121,10 +120,10 @@ export function ProductView({ product }: { product: Product }) {
                     key={value}
                     onClick={() => selectVariant(value)}
                     disabled={!variant?.availableForSale}
-                    className={`cursor-pointer rounded-full border-3 px-5 py-2 text-sm font-black uppercase transition-all disabled:cursor-not-allowed disabled:opacity-40 ${
+                    className={`cursor-pointer border px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
                       active
-                        ? "border-ink bg-ink text-white shadow-[3px_3px_0_#1e4bff]"
-                        : "border-ink/25 bg-white hover:border-ink"
+                        ? "border-[var(--lk-ink)] bg-[var(--lk-ink)] text-white"
+                        : "border-[var(--lk-line)] hover:border-[var(--lk-ink)]"
                     }`}
                   >
                     {value}
@@ -135,9 +134,7 @@ export function ProductView({ product }: { product: Product }) {
           </fieldset>
         )}
 
-        <motion.button
-          whileHover={{ scale: 1.02, rotate: -0.5 }}
-          whileTap={{ scale: 0.98 }}
+        <button
           onClick={() =>
             addItem(selected.id, {
               title: product.title,
@@ -146,16 +143,16 @@ export function ProductView({ product }: { product: Product }) {
             })
           }
           disabled={pending || !selected.availableForSale}
-          className="mt-8 w-full cursor-pointer rounded-full border-3 border-ink bg-block-fuchsia px-8 py-5 text-xl font-black uppercase text-white shadow-[6px_6px_0_#0a0a0a] disabled:opacity-60"
+          className="lk-btn mt-8 w-full disabled:opacity-60"
         >
           {selected.availableForSale ? (pending ? "Adding…" : "Add to bag") : "Sold out"}
-        </motion.button>
+        </button>
 
-        <ul className="mt-6 space-y-2 text-sm font-semibold text-ink/75">
-          <li>✓ Free US shipping, arrives in 3–5 days</li>
-          <li>✓ 30-day returns, no questions</li>
-          <li>✓ 2-year kid-proof warranty (drops included)</li>
-          <li>✓ Free LOUP-to-LOUP calls forever · real numbers $10/mo, cancel anytime</li>
+        <ul className="mt-6 space-y-2 text-sm text-[var(--lk-muted)]">
+          <li>Free US shipping, arrives in 3–5 days</li>
+          <li>30-day returns, no questions</li>
+          <li>2-year kid-proof warranty (drops included)</li>
+          <li>Free Loup-to-Loup calls forever · real numbers $10/mo, cancel anytime</li>
         </ul>
       </div>
     </div>

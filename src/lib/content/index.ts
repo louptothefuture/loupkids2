@@ -8,6 +8,7 @@ import {
   FALLBACK_SPECS,
   FALLBACK_TESTIMONIALS,
 } from "./fallback";
+import { LOUPKIDS_JOURNAL_COVERS, LOUPKIDS_JOURNAL_EXCERPTS } from "./loupkids-site";
 import type { Faq, HomepageCopy, Post, PressMention, Spec, Testimonial } from "./types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -28,7 +29,13 @@ function urlFor(source: any): string | null {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  if (!client) return FALLBACK_POSTS;
+  if (!client) {
+    return FALLBACK_POSTS.map((p) => ({
+      ...p,
+      coverImage: LOUPKIDS_JOURNAL_COVERS[p.slug] ?? p.coverImage,
+      excerpt: LOUPKIDS_JOURNAL_EXCERPTS[p.slug] ?? p.excerpt,
+    }));
+  }
   const raw = await client.fetch(
     `*[_type == "post"] | order(publishedAt desc) {
       "slug": slug.current, title, excerpt, publishedAt,

@@ -1,94 +1,93 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Reveal } from "@/components/Reveal";
+import { useState } from "react";
+import { FadeIn } from "@/components/loupkids/FadeIn";
+import { LoupkidsPageHeader } from "@/components/loupkids/LoupkidsPageHeader";
 
 export default function ReservePage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="mx-auto max-w-xl px-4 py-20 sm:px-6">
-      <Reveal>
-        <p className="label-mono text-loup-red">Pre-order / reserve</p>
-        <h1 className="display mt-2 text-5xl sm:text-6xl">Reserve your LOUP</h1>
-        <p className="mt-4 text-ink-soft">
-          Join the waitlist for cellular LOUP or get notified about launch batches. No payment
-          required — we&apos;ll email you when it&apos;s your turn.
-        </p>
-      </Reveal>
+    <div>
+      <LoupkidsPageHeader
+        eyebrow="Pre-order / waitlist"
+        title="Reserve your Loup"
+        description="Join the waitlist for cellular Loup or get notified about launch batches. No payment required — we'll email you when it's your turn."
+        centered
+      />
 
-      {submitted ? (
-        <Reveal delay={0.1}>
-          <div className="mt-10 rounded-2xl border-2 border-ink bg-sun p-8 shadow-sticker">
-            <p className="display text-2xl">You&apos;re on the list.</p>
-            <p className="mt-3 text-ink-soft">
-              Check your inbox for confirmation. Ready to buy now?{" "}
-              <Link href="/shop/loup" className="underline">
-                Pre-order Wi-Fi LOUP →
-              </Link>
-            </p>
-          </div>
-        </Reveal>
-      ) : (
-        <Reveal delay={0.1}>
-          <form
-            className="mt-10 space-y-4 rounded-2xl border-2 border-ink bg-paper p-8 shadow-sticker"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSubmitted(true);
-            }}
-          >
-            <div>
-              <label htmlFor="name" className="label-mono block text-ink-soft">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                required
-                className="mt-1 w-full rounded-lg border-2 border-ink/20 px-4 py-2 focus:border-ink focus:outline-none"
-              />
+      <section className="lk-section-cards lk-section-white">
+        <FadeIn className="lk-container-narrow">
+          {submitted ? (
+            <div className="lk-card lk-card-pad text-center">
+              <p className="lk-display lk-h3">You&apos;re on the list.</p>
+              <p className="lk-prose-muted mt-3">
+                Check your inbox for confirmation. Ready to buy now?{" "}
+                <Link href="/shop/loup" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+                  Pre-order Wi-Fi Loup →
+                </Link>
+              </p>
             </div>
-            <div>
-              <label htmlFor="email" className="label-mono block text-ink-soft">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="mt-1 w-full rounded-lg border-2 border-ink/20 px-4 py-2 focus:border-ink focus:outline-none"
-              />
-            </div>
-            <fieldset>
-              <legend className="label-mono text-ink-soft">Interested in</legend>
-              <div className="mt-2 space-y-2 text-sm">
-                <label className="flex gap-2">
-                  <input type="radio" name="tier" value="cellular" defaultChecked />
-                  Cellular LOUP waitlist
+          ) : (
+            <form
+              className="lk-card lk-card-pad space-y-5"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSubmitted(true);
+              }}
+            >
+              <div>
+                <label htmlFor="name" className="lk-label block">
+                  Name
                 </label>
-                <label className="flex gap-2">
-                  <input type="radio" name="tier" value="launch" />
-                  Launch batch notification (Wi-Fi)
-                </label>
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  className="mt-2 w-full border border-[var(--lk-line)] px-4 py-3 text-base focus:border-[var(--lk-ink)] focus:outline-none"
+                />
               </div>
-            </fieldset>
-            <label className="flex gap-2 text-xs text-ink-soft">
-              <input type="checkbox" required />
-              I agree to receive LOUP updates. See{" "}
-              <Link href="/legal/privacy" className="underline">
-                Privacy Policy
-              </Link>
-              .
-            </label>
-            <button type="submit" className="btn-sticker w-full bg-loup-red py-3 text-paper">
-              Join waitlist
-            </button>
-          </form>
-        </Reveal>
-      )}
+              <div>
+                <label htmlFor="email" className="lk-label block">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  className="mt-2 w-full border border-[var(--lk-line)] px-4 py-3 text-base focus:border-[var(--lk-ink)] focus:outline-none"
+                />
+              </div>
+              <fieldset>
+                <legend className="lk-label">Interested in</legend>
+                <div className="mt-3 space-y-2 text-[0.9375rem]">
+                  <label className="flex gap-2">
+                    <input type="radio" name="tier" value="cellular" defaultChecked />
+                    Cellular Loup waitlist
+                  </label>
+                  <label className="flex gap-2">
+                    <input type="radio" name="tier" value="launch" />
+                    Launch batch notification (Wi-Fi)
+                  </label>
+                </div>
+              </fieldset>
+              <label className="flex gap-2 text-sm text-[var(--lk-muted)]">
+                <input type="checkbox" required className="mt-1" />
+                I agree to receive Loup updates. See{" "}
+                <Link href="/legal/privacy" className="underline underline-offset-4">
+                  Privacy Policy
+                </Link>
+                .
+              </label>
+              <button type="submit" className="lk-btn w-full">
+                Join waitlist
+              </button>
+            </form>
+          )}
+        </FadeIn>
+      </section>
     </div>
   );
 }

@@ -57,86 +57,88 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <article className="lk-section">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
-      <header>
-        <p className="label-mono text-loup-red">
-          <Link href="/journal" className="link-underline">
-            Journal
-          </Link>{" "}
-          / {post.category.title}
-        </p>
-        <h1 className="display mt-4 text-5xl leading-[0.95] sm:text-6xl">{post.title}</h1>
-        <p className="mt-4 text-lg text-ink">{post.excerpt}</p>
-        <p className="label-mono mt-5 text-ink/50">
-          {post.author.name} ·{" "}
-          {new Date(post.publishedAt).toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}
-        </p>
-      </header>
+      <div className="lk-container-narrow">
+        <header>
+          <p className="lk-label">
+            <Link href="/journal" className="hover:text-[var(--lk-ink)]">
+              Journal
+            </Link>{" "}
+            / {post.category.title}
+          </p>
+          <h1 className="lk-display mt-4 text-[clamp(2rem,5vw,3rem)]">{post.title}</h1>
+          <p className="mt-4 text-lg text-[var(--lk-muted)]">{post.excerpt}</p>
+          <p className="lk-label mt-5">
+            {post.author.name} ·{" "}
+            {new Date(post.publishedAt).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </p>
+        </header>
 
-      {post.coverImage && (
-        <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl border-2 border-ink">
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-          />
+        {post.coverImage && (
+          <div className="relative mt-8 aspect-[16/9] overflow-hidden bg-neutral-100">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 720px"
+              className="object-cover"
+            />
+          </div>
+        )}
+
+        <div className="prose-loup mt-10 space-y-6 text-lg leading-relaxed text-[var(--lk-muted)]">
+          {post.body.source === "plain"
+            ? post.body.blocks.map((block, i) =>
+                block.kind === "h2" ? (
+                  <h2 key={i} className="lk-display pt-4 text-2xl text-[var(--lk-ink)]">
+                    {block.text}
+                  </h2>
+                ) : (
+                  <p key={i}>{block.text}</p>
+                ),
+              )
+            : /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+              <PortableText value={post.body.value as any} />}
         </div>
-      )}
 
-      <div className="prose-loup mt-10 space-y-6 text-lg leading-relaxed text-ink">
-        {post.body.source === "plain"
-          ? post.body.blocks.map((block, i) =>
-              block.kind === "h2" ? (
-                <h2 key={i} className="display pt-4 text-3xl text-ink">
-                  {block.text}
-                </h2>
-              ) : (
-                <p key={i}>{block.text}</p>
-              ),
-            )
-          : /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-            <PortableText value={post.body.value as any} />}
+        <aside className="mt-14 border border-[var(--lk-line)] p-8">
+          <p className="leading-relaxed text-[var(--lk-muted)]">
+            Screens are the default. We&apos;re building the alternative. LOUP gives kids a way to stay connected without handing them the internet. Voice-only, parent-controlled, designed for the years before a smartphone makes sense.
+          </p>
+          <Link href="/shop/loup" className="lk-btn mt-5 inline-flex">
+            Pre-order Loup
+          </Link>
+        </aside>
+
+        {related.length > 0 && (
+          <footer className="mt-16">
+            <h2 className="lk-display text-2xl">Keep reading</h2>
+            <ul className="mt-6 space-y-4">
+              {related.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    href={`/journal/${r.slug}`}
+                    className="group block border border-[var(--lk-line)] p-5 transition-opacity hover:opacity-80"
+                  >
+                    <p className="lk-label">{r.category.title}</p>
+                    <p className="lk-display mt-1 text-lg">{r.title}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </footer>
+        )}
       </div>
-
-      {/* inline CTA */}
-      <aside className="mt-14 rounded-2xl border-2 border-ink bg-cream p-8 shadow-sticker">
-        <p className="display text-3xl">A voice, not a screen.</p>
-        <p className="mt-2 text-ink-soft">
-          LOUP is the screenless phone for kids 6–16. Calls and voice messages to people you
-          approve — nothing else.
-        </p>
-        <Link href="/shop/loup" className="btn-sticker mt-5 bg-loup-red px-6 py-3 text-lg text-paper">
-          Get LOUP — $149
-        </Link>
-      </aside>
-
-      {related.length > 0 && (
-        <footer className="mt-16">
-          <h2 className="display text-3xl">Keep reading</h2>
-          <ul className="mt-6 space-y-4">
-            {related.map((r) => (
-              <li key={r.slug}>
-                <Link href={`/journal/${r.slug}`} className="group block rounded-xl border-2 border-ink bg-paper p-5 shadow-sticker-sm transition-transform hover:-translate-y-0.5">
-                  <p className="label-mono text-loup-red">{r.category.title}</p>
-                  <p className="display mt-1 text-xl group-hover:underline">{r.title}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </footer>
-      )}
     </article>
   );
 }

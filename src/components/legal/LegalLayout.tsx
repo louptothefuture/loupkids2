@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Reveal } from "@/components/Reveal";
+import { FadeIn } from "@/components/loupkids/FadeIn";
 
 export function LegalLayout({
   title,
@@ -12,16 +12,25 @@ export function LegalLayout({
   children: ReactNode;
 }) {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
-      <Reveal>
-        <p className="label-mono text-loup-red">Legal</p>
-        <h1 className="display mt-2 text-5xl sm:text-6xl">{title}</h1>
-        <p className="label-mono mt-4 text-ink-soft">Last updated {updated}</p>
-        <div className="prose-loops mt-10 space-y-4 text-ink-soft">{children}</div>
-        <Link href="/" className="link-underline label-mono mt-12 inline-block">
-          ← Back to home
-        </Link>
-      </Reveal>
-    </article>
+    <div>
+      <section className="lk-section-muted lk-section-cards border-b border-[var(--lk-line)]">
+        <FadeIn className="lk-container-narrow">
+          <p className="lk-eyebrow mb-2">Legal</p>
+          <h1 className="lk-display lk-h2">{title}</h1>
+          <p className="lk-label mt-4">Last updated {updated}</p>
+        </FadeIn>
+      </section>
+
+      <article className="lk-section-cards lk-section-white">
+        <FadeIn className="lk-container-narrow">
+          <div className="lk-prose lk-prose-muted space-y-5 [&_a]:underline [&_a]:underline-offset-4 [&_h2]:lk-display [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:text-[var(--lk-ink)]">
+            {children}
+          </div>
+          <Link href="/" className="lk-label mt-10 inline-block hover:text-[var(--lk-ink)]">
+            ← Back to home
+          </Link>
+        </FadeIn>
+      </article>
+    </div>
   );
 }
