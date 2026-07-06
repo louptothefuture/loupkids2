@@ -8,19 +8,23 @@ export function LoupkidsOrderCta({
   variant = "dark",
   className = "",
   showGuarantee = true,
+  size = "default",
 }: {
   href?: string;
   label?: string;
   variant?: "dark" | "light";
   className?: string;
   showGuarantee?: boolean;
+  size?: "default" | "large";
 }) {
   const btnClass =
-    variant === "dark" ? "lk-btn lk-btn-white" : "lk-btn";
+    variant === "dark"
+      ? `lk-btn lk-btn-white${size === "large" ? " lk-btn-lg" : ""}`
+      : `lk-btn${size === "large" ? " lk-btn-lg" : ""}`;
 
   return (
-    <div className={`flex w-full max-w-md flex-col items-center gap-4 ${className}`}>
-      <Link href={href} className={btnClass}>
+    <div className={`flex w-full max-w-md flex-col items-center gap-4 ${size === "large" ? "max-w-lg" : ""} ${className}`}>
+      <Link href={href} className={`${btnClass} w-full text-center sm:w-auto`}>
         {label}
       </Link>
       {showGuarantee ? (

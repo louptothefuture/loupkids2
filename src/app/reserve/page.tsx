@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cellular Waitlist",
-  description: "Join the cellular Loup waitlist or order Wi-Fi Loup today for $149.",
+  description: "Pre-order Wi-Fi Loup for $149 — shipping Q4 2026. Join the cellular waitlist for LTE Loup.",
   alternates: { canonical: `${SITE.url}/reserve` },
 };
 
@@ -16,20 +16,20 @@ export default function ReservePage() {
   return (
     <div>
       <LoupkidsPageHeader
-        eyebrow="Cellular waitlist"
-        title="Join the cellular waitlist"
-        description="Wi-Fi Loup ships now for $149. Join the waitlist if you need cellular — no payment required."
+        eyebrow="Pre-order & waitlist"
+        title="Reserve your Loup"
+        description="Wi-Fi Loup is $149 — pre-order now, shipping Q4 2026. Join the cellular waitlist if you need LTE later."
         centered
       />
 
       <section className="lk-section-white lk-section-content">
         <FadeIn className="lk-container-narrow">
           <div className="lk-card lk-card-pad text-center">
-            <p className="lk-display lk-h3">Ready to order Wi-Fi Loup?</p>
+            <p className="lk-display lk-h3">Pre-order Wi-Fi Loup — $149</p>
             <p className="lk-prose-muted mt-3">
-              Most families start with Wi-Fi Loup at home and school. Ships in 3–5 days.
+              Loup-to-Loup calls are free forever. Pre-order now — shipping Q4 2026.
             </p>
-            <Link href="/shop/loup" className="lk-btn mt-6 inline-flex">
+            <Link href="/shop/loup" className="lk-btn lk-btn-lg mt-6 inline-flex">
               {LOUPKIDS_CTA.primary}
             </Link>
             <LoupkidsGuaranteeBadge className="mt-4" />

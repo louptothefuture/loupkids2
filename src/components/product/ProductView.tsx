@@ -159,14 +159,14 @@ export function ProductView({ product }: { product: Product }) {
             })
           }
           disabled={pending || !selected.availableForSale}
-          className="lk-btn mt-8 w-full disabled:opacity-60"
+          className="lk-btn lk-btn-lg mt-8 w-full disabled:opacity-60"
         >
           {selected.availableForSale ? (pending ? "Adding…" : LOUPKIDS_CTA.product) : "Sold out"}
         </button>
         <LoupkidsGuaranteeBadge className="mt-4" />
 
         <ul className="mt-4 space-y-2 text-sm text-[var(--lk-muted)]">
-          <li>Free US shipping · arrives in 3–5 days</li>
+          <li>Pre-order · shipping Q4 2026</li>
           <li>2-year kid-proof warranty (drops included)</li>
           <li>Free Loup-to-Loup calls forever · real numbers $10/mo, cancel anytime</li>
         </ul>

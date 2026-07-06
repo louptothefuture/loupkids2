@@ -131,6 +131,14 @@ export const LOUPKIDS_ACCORDION = [
     title: "Emergency Calls",
     body: "Intentionally designed to let kids reach 911 with a press-and-hold action—accessible in a real emergency, but designed to prevent accidental dials.",
   },
+  {
+    title: "WiFi Only",
+    body: "No SIM card. No cellular bill. Connects over home or school Wi-Fi — simple and affordable.",
+  },
+  {
+    title: "Data? Closed — you own it.",
+    body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app.",
+  },
 ] as const;
 
 export const LOUPKIDS_NOTHING = {

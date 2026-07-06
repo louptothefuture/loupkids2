@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { LoupkidsFooter } from "./LoupkidsFooter";
 import { LoupkidsNav } from "./LoupkidsNav";
+import { LoupkidsStickyCta } from "./conversion/LoupkidsStickyCta";
 
 export function LoupkidsShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ export function LoupkidsShell({ children }: { children: ReactNode }) {
       <LoupkidsNav />
       <main className={`flex-1 ${isHome ? "" : "pt-[72px]"}`}>{children}</main>
       {!isHome && <LoupkidsFooter />}
+      <LoupkidsStickyCta />
     </div>
   );
 }

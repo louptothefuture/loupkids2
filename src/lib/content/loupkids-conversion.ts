@@ -12,8 +12,9 @@ export const LOUPKIDS_CTA = {
 export const LOUPKIDS_HERO_COPY = {
   eyebrow: "Phones for the anti-screen age",
   headline: "No apps. No feed. Just your people.",
-  waitlist: "Join the 1,000+ families on the waitlist",
-  shipping: "Shipping Q4 2026",
+  subline: "Approved contacts only. Wi-Fi. Parent-controlled. Ages 8–16.",
+  priceLine: "$149 · Loup-to-Loup calls free forever",
+  shipLine: "Pre-order · Shipping Q4 2026 · Join 1,000+ families",
 } as const;
 
 export const LOUPKIDS_GUARANTEE = {
