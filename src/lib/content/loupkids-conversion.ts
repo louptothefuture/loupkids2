@@ -3,6 +3,7 @@
 export const LOUPKIDS_CTA = {
   primary: "Reserve Loup — $149",
   primaryShort: "Order Loup",
+  hero: "Reserve Loup",
   product: "Reserve My Loup — $149",
   checkout: "Complete My Order →",
   waitlist: "Join cellular waitlist",
@@ -11,15 +12,14 @@ export const LOUPKIDS_CTA = {
 
 export const LOUPKIDS_HERO_COPY = {
   eyebrow: "Phones for the anti-screen age",
-  headline: "No apps. No feed. Just your people.",
-  subline: "Approved contacts only. Wi-Fi. Parent-controlled. Ages 8–16.",
-  priceLine: "$149 · Loup-to-Loup calls free forever",
-  shipLine: "Pre-order · Shipping Q4 2026 · Join 1,000+ families",
+  headline: "No feeds. No AI. No strangers. Just connection.",
+  subline: "Call the people you approve. Nothing else.",
+  priceLine: "$149 pre-order — $199 at launch. Ships Q4 2026.",
 } as const;
 
 export const LOUPKIDS_GUARANTEE = {
-  title: "30-Day Happiness Guarantee",
-  body: "Try Loup at home. Full refund if it's not right for your family.",
+  title: "30-day guarantee",
+  body: "Full refund if it's not right.",
 } as const;
 
 export const LOUPKIDS_CALLING_PRICING = {

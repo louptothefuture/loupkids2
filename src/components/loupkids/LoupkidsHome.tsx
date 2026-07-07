@@ -32,7 +32,11 @@ function HeroHeadline({ text }: { text: string }) {
   const words = text.split(" ");
 
   if (reduce) {
-    return <h1 className="lk-display lk-h1 max-w-4xl text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]">{text}</h1>;
+    return (
+      <h1 className="lk-display lk-h1 max-w-4xl text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
+        {text}
+      </h1>
+    );
   }
 
   return (
@@ -43,7 +47,7 @@ function HeroHeadline({ text }: { text: string }) {
         hidden: {},
         visible: { transition: { staggerChildren: 0.06, delayChildren: 0.3 } },
       }}
-      className="lk-display lk-h1 max-w-4xl text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]"
+      className="lk-display lk-h1 max-w-4xl text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]"
     >
       {words.map((word, i) => (
         <motion.span
@@ -71,30 +75,30 @@ export function LoupkidsHome() {
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero — full bleed like loupkids.com; copy anchored bottom with scrim */}
       <section className="lk-section-black relative min-h-[min(92vh,960px)] overflow-hidden">
         <motion.div
           className="absolute inset-0"
-          initial={reduce ? false : { scale: 1.05 }}
+          initial={reduce ? false : { scale: 1.04 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 1.3, ease }}
+          transition={{ duration: 1.2, ease }}
         >
           <LoupkidsImage
             src={LOUPKIDS_IMAGES.heroKitchen}
-            alt=""
+            alt="Child with Loup screen-free phone on the kitchen table"
             fill
             priority
             sizes="100vw"
             className="object-cover object-[50%_62%]"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 from-0% via-black/35 via-[42%] to-black/5 to-100%" />
-        <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col items-center justify-start gap-5 px-[var(--lk-section-x)] pb-[clamp(10rem,22vh,14rem)] pt-[clamp(6.5rem,14vh,9rem)] text-center">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 from-0% via-black/45 via-[38%] to-black/20 to-100%" />
+        <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col justify-end gap-5 px-[var(--lk-section-x)] pb-[clamp(2.5rem,8vh,4.5rem)] pt-28 lg:max-w-3xl">
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.5, ease }}
-            className="lk-eyebrow text-white/80 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
+            transition={{ delay: 0.4, duration: 0.5, ease }}
+            className="lk-eyebrow text-white/75"
           >
             {LOUPKIDS_HERO_COPY.eyebrow}
           </motion.p>
@@ -102,8 +106,8 @@ export function LoupkidsHome() {
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.72, duration: 0.5, ease }}
-            className="mx-auto max-w-xl text-lg text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]"
+            transition={{ delay: 0.68, duration: 0.5, ease }}
+            className="max-w-lg text-lg leading-relaxed text-white/90"
           >
             {LOUPKIDS_HERO_COPY.subline}
           </motion.p>
@@ -111,24 +115,22 @@ export function LoupkidsHome() {
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.78, duration: 0.5, ease }}
-            className="text-base font-medium text-white [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
+            className="font-medium text-white"
           >
             {LOUPKIDS_HERO_COPY.priceLine}
-          </motion.p>
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.82, duration: 0.5, ease }}
-            className="text-base text-white/80 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
-          >
-            {LOUPKIDS_HERO_COPY.shipLine}
           </motion.p>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.95, duration: 0.6, ease }}
+            transition={{ delay: 0.9, duration: 0.6, ease }}
+            className="mt-1 items-start"
           >
-            <LoupkidsOrderCta variant="dark" size="large" />
+            <LoupkidsOrderCta
+              variant="dark"
+              size="large"
+              label={LOUPKIDS_CTA.hero}
+              className="!items-start !max-w-none"
+            />
           </motion.div>
         </div>
       </section>

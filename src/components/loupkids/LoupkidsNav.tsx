@@ -78,9 +78,11 @@ export function LoupkidsNav() {
           </Link>
 
           <div className="flex items-center gap-3 sm:gap-4">
-            <Link href="/shop/loup" className={ctaClass}>
-              {LOUPKIDS_CTA.primaryShort}
-            </Link>
+            {(!isHome || scrolled || menuOpen) && (
+              <Link href="/shop/loup" className={ctaClass}>
+                {LOUPKIDS_CTA.primaryShort}
+              </Link>
+            )}
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}

@@ -23,12 +23,15 @@ export function LoupkidsOrderCta({
       : `lk-btn${size === "large" ? " lk-btn-lg" : ""}`;
 
   return (
-    <div className={`flex w-full max-w-md flex-col items-center gap-4 ${size === "large" ? "max-w-lg" : ""} ${className}`}>
-      <Link href={href} className={`${btnClass} w-full text-center sm:w-auto`}>
+    <div className={`flex w-full max-w-md flex-col gap-4 ${size === "large" ? "max-w-lg" : ""} ${className}`}>
+      <Link href={href} className={`${btnClass} w-full sm:w-auto`}>
         {label}
       </Link>
       {showGuarantee ? (
-        <LoupkidsGuaranteeBadge variant={variant === "dark" ? "dark" : "light"} />
+        <LoupkidsGuaranteeBadge
+          variant={variant === "dark" ? "dark" : "light"}
+          align={className.includes("items-start") ? "start" : "center"}
+        />
       ) : null}
     </div>
   );
