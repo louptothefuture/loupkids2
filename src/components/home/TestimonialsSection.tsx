@@ -18,11 +18,8 @@ export async function TestimonialsSection() {
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {featured.map((t, i) => (
             <Reveal key={t.attribution} delay={i * 0.06}>
-              <figure className="card h-full p-7">
-                <div aria-label={`${t.rating} out of 5 stars`} className="text-steel">
-                  {"★".repeat(t.rating)}
-                </div>
-                <blockquote className="mt-3 text-base leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
+              <figure className="card flex h-full flex-col p-7">
+                <blockquote className="flex-1 text-base leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
                 <figcaption className="mt-4 text-sm text-ink-soft">{t.attribution}</figcaption>
               </figure>
             </Reveal>

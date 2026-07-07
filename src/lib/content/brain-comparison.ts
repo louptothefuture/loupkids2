@@ -63,9 +63,9 @@ export const BRAIN_COMPARISON = {
         source: "Neuroscience News",
       },
       {
-        id: "arousal",
-        label: "Arousal & engagement",
-        body: "In-person talk raises heart rate, pupil size, and emotional arousal — conversations feel more vivid and real.",
+        id: "engagement",
+        label: "Fully tuned in",
+        body: "In-person talk gets you leaning in — voices, laughs, and eye contact make conversations feel more alive and real.",
         source: "Stanford Lifestyle Medicine",
       },
     ],

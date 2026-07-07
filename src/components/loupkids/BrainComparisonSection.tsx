@@ -55,7 +55,7 @@ function FactColumn({
   const headerBg = tone === "screen" ? "bg-[#f4f6f8]" : "bg-[#fafafa]";
 
   return (
-    <div className={`lk-card overflow-hidden ${tone === "screen" ? "lk-brain-col-screen" : "lk-brain-col-person"}`}>
+    <div className={`lk-card flex h-full flex-col overflow-hidden ${tone === "screen" ? "lk-brain-col-screen" : "lk-brain-col-person"}`}>
       <div className={`border-b border-[var(--lk-line)] px-5 py-5 sm:px-6 ${headerBg}`}>
         <h3 className="lk-display text-xl sm:text-2xl">{title}</h3>
         <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{intro}</p>
@@ -89,7 +89,7 @@ export function BrainComparisonSection() {
           <p className="lk-lead mx-auto mt-4 max-w-xl text-[var(--lk-muted)]">{subline}</p>
         </FadeIn>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8 xl:mt-12">
+        <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-2 lg:gap-8 xl:mt-12">
           <FadeIn delay={0.06}>
             <FactColumn title={screen.title} intro={screen.intro} facts={screen.facts} tone="screen" />
           </FadeIn>
@@ -98,7 +98,7 @@ export function BrainComparisonSection() {
           </FadeIn>
         </div>
 
-        <FadeIn className="lk-cta-stack mx-auto mt-12 max-w-lg xl:mt-14" delay={0.18}>
+        <FadeIn className="lk-cta-stack mx-auto mt-12 w-full max-w-lg xl:mt-14" delay={0.18}>
           <RevealHeadline as="h3" className="lk-display text-xl sm:text-2xl" instant>
             {bridge.headline}
           </RevealHeadline>

@@ -65,25 +65,11 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const [specs, testimonials] = await Promise.all([getSpecs(), getTestimonials()]);
   const isDevice = handle === "loup";
 
-  const reviews = testimonials.map((t) => ({
-    author: t.attribution.split(",")[0],
-    rating: t.rating,
-    body: t.quote,
-  }));
-  const avgRating = reviews.reduce((s, r) => s + r.rating, 0) / Math.max(reviews.length, 1);
-
   const specGroups = [...new Set(specs.map((s) => s.group))];
 
   return (
     <>
-      <ProductJsonLd
-        product={product}
-        reviews={
-          isDevice
-            ? { rating: Math.round(avgRating * 10) / 10, count: reviews.length, items: reviews }
-            : undefined
-        }
-      />
+      <ProductJsonLd product={product} />
 
       <section className="lk-section border-b border-[var(--lk-line)]">
         <div className="lk-container">
@@ -188,18 +174,11 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             </div>
           </Section>
 
-          <Section
-            eyebrow="Reviews"
-            title={`${avgRating.toFixed(1)} ★ from ${reviews.length} families`}
-            id="reviews"
-          >
+          <Section eyebrow="Families" title="What parents are saying" id="reviews">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {testimonials.map((t) => (
-                <figure key={t.attribution} className="border border-[var(--lk-line)] p-6">
-                  <div className="text-[var(--lk-muted)]" aria-label={`${t.rating} of 5 stars`}>
-                    {"★".repeat(t.rating)}
-                  </div>
-                  <blockquote className="mt-3 text-sm leading-relaxed">"{t.quote}"</blockquote>
+                <figure key={t.attribution} className="flex h-full flex-col border border-[var(--lk-line)] p-6">
+                  <blockquote className="flex-1 text-sm leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
                   <figcaption className="lk-label mt-4">{t.attribution}</figcaption>
                 </figure>
               ))}

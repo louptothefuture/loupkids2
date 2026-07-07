@@ -7,10 +7,7 @@ export function LoupkidsTestimonialStrip({ index = 0 }: { index?: number }) {
   return (
     <section className="border-y border-[var(--lk-line)] bg-white px-[var(--lk-section-x)] py-12 sm:py-14">
       <FadeIn className="lk-container mx-auto max-w-3xl text-center">
-        <div className="text-amber-500" aria-label={`${t.rating} out of 5 stars`}>
-          {"★".repeat(t.rating)}
-        </div>
-        <blockquote className="lk-display mt-4 text-xl leading-snug sm:text-2xl">
+        <blockquote className="lk-display text-xl leading-snug sm:text-2xl">
           &ldquo;{t.quote}&rdquo;
         </blockquote>
         <p className="lk-label mt-4">{t.attribution}</p>

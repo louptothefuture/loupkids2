@@ -136,7 +136,6 @@ export function LoupkidsHome() {
       </section>
 
       <LoupkidsStatsSection />
-      <LoupkidsTestimonialCarousel />
 
       <section className="lk-section-black lk-section">
         <div className="lk-container-narrow lk-stack text-center">
@@ -151,6 +150,8 @@ export function LoupkidsHome() {
           <LoupkidsAccordion items={LOUPKIDS_ACCORDION} dark />
         </div>
       </section>
+
+      <LoupkidsTestimonialCarousel />
 
       <LoupkidsUseCasesSection />
       <LoupkidsCallingPricingSection />

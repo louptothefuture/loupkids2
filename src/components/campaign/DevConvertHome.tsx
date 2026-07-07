@@ -8,6 +8,7 @@ import { DevCampaignAccordion } from "./DevCampaignAccordion";
 import { DevCampaignCallingPricingSection } from "./DevCampaignCallingPricingSection";
 import { DevCampaignComparisonSection } from "./DevCampaignComparisonSection";
 import { DevCampaignUseCasesSection } from "./DevCampaignUseCasesSection";
+import { DevCampaignQuoteBar } from "./DevCampaignQuoteBar";
 import { DevConvertStickyCta } from "./DevConvertStickyCta";
 import { ImageBox } from "./ImageBox";
 
@@ -107,6 +108,8 @@ export function DevConvertHome() {
           </Reveal>
         </div>
       </section>
+
+      <DevCampaignQuoteBar />
 
       <DevCampaignComparisonSection hideEyebrow />
 

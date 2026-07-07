@@ -11,7 +11,6 @@ import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
 import {
   LoupkidsGuaranteeBadge,
-  LoupkidsStarRating,
 } from "@/components/loupkids/conversion";
 
 function formatPrice(amount: string, currency: string) {
@@ -103,7 +102,6 @@ export function ProductView({ product }: { product: Product }) {
       <div className="lg:pt-4">
         <p className="lk-label mb-3">Product</p>
         <h1 className="lk-display text-left text-3xl sm:text-4xl">{product.title}</h1>
-        <LoupkidsStarRating variant="light" align="start" className="mt-4" />
         <p className="mt-4 leading-relaxed text-[var(--lk-muted)]">{product.description}</p>
 
         {featuredQuote ? (
