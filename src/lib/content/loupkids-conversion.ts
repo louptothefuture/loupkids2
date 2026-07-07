@@ -25,18 +25,23 @@ export const LOUPKIDS_GUARANTEE = {
 export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
+  intro:
+    "Out of the box Loup gives you 10 contacts free—enough for most kids' actual needs (close friends + direct family). Loup-to-Loup calling is always free.",
   tiers: [
     {
       label: "Loup to Loup",
       price: "Always free",
-      body: "Kid-to-kid and Loup-to-Loup calls are unlimited — no plan, no monthly bill.",
+      body: "Calls between Loup devices are unlimited — no plan, no monthly bill.",
     },
     {
-      label: "External numbers in and out",
-      price: "$10/month",
-      body: "Call and receive calls from regular US & Canada phone numbers. Cancel anytime.",
+      label: "Plus plan",
+      price: "From $10/month",
+      body:
+        "Unlimited contacts, make and receive calls from external phone numbers, and pager mode — so you can reach them for dinner without yelling across the house. (\"Hi mom, no I haven't cleaned my room yet, but I will.\") Undercuts many alternatives by at least half. Cancel anytime.",
     },
   ],
+  cta: { label: "Lock in pre-launch price — $149", href: "/shop/loup" },
+  helpLink: { label: "How Plus plans work", href: "/help/calling-plan" },
 } as const;
 
 export const LOUPKIDS_TRUST = {

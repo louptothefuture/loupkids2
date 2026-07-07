@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { LOUPKIDS_CALLING_PRICING } from "@/lib/content/loupkids-conversion";
 import { FadeIn } from "./FadeIn";
 import { RevealHeadline } from "./RevealHeadline";
 
 export function LoupkidsCallingPricingSection() {
-  const { eyebrow, title, tiers } = LOUPKIDS_CALLING_PRICING;
+  const { eyebrow, title, intro, tiers, cta, helpLink } = LOUPKIDS_CALLING_PRICING;
 
   return (
     <section className="lk-section-white lk-section border-t border-[var(--lk-line)]">
@@ -15,6 +16,7 @@ export function LoupkidsCallingPricingSection() {
           <RevealHeadline as="h2" className="lk-display lk-h2" instant>
             {title}
           </RevealHeadline>
+          {intro && <p className="lk-prose-muted mt-5 max-w-2xl">{intro}</p>}
         </FadeIn>
 
         <div className="mt-10 grid gap-4 sm:mt-12 md:grid-cols-2 md:gap-5">
@@ -28,6 +30,21 @@ export function LoupkidsCallingPricingSection() {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={0.1} className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
+          <Link
+            href={cta.href}
+            className="inline-flex border border-[var(--lk-ink)] bg-[var(--lk-ink)] px-8 py-3.5 text-sm font-medium uppercase tracking-wider text-white transition-opacity hover:opacity-90"
+          >
+            {cta.label}
+          </Link>
+          <Link
+            href={helpLink.href}
+            className="text-sm text-[var(--lk-muted)] underline underline-offset-4 hover:text-[var(--lk-ink)]"
+          >
+            {helpLink.label} →
+          </Link>
+        </FadeIn>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { LOUPKIDS_ACCORDION, LOUPKIDS_PHONE, LOUPKIDS_STATS } from "@/lib/conten
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/Reveal";
 import { DevCampaignAccordion } from "./DevCampaignAccordion";
+import { DevCampaignCallingPricingSection } from "./DevCampaignCallingPricingSection";
 import { DevCampaignComparisonSection } from "./DevCampaignComparisonSection";
 import { DevCampaignUseCasesSection } from "./DevCampaignUseCasesSection";
 import { DevConvertStickyCta } from "./DevConvertStickyCta";
@@ -110,6 +111,8 @@ export function DevConvertHome() {
       <DevCampaignComparisonSection hideEyebrow />
 
       <DevCampaignUseCasesSection hideEyebrow />
+
+      <DevCampaignCallingPricingSection hideEyebrow />
 
       <section className="border-b-2 border-ink bg-ink py-16 text-white sm:py-20">
         <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">

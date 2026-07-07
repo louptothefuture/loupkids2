@@ -168,7 +168,7 @@ export function ProductView({ product }: { product: Product }) {
         <ul className="mt-4 space-y-2 text-sm text-[var(--lk-muted)]">
           <li>Pre-order · shipping Q4 2026</li>
           <li>2-year kid-proof warranty (drops included)</li>
-          <li>Free Loup-to-Loup calls forever · real numbers $10/mo, cancel anytime</li>
+          <li>10 contacts free · Loup-to-Loup always free · Plus from $10/mo for external numbers</li>
         </ul>
       </div>
     </div>

@@ -177,7 +177,7 @@ export const LOUPKIDS_USE_CASES = [
   {
     id: "parents",
     label: "Parents",
-    headline: "Reach them without handing over the internet.",
+    headline: "Give them independence without the internet.",
     body: "Approved contacts only. Quiet hours you control. A device with nothing to scroll — just voices you trust.",
     image: LOUPKIDS_IMAGES.heroKitchen,
     alt: "Parent and kid in the kitchen with Loup",
@@ -289,8 +289,8 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     q: "Are there monthly fees or subscriptions?",
     a: {
       paragraphs: [
-        "Out of the box Loup gives you 10 contacts free—enough for most kids' actual needs (close friends + direct family).",
-        "If you're looking for more—unlimited contacts, call approved numbers, receive calls from approved numbers (\"hi mom, no I haven't cleaned my room yet, but I will\"), ability to page your kids for dinner—we have plans starting at $10/m, which undercuts many alternatives by at least half.",
+        "Out of the box Loup gives you 10 contacts free—enough for most kids' actual needs (close friends + direct family). Loup-to-Loup calling is always free.",
+        "If you're looking for more—unlimited contacts, make and receive calls from external phone numbers (\"hi mom, no I haven't cleaned my room yet, but I will\"), and the ability to page your kids for dinner—plans start at $10/month, which undercuts many alternatives by at least half.",
       ],
     },
   },
@@ -464,7 +464,7 @@ export const LOUPKIDS_SPECS = [
   { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
   { group: "Calling", label: "Real phone numbers", value: "$10/month, unlimited US & Canada, cancel anytime" },
   { group: "Calling", label: "Voice messages", value: "Unlimited, end-to-end encrypted" },
-  { group: "Calling", label: "Contacts", value: "Up to 20, parent-approved only" },
+  { group: "Calling", label: "Contacts", value: "10 free out of the box; unlimited with Plus plan" },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no cellular bill" },
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },

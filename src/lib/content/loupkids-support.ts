@@ -79,7 +79,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Loup-to-Loup calling is free forever — no plan required. The $10/month plan adds the ability to call and receive calls from regular phone numbers in the US and Canada.",
+        body: "Out of the box you get 10 contacts free—enough for close friends and direct family. Loup-to-Loup calling is always free. The $10/month Plus plan adds unlimited contacts, external phone numbers in and out, and pager mode.",
       },
       {
         heading: "Subscribe",

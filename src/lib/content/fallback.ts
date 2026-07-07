@@ -53,7 +53,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "LOUP-to-LOUP calling is free forever, no plan needed. If you want your kid to call real phone numbers (your smartphone, grandma's landline), that's $10/month, cancel anytime.",
+      "Out of the box you get 10 contacts free—enough for close friends and direct family. Loup-to-Loup calling is always free. If you want unlimited contacts or to make and receive calls from external phone numbers, Plus plans start at $10/month—cancel anytime.",
   },
   {
     section: "Plans & Calling",
@@ -186,7 +186,7 @@ export const FALLBACK_SPECS: Spec[] = [
   { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
   { group: "Calling", label: "Real phone numbers", value: "$10/month, unlimited US & Canada, cancel anytime" },
   { group: "Calling", label: "Voice messages", value: "Unlimited, end-to-end encrypted" },
-  { group: "Calling", label: "Contacts", value: "Up to 20, parent-approved only" },
+  { group: "Calling", label: "Contacts", value: "10 free out of the box; unlimited with Plus plan" },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no cellular bill" },
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
