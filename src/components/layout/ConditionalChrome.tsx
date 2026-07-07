@@ -2,16 +2,22 @@
 
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import { DevCampaignFooter } from "@/components/campaign/DevCampaignFooter";
+import { DevCampaignHeader } from "@/components/campaign/DevCampaignHeader";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { LoupkidsShell } from "@/components/loupkids/LoupkidsShell";
 
 /** Routes that keep the bold campaign chrome (no Loupkids shell). */
-const BOLD_ROUTES = ["/launch", "/legacy"];
+const BOLD_ROUTES = ["/launch", "/legacy", "/dev-home"];
 
 function isBoldRoute(pathname: string) {
   return BOLD_ROUTES.some((r) => pathname === r || pathname.startsWith(`${r}/`));
+}
+
+function isDevCampaign(pathname: string) {
+  return pathname === "/dev-home" || pathname.startsWith("/dev-home/");
 }
 
 export function ConditionalChrome({ children }: { children: ReactNode }) {
@@ -20,11 +26,13 @@ export function ConditionalChrome({ children }: { children: ReactNode }) {
 
   if (bold) {
     const hideLegacyHeader = pathname === "/launch" || pathname === "/story";
+    const HeaderChrome = isDevCampaign(pathname) ? DevCampaignHeader : Header;
+    const FooterChrome = isDevCampaign(pathname) ? DevCampaignFooter : Footer;
     return (
       <>
-        {!hideLegacyHeader && <Header />}
+        {!hideLegacyHeader && <HeaderChrome />}
         <main className={hideLegacyHeader ? "" : "flex-1"}>{children}</main>
-        {!hideLegacyHeader && <Footer />}
+        {!hideLegacyHeader && <FooterChrome />}
         <CartDrawer />
       </>
     );
