@@ -1,5 +1,15 @@
 /** DTC landing page copy — conversion-first, single SKU funnel */
 
+export const LOUPKIDS_CONVERT_ANTI = [
+  "No brain rot.",
+  "No AI.",
+  "No feeds.",
+  "No strangers.",
+  "No algorithms.",
+  "No doomscroll.",
+  "No rabbit holes.",
+] as const;
+
 export const LOUPKIDS_CONVERT = {
   hero: {
     eyebrow: "Pre-order open · Ships Q4 2026",
