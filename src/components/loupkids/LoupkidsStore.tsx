@@ -9,7 +9,7 @@ function formatPrice(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 }
 
-const STORE_PRODUCTS = LOUPKIDS_STORE_PRODUCTS.filter((p) => p.price > 1);
+const STORE_PRODUCTS = LOUPKIDS_STORE_PRODUCTS;
 
 export function LoupkidsStore() {
   return (
@@ -23,7 +23,7 @@ export function LoupkidsStore() {
 
       <section className="lk-section-white lk-section-content">
         <div className="lk-container">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="mx-auto grid max-w-md gap-6">
             {STORE_PRODUCTS.map((product, i) => (
               <FadeIn key={product.title} delay={i * 0.04}>
                 <article className="lk-product-tile group flex h-full flex-col">

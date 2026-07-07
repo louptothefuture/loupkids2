@@ -155,26 +155,24 @@ export async function DevCampaignHome() {
               <p className="label-mono text-ink-soft">The hardware</p>
               <h2 className="display mt-3 text-4xl text-ink sm:text-5xl">Anodized. Not disposable.</h2>
             </div>
-            <Link href="/shop" className="link-underline label-mono text-ink">
-              Shop everything →
+            <Link href="/shop/loup" className="link-underline label-mono text-ink">
+              Reserve Loup — $149 →
             </Link>
           </div>
         </Reveal>
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
-          {["Silver", "Signal Red", "Black"].map((name, i) => (
-            <Reveal key={name} delay={i * 0.08}>
-              <Link
-                href="/shop/loup"
-                className="group block overflow-hidden rounded-2xl border-2 border-ink bg-white transition-transform hover:-translate-y-1"
-              >
-                <ImageBox className="aspect-[4/5] w-full" />
-                <div className="flex items-center justify-between border-t-2 border-ink px-5 py-3">
-                  <span className="display text-xl text-ink">{name}</span>
-                  <span className="label-mono text-ink-soft">$149 →</span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+        <div className="mt-10 mx-auto max-w-sm">
+          <Reveal>
+            <Link
+              href="/shop/loup"
+              className="group block overflow-hidden rounded-2xl border-2 border-ink bg-white transition-transform hover:-translate-y-1"
+            >
+              <ImageBox className="aspect-[4/5] w-full" />
+              <div className="flex items-center justify-between border-t-2 border-ink px-5 py-3">
+                <span className="display text-xl text-ink">Silver</span>
+                <span className="label-mono text-ink-soft">$149 →</span>
+              </div>
+            </Link>
+          </Reveal>
         </div>
       </section>
 

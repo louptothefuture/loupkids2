@@ -177,7 +177,7 @@ export const FALLBACK_PRESS: PressMention[] = [
 ];
 
 export const FALLBACK_SPECS: Spec[] = [
-  { group: "Hardware", label: "Body", value: "Anodized aluminum unibody, four colorways" },
+  { group: "Hardware", label: "Body", value: "Anodized aluminum unibody, silver" },
   { group: "Hardware", label: "Display", value: 'E-ink contact strip (no glow, no video, no apps)' },
   { group: "Hardware", label: "Controls", value: "Side scroll dial + call bar + mute button + volume rocker" },
   { group: "Hardware", label: "Speaker & Mic", value: "Full-range speaker, dual noise-cancelling mics" },

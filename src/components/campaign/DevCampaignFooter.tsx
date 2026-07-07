@@ -5,8 +5,7 @@ const COLUMNS = [
   {
     heading: "Shop",
     links: [
-      { href: "/shop/loup", label: "LOUP Device" },
-      { href: "/shop/custom-back-plates", label: "Custom Plates" },
+      { href: "/shop/loup", label: "Reserve Loup" },
       { href: "/account", label: "Order Tracking" },
     ],
   },

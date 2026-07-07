@@ -111,6 +111,8 @@ export function ProductView({ product }: { product: Product }) {
           </blockquote>
         ) : null}
 
+        <p className="label-mono mt-2 text-sm text-[var(--lk-muted)]">Silver anodized aluminum</p>
+
         <div className="mt-6 text-2xl font-medium">
           {formatPrice(selected.price.amount, selected.price.currencyCode)}
           {selected.compareAtPrice && (
@@ -120,7 +122,7 @@ export function ProductView({ product }: { product: Product }) {
           )}
         </div>
 
-        {optionName && (
+        {optionName && product.options[0].values.length > 1 && (
           <fieldset className="mt-8">
             <legend className="lk-label mb-3">
               {optionName}: {selected.title}
