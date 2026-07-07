@@ -5,7 +5,7 @@ import { LOUPKIDS_USE_CASES } from "@/lib/content/loupkids-site";
 import { Reveal } from "@/components/Reveal";
 import { ImageBox } from "./ImageBox";
 
-export function DevCampaignUseCasesSection() {
+export function DevCampaignUseCasesSection({ hideEyebrow = false }: { hideEyebrow?: boolean }) {
   const [active, setActive] = useState(0);
   const item = LOUPKIDS_USE_CASES[active];
 
@@ -13,8 +13,8 @@ export function DevCampaignUseCasesSection() {
     <section id="use-cases" className="border-b-2 border-ink bg-neutral-50 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
-          <p className="label-mono text-ink-soft">Who it&apos;s for</p>
-          <h2 className="display mt-3 max-w-2xl text-4xl text-ink sm:text-5xl">
+          {!hideEyebrow && <p className="label-mono text-ink-soft">Who it&apos;s for</p>}
+          <h2 className={`display max-w-2xl text-4xl text-ink sm:text-5xl ${hideEyebrow ? "" : "mt-3"}`}>
             Built for real life — not the app store.
           </h2>
         </Reveal>

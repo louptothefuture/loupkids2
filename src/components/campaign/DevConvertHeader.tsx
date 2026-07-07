@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "@/components/cart/CartProvider";
-import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { LOUPKIDS_CONVERT } from "@/lib/content/loupkids-convert";
 
 const NAV = [
   { href: "/shop", label: "Shop" },
@@ -51,7 +51,7 @@ export function DevConvertHeader() {
             href="/shop/loup"
             className="btn-sticker hidden border-2 border-ink bg-ink px-4 py-2 text-sm text-white sm:inline-flex"
           >
-            {LOUPKIDS_CTA.primaryShort}
+            {LOUPKIDS_CONVERT.stickyCta}
           </Link>
           <button
             type="button"
@@ -91,7 +91,7 @@ export function DevConvertHeader() {
                 onClick={() => setMenuOpen(false)}
                 className="btn-sticker mt-3 self-start border-2 border-ink bg-ink px-5 py-3 text-white"
               >
-                {LOUPKIDS_CTA.primary}
+                {LOUPKIDS_CONVERT.stickyCta}
               </Link>
             </div>
           </motion.nav>
