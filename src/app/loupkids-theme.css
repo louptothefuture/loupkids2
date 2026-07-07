@@ -1,4 +1,5 @@
 /* Loupkids.com faithful theme — Inter + Inconsolata, editorial minimal */
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
 
 .loupkids-theme {
   --lk-bg: #ffffff;
@@ -335,4 +336,20 @@
   .loupkids-theme .lk-image-hover:hover img {
     transform: none;
   }
+}
+
+/* —— Brain comparison —— */
+.loupkids-theme .lk-brain-fact-open {
+  background: rgba(10, 10, 10, 0.02);
+  margin-inline: -0.25rem;
+  padding-inline: calc(1rem + 0.25rem);
+  border-radius: 2px;
+}
+
+.loupkids-theme .lk-brain-col-screen {
+  border-top: 3px solid #94a3b8;
+}
+
+.loupkids-theme .lk-brain-col-person {
+  border-top: 3px solid var(--lk-ink);
 }

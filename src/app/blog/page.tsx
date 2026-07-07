@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BrainComparisonSection } from "@/components/loupkids/BrainComparisonSection";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { LoupkidsJournalList } from "@/components/loupkids/LoupkidsJournalList";
 import { getPosts } from "@/lib/content";
@@ -25,6 +26,8 @@ export default async function BlogPage() {
           </p>
         </FadeIn>
       </section>
+
+      <BrainComparisonSection />
 
       <section className="lk-section-white lk-section-content">
         <div className="lk-container">

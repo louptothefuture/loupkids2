@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
+// ponytail: Turbopack + iCloud Downloads path hangs first compile; webpack + unoptimized images fixes local dev
+const fastDev = process.env.LOUP_FAST_DEV === "1";
+
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: fastDev,
     remotePatterns: [
       { protocol: "https", hostname: "images.squarespace-cdn.com" },
       { protocol: "https", hostname: "static1.squarespace.com" },
