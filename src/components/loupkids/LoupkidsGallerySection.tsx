@@ -12,7 +12,6 @@ export function LoupkidsGallerySection() {
   return (
     <section id="gallery" className="lk-section-white border-t border-[var(--lk-line)]">
       <FadeIn className="lk-container px-[var(--lk-section-x)] pb-6 pt-12 sm:pb-8 sm:pt-14">
-        <p className="lk-eyebrow mb-3">Gallery</p>
         <RevealHeadline as="h2" className="lk-display lk-h2">
           In the wild
         </RevealHeadline>

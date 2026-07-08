@@ -12,8 +12,8 @@ const COLUMNS = [
   {
     heading: "Learn",
     links: [
-      { href: "/story", label: "Why LOUP" },
-      { href: "/blog", label: "Journal" },
+      { href: "/about", label: "The Story" },
+      { href: "/journal", label: "Journal" },
       { href: "/faq", label: "FAQ" },
     ],
   },
@@ -54,7 +54,6 @@ export function DevCampaignFooter() {
 
           {COLUMNS.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>
-              <p className="label-mono mb-4 text-paper/50">{col.heading}</p>
               <ul className="space-y-2">
                 {col.links.map((l) => (
                   <li key={l.href + l.label}>

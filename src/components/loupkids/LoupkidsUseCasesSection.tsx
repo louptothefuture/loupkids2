@@ -13,7 +13,6 @@ export function LoupkidsUseCasesSection() {
   return (
     <section id="use-cases" className="lk-section-white lk-section-content border-t border-[var(--lk-line)]">
       <FadeIn className="lk-container">
-        <p className="lk-eyebrow mb-3">Who it&apos;s for</p>
         <RevealHeadline as="h2" className="lk-display lk-h2">
           Built for real life — not the app store.
         </RevealHeadline>

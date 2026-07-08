@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/shopify/types";
@@ -9,9 +8,7 @@ import { useCart } from "@/components/cart/CartProvider";
 import { trackViewItem } from "@/lib/analytics";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
-import {
-  LoupkidsGuaranteeBadge,
-} from "@/components/loupkids/conversion";
+import { LoupkidsGuaranteeBadge } from "@/components/loupkids/conversion";
 
 function formatPrice(amount: string, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -36,7 +33,6 @@ export function ProductView({ product }: { product: Product }) {
       price: parseFloat(selected.price.amount),
       quantity: 1,
     });
-    // fire once per product view
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product.id]);
 
@@ -58,9 +54,9 @@ export function ProductView({ product }: { product: Product }) {
   };
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
-      <div>
-        <div className="relative aspect-[4/5] overflow-hidden border border-[var(--lk-line)] bg-neutral-50 sm:aspect-[5/4]">
+    <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+      <div className="min-w-0">
+        <div className="relative aspect-square overflow-hidden border border-[var(--lk-line)] bg-neutral-50">
           <AnimatePresence mode="wait">
             <motion.div
               key={shown?.url}
@@ -76,55 +72,63 @@ export function ProductView({ product }: { product: Product }) {
                   alt={shown.altText ?? product.title}
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 55vw"
-                  className="object-contain p-8"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-contain p-5 sm:p-8"
                 />
               )}
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="mt-4 flex gap-3 overflow-x-auto pb-1">
+        <div className="mt-3 grid grid-cols-5 gap-2">
           {gallery.map((img, i) => (
             <button
               key={img.url}
+              type="button"
               onClick={() => setActiveImage(i)}
               aria-label={`View image ${i + 1}`}
-              className={`relative h-20 w-16 shrink-0 cursor-pointer overflow-hidden border bg-white transition-opacity hover:opacity-80 ${
+              aria-current={i === activeImage ? "true" : undefined}
+              className={`relative aspect-square cursor-pointer overflow-hidden border bg-white transition-opacity hover:opacity-80 ${
                 i === activeImage ? "border-[var(--lk-ink)]" : "border-[var(--lk-line)]"
               }`}
             >
-              <Image src={img.url} alt="" fill sizes="64px" className="object-contain p-1" />
+              <Image src={img.url} alt="" fill sizes="80px" className="object-contain p-1.5" />
             </button>
           ))}
         </div>
       </div>
 
-      <div className="lg:pt-4">
-        <p className="lk-label mb-3">Product</p>
-        <h1 className="lk-display text-left text-3xl sm:text-4xl">{product.title}</h1>
-        <p className="mt-4 leading-relaxed text-[var(--lk-muted)]">{product.description}</p>
+      <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:max-w-md lg:justify-self-end xl:max-w-lg">
+        <div>
+          <h1 className="lk-display text-3xl sm:text-4xl">{product.title}</h1>
+          <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="text-2xl font-medium sm:text-3xl">
+              {formatPrice(selected.price.amount, selected.price.currencyCode)}
+            </span>
+            {selected.compareAtPrice && (
+              <span className="text-lg text-[var(--lk-muted)] line-through">
+                {formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)}
+              </span>
+            )}
+          </div>
+          <p className="mt-1 text-sm text-[var(--lk-muted)]">
+            Silver anodized aluminum · Pre-order · ships Q4 2026
+          </p>
+        </div>
+
+        <p className="line-clamp-4 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">
+          {product.description}
+        </p>
 
         {featuredQuote ? (
-          <blockquote className="mt-6 border-l-2 border-[var(--lk-line)] pl-4 text-sm leading-relaxed text-[var(--lk-muted)]">
+          <blockquote className="border-l-2 border-[var(--lk-line)] pl-4 text-sm leading-relaxed text-[var(--lk-muted)]">
             &ldquo;{featuredQuote.quote}&rdquo;
-            <footer className="lk-label mt-2">{featuredQuote.attribution}</footer>
+            <footer className="mt-2 text-xs not-italic text-[var(--lk-muted)]">{featuredQuote.attribution}</footer>
           </blockquote>
         ) : null}
 
-        <p className="label-mono mt-2 text-sm text-[var(--lk-muted)]">Silver anodized aluminum</p>
-
-        <div className="mt-6 text-2xl font-medium">
-          {formatPrice(selected.price.amount, selected.price.currencyCode)}
-          {selected.compareAtPrice && (
-            <span className="ml-3 text-lg text-[var(--lk-muted)] line-through">
-              {formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)}
-            </span>
-          )}
-        </div>
-
         {optionName && product.options[0].values.length > 1 && (
-          <fieldset className="mt-8">
-            <legend className="lk-label mb-3">
+          <fieldset>
+            <legend className="mb-2 text-sm font-medium text-[var(--lk-ink)]">
               {optionName}: {selected.title}
             </legend>
             <div className="flex flex-wrap gap-2">
@@ -134,6 +138,7 @@ export function ProductView({ product }: { product: Product }) {
                 return (
                   <button
                     key={value}
+                    type="button"
                     onClick={() => selectVariant(value)}
                     disabled={!variant?.availableForSale}
                     className={`cursor-pointer border px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
@@ -150,26 +155,28 @@ export function ProductView({ product }: { product: Product }) {
           </fieldset>
         )}
 
-        <button
-          onClick={() =>
-            addItem(selected.id, {
-              title: product.title,
-              variantTitle: selected.title,
-              price: parseFloat(selected.price.amount),
-            })
-          }
-          disabled={pending || !selected.availableForSale}
-          className="lk-btn lk-btn-lg mt-8 w-full disabled:opacity-60"
-        >
-          {selected.availableForSale ? (pending ? "Adding…" : LOUPKIDS_CTA.product) : "Sold out"}
-        </button>
-        <LoupkidsGuaranteeBadge className="mt-4" />
-
-        <ul className="mt-4 space-y-2 text-sm text-[var(--lk-muted)]">
-          <li>Pre-order · shipping Q4 2026</li>
-          <li>2-year kid-proof warranty (drops included)</li>
-          <li>10 contacts free · Loup-to-Loup always free · Plus from $10/mo for external numbers</li>
-        </ul>
+        <div className="border-t border-[var(--lk-line)] pt-5">
+          <button
+            type="button"
+            onClick={() =>
+              addItem(selected.id, {
+                title: product.title,
+                variantTitle: selected.title,
+                price: parseFloat(selected.price.amount),
+              })
+            }
+            disabled={pending || !selected.availableForSale}
+            className="lk-btn lk-btn-lg w-full disabled:opacity-60"
+          >
+            {selected.availableForSale ? (pending ? "Adding…" : LOUPKIDS_CTA.product) : "Sold out"}
+          </button>
+          <LoupkidsGuaranteeBadge align="start" className="mt-3 max-w-none" />
+          <ul className="mt-4 space-y-1.5 text-sm leading-snug text-[var(--lk-muted)]">
+            <li>10 contacts free · Loup-to-Loup always free</li>
+            <li>Plus from $10/mo for external numbers · cancel anytime</li>
+            <li>Built for everyday kid use</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

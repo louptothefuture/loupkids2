@@ -76,14 +76,13 @@ function FactColumn({
 }
 
 export function BrainComparisonSection() {
-  const { eyebrow, headline, subline, screen, inPerson, bridge } = BRAIN_COMPARISON;
+  const { headline, subline, screen, inPerson, bridge } = BRAIN_COMPARISON;
 
   return (
     <section className="lk-section-muted lk-section" aria-labelledby="brain-comparison-heading">
       <div className="lk-container">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <p className="lk-eyebrow">{eyebrow}</p>
-          <RevealHeadline as="h2" className="lk-display lk-h2 mt-3" instant>
+          <RevealHeadline as="h2" className="lk-display lk-h2" instant>
             <span id="brain-comparison-heading">{headline}</span>
           </RevealHeadline>
           <p className="lk-lead mx-auto mt-4 max-w-xl text-[var(--lk-muted)]">{subline}</p>

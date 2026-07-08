@@ -84,7 +84,6 @@ export async function DevCampaignHome() {
       <section className="border-b-2 border-ink bg-neutral-50 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
-            <p className="label-mono text-ink-soft">You aren&apos;t alone</p>
             <h2 className="display mt-3 max-w-3xl text-4xl text-ink sm:text-5xl">
               The smartphone trap is real. Loup is the escape hatch.
             </h2>
@@ -107,7 +106,6 @@ export async function DevCampaignHome() {
       <section className="border-b-2 border-ink bg-white py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
-            <p className="label-mono text-ink-soft">Chock full of nothing</p>
             <h2 className="display mt-3 max-w-4xl text-4xl text-ink sm:text-6xl lg:text-7xl">
               No social media. No games. No rabbit holes.
             </h2>
@@ -152,8 +150,7 @@ export async function DevCampaignHome() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="label-mono text-ink-soft">The hardware</p>
-              <h2 className="display mt-3 text-4xl text-ink sm:text-5xl">Anodized. Not disposable.</h2>
+              <h2 className="display text-4xl text-ink sm:text-5xl">Anodized. Not disposable.</h2>
             </div>
             <Link href="/shop/loup" className="link-underline label-mono text-ink">
               Reserve Loup — $149 →

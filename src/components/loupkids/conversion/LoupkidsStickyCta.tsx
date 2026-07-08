@@ -17,7 +17,12 @@ export function LoupkidsStickyCta() {
 
   useEffect(() => {
     if (hidden) return;
-    const onScroll = () => setVisible(window.scrollY > 520);
+    const onScroll = () => {
+      const scrolled = window.scrollY > 520;
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 160;
+      setVisible(scrolled && !nearBottom);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -31,7 +36,7 @@ export function LoupkidsStickyCta() {
       role="complementary"
       aria-label="Reserve Loup"
     >
-      <p className="lk-label mb-2.5">Pre-order open</p>
+      <p className="mb-2.5 text-sm text-[var(--lk-muted)]">Pre-order open</p>
       <Link href="/shop/loup" className="lk-btn lk-btn-lg w-full text-center">
         {LOUPKIDS_CTA.primary}
       </Link>

@@ -40,7 +40,7 @@ export const LOUPKIDS_CALLING_PRICING = {
         "Unlimited contacts, make and receive calls from external phone numbers, and pager mode — so you can reach them for dinner without yelling across the house. (\"Hi mom, no I haven't cleaned my room yet, but I will.\") Undercuts many alternatives by at least half. Cancel anytime.",
     },
   ],
-  cta: { label: "Lock in pre-launch price — $149", href: "/shop/loup" },
+  cta: { label: "Reserve Loup — $149", href: "/shop/loup" },
   helpLink: { label: "How Plus plans work", href: "/help/calling-plan" },
 } as const;
 

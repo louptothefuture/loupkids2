@@ -35,7 +35,6 @@ export default async function HelpArticlePage({ params }: Props) {
           <Link href="/help" className="lk-read-link inline-block">
             ← Help center
           </Link>
-          <p className="lk-eyebrow mt-6 mb-2">{article.category}</p>
           <h1 className="lk-display lk-h2">{article.title}</h1>
           <p className="lk-lead lk-prose-muted mt-4">{article.summary}</p>
         </FadeIn>

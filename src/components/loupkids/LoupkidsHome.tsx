@@ -94,14 +94,6 @@ export function LoupkidsHome() {
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 from-0% via-black/45 via-[38%] to-black/20 to-100%" />
         <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col justify-end gap-5 px-[var(--lk-section-x)] pb-[clamp(2.5rem,8vh,4.5rem)] pt-28 lg:max-w-3xl">
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5, ease }}
-            className="lk-eyebrow text-white/75"
-          >
-            {LOUPKIDS_HERO_COPY.eyebrow}
-          </motion.p>
           <HeroHeadline text={LOUPKIDS_HERO_COPY.headline} />
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 12 }}
@@ -163,7 +155,7 @@ export function LoupkidsHome() {
             Ready when you are.
           </RevealHeadline>
           <p className="lk-lead lk-prose-muted max-w-md">
-            The phone before their first smartphone — 30-day returns, 2-year warranty.
+            The phone before their first smartphone — 30-day guarantee, ships Q4 2026.
           </p>
           <LoupkidsOrderCta variant="light" size="large" />
           <p className="text-base text-[var(--lk-muted)]">

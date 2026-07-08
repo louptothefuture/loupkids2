@@ -77,7 +77,7 @@ export const MOCK_LOUP: Product = {
   seo: {
     title: "Reserve Loup — Silver | $149 Pre-Order",
     description:
-      "Loup is the smartphone alternative for kids 6–16. Silver anodized aluminum. Voice calls to a parent-approved list, zero screen time. Free shipping, 30-day returns, 2-year warranty.",
+      "Loup is the smartphone alternative for kids 6–16. Silver anodized aluminum. Voice calls to a parent-approved list, zero screen time. Free shipping, 30-day returns.",
   },
 };
 

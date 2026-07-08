@@ -6,13 +6,12 @@ import { FadeIn } from "./FadeIn";
 import { RevealHeadline } from "./RevealHeadline";
 
 export function LoupkidsCallingPricingSection() {
-  const { eyebrow, title, intro, tiers, cta, helpLink } = LOUPKIDS_CALLING_PRICING;
+  const { title, intro, tiers, cta, helpLink } = LOUPKIDS_CALLING_PRICING;
 
   return (
     <section className="lk-section-white lk-section border-t border-[var(--lk-line)]">
       <div className="lk-container">
         <FadeIn>
-          <p className="lk-eyebrow mb-2">{eyebrow}</p>
           <RevealHeadline as="h2" className="lk-display lk-h2" instant>
             {title}
           </RevealHeadline>

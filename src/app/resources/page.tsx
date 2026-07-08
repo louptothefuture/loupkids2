@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ResourcesPage() {
-  const { eyebrow, title, description, links, journalSlug } = LOUPKIDS_START_HERE;
+  const { title, description, links, journalSlug } = LOUPKIDS_START_HERE;
   const posts = await getPosts();
   const startArticle = posts.find((p) => p.slug === journalSlug) ?? posts[0];
   const startCover = startArticle
@@ -37,7 +37,6 @@ export default async function ResourcesPage() {
       <section className="lk-section-white lk-section-content">
         <div className="lk-container">
           <FadeIn className="mb-6">
-            <p className="lk-eyebrow mb-2">{eyebrow}</p>
             <h2 className="lk-display lk-h3">{title}</h2>
             <p className="lk-prose-muted mt-3 max-w-2xl text-[0.9375rem] leading-relaxed">{description}</p>
           </FadeIn>

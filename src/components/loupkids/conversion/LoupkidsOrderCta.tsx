@@ -22,15 +22,20 @@ export function LoupkidsOrderCta({
       ? `lk-btn lk-btn-white${size === "large" ? " lk-btn-lg" : ""}`
       : `lk-btn${size === "large" ? " lk-btn-lg" : ""}`;
 
+  const alignStart = className.includes("items-start");
+
   return (
-    <div className={`flex w-full max-w-md flex-col gap-4 ${size === "large" ? "max-w-lg" : ""} ${className}`}>
+    <div
+      className={`flex w-full max-w-md flex-col gap-3 ${alignStart ? "items-start" : "items-center"} ${size === "large" ? "max-w-lg" : ""} ${className}`}
+    >
       <Link href={href} className={`${btnClass} w-full sm:w-auto`}>
         {label}
       </Link>
       {showGuarantee ? (
         <LoupkidsGuaranteeBadge
           variant={variant === "dark" ? "dark" : "light"}
-          align={className.includes("items-start") ? "start" : "center"}
+          align={alignStart ? "start" : "center"}
+          className={alignStart ? "max-w-none" : "max-w-md"}
         />
       ) : null}
     </div>

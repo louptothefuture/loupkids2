@@ -15,7 +15,6 @@ export function LegalLayout({
     <div>
       <section className="lk-section-white lk-section-header border-b border-[var(--lk-line)]">
         <FadeIn className="lk-container-prose text-left">
-          <p className="lk-eyebrow mb-2">Legal</p>
           <h1 className="lk-display lk-h2">{title}</h1>
           <p className="lk-label mt-4">Last updated {updated}</p>
         </FadeIn>

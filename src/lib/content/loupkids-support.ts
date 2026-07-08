@@ -114,7 +114,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     slug: "warranty-claim",
     title: "Start a warranty claim",
     category: "Returns",
-    summary: "Every Loup includes a 2-year kid-proof warranty.",
+    summary: "30-day returns on every Loup order.",
     sections: [
       {
         body: "Loup is covered for manufacturing defects and normal kid accidents — drops, spills, and everyday wear for two years from delivery.",

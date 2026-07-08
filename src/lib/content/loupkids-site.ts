@@ -186,7 +186,7 @@ export const LOUPKIDS_USE_CASES = [
     id: "kids",
     label: "Kids",
     headline: "Your phone. Not a toy.",
-    body: "Independence and connection without the internet. Real calls to your people — snap-on plates and a device that looks like something you'd choose, not hide.",
+    body: "Independence and connection without the internet. Real calls to your people — a device that looks like something you'd choose, not hide.",
     image: LOUPKIDS_IMAGES.kidBw,
     alt: "Kid with Loup",
   },
@@ -319,7 +319,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Can my child customize their Loup?",
-    a: "Yes! The back plate of the phone is removable and customizable.",
+    a: "The back plate is removable — patterns and custom plates are coming after launch. Silver ships first.",
   },
   {
     q: "Can I monitor my child's conversations or location?",
@@ -388,19 +388,57 @@ export const LOUPKIDS_SPECS = [
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card" },
-  { group: "In the Box", label: "Also included", value: "2-year kid-proof warranty, 30-day free returns" },
+  { group: "In the Box", label: "Also included", value: "30-day free returns" },
 ] as const;
 
 export const LOUPKIDS_COMPARISON = {
   columns: ["LOUP", "Smartphone", "Kids smartwatch", "Flip phone"],
   rows: [
     { label: "Screen time", values: ["Zero", "5+ hrs/day avg", "Small screen, creeping apps", "Low but growing"] },
-    { label: "Feeds & algorithms", values: ["None, physically impossible", "The whole product", "Some models", "Browser included"] },
-    { label: "Works on Wi-Fi", values: ["Yes — no SIM, no cellular bill", "Yes (cellular)", "Yes (cellular)", "Yes (cellular)"] },
-    { label: "Parent-approved contacts only", values: ["Yes, enforced in hardware", "No", "Usually", "No"] },
+    {
+      label: "Feeds & algorithms",
+      values: ["None, physically impossible", "The whole product", "Some models", "Browser included"],
+    },
+    {
+      label: "Works on Wi-Fi",
+      values: ["Yes — no SIM, no cellular bill", "Yes (cellular)", "Yes (cellular)", "Yes (cellular)"],
+    },
+    {
+      label: "Parent-approved contacts only",
+      values: ["Yes, enforced in hardware", "No", "Usually", "No"],
+    },
+    {
+      label: "Data privacy",
+      values: [
+        "COPPA-compliant, no data sold, no ads",
+        "Data collected & monetized",
+        "Varies, often data-sharing",
+        "N/A",
+      ],
+    },
+    {
+      label: "Monthly cost",
+      values: ["$0 — WiFi only, no plan", "Cellular plan required", "Cellular plan required", "Cellular plan required"],
+    },
+    {
+      label: "Texts & internet",
+      values: ["None — calls only", "Full access", "Varies", "Basic texting, some browsers"],
+    },
+    {
+      label: "Parent controls",
+      values: [
+        "Included, web dashboard",
+        "Separate paid app",
+        "Separate app, often subscription",
+        "None",
+      ],
+    },
+    { label: "Camera", values: ["None, by design", "Yes", "Some models", "Basic"] },
     { label: "Battery", values: ["5 days", "1 day", "1 day (less if used)", "2–3 days"] },
-    { label: "Survives being a kid's", values: ["Built for it, 2-yr warranty", "Add a $60 case & pray", "Mostly", "It's disposable"] },
-    { label: "Kid actually thinks it's cool", values: ["That's the whole design brief", "Yes (that's the problem)", "An unnatural way to talk to people", "No"] },
+    {
+      label: "Survives being a kid's",
+      values: ["Built for it", "Add a $60 case & pray", "Mostly", "It's disposable"],
+    },
     { label: "Price", values: ["$149", "$400–1,200", "$150–400 + plan", "$40–100"] },
   ],
 } as const;

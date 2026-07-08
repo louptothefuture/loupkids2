@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
 import { LandingNav } from "@/components/landing/LandingNav";
-import { PopHeadline, PopLabel } from "@/components/typography/PopType";
+import { PopHeadline } from "@/components/typography/PopType";
 import { STORY_BEATS } from "@/lib/content/story";
 
 function StackCard({
@@ -79,7 +79,6 @@ export function StoryScroll() {
 
       <section className="relative flex min-h-[60svh] flex-col items-center justify-center overflow-hidden bg-block-fuchsia px-4 py-20 text-white">
         <div className="relative text-center">
-          <PopLabel className="mb-4 block text-white">Our LOUP story</PopLabel>
           <PopHeadline as="h1" size="hero">
             Our
             <br />
@@ -101,11 +100,6 @@ export function StoryScroll() {
               tilt={i % 2 === 0 ? "left" : "right"}
               className={`${beat.bg} ${beat.text} p-8 sm:p-12`}
             >
-              {beat.eyebrow && (
-                <PopLabel className={`mb-4 block ${onLight ? "text-ink" : "text-white"}`}>
-                  {beat.eyebrow}
-                </PopLabel>
-              )}
               <h2 className={`display text-left text-3xl sm:text-4xl ${onLight ? "text-ink" : "text-white"}`}>
                 {beat.lines.map((line) => (
                   <span key={line} className="block">

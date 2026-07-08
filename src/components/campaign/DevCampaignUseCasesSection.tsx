@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { LOUPKIDS_USE_CASES } from "@/lib/content/loupkids-site";
+import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
 import { Reveal } from "@/components/Reveal";
-import { ImageBox } from "./ImageBox";
 
-export function DevCampaignUseCasesSection({ hideEyebrow = false }: { hideEyebrow?: boolean }) {
+export function DevCampaignUseCasesSection() {
   const [active, setActive] = useState(0);
   const item = LOUPKIDS_USE_CASES[active];
 
@@ -13,8 +13,7 @@ export function DevCampaignUseCasesSection({ hideEyebrow = false }: { hideEyebro
     <section id="use-cases" className="border-b-2 border-ink bg-neutral-50 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
-          {!hideEyebrow && <p className="label-mono text-ink-soft">Who it&apos;s for</p>}
-          <h2 className={`display max-w-2xl text-4xl text-ink sm:text-5xl ${hideEyebrow ? "" : "mt-3"}`}>
+          <h2 className="display max-w-2xl text-4xl text-ink sm:text-5xl">
             Built for real life — not the app store.
           </h2>
         </Reveal>
@@ -42,7 +41,9 @@ export function DevCampaignUseCasesSection({ hideEyebrow = false }: { hideEyebro
             <p className="mt-4 text-base leading-relaxed text-ink-soft">{item.body}</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <ImageBox className="aspect-[4/3] w-full rounded-2xl" />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border-2 border-ink bg-neutral-100">
+              <LoupkidsImage src={item.image} alt={item.alt} fill sizes="50vw" className="object-cover" />
+            </div>
           </Reveal>
         </div>
       </div>

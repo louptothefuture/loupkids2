@@ -11,7 +11,6 @@ export async function HeroSection() {
     <section id="hero" className="relative overflow-hidden border-b border-ink/10 bg-surface">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-2 lg:pb-20 lg:pt-24">
         <Reveal className="relative z-10">
-          <p className="label-mono text-steel">{HERO.eyebrow}</p>
           <h1 className="display mt-4 text-[2.75rem] sm:text-6xl lg:text-[4.25rem] lg:leading-[0.95]">
             {copy.heroHeadline}
           </h1>

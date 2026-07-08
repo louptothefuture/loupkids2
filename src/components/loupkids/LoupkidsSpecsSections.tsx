@@ -12,7 +12,6 @@ export function LoupkidsComparisonSection() {
   return (
     <section id="compare" className="lk-section-white lk-section-content">
       <FadeIn className="lk-container">
-        <p className="lk-eyebrow mb-3">The honest comparison</p>
         <RevealHeadline as="h2" className="lk-display lk-h2">
           Loup vs. the other options
         </RevealHeadline>
@@ -81,7 +80,6 @@ export function LoupkidsSpecsSection() {
   return (
     <section className="lk-section-white lk-section" id="specs">
       <FadeIn className="lk-container">
-        <p className="lk-eyebrow mb-3">Tech specs</p>
         <RevealHeadline as="h2" className="lk-display lk-h2">
           The fine print
         </RevealHeadline>

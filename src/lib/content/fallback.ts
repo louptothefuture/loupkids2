@@ -47,7 +47,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Product",
     question: "Can I customize it?",
     answer:
-      "Yes — the anodized aluminum back plate snaps off without tools. Choose patterns, sports designs, or print your own photo plate for $24.",
+      "The back plate is removable. Custom patterns and plates are planned after launch — Silver ships first.",
   },
   {
     section: "Plans & Calling",
@@ -89,7 +89,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Returns & Warranty",
     question: "What does the warranty cover?",
     answer:
-      "Every LOUP has a 2-year warranty covering defects and everyday-kid accidents like drops. If it breaks doing normal kid things, we replace it.",
+      "Every Loup includes a 30-day return policy. Contact us if something isn't right — we'll make it right.",
   },
   {
     section: "Safety & Privacy",
@@ -191,7 +191,7 @@ export const FALLBACK_SPECS: Spec[] = [
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card" },
-  { group: "In the Box", label: "Also included", value: "2-year kid-proof warranty, 30-day free returns" },
+  { group: "In the Box", label: "Also included", value: "30-day free returns" },
 ];
 
 export const FALLBACK_POSTS: Post[] = LOUPKIDS_JOURNAL_POSTS;

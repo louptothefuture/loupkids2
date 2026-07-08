@@ -10,7 +10,6 @@ export function LoupkidsSetupCardsSection() {
     <section className="lk-section-white lk-section-content border-y border-[var(--lk-line)]">
       <div className="lk-container">
         <FadeIn>
-          <p className="lk-eyebrow mb-2">Setup</p>
           <RevealHeadline as="h2" className="lk-display lk-h2" instant>
             Easy as 1, 2, 3
           </RevealHeadline>
