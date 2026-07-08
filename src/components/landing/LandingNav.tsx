@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCart } from "@/components/cart/CartProvider";
+import { LoupLogoLink } from "@/components/loupkids/LoupLogo";
 
 const LINKS = [
   { href: "/#who", label: "Who it's for" },
@@ -17,13 +18,7 @@ export function LandingNav() {
   return (
     <header className="sticky top-0 z-40 border-b-2 border-ink bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link
-          href="/"
-          className="display-landing text-xl text-ink sm:text-2xl"
-          aria-label="LOUP home"
-        >
-          LOUP
-        </Link>
+        <LoupLogoLink height={28} />
         <nav aria-label="Landing" className="hidden items-center gap-8 md:flex">
           {LINKS.map((l) => (
             <Link

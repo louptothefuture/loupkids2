@@ -17,7 +17,7 @@ export function OrganizationJsonLd() {
     "@type": "Organization",
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/images/product/loup-silver-front.png`,
+    logo: `${SITE.url}/images/loup-logo.png`,
     description: SITE.description,
     email: SITE.email,
     sameAs: [SITE.social.instagram, SITE.social.tiktok, SITE.social.youtube],

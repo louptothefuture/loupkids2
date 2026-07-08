@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "@/components/cart/CartProvider";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { LoupLogoLink } from "@/components/loupkids/LoupLogo";
 
 const NAV = [
   { href: "/shop/loup", label: "Shop" },
@@ -21,9 +22,7 @@ export function DevConvertHeader() {
   return (
     <header className="sticky top-0 z-40 border-b-2 border-ink bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/convert" aria-label="Loup home" className="display text-3xl leading-none tracking-tight text-ink">
-          Loup
-        </Link>
+        <LoupLogoLink href="/convert" height={30} />
 
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
           {NAV.map((item) => (
