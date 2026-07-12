@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { LOUPKIDS_CTA, LOUPKIDS_GUARANTEE, LOUPKIDS_HERO_COPY, LOUPKIDS_STORY_SHORT } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_CONVERT, LOUPKIDS_CONVERT_ANTI } from "@/lib/content/loupkids-convert";
-import { LOUPKIDS_ACCORDION, LOUPKIDS_IMAGES, LOUPKIDS_PHONE, LOUPKIDS_STATS } from "@/lib/content/loupkids-site";
+import { LOUPKIDS_ACCORDION, LOUPKIDS_IMAGES, LOUPKIDS_PHONE, LOUPKIDS_STATS, LOUPKIDS_VIDEOS } from "@/lib/content/loupkids-site";
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/Reveal";
 import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
+import { LoupVideo } from "@/components/loupkids/LoupVideo";
 import { DevCampaignAccordion } from "./DevCampaignAccordion";
 import { DevCampaignCallingPricingSection } from "./DevCampaignCallingPricingSection";
 import { DevCampaignComparisonSection } from "./DevCampaignComparisonSection";
@@ -59,11 +60,11 @@ export function DevConvertHome() {
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-ink">
               <LoupkidsImage
                 src={LOUPKIDS_IMAGES.heroKitchen}
-                alt="Child with Loup on the kitchen table"
+                alt="Girl with Loup on the kitchen counter while a parent cooks"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-[50%_62%]"
+                className="object-cover object-[40%_30%]"
               />
             </div>
           </Reveal>
@@ -120,12 +121,10 @@ export function DevConvertHome() {
           </div>
           <Reveal delay={0.08} className="lg:sticky lg:top-28">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-white/20 bg-neutral-900">
-              <LoupkidsImage
-                src={LOUPKIDS_IMAGES.loupAluminium}
-                alt="Loup silver phone — front view"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain p-6"
+              <LoupVideo
+                src={LOUPKIDS_VIDEOS.cutoutPhone}
+                poster={LOUPKIDS_IMAGES.threeQuarter}
+                className="object-contain"
               />
             </div>
           </Reveal>

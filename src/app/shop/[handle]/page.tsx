@@ -80,17 +80,17 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             <div className="grid gap-8 md:grid-cols-3">
               {[
                 {
-                  src: "/images/product/loup-ports.jpg",
-                  title: "USB-C + headphone jack",
-                  body: "Charges in 70 minutes, runs 5 days. Yes, a real headphone jack — car rides are long.",
+                  src: "/images/renders/three-quarter.jpg",
+                  title: "USB-C + physical controls",
+                  body: "Charges in 70 minutes, runs 5 days. Scroll dial and talk bar you can feel without looking.",
                 },
                 {
-                  src: "/images/product/loup-back-plate.jpg",
-                  title: "Scroll dial + talk bar",
-                  body: "Every control is physical, with detents you can feel. Operable inside a pocket, no looking.",
+                  src: "/images/renders/back.jpg",
+                  title: "Built to be carried",
+                  body: "Machined body and a scroll dial with real detents — operable inside a pocket.",
                 },
                 {
-                  src: "/images/product/loup-three-quarter.jpg",
+                  src: "/images/renders/d.jpg",
                   title: "Machined aluminum",
                   body: "Silver anodized unibody — built to survive a backpack, not look like a toy.",
                 },

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { LOUPKIDS_STORY_TEASER } from "@/lib/content/loupkids-site";
+import { LOUPKIDS_IMAGES, LOUPKIDS_STORY_TEASER } from "@/lib/content/loupkids-site";
 import { ImageBox } from "./ImageBox";
 
 const DIFFERENTIATORS = [
@@ -47,7 +47,11 @@ export function DevCampaignStorySection() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <ImageBox className="aspect-[4/3] w-full rounded-2xl" />
+            <ImageBox
+              src={LOUPKIDS_IMAGES.phoneOnBooks}
+              alt="Loup on a stack of books"
+              className="aspect-[4/3] w-full rounded-2xl"
+            />
           </Reveal>
         </div>
 

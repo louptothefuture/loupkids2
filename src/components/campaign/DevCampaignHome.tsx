@@ -3,7 +3,7 @@
  */
 import Link from "next/link";
 import { getHomepage, getPress } from "@/lib/content";
-import { LOUPKIDS_NOTHING } from "@/lib/content/loupkids-site";
+import { LOUPKIDS_IMAGES, LOUPKIDS_NOTHING } from "@/lib/content/loupkids-site";
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/Reveal";
 import { DevCampaignComparisonSection } from "./DevCampaignComparisonSection";
@@ -71,7 +71,11 @@ export async function DevCampaignHome() {
 
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div className="relative aspect-[4/5] overflow-hidden rounded-t-[2rem] border-2 border-b-0 border-ink">
-              <ImageBox className="absolute inset-0 h-full w-full" />
+              <ImageBox
+                src={LOUPKIDS_IMAGES.heroKitchen}
+                alt="Girl with Loup in the kitchen"
+                className="absolute inset-0 h-full w-full"
+              />
               <span className="label-mono absolute bottom-4 left-4 border-2 border-ink bg-white px-2 py-1">
                 no screen. no problem.
               </span>
@@ -163,7 +167,12 @@ export async function DevCampaignHome() {
               href="/shop/loup"
               className="group block overflow-hidden rounded-2xl border-2 border-ink bg-white transition-transform hover:-translate-y-1"
             >
-              <ImageBox className="aspect-[4/5] w-full" />
+              <ImageBox
+                src={LOUPKIDS_IMAGES.loupAluminium}
+                alt="Loup Silver"
+                className="aspect-[4/5] w-full"
+                objectFit="contain"
+              />
               <div className="flex items-center justify-between border-t-2 border-ink px-5 py-3">
                 <span className="display text-xl text-ink">Silver</span>
                 <span className="label-mono text-ink-soft">$149 →</span>
@@ -209,7 +218,11 @@ export async function DevCampaignHome() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <ImageBox className="mx-auto aspect-[9/10] w-full max-w-md rounded-2xl" />
+            <ImageBox
+              src={LOUPKIDS_IMAGES.handHoldingHi}
+              alt="Hand holding Loup"
+              className="mx-auto aspect-[9/10] w-full max-w-md rounded-2xl"
+            />
           </Reveal>
         </div>
       </section>

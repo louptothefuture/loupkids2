@@ -1,9 +1,11 @@
-/** Scraped from loupkids.com — local images in /public/images/loupkids/ */
+/** Media map — curated renders + lifestyle from Loup Assets */
 
 const L = (file: string) => `/images/loupkids/${file}`;
+const R = (file: string) => `/images/renders/${file}`;
+const N = (file: string) => `/images/lifestyle-new/${file}`;
 
 export const LOUPKIDS_IMAGES = {
-  heroKitchen: L("Kid+in+Kitchen+Candid.jpg"),
+  heroKitchen: N("girl-kitchen.jpg"),
   sweater: L("sweater.png"),
   whiteBag: L("white+bag+phone.png"),
   squeezeGif: L("squeeze+load.gif"),
@@ -17,15 +19,33 @@ export const LOUPKIDS_IMAGES = {
   baseball: L("baseball.png"),
   palmTrees: L("palm+trees.png"),
   purple: L("purple+pattern.png"),
-  // store
-  reserve: L("vertical+flat+2.jpg"),
+  // new lifestyle
+  boyHolding: N("boy-holding.jpg"),
+  handHoldingHi: N("hand-holding-hi.jpg"),
+  phoneOnBooks: N("phone-on-books.jpg"),
+  bagPocket: N("bag-pocket.jpg"),
+  backpack: N("o.jpg"),
+  // product renders
+  reserve: R("d.jpg"),
   loup31: L("Autism+awareness+blue+2.png"),
   loupBlack: L("black+just+loup.png"),
   loupRed: L("red+just+loup.png"),
-  loupAluminium: L("front+of+phone+with+type.png"),
+  loupAluminium: R("d.jpg"),
+  threeQuarter: R("three-quarter.jpg"),
+  productBack: R("back.jpg"),
+  productHi: R("m.jpg"),
+  cutoutPhone: R("cutout-phone.jpg"),
   // ode
   familyMovie: L("family+watching+movie+.png"),
   laptop: L("laptop.png"),
+} as const;
+
+export const LOUPKIDS_VIDEOS = {
+  cutoutPhone: "/videos/cutout-phone.mp4",
+  screen: "/videos/screen.mp4",
+  uxDemo: "/videos/ux-demo.mp4",
+  colorSlide: "/videos/color-slide.mp4",
+  background: "/videos/background.mp4",
 } as const;
 
 /** Journal cover images scraped from loupkids.com/journal/[slug] */
@@ -105,9 +125,9 @@ export const LOUPKIDS_PHONE = {
 };
 
 export const LOUPKIDS_PRODUCT_SHOTS = [
-  { src: LOUPKIDS_IMAGES.sweater, alt: "Loup in a sweater pocket" },
-  { src: LOUPKIDS_IMAGES.whiteBag, alt: "Loup in a white bag" },
-  { src: LOUPKIDS_IMAGES.squeezeGif, alt: "Loup squeeze demo" },
+  { src: LOUPKIDS_IMAGES.handHoldingHi, alt: "Hand holding Loup" },
+  { src: LOUPKIDS_IMAGES.backpack, alt: "Loup in a backpack pocket" },
+  { src: LOUPKIDS_IMAGES.phoneOnBooks, alt: "Loup on books" },
 ] as const;
 
 export const LOUPKIDS_ACCORDION = [
@@ -165,12 +185,12 @@ export const LOUPKIDS_STORY_TEASER = {
 };
 
 export const LOUPKIDS_GALLERY = [
-  { src: LOUPKIDS_IMAGES.kidSmile, alt: "Kid smiling with Loup" },
-  { src: LOUPKIDS_IMAGES.kidBw, alt: "Kid with Loup black and white" },
-  { src: LOUPKIDS_IMAGES.kidsPhonesTout, alt: "Kids with Loup phones" },
-  { src: LOUPKIDS_IMAGES.sweater, alt: "Loup in a sweater pocket" },
-  { src: LOUPKIDS_IMAGES.whiteBag, alt: "Loup in a bag" },
-  { src: LOUPKIDS_IMAGES.friends, alt: "Friends with Loup back plates" },
+  { src: LOUPKIDS_IMAGES.handHoldingHi, alt: "Hand holding Loup showing hi." },
+  { src: LOUPKIDS_IMAGES.boyHolding, alt: "Kid holding Loup toward the camera" },
+  { src: LOUPKIDS_IMAGES.backpack, alt: "Loup in a backpack pocket" },
+  { src: LOUPKIDS_IMAGES.phoneOnBooks, alt: "Loup resting on a stack of books" },
+  { src: LOUPKIDS_IMAGES.bagPocket, alt: "Loup tucked in a bag pocket" },
+  { src: LOUPKIDS_IMAGES.heroKitchen, alt: "Girl with Loup in the kitchen" },
 ] as const;
 
 export const LOUPKIDS_USE_CASES = [
@@ -187,16 +207,16 @@ export const LOUPKIDS_USE_CASES = [
     label: "Kids",
     headline: "Your phone. Not a toy.",
     body: "Independence and connection without the internet. Real calls to your people — a device that looks like something you'd choose, not hide.",
-    image: LOUPKIDS_IMAGES.kidBw,
-    alt: "Kid with Loup",
+    image: LOUPKIDS_IMAGES.boyHolding,
+    alt: "Kid holding Loup",
   },
   {
     id: "community",
     label: "Community",
     headline: "Communities benefit from their own closed loop.",
     body: "Church groups, homeschool networks, and sports teams stay connected on their terms — without group chats or open phone numbers. For bulk pricing, email hi@loupkids.com.",
-    image: LOUPKIDS_IMAGES.friends,
-    alt: "Kids with customized Loup devices",
+    image: LOUPKIDS_IMAGES.backpack,
+    alt: "Loup in a backpack — ready for school and sports",
   },
 ] as const;
 
