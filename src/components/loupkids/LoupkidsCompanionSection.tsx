@@ -11,7 +11,6 @@ export function LoupkidsCompanionSection() {
     <section className="lk-section-white lk-section-content border-y border-[var(--lk-line)]">
       <div className="lk-container grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_min(360px,38%)] lg:gap-14">
         <FadeIn>
-          <p className="lk-eyebrow mb-2">Parent app</p>
           <RevealHeadline as="h2" className="lk-display lk-h2" instant>
             Control from your phone
           </RevealHeadline>

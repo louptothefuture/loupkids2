@@ -22,7 +22,7 @@ export default function TermsPage() {
       </p>
       <h2 className="display mt-8 text-2xl text-ink">Purchases</h2>
       <p>
-        Orders are processed through Shopify. Pricing, taxes, and shipping are shown at checkout.
+        Orders are processed through Stripe. Pricing, taxes, and shipping are shown at checkout.
         Subscription plans renew monthly until cancelled.
       </p>
     </LegalLayout>

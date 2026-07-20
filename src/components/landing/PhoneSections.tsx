@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FEATURE_ICONS } from "@/lib/content/architecture";
 import { ProductFloat } from "@/components/landing/ProductFloat";
-import { PopHeadline, PopLabel } from "@/components/typography/PopType";
+import { PopHeadline } from "@/components/typography/PopType";
 
 export function PhoneSection() {
   return (
@@ -13,7 +13,6 @@ export function PhoneSection() {
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <PopLabel className="mb-3 block text-white/80">It&apos;s a phone</PopLabel>
             <PopHeadline as="h2" size="xl">
               Select.
               <br />
@@ -53,7 +52,6 @@ export function NothingSection() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <ProductFloat src="/images/product/loup-black-front.jpg" alt="LOUP in black" />
         <div className="text-center lg:text-left">
-          <PopLabel className="mb-3 block text-white/80">Chock full of nothing</PopLabel>
           <PopHeadline as="h2" size="xl">
             Nothing
             <br />
@@ -82,7 +80,6 @@ export function StoryTeaserSection() {
   return (
     <section className="relative bg-white py-24">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <PopLabel className="mb-3 block text-ink/70">Our story</PopLabel>
         <PopHeadline as="h2" size="lg" tone="dark">
           Kids don&apos;t need
           <br />

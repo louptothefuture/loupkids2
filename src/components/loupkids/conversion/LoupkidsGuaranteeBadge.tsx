@@ -17,27 +17,38 @@ export function LoupkidsGuaranteeBadge({
       : "text-[var(--lk-muted)]";
   const strong = variant === "dark" ? "text-white" : "text-[var(--lk-ink)]";
   const alignClass =
-    align === "end" ? "text-right" : align === "start" ? "text-left" : "text-center";
+    align === "end"
+      ? "justify-end text-right"
+      : align === "start"
+        ? "justify-start text-left"
+        : "justify-center text-center";
 
-  if (compact) {
-    return (
-      <p className={`text-sm ${alignClass} ${text} ${className}`}>
-        <span aria-hidden="true">🛡️ </span>
+  const content = (
+    <>
+      <span aria-hidden="true" className="shrink-0">
+        🛡️
+      </span>
+      <span className="text-pretty">
         <strong className={strong}>{LOUPKIDS_GUARANTEE.title}</strong>
         {" — "}
         {LOUPKIDS_GUARANTEE.body}
+      </span>
+    </>
+  );
+
+  if (compact) {
+    return (
+      <p className={`flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-sm ${alignClass} ${text} ${className}`}>
+        {content}
       </p>
     );
   }
 
   return (
-    <p className={`max-w-xs text-sm leading-relaxed ${alignClass} ${text} ${className}`}>
-      <span aria-hidden="true">🛡️ </span>
-      <span>
-        <strong className={strong}>{LOUPKIDS_GUARANTEE.title}</strong>
-        {" — "}
-        {LOUPKIDS_GUARANTEE.body}
-      </span>
+    <p
+      className={`flex w-full flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.8125rem] leading-snug sm:text-sm sm:leading-relaxed ${alignClass} ${text} ${className}`}
+    >
+      {content}
     </p>
   );
 }

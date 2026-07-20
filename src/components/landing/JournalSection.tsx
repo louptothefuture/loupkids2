@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getPosts } from "@/lib/content";
-import { PopLabel } from "@/components/typography/PopType";
 
 export async function JournalSection() {
   const posts = await getPosts();
@@ -11,7 +10,6 @@ export async function JournalSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <PopLabel className="mb-3 block text-ink">The journal</PopLabel>
             <h2 className="display text-left text-4xl sm:text-5xl">From the team</h2>
           </div>
           <Link

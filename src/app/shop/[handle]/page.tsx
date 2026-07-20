@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProduct, getProducts } from "@/lib/shopify";
-import { getSpecs, getTestimonials } from "@/lib/content";
+import { getSpecs } from "@/lib/content";
 import { ProductView } from "@/components/product/ProductView";
 import { ProductJsonLd } from "@/components/seo/JsonLd";
+import { LoupkidsCustomizeStoreSection } from "@/components/loupkids/LoupkidsCustomizeStoreSection";
 import { LOUPKIDS_COMPARISON } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
 
@@ -36,12 +37,10 @@ export async function generateMetadata({
 const COMPARISON = LOUPKIDS_COMPARISON;
 
 function Section({
-  eyebrow,
   title,
   children,
   id,
 }: {
-  eyebrow: string;
   title: string;
   children: React.ReactNode;
   id?: string;
@@ -49,9 +48,8 @@ function Section({
   return (
     <section id={id} className="lk-section border-t border-[var(--lk-line)]">
       <div className="lk-container">
-        <p className="lk-label mb-3">{eyebrow}</p>
         <h2 className="lk-display text-2xl sm:text-3xl">{title}</h2>
-        <div className="mt-10">{children}</div>
+        <div className="mt-8 sm:mt-10">{children}</div>
       </div>
     </section>
   );
@@ -62,7 +60,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const product = await getProduct(handle);
   if (!product) notFound();
 
-  const [specs, testimonials] = await Promise.all([getSpecs(), getTestimonials()]);
+  const specs = await getSpecs();
   const isDevice = handle === "loup";
 
   const specGroups = [...new Set(specs.map((s) => s.group))];
@@ -71,7 +69,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
     <>
       <ProductJsonLd product={product} />
 
-      <section className="lk-section border-b border-[var(--lk-line)]">
+      <section className="lk-section-header border-b border-[var(--lk-line)]">
         <div className="lk-container">
           <ProductView product={product} />
         </div>
@@ -79,23 +77,23 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
       {isDevice && (
         <>
-          <Section eyebrow="Hardware detail" title="Built like gear, not like a toy">
+          <Section title="Built like gear, not like a toy">
             <div className="grid gap-8 md:grid-cols-3">
               {[
                 {
-                  src: "/images/product/loup-ports.jpg",
-                  title: "USB-C + headphone jack",
-                  body: "Charges in 70 minutes, runs 5 days. Yes, a real headphone jack — car rides are long.",
+                  src: "/images/renders/shop/a_9.jpg",
+                  title: "Rechargeable & replaceable battery",
+                  body: "USB-C charges in 70 minutes, runs ~5 days. The battery is rechargeable and replaceable — not glued shut.",
                 },
                 {
-                  src: "/images/product/loup-back-plate.jpg",
-                  title: "Scroll dial + talk bar",
-                  body: "Every control is physical, with detents you can feel. Operable inside a pocket, no looking.",
+                  src: "/images/renders/shop/a_8.jpg",
+                  title: "Customizable back plates",
+                  body: "Swap the plate when you want a new look. Patterns and customs ship after launch — Silver first.",
                 },
                 {
-                  src: "/images/plates/friends.png",
-                  title: "Swappable back plates",
-                  body: "The anodized back pops off without tools. Patterns, teams, or a plate printed with your own photo.",
+                  src: "/images/renders/shop/a_4.jpg",
+                  title: "Aluminum + ABS",
+                  body: "Machined aluminum sides and buttons, ABS front — built to survive a backpack, not look like a toy.",
                 },
               ].map((card) => (
                 <figure key={card.title} className="lk-image-hover border border-[var(--lk-line)]">
@@ -117,7 +115,9 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             </div>
           </Section>
 
-          <Section eyebrow="The honest comparison" title="Loup vs. the other options">
+          <LoupkidsCustomizeStoreSection />
+
+          <Section title="Loup vs. the other options">
             <div className="overflow-x-auto border border-[var(--lk-line)]">
               <table className="w-full min-w-[720px] border-collapse text-sm">
                 <thead>
@@ -151,7 +151,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             </div>
           </Section>
 
-          <Section eyebrow="Tech specs" title="The fine print" id="specs">
+          <Section title="The fine print" id="specs">
             <div className="grid gap-8 md:grid-cols-2">
               {specGroups.map((group) => (
                 <div key={group} className="border border-[var(--lk-line)] p-6">
@@ -170,17 +170,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                       ))}
                   </dl>
                 </div>
-              ))}
-            </div>
-          </Section>
-
-          <Section eyebrow="Families" title="What parents are saying" id="reviews">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {testimonials.map((t) => (
-                <figure key={t.attribution} className="flex h-full flex-col border border-[var(--lk-line)] p-6">
-                  <blockquote className="flex-1 text-sm leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
-                  <figcaption className="lk-label mt-4">{t.attribution}</figcaption>
-                </figure>
               ))}
             </div>
           </Section>

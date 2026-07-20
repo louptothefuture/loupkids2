@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_STORE, LOUPKIDS_STORE_PRODUCTS } from "@/lib/content/loupkids-site";
 import { FadeIn } from "./FadeIn";
+import { LoupkidsCustomizeStoreSection } from "./LoupkidsCustomizeStoreSection";
 import { LoupkidsImage } from "./LoupkidsImage";
 import { LoupkidsGuaranteeBadge } from "./conversion";
 
@@ -76,6 +77,8 @@ export function LoupkidsStore() {
           </div>
         </div>
       </section>
+
+      <LoupkidsCustomizeStoreSection />
     </div>
   );
 }

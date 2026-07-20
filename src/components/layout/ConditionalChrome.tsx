@@ -8,6 +8,7 @@ import { DevCampaignHeader } from "@/components/campaign/DevCampaignHeader";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { LoupkidsFooter } from "@/components/loupkids/LoupkidsFooter";
 import { LoupkidsShell } from "@/components/loupkids/LoupkidsShell";
 
 /** Routes that keep the bold campaign chrome (no Loupkids shell). */
@@ -41,7 +42,15 @@ export function ConditionalChrome({ children }: { children: ReactNode }) {
       : isDevCampaign(pathname)
         ? DevCampaignHeader
         : Header;
-    const FooterChrome = isDevCampaign(pathname) ? DevCampaignFooter : Footer;
+    const FooterChrome = isConvertRoute(pathname)
+      ? () => (
+          <div className="loupkids-theme">
+            <LoupkidsFooter />
+          </div>
+        )
+      : isDevCampaign(pathname)
+        ? DevCampaignFooter
+        : Footer;
     return (
       <>
         {!hideLegacyHeader && <HeaderChrome />}

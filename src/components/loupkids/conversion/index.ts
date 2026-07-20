@@ -6,3 +6,4 @@ export { LoupkidsStarRating } from "./LoupkidsStarRating";
 export { LoupkidsStickyCta } from "./LoupkidsStickyCta";
 export { LoupkidsTestimonialCarousel } from "./LoupkidsTestimonialCarousel";
 export { LoupkidsTestimonialStrip } from "./LoupkidsTestimonialStrip";
+export { StripeCheckoutButton } from "./StripeCheckoutButton";

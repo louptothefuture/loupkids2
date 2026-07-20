@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cellular Waitlist",
-  description: "Pre-order Wi-Fi Loup for $149 — shipping Q4 2026. Join the cellular waitlist for LTE Loup.",
+  description: "Pre-order Wi-Fi Loup for $129 — shipping October 2026. Join the cellular waitlist for LTE Loup.",
   alternates: { canonical: `${SITE.url}/reserve` },
 };
 
@@ -17,17 +17,17 @@ export default function ReservePage() {
     <div>
       <LoupkidsPageHeader
         eyebrow="Pre-order & waitlist"
-        title="Reserve your Loup"
-        description="Wi-Fi Loup is $149 — pre-order now, shipping Q4 2026. Join the cellular waitlist if you need LTE later."
+        title="Pre-order your Loup"
+        description="Wi-Fi Loup is $129 — pre-order now, shipping October 2026. Join the cellular waitlist if you need LTE later."
         centered
       />
 
       <section className="lk-section-white lk-section-content">
         <FadeIn className="lk-container-narrow">
           <div className="lk-card lk-card-pad text-center">
-            <p className="lk-display lk-h3">Pre-order Wi-Fi Loup — $149</p>
+            <p className="lk-display lk-h3">Pre-order Wi-Fi Loup — $129</p>
             <p className="lk-prose-muted mt-3">
-              Loup-to-Loup calls are free forever. Pre-order now — shipping Q4 2026.
+              Loup-to-Loup calls are free forever. Pre-order now — shipping October 2026.
             </p>
             <Link href="/shop/loup" className="lk-btn lk-btn-lg mt-6 inline-flex">
               {LOUPKIDS_CTA.primary}

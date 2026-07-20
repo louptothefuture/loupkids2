@@ -29,7 +29,6 @@ export default function HelpPage() {
           <LoupkidsHelpSearch articles={LOUPKIDS_HELP_ARTICLES} />
 
           <FadeIn className="mb-8">
-            <p className="lk-eyebrow mb-2">{LOUPKIDS_START_HERE.eyebrow}</p>
             <h2 className="lk-display lk-h3">{LOUPKIDS_START_HERE.title}</h2>
             <p className="lk-prose-muted mt-3 max-w-2xl">{LOUPKIDS_START_HERE.description}</p>
             <div className="mt-5 flex flex-wrap gap-3">

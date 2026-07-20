@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { USE_CASES } from "@/lib/content/architecture";
-import { PopHeadline, PopLabel } from "@/components/typography/PopType";
+import { PopHeadline } from "@/components/typography/PopType";
 
 export function AudienceSection() {
   const [active, setActive] = useState(0);
@@ -12,7 +12,6 @@ export function AudienceSection() {
   return (
     <section id="who" className="relative overflow-hidden bg-block-sun py-20 text-ink">
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <PopLabel className="mb-3 block text-ink">Who it&apos;s for</PopLabel>
         <PopHeadline as="h2" size="xl" tone="dark">
           Your crew.
           <br />

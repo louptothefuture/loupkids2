@@ -2,8 +2,8 @@
 
 Launch site for **LOUP** — the screenless voice phone for kids 6–16.
 
-Next.js (App Router) · Tailwind CSS v4 · Framer Motion · Sanity (headless CMS)
-· Shopify Storefront API (headless commerce) · Vercel.
+Next.js 16 (App Router) · React 19 · Tailwind CSS v4 · Framer Motion ·
+Sanity (optional CMS) · Stripe Checkout · Docker.
 
 ## Quick start
 
@@ -12,10 +12,9 @@ pnpm install
 pnpm dev          # http://localhost:3000
 ```
 
-With no environment variables the site runs fully in **preview mode**:
-built-in launch content stands in for Sanity, and a mock catalog/cart stands
-in for Shopify (checkout lands on `/checkout-preview`). Add credentials and
-both switch to live data with zero code changes.
+With no CMS or Shopify environment variables, built-in content and mock product
+data keep the site browsable. A working pre-order requires Stripe runtime
+secrets.
 
 ```bash
 cp .env.example .env.local   # fill in what you have
@@ -26,8 +25,10 @@ cp .env.example .env.local   # fill in what you have
 ```
 src/
   app/                  # routes (App Router, static + ISR)
-    api/cart            # cart ops — Shopify Storefront API or cookie-backed mock
+    api/checkout        # current Stripe Checkout session creation
+    api/cart            # legacy Shopify Storefront cart or cookie-backed mock
     api/contact         # contact form intake (optional webhook forward)
+    api/webhooks/stripe # Stripe checkout completion → GA4 purchase
     api/webhooks/shopify# orders/paid → GA4 + Meta CAPI server-side purchases
     studio/             # embedded Sanity Studio at /studio
   components/           # header/footer, cart drawer, PDP, waveform, SEO JSON-LD
@@ -41,26 +42,35 @@ docs/                   # EDITING-GUIDE.md, SEO-CHECKLIST.md
 lighthouse/             # performance reports
 ```
 
-Key decisions:
+Current implementation:
 
-- **Commerce is never hand-rolled.** Inventory, tax, shipping, discounts,
-  checkout, and customer accounts are all Shopify. The site only reads the
-  catalog and manages a cart via the Storefront API.
+- **Stripe Checkout is the active pre-order path.** The older Shopify cart and
+  webhook code still exist and must either be removed or deliberately restored
+  as the single commerce architecture before production.
 - **Content is never hard-coded for the team.** Everything editors touch lives
   in Sanity (`/studio`). The fallback content in `src/lib/content/fallback.ts`
   exists only so the site is complete before credentials arrive.
-- **Conversion tracking is server-side for purchases.** Browser pixels handle
-  the funnel (`view_item`, `add_to_cart`, `begin_checkout`); the Shopify
-  `orders/paid` webhook posts `purchase` events to GA4 Measurement Protocol and
-  Meta Conversions API so ad-blockers can't erase revenue data.
+- **Browser pixels handle the funnel.** Stripe and Shopify webhooks contain
+  server-side purchase reporting, with the differences and remaining risks
+  documented in `docs/AWS-DEVOPS-HANDOFF.md`.
 
-## Deploy (Vercel)
+## Build and run
 
-1. Push to GitHub, import in Vercel. Framework preset: Next.js. No special config.
-2. Add environment variables from `.env.example`.
-3. Set the domain, then run the launch-day list in `docs/SEO-CHECKLIST.md`.
+```bash
+pnpm lint
+pnpm build
+docker compose build
+docker compose up -d
+curl --fail http://127.0.0.1:3000/api/health
+```
+
+The application builds as a portable Next.js standalone container. Public
+`NEXT_PUBLIC_*` values are Docker build arguments; secrets are injected only at
+runtime. See the AWS handoff before deploying or changing DNS.
 
 ## Handoff docs
 
 - `docs/EDITING-GUIDE.md` — how the team edits everything with zero code
 - `docs/SEO-CHECKLIST.md` — what's implemented + launch-day tasks
+- `docs/AWS-DEVOPS-HANDOFF.md` — architecture, backend review, AWS security,
+  deployment, monitoring, rollback, and production acceptance

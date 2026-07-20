@@ -14,7 +14,7 @@ export const HERO = {
   headline: "Phones for the anti-screen age.",
   subline:
     "A real phone — calls, voice messages, a mute button. No apps, no feed, no algorithm. Just your people.",
-  cta: "Pre-order — $149",
+  cta: "Pre-order — $129",
   ctaSecondary: "Join the waitlist",
   trust: ["Free shipping", "30-day returns", "2-year warranty"],
   videoPoster: "/images/street/phone-throw.jpg",
@@ -26,7 +26,7 @@ export const FEATURE_ICONS = [
   { title: "Quiet hours", body: "Homework, dinner, bedtime — you set the schedule." },
   { title: "Select. Call. Talk.", body: "Scroll the dial, pick your person, talk. Mute when you need quiet." },
   { title: "Voice messages", body: "Leave a message when they don't pick up — encrypted." },
-  { title: "Aluminum build", body: "Machined unibody, IP54, drop-tested to 2m." },
+  { title: "Aluminum + ABS", body: "Aluminum sides and buttons, ABS front. IP54, drop-tested to 2m." },
 ];
 
 export const COMPARISON = {
@@ -55,8 +55,8 @@ export const USE_CASES = [
   {
     id: "kids",
     label: "Kids",
-    headline: "Your phone. Not a toy.",
-    body: "Real calls to your people. Machined aluminum, snap-on plates, a mute button when you need it. Looks like something you'd choose — not something you'd hide in your backpack.",
+    headline: "This one's yours.",
+    body: "Not a baby phone. Yours. Real calls to your people — no apps, no weird internet stuff. Do homework together. Plan your weekend. Catch up with friends. Make it yours.",
     image: "/images/street/phone-throw.jpg",
     alt: "A kid with LOUP",
   },
@@ -84,7 +84,7 @@ export const GALLERY = [
 export const PRICING_TIERS = [
   {
     name: "Wi-Fi LOUP",
-    price: "$149",
+    price: "$129",
     period: "one-time device",
     highlight: true,
     features: [
@@ -116,7 +116,7 @@ export const MISSION = {
   headline: "Better connection, not less.",
   timeline: [
     { year: "2024", event: "Parents in our friend group keep delaying the smartphone — and feeling guilty about it." },
-    { year: "2025", event: "LOUP founded in Brooklyn. Prototypes with real families." },
+    { year: "2025", event: "LOUP founded in Providence. Prototypes with real families." },
     { year: "2026", event: "Launch — the phone before their first smartphone." },
   ],
 };

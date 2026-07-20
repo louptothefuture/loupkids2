@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | LOUP",
   },
   description:
-    "Loup is the phone before their first smartphone — approved contacts only, no apps, no feed. Reserve yours for $149.",
+    "Loup is the phone before their first smartphone — approved contacts only, no apps, no feed. Pre-order yours for $129.",
   keywords: [
     "smartphone alternative for kids",
     "kids phone no screen",

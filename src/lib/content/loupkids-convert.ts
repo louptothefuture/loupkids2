@@ -12,12 +12,11 @@ export const LOUPKIDS_CONVERT_ANTI = [
 
 export const LOUPKIDS_CONVERT = {
   hero: {
-    priceLine: "$149 pre-order — $199 at launch",
+    priceLine: "$129 pre-launch — $169 at launch",
     trustLine: "30-day guarantee · Loup-to-Loup calls free forever",
   },
-  stickyCta: "Lock in pre-launch price — $149",
   close: {
-    headline: "Lock in $149 before launch.",
-    sub: "Ships Q4 2026. Full refund if it's not right for your family.",
+    headline: "Ready when you are.",
+    sub: "Ships October 2026. Full refund if it's not right for your family.",
   },
 } as const;

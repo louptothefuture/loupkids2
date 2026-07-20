@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "@/components/cart/CartProvider";
+import { LoupLogoLink } from "@/components/loupkids/LoupLogo";
 
 const NAV = [
   { href: "/shop", label: "Shop" },
@@ -21,9 +22,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-ink/10 bg-white">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" aria-label="LOUP home" className="display text-xl tracking-tight">
-          LOUP
-        </Link>
+        <LoupLogoLink height={26} />
 
         <nav aria-label="Main" className="hidden items-center gap-6 md:flex">
           {NAV.map((item) => (

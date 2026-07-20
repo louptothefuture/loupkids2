@@ -1,11 +1,10 @@
 import { LANDING_STATS } from "@/lib/content/story";
-import { PopHeadline, PopLabel } from "@/components/typography/PopType";
+import { PopHeadline } from "@/components/typography/PopType";
 
 export function ProblemSection() {
   return (
     <section id="problem" className="relative overflow-hidden bg-block-cobalt py-24 text-white">
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
-        <PopLabel className="mb-4 block text-white">The loop you&apos;re stuck in</PopLabel>
         <PopHeadline as="h2" size="xl">
           The smartphone
           <br />

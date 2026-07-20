@@ -3,15 +3,14 @@ import { Reveal } from "@/components/Reveal";
 
 const loupCell = "bg-ink px-4 py-4 text-sm font-medium leading-relaxed text-white sm:px-5 sm:py-5 sm:text-base";
 
-export function DevCampaignComparisonSection({ hideEyebrow = false }: { hideEyebrow?: boolean }) {
+export function DevCampaignComparisonSection() {
   const { columns, rows } = LOUPKIDS_COMPARISON;
 
   return (
     <section id="compare" className="border-b-2 border-ink bg-white py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
-          {!hideEyebrow && <p className="label-mono text-ink-soft">The honest comparison</p>}
-          <h2 className={`display text-4xl text-ink sm:text-5xl ${hideEyebrow ? "" : "mt-3"}`}>
+          <h2 className="display text-4xl text-ink sm:text-5xl">
             Loup vs. the other options
           </h2>
           <p className="mt-4 max-w-2xl text-base text-ink-soft">

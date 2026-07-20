@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getPress } from "@/lib/content";
 import { PRESS_KIT_FACTS } from "@/lib/content/fallback";
 import { Marquee } from "@/components/Marquee";
@@ -15,11 +14,11 @@ export async function PressSection() {
           <h2 className="display mt-3 text-4xl sm:text-5xl">Media kit</h2>
         </Reveal>
         <div className="mt-8 flex flex-wrap gap-4">
-          <Link href="/press" className="btn-sticker bg-ink px-6 py-2.5 text-surface">
+          <a href="/press/loup-press-kit.zip" download className="btn-sticker bg-ink px-6 py-2.5 text-surface">
             Download press kit
-          </Link>
-          <a href="mailto:press@loupkids.com" className="self-center text-sm text-ink-soft hover:text-ink">
-            press@loupkids.com
+          </a>
+          <a href="mailto:hi@loupkids.com" className="self-center text-sm text-ink-soft hover:text-ink">
+            hi@loupkids.com
           </a>
         </div>
         <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

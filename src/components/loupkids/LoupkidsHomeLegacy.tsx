@@ -100,14 +100,6 @@ export function LoupkidsHomeLegacy() {
         {/* Darken upper half for type; keep lower frame clear for the device on the table */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 from-0% via-black/35 via-[42%] to-black/5 to-100%" />
         <div className="relative z-10 flex min-h-[min(92vh,960px)] flex-col items-center justify-start gap-5 px-[var(--lk-section-x)] pb-[clamp(10rem,22vh,14rem)] pt-[clamp(6.5rem,14vh,9rem)] text-center">
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.5, ease }}
-            className="lk-eyebrow text-white/80 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
-          >
-            {LOUPKIDS_HERO_COPY.eyebrow}
-          </motion.p>
           <HeroHeadline text={LOUPKIDS_HERO_COPY.headline} />
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 12 }}
@@ -118,7 +110,7 @@ export function LoupkidsHomeLegacy() {
             <Link href="/reserve" className="font-medium text-white underline-offset-2 hover:underline">
               Join the 1,000+ families on the waitlist
             </Link>
-            <p>Shipping Q4 2026</p>
+            <p>Shipping October 2026</p>
           </motion.div>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -184,7 +176,6 @@ export function LoupkidsHomeLegacy() {
       <section className="lk-section-black lk-section">
         <div className="lk-container grid items-center gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-2">
           <div className="lk-stack">
-            <p className="lk-eyebrow text-white/55">Our story</p>
             <RevealHeadline as="h2" className="lk-display lk-h2 text-white">
               {LOUPKIDS_STORY_SHORT.headline}
             </RevealHeadline>
@@ -215,7 +206,6 @@ export function LoupkidsHomeLegacy() {
       {/* Customizable */}
       <section className="lk-section-black lk-section text-center">
         <div className="lk-container-narrow lk-stack">
-          <p className="lk-eyebrow text-white/55">Personalize</p>
           <RevealHeadline as="h2" className="lk-display lk-h2 text-white">
             {LOUPKIDS_CUSTOMIZE.headline}
           </RevealHeadline>
@@ -226,9 +216,9 @@ export function LoupkidsHomeLegacy() {
       </section>
 
       <section className="lk-section-tight lk-section-white grid grid-cols-2 sm:grid-cols-3">
-        {LOUPKIDS_CUSTOMIZE.plates.map((src, i) => (
-          <FadeIn key={src} delay={i * 0.04} y={8} className="relative aspect-square border border-[var(--lk-line)] bg-neutral-50">
-            <LoupkidsImage src={src} alt="Loup back plate" fill sizes="33vw" className="object-contain p-6" />
+        {LOUPKIDS_CUSTOMIZE.plates.map((plate, i) => (
+          <FadeIn key={plate.src} delay={i * 0.04} y={8} className="relative aspect-square border border-[var(--lk-line)] bg-neutral-50">
+            <LoupkidsImage src={plate.src} alt={plate.alt} fill sizes="33vw" className="object-contain p-6" />
           </FadeIn>
         ))}
       </section>

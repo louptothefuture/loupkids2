@@ -1,15 +1,19 @@
-/** Scraped from loupkids.com — local images in /public/images/loupkids/ */
+/** Media map — curated renders + lifestyle from Loup Assets */
 
 const L = (file: string) => `/images/loupkids/${file}`;
+const R = (file: string) => `/images/renders/${file}`;
+const N = (file: string) => `/images/lifestyle-new/${file}`;
 
 export const LOUPKIDS_IMAGES = {
-  heroKitchen: L("Kid+in+Kitchen+Candid.jpg"),
+  hero: N("hand-holding-hi.jpg"),
+  heroKitchen: N("girl-kitchen.jpg"),
   sweater: L("sweater.png"),
   whiteBag: L("white+bag+phone.png"),
   squeezeGif: L("squeeze+load.gif"),
-  kidBw: L("kid+black+and+white.png"),
+  kidBw: N("kid-bw.jpg"),
+  kidsPhonesLine: N("kids-phones-line.jpg"),
   kidsPhonesTout: L("kids-on-phones-tout-2-032724-383a248fa70e473eaab4fc83db6f269c.jpg"),
-  kidSmile: L("kid+candid+smile.png"),
+  kidSmile: N("kid-smile.jpg"),
   appUx: L("app+ux+2+.gif"),
   friends: L("friends.png"),
   panda: L("panda.png"),
@@ -17,15 +21,51 @@ export const LOUPKIDS_IMAGES = {
   baseball: L("baseball.png"),
   palmTrees: L("palm+trees.png"),
   purple: L("purple+pattern.png"),
-  // store
-  reserve: L("vertical+flat+2.jpg"),
+  // lifestyle
+  boyHolding: N("boy-holding.jpg"),
+  boyBeanbag: N("boy-beanbag.jpg"),
+  handHoldingHi: N("hand-holding-hi.jpg"),
+  phoneOnBooks: N("phone-on-books.jpg"),
+  bagPocket: N("bag-pocket.jpg"),
+  backpack: N("o.jpg"),
+  deskLoop: N("p.jpg"),
+  kidsStoop: N("kids-stoop.jpg"),
+  kidTent: N("kid-tent.jpg"),
+  teenKitchen: N("teen-kitchen.jpg"),
+  kidOutside: N("kid-outside.jpg"),
+  twoKids: N("two-kids.jpg"),
+  teenHoldout: N("teen-holdout.jpg"),
+  phoneInHand: N("phone-in-hand.jpg"),
+  phoneSweatshirt: N("phone-sweatshirt.jpg"),
+  phoneBed: N("phone-bed.jpg"),
+  phoneSitting: N("phone-sitting.jpg"),
+  phonePropped: N("phone-propped.jpg"),
+  girlStairs: N("girl-stairs.jpg"),
+  backHeldOut: N("back-held-out.jpg"),
+  adultHand: N("adult-hand.jpg"),
+  handHeld: N("hand-held.jpg"),
+  productHiFace: N("k.jpg"),
+  // product renders
+  reserve: R("d.jpg"),
   loup31: L("Autism+awareness+blue+2.png"),
   loupBlack: L("black+just+loup.png"),
   loupRed: L("red+just+loup.png"),
-  loupAluminium: L("front+of+phone+with+type.png"),
+  loupAluminium: R("shop/a_4.jpg"),
+  threeQuarter: R("shop/a_9.jpg"),
+  productBack: R("shop/a_8.jpg"),
+  productHi: R("shop/a_10.jpg"),
+  cutoutPhone: R("cutout-phone.jpg"),
   // ode
   familyMovie: L("family+watching+movie+.png"),
   laptop: L("laptop.png"),
+} as const;
+
+export const LOUPKIDS_VIDEOS = {
+  cutoutPhone: "/videos/cutout-phone.mp4",
+  screen: "/videos/screen.mp4",
+  uxDemo: "/videos/ux-demo.mp4",
+  colorSlide: "/videos/color-slide.mp4",
+  background: "/videos/background.mp4",
 } as const;
 
 /** Journal cover images scraped from loupkids.com/journal/[slug] */
@@ -48,6 +88,16 @@ export const LOUPKIDS_JOURNAL_COVERS: Record<string, string> = {
     "/images/loupkids/journal/boring-tech-can-be-anything-but-Girl%2Bon%2Bstairs.png",
   "the-borrowed-childhood":
     "/images/loupkids/journal/the-borrowed-childhood-kids-on-phones-tout-2-032724-383a248fa70e473eaab4fc83db6f269c.jpg",
+  "white-tactile-neurodivergence-and-hard-of-sight":
+    "/images/lifestyle-new/hand-holding-hi.jpg",
+  "the-public-health-crisis-hiding-in-our-pockets":
+    "/images/lifestyle-new/kids-phones-line.jpg",
+  "the-problem-with-locking-down-a-smartphone":
+    "/images/loupkids/journal/the-problem-with-locking-down-a-smartphone.jpg",
+  "the-age-kids-should-get-their-first-phone":
+    "/images/loupkids/journal/the-age-kids-should-get-their-first-phone.jpg",
+  "i-just-need-a-break-which-is-why-i-give-my-kid-a-phone":
+    "/images/loupkids/journal/i-just-need-a-break-which-is-why-i-give-my-kid-a-phone.jpg",
 };
 
 /** Header nav — scraped from loupkids.com header */
@@ -105,9 +155,9 @@ export const LOUPKIDS_PHONE = {
 };
 
 export const LOUPKIDS_PRODUCT_SHOTS = [
-  { src: LOUPKIDS_IMAGES.sweater, alt: "Loup in a sweater pocket" },
-  { src: LOUPKIDS_IMAGES.whiteBag, alt: "Loup in a white bag" },
-  { src: LOUPKIDS_IMAGES.squeezeGif, alt: "Loup squeeze demo" },
+  { src: LOUPKIDS_IMAGES.productHiFace, alt: "Loup showing hi." },
+  { src: LOUPKIDS_IMAGES.backpack, alt: "Loup in a backpack pocket" },
+  { src: LOUPKIDS_IMAGES.deskLoop, alt: "Loup on a kid desk" },
 ] as const;
 
 export const LOUPKIDS_ACCORDION = [
@@ -164,13 +214,16 @@ export const LOUPKIDS_STORY_TEASER = {
   cta: { label: "Read the Whole Story", href: "/about" },
 };
 
+/** Gallery — unique shots only (no hero / use-case dupes on the same page) */
 export const LOUPKIDS_GALLERY = [
+  { src: LOUPKIDS_IMAGES.girlStairs, alt: "Kid on the stairs with Loup" },
+  { src: LOUPKIDS_IMAGES.backpack, alt: "Loup in a backpack pocket" },
+  { src: LOUPKIDS_IMAGES.phoneOnBooks, alt: "Loup resting on books" },
+  { src: LOUPKIDS_IMAGES.deskLoop, alt: "Loup on a desk beside a laptop" },
   { src: LOUPKIDS_IMAGES.kidSmile, alt: "Kid smiling with Loup" },
-  { src: LOUPKIDS_IMAGES.kidBw, alt: "Kid with Loup black and white" },
-  { src: LOUPKIDS_IMAGES.kidsPhonesTout, alt: "Kids with Loup phones" },
-  { src: LOUPKIDS_IMAGES.sweater, alt: "Loup in a sweater pocket" },
-  { src: LOUPKIDS_IMAGES.whiteBag, alt: "Loup in a bag" },
-  { src: LOUPKIDS_IMAGES.friends, alt: "Friends with Loup back plates" },
+  { src: LOUPKIDS_IMAGES.bagPocket, alt: "Loup tucked in a bag pocket" },
+  { src: LOUPKIDS_IMAGES.threeQuarter, alt: "Loup three-quarter product view" },
+  { src: LOUPKIDS_IMAGES.productHiFace, alt: "Loup front — hi." },
 ] as const;
 
 export const LOUPKIDS_USE_CASES = [
@@ -178,29 +231,28 @@ export const LOUPKIDS_USE_CASES = [
     id: "parents",
     label: "Parents",
     headline: "Give them independence without the internet.",
-    body: "Approved contacts only. Quiet hours you control. A device with nothing to scroll — just voices you trust.",
-    image: LOUPKIDS_IMAGES.heroKitchen,
-    alt: "Parent and kid in the kitchen with Loup",
+    body: "Approved contacts only. Quiet hours you control. A device with nothing to scroll — just voices you trust. Pair, approve, and set windows from the parent app.",
+    image: LOUPKIDS_IMAGES.boyBeanbag,
+    alt: "Kid on a call from the beanbag — real life, no feed",
   },
   {
     id: "kids",
     label: "Kids",
-    headline: "Your phone. Not a toy.",
-    body: "Independence and connection without the internet. Real calls to your people — snap-on plates and a device that looks like something you'd choose, not hide.",
-    image: LOUPKIDS_IMAGES.kidBw,
-    alt: "Kid with Loup",
+    headline: "This one's yours.",
+    body: "Not a baby phone. Yours. Real calls to your people — no apps, no weird internet stuff.",
+    uses: ["Do homework together", "Plan your weekend", "Catch up with friends", "Make it yours"],
+    image: LOUPKIDS_IMAGES.boyHolding,
+    alt: "Kid holding Loup",
   },
   {
     id: "community",
     label: "Community",
     headline: "Communities benefit from their own closed loop.",
     body: "Church groups, homeschool networks, and sports teams stay connected on their terms — without group chats or open phone numbers. For bulk pricing, email hi@loupkids.com.",
-    image: LOUPKIDS_IMAGES.friends,
-    alt: "Kids with customized Loup devices",
+    image: LOUPKIDS_IMAGES.kidsStoop,
+    alt: "Kids together with Loup",
   },
 ] as const;
-
-export const LOUPKIDS_PRESS_KIT_URL = "/press/loup-press-kit.zip";
 
 export const LOUPKIDS_COMPANION = {
   headline: "Companion App Features",
@@ -208,17 +260,21 @@ export const LOUPKIDS_COMPANION = {
 };
 
 export const LOUPKIDS_CUSTOMIZE = {
-  headline: "Did we mention it's customizable?",
-  body: "Swap the plates. Pick a vibe. LOUP is as individual as your kid.",
+  headline: "Show what you're into",
+  body: "Swap the plates. Pick a vibe. Patterns and customs — coming soon.",
+  badge: "Coming soon",
   plates: [
-    LOUPKIDS_IMAGES.gymnastics,
-    LOUPKIDS_IMAGES.friends,
-    LOUPKIDS_IMAGES.panda,
-    LOUPKIDS_IMAGES.purple,
-    LOUPKIDS_IMAGES.baseball,
-    LOUPKIDS_IMAGES.palmTrees,
+    { src: "/images/plates/bffs.png", alt: "BFFs back plate" },
+    { src: "/images/plates/kitty.png", alt: "Kitty back plate" },
+    { src: "/images/plates/make-it-your-own.png", alt: "Make it your own back plate" },
+    { src: "/images/plates/messi.png", alt: "Messi back plate" },
+    { src: "/images/plates/ohtani.png", alt: "Ohtani back plate" },
+    { src: "/images/plates/panda.png", alt: "Panda back plate" },
+    { src: "/images/plates/peachy.png", alt: "Peachy back plate" },
+    { src: "/images/plates/pup.png", alt: "Pup back plate" },
+    { src: "/images/plates/school.png", alt: "School back plate" },
   ],
-};
+} as const;
 
 export const LOUPKIDS_NEWSLETTER = {
   headline: "Stay in The Loup",
@@ -240,6 +296,7 @@ export const LOUPKIDS_ABOUT = {
     "Parents everywhere were trying to balance connection and protection. I felt it too. My daughter's friends were already getting tablets and smartphones, and it was hard not to feel the pressure.",
     "I'm not against screens—cartoons on the weekends, we watch movies and play video games together—but I didn't want her first experience of independent connection to be through something designed to keep her scrolling.",
     "Or being drawn into the pressure of social media, the threats of spam, or ending up in the wrong part of the internet … and that list goes on.",
+    "We've become convinced this is a public health crisis. Not a parenting vibe. Not a culture-war slogan. A population-level exposure — anxiety, sleep loss, attentional fragmentation — scaled by devices designed to keep kids coming back. One day we will look back on heavy childhood screen usage the way we look at smoking now: something we normalized, marketed as normal, and only later admitted was a dose problem we failed to protect kids from.",
     "So I started building. I wanted something small and safe, but still beautiful. A way for kids to talk and stay close, without being pulled into feeds or apps. That became Loup—a screenless, SIM-free voice device that lets kids connect while parents stay in control. Freedom for her. Peace of mind for me.",
     "The name started as loop—a safe circle of connection. But my daughter had said it should be written as Loup, the French word for wolf. \"Because wolves howl to stay close to their pack,\" she had learned. And that just made sense.",
     "Loup isn't another smartphone for kids. It's something new—a smarter first phone. With your support, we can help kids grow up connected in the ways that really matter.",
@@ -256,7 +313,8 @@ export const LOUPKIDS_ODE = {
     "Worse yet, the tech and media industry is designed to not only do this, but push it.",
     "They're not just aware of the addiction loop—they're actively building and monetizing it.",
   ],
-  images: [LOUPKIDS_IMAGES.familyMovie, LOUPKIDS_IMAGES.laptop],
+  image: LOUPKIDS_IMAGES.familyMovie,
+  imageAlt: "A family watching a movie together at home",
 };
 
 export type LoupkidsFaqAnswer =
@@ -266,7 +324,7 @@ export type LoupkidsFaqAnswer =
 export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   {
     q: "What is Loup?",
-    a: "The Loup is a screenless, voice-based communication device designed specifically for kids aged 8–16. It is built for simple, safe connection with friends and family without the distractions and dangers of smartphones",
+    a: "The Loup is a screenless, voice-based communication device designed specifically for kids. It is built for simple, safe connection with friends and family without the distractions and dangers of smartphones",
   },
   {
     q: "Does Loup require a SIM card or a cell carrier?",
@@ -289,8 +347,19 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     q: "Are there monthly fees or subscriptions?",
     a: {
       paragraphs: [
-        "Out of the box Loup gives you 10 contacts free—enough for most kids' actual needs (close friends + direct family). Loup-to-Loup calling is always free.",
+        "Loup-to-Loup is always free, as are calls from parents to their kid's Loup. We offer competitive plans to make and receive calls to external numbers too.",
         "If you're looking for more—unlimited contacts, make and receive calls from external phone numbers (\"hi mom, no I haven't cleaned my room yet, but I will\"), and the ability to page your kids for dinner—plans start at $10/month, which undercuts many alternatives by at least half.",
+      ],
+    },
+  },
+  {
+    q: "Is LOUP more expensive than other kids phones?",
+    a: {
+      paragraphs: [
+        "Some, yes. Less than others. Here's the honest comparison:",
+        "Most kids phones in this category lock you into a carrier plan — $20–40/month on top of the device. LOUP runs on Wi-Fi. No SIM, no carrier, no monthly bill unless you want external calling (that's $10/month, cancel anytime). Over two years, LOUP typically costs less than the \"cheaper\" alternatives.",
+        "What you're also getting: aluminum construction built to last, a closed network we run ourselves (your family's data stays yours), and a device designed to look like something a kid actually wants to carry — not a plastic toy or a locked-down hand-me-down.",
+        "We built LOUP because we couldn't find anything we'd actually want our own kid to have. The price reflects that.",
       ],
     },
   },
@@ -309,17 +378,29 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     },
   },
   {
-    q: "Why don't I just get a Landline?",
+    q: "How is LOUP different from just getting a landline?",
     a: {
       paragraphs: [
-        "Honestly, landlines aren't a bad idea. But they come with limitations: recurring monthly fees (often $30–40/m), they're stuck in one place, and it remains hard to eliminate spam calls or set time limits.",
-        "Loup solves this by giving you a mobile device that works over WiFi—no data plan, no monthly carrier fees—while keeping the closed network safety of a landline. Your kid can take it anywhere there's WiFi, but only call approved contacts.",
+        "A landline keeps your kid connected to a wall. LOUP keeps them connected to you.",
+        "There's a reason kids stopped using landlines — they're tethered, fixed, and useless the moment your kid walks out the door. Creativity, independence, and real childhood happen outside. In the backyard. At a friend's house. At the park. A device that only works in the kitchen isn't a solution — it's a compromise.",
+        "LOUP goes where your kid goes. It fits in a pocket, clips to a backpack, and works on any Wi-Fi network — home, school, a grandparent's house. The freedom to roam is the whole point. We didn't build a smarter landline. We built the phone that comes before the smartphone.",
+      ],
+    },
+  },
+  {
+    q: "If it's screenless, why does it have any interface at all?",
+    a: {
+      paragraphs: [
+        "Because the alternative is a printer.",
+        "Some devices in this space ask you to physically print out a sheet of numbers and tape it to the keypad so your kid knows who they're calling. We wish we were joking. That's not a product — that's a workaround.",
+        "Kids need a contact list they can actually navigate. LOUP's e-ink display is the size of a name tag and uses less power than a wall clock. It shows your kid exactly who they're calling — a name, not a number — scrolled through with a single dial. No apps. No browser. No rabbit holes. Just a rolling list of the people they're allowed to reach.",
+        "We didn't add a screen. We added a rolodex.",
       ],
     },
   },
   {
     q: "Can my child customize their Loup?",
-    a: "Yes! The back plate of the phone is removable and customizable.",
+    a: "Yes — the back plate is removable and customizable. Patterns and customs are coming after launch; Silver ships first.",
   },
   {
     q: "Can I monitor my child's conversations or location?",
@@ -355,8 +436,8 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 ];
 
 export const LOUPKIDS_STORE = {
-  headline: "Reserve Loup",
-  subheadline: "Silver anodized aluminum — $149 pre-order, $199 at launch. Ships Q4 2026.",
+  headline: "Pre-order Loup",
+  subheadline: "Aluminum sides & buttons, ABS front — $129 pre-launch, $169 at launch. Ships October 2026.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -364,9 +445,9 @@ export const LOUPKIDS_STORE = {
 export const LOUPKIDS_STORE_PRODUCTS = [
   {
     title: "Loup — Silver",
-    price: 149,
-    compareAt: 199 as number | null,
-    note: "Pre-order · Ships Q4 2026",
+    price: 129,
+    compareAt: 169 as number | null,
+    note: "Pre-order · Ships October 2026",
     image: LOUPKIDS_IMAGES.loupAluminium,
     href: "/shop/loup",
     sizes: [] as string[],
@@ -374,34 +455,64 @@ export const LOUPKIDS_STORE_PRODUCTS = [
 ] as const;
 
 export const LOUPKIDS_SPECS = [
-  { group: "Hardware", label: "Body", value: "Anodized aluminum unibody, silver" },
+  { group: "Hardware", label: "Body", value: "Aluminum sides & buttons · ABS front, silver" },
+  { group: "Hardware", label: "Back plate", value: "Removable / customizable (patterns after launch)" },
   { group: "Hardware", label: "Display", value: "E-ink contact strip (no glow, no video, no apps)" },
   { group: "Hardware", label: "Controls", value: "Side scroll dial + call bar + mute button + volume rocker" },
   { group: "Hardware", label: "Speaker & Mic", value: "Full-range speaker, dual noise-cancelling mics" },
   { group: "Hardware", label: "Durability", value: "IP54 splash resistant, drop-tested to 2 meters" },
   { group: "Hardware", label: "Size & Weight", value: '4.3" × 2.6" × 0.5" — 118 g' },
-  { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
-  { group: "Calling", label: "Real phone numbers", value: "$10/month, unlimited US & Canada, cancel anytime" },
-  { group: "Calling", label: "Voice messages", value: "Unlimited, end-to-end encrypted" },
-  { group: "Calling", label: "Contacts", value: "10 free out of the box; unlimited with Plus plan" },
-  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no cellular bill" },
+  { group: "Battery & Charging", label: "Battery", value: "Rechargeable and replaceable" },
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
+  { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
+  { group: "Calling", label: "Real phone numbers", value: "$10/month, unlimited US & Canada, cancel anytime" },
+  { group: "Calling", label: "Contacts", value: "Parent-approved list; Loup-to-Loup and parent-to-kid free" },
+  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no cellular bill" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card" },
-  { group: "In the Box", label: "Also included", value: "2-year kid-proof warranty, 30-day free returns" },
+  { group: "In the Box", label: "Also included", value: "30-day free returns" },
 ] as const;
 
 export const LOUPKIDS_COMPARISON = {
   columns: ["LOUP", "Smartphone", "Kids smartwatch", "Flip phone"],
   rows: [
     { label: "Screen time", values: ["Zero", "5+ hrs/day avg", "Small screen, creeping apps", "Low but growing"] },
-    { label: "Feeds & algorithms", values: ["None, physically impossible", "The whole product", "Some models", "Browser included"] },
-    { label: "Works on Wi-Fi", values: ["Yes — no SIM, no cellular bill", "Yes (cellular)", "Yes (cellular)", "Yes (cellular)"] },
-    { label: "Parent-approved contacts only", values: ["Yes, enforced in hardware", "No", "Usually", "No"] },
-    { label: "Battery", values: ["5 days", "1 day", "1 day (less if used)", "2–3 days"] },
-    { label: "Survives being a kid's", values: ["Built for it, 2-yr warranty", "Add a $60 case & pray", "Mostly", "It's disposable"] },
-    { label: "Kid actually thinks it's cool", values: ["That's the whole design brief", "Yes (that's the problem)", "An unnatural way to talk to people", "No"] },
-    { label: "Price", values: ["$149", "$400–1,200", "$150–400 + plan", "$40–100"] },
+    {
+      label: "Feeds & algorithms",
+      values: ["None, physically impossible", "The whole product", "Some models", "Browser included"],
+    },
+    {
+      label: "Parent-approved contacts only",
+      values: ["Yes, enforced in hardware", "No", "Usually", "No"],
+    },
+    {
+      label: "Data privacy",
+      values: [
+        "COPPA-compliant, no data sold, no ads",
+        "Data collected & monetized",
+        "Varies, often data-sharing",
+        "N/A",
+      ],
+    },
+    {
+      label: "Monthly cost",
+      values: ["$0 Loup-to-Loup", "Cellular plan required", "Cellular plan required", "Cellular plan required"],
+    },
+    {
+      label: "Parent controls",
+      values: [
+        "Included, web dashboard",
+        "Separate paid app",
+        "Separate app, often subscription",
+        "None",
+      ],
+    },
+    { label: "Battery", values: ["Rechargeable & replaceable · 5 days", "Glued-in · 1 day", "1 day (less if used)", "2–3 days"] },
+    {
+      label: "Survives being a kid's",
+      values: ["Built for it", "Add a $60 case & pray", "Mostly", "It's disposable"],
+    },
+    { label: "Price", values: ["$129", "$400–1,200", "$150–400 + plan", "$40–100"] },
   ],
 } as const;
 
@@ -424,4 +535,14 @@ export const LOUPKIDS_JOURNAL_EXCERPTS: Record<string, string> = {
     "Most tech companies want to sell you \"engagement.\" I want to sell you the opposite. We built a device that does exactly three things well and zero things that ruin your kid's brain. No apps, no feeds, and no \"infinite scroll\" bullshit. Here's why making a phone \"boring\" is the best thing we ever did for our kids.",
   "the-borrowed-childhood":
     "Childhood isn't disappearing all at once. It's being borrowed—minute by minute, notification by notification. We're losing the war for our kids' attention to algorithms engineered like slot machines. Here is why we're fighting for the \"gap years\" and why boredom might be the best gift you ever give your kid.",
+  "white-tactile-neurodivergence-and-hard-of-sight":
+    "E-ink, high-contrast white faces, and physical dials aren't aesthetic flourishes. For neurodivergent kids and kids who are hard of sight, they're the difference between a usable phone and another glowing trap — and why the anti-screen movement must design for additional assistance, not around it.",
+  "the-public-health-crisis-hiding-in-our-pockets":
+    "Anxiety, sleep loss, and attentional fragmentation aren't \"strict parenting\" preferences. Heavy childhood screen use is a public health problem — and one day we'll talk about it the way we talk about smoking.",
+  "the-problem-with-locking-down-a-smartphone":
+    "Parental controls for kids' phones sound responsible. In practice, a lobotomized smartphone is still a smartphone — app store, browser, and workarounds included. Here's why filters aren't a first phone.",
+  "the-age-kids-should-get-their-first-phone":
+    "There isn't one magic birthday. There's a readiness question: do they need to reach people — or are they ready for the open internet? How to decide without surrendering to \"everyone else has one.\"",
+  "i-just-need-a-break-which-is-why-i-give-my-kid-a-phone":
+    "It's 5:15 PM, you're exhausted, and the phone comes out. That guilt is real — and so is the hidden truth underneath it: you don't need to be their cruise director. Boredom is brain work.",
 };

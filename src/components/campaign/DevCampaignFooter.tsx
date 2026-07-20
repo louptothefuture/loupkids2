@@ -5,22 +5,21 @@ const COLUMNS = [
   {
     heading: "Shop",
     links: [
-      { href: "/shop/loup", label: "Reserve Loup" },
+      { href: "/shop/loup", label: "Pre-order Loup" },
       { href: "/account", label: "Order Tracking" },
     ],
   },
   {
     heading: "Learn",
     links: [
-      { href: "/story", label: "Why LOUP" },
-      { href: "/blog", label: "Journal" },
+      { href: "/about", label: "The Story" },
+      { href: "/journal", label: "Journal" },
       { href: "/faq", label: "FAQ" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { href: "/press", label: "Press & Media Kit" },
       { href: "/contact", label: "Contact" },
       { href: "/faq#shipping", label: "Shipping & Returns" },
     ],
@@ -54,7 +53,6 @@ export function DevCampaignFooter() {
 
           {COLUMNS.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>
-              <p className="label-mono mb-4 text-paper/50">{col.heading}</p>
               <ul className="space-y-2">
                 {col.links.map((l) => (
                   <li key={l.href + l.label}>

@@ -10,7 +10,7 @@ export const FALLBACK_HOMEPAGE: HomepageCopy = {
   heroHeadline: "Phones for the anti-screen age.",
   heroSubline:
     "You aren't alone in being frustrated. 8 out of 10 parents hate that they feel forced into the smartphone trap. Loup is the escape hatch.",
-  heroCta: "Get LOUP — $149",
+  heroCta: "Get LOUP — $129",
   manifestoLines: [
     "The vanishing playground.",
     "5.5 hours a day on screens.",
@@ -41,19 +41,19 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Product",
     question: "What ages is LOUP for?",
     answer:
-      "LOUP is designed for kids 6–16. Younger kids use it as their first phone; older kids use it as a smartphone alternative that keeps them reachable without pulling them into feeds.",
+      "LOUP is designed for kids. Younger kids use it as their first phone; older kids use it as a smartphone alternative that keeps them reachable without pulling them into feeds.",
   },
   {
     section: "Product",
     question: "Can I customize it?",
     answer:
-      "Yes — the anodized aluminum back plate snaps off without tools. Choose patterns, sports designs, or print your own photo plate for $24.",
+      "The back plate is removable. Custom patterns and plates are planned after launch — Silver ships first.",
   },
   {
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "Out of the box you get 10 contacts free—enough for close friends and direct family. Loup-to-Loup calling is always free. If you want unlimited contacts or to make and receive calls from external phone numbers, Plus plans start at $10/month—cancel anytime.",
+      "Loup-to-Loup is always free, as are calls from parents to their kid's Loup. We offer competitive plans to make and receive calls to external numbers too — Plus plans start at $10/month, cancel anytime.",
   },
   {
     section: "Plans & Calling",
@@ -89,7 +89,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Returns & Warranty",
     question: "What does the warranty cover?",
     answer:
-      "Every LOUP has a 2-year warranty covering defects and everyday-kid accidents like drops. If it breaks doing normal kid things, we replace it.",
+      "Every Loup includes a 30-day return policy. Contact us if something isn't right — we'll make it right.",
   },
   {
     section: "Safety & Privacy",
@@ -177,7 +177,8 @@ export const FALLBACK_PRESS: PressMention[] = [
 ];
 
 export const FALLBACK_SPECS: Spec[] = [
-  { group: "Hardware", label: "Body", value: "Anodized aluminum unibody, silver" },
+  { group: "Hardware", label: "Body", value: "Aluminum sides & buttons · ABS front, silver" },
+  { group: "Hardware", label: "Back plate", value: "Removable / customizable (patterns after launch)" },
   { group: "Hardware", label: "Display", value: 'E-ink contact strip (no glow, no video, no apps)' },
   { group: "Hardware", label: "Controls", value: "Side scroll dial + call bar + mute button + volume rocker" },
   { group: "Hardware", label: "Speaker & Mic", value: "Full-range speaker, dual noise-cancelling mics" },
@@ -185,22 +186,22 @@ export const FALLBACK_SPECS: Spec[] = [
   { group: "Hardware", label: "Size & Weight", value: '4.3" × 2.6" × 0.5" — 118 g' },
   { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
   { group: "Calling", label: "Real phone numbers", value: "$10/month, unlimited US & Canada, cancel anytime" },
-  { group: "Calling", label: "Voice messages", value: "Unlimited, end-to-end encrypted" },
-  { group: "Calling", label: "Contacts", value: "10 free out of the box; unlimited with Plus plan" },
+  { group: "Calling", label: "Contacts", value: "Parent-approved list; Loup-to-Loup and parent-to-kid free" },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no cellular bill" },
+  { group: "Battery & Charging", label: "Battery", value: "Rechargeable and replaceable" },
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card" },
-  { group: "In the Box", label: "Also included", value: "2-year kid-proof warranty, 30-day free returns" },
+  { group: "In the Box", label: "Also included", value: "30-day free returns" },
 ];
 
 export const FALLBACK_POSTS: Post[] = LOUPKIDS_JOURNAL_POSTS;
 
-/** Featured press quotes rotate on the homepage; full list on /press. */
+/** Featured press quotes / fast facts for legacy home strip. */
 export const PRESS_KIT_FACTS = [
-  { label: "Founded", value: "2025, Brooklyn NY" },
-  { label: "Product", value: "LOUP — screenless voice phone for kids 6–16" },
-  { label: "Price", value: "$149 device · free LOUP-to-LOUP · $10/mo real numbers" },
+  { label: "Founded", value: "2025, Providence RI" },
+  { label: "Product", value: "LOUP — screenless voice phone for kids" },
+  { label: "Price", value: "$129 device · free LOUP-to-LOUP · $10/mo real numbers" },
   { label: "Category", value: "Smartphone alternative / anti-screen hardware" },
-  { label: "Press contact", value: "press@loupkids.com" },
+  { label: "Contact", value: "hi@loupkids.com" },
 ];

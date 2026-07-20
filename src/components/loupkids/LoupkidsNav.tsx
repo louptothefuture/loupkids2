@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_NAV } from "@/lib/content/loupkids-site";
+import { LoupLogoLink } from "./LoupLogo";
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
@@ -59,7 +60,7 @@ export function LoupkidsNav() {
   const linkClass = transparent
     ? "text-white/85 transition-colors hover:text-white"
     : "text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]";
-  const logoClass = transparent ? "text-white" : "text-[var(--lk-ink)]";
+  const logoVariant = transparent ? "light" : "dark";
   const ctaClass = transparent ? "lk-btn lk-btn-sm lk-btn-white" : "lk-btn lk-btn-sm";
   const iconClass = transparent ? "text-white" : "text-[var(--lk-ink)]";
 
@@ -72,10 +73,8 @@ export function LoupkidsNav() {
             : "border-b border-[var(--lk-line)] bg-white/95 backdrop-blur-sm"
         }`}
       >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-[var(--lk-section-x)] py-4">
-          <Link href="/" className={`lk-display text-xl tracking-tight ${logoClass}`}>
-            Loup
-          </Link>
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-[var(--lk-section-x)] py-3.5 pt-[max(0.875rem,env(safe-area-inset-top))] sm:gap-4 sm:py-4">
+          <LoupLogoLink href="/" variant={logoVariant} height={26} priority />
 
           <div className="flex items-center gap-3 sm:gap-4">
             {(!isHome || scrolled || menuOpen) && (

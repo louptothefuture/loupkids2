@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { LOUPKIDS_STORY_TEASER } from "@/lib/content/loupkids-site";
+import { LOUPKIDS_IMAGES, LOUPKIDS_STORY_TEASER } from "@/lib/content/loupkids-site";
 import { ImageBox } from "./ImageBox";
 
 const DIFFERENTIATORS = [
@@ -32,8 +32,7 @@ export function DevCampaignStorySection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <p className="label-mono text-ink-soft">Why Loup</p>
-            <h2 className="display mt-3 text-4xl text-ink sm:text-5xl">{LOUPKIDS_STORY_TEASER.headline}</h2>
+            <h2 className="display text-4xl text-ink sm:text-5xl">{LOUPKIDS_STORY_TEASER.headline}</h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-soft">
               {LOUPKIDS_STORY_TEASER.paragraphs.map((p) => (
                 <p key={p.slice(0, 32)}>{p}</p>
@@ -48,13 +47,16 @@ export function DevCampaignStorySection() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <ImageBox className="aspect-[4/3] w-full rounded-2xl" />
+            <ImageBox
+              src={LOUPKIDS_IMAGES.phoneOnBooks}
+              alt="Loup on a stack of books"
+              className="aspect-[4/3] w-full rounded-2xl"
+            />
           </Reveal>
         </div>
 
         <Reveal delay={0.1}>
-          <p className="label-mono mt-16 text-ink-soft">What Loup gives you that others don&apos;t</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {DIFFERENTIATORS.map((item) => (
               <div key={item.title} className="rounded-2xl border-2 border-ink bg-neutral-50 p-5">
                 <h3 className="display text-lg text-ink">{item.title}</h3>
