@@ -20,12 +20,13 @@ function FooterLinks({ links }: { links: readonly { href: string; label: string 
   );
 }
 
-export function LoupkidsFooter() {
+export function LoupkidsFooter({ body }: { body?: string }) {
+  const footerBody = body ?? LOUPKIDS_FOOTER.body;
   return (
     <footer className="lk-section-black border-t border-white/10 px-[var(--lk-section-x)] pb-28 pt-12 text-white sm:pb-32 sm:pt-14">
       <div className="lk-container max-w-5xl">
         <p className="max-w-3xl text-pretty text-[1rem] leading-[1.75] text-white/70 sm:text-[1.0625rem]">
-          {LOUPKIDS_FOOTER.body}
+          {footerBody}
         </p>
 
         <div className="mt-12 grid items-start gap-x-10 gap-y-8 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4">

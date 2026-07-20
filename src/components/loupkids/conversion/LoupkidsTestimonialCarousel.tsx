@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { Testimonial } from "@/lib/content/types";
 import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
 import { FadeIn } from "../FadeIn";
 
-export function LoupkidsTestimonialCarousel() {
-  const quotes = FALLBACK_TESTIMONIALS.filter((t) => t.featured);
+export function LoupkidsTestimonialCarousel({
+  headline = "What beta testers are saying",
+  testimonials = FALLBACK_TESTIMONIALS.filter((t) => t.featured),
+}: {
+  headline?: string;
+  testimonials?: Testimonial[];
+}) {
+  const quotes = testimonials.filter((t) => t.featured);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -21,7 +28,7 @@ export function LoupkidsTestimonialCarousel() {
   return (
     <section className="border-y border-[var(--lk-line)] bg-white px-[var(--lk-section-x)] py-12 sm:py-14">
       <FadeIn className="lk-container mx-auto max-w-3xl text-center">
-        <h2 className="lk-display lk-h2">What beta testers are saying</h2>
+        <h2 className="lk-display lk-h2">{headline}</h2>
         <blockquote className="lk-display mt-8 text-xl leading-snug sm:text-2xl">
           &ldquo;{t.quote}&rdquo;
         </blockquote>

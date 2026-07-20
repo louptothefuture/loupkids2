@@ -3,9 +3,10 @@ import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
 import { LoupkidsPageHeader } from "@/components/loupkids/LoupkidsPageHeader";
-import { LOUPKIDS_IMAGES } from "@/lib/content/loupkids-site";
-import { LOUPKIDS_SETUP_STEPS } from "@/lib/content/loupkids-support";
+import { getSetupGuideContent } from "@/lib/content/cms";
 import { SITE } from "@/lib/site";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Setup Guide",
@@ -13,20 +14,18 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/setup` },
 };
 
-export default function SetupPage() {
+export default async function SetupPage() {
+  const guide = await getSetupGuideContent();
+
   return (
     <div>
-      <LoupkidsPageHeader
-        eyebrow="Support / setup guide"
-        title="Easy as 1, 2, 3"
-        description="Pair Loup, add contacts, and let your kid call their people — box to first call in about ten minutes."
-      />
+      <LoupkidsPageHeader eyebrow={guide.eyebrow} title={guide.title} description={guide.description} />
 
       <section className="lk-section-white lk-page-body">
         <div className="lk-container grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-14 xl:gap-16">
           <div>
             <ol>
-              {LOUPKIDS_SETUP_STEPS.map((s, i) => (
+              {guide.steps.map((s, i) => (
                 <FadeIn key={s.step} delay={i * 0.04}>
                   <li className={i > 0 ? "mt-8 border-t border-[var(--lk-line)] pt-8" : ""}>
                     <p className="lk-label mb-2">{s.section}</p>
@@ -53,17 +52,15 @@ export default function SetupPage() {
           <FadeIn delay={0.08} className="lg:sticky lg:top-28">
             <div className="relative aspect-[4/5] overflow-hidden bg-neutral-100 sm:aspect-[5/6]">
               <LoupkidsImage
-                src={LOUPKIDS_IMAGES.heroKitchen}
-                alt="Kid talking on Loup at the kitchen counter while a parent cooks"
+                src={guide.heroImage}
+                alt={guide.heroImageAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover object-[40%_30%]"
                 priority
               />
             </div>
-            <p className="mt-3 text-sm text-[var(--lk-muted)]">
-              First call from the kitchen — setup takes about ten minutes.
-            </p>
+            <p className="mt-3 text-sm text-[var(--lk-muted)]">{guide.heroCaption}</p>
           </FadeIn>
         </div>
       </section>

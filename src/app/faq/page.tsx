@@ -3,8 +3,10 @@ import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { FaqAnswer } from "@/components/loupkids/FaqAnswer";
 import { FaqJsonLd } from "@/components/seo/JsonLd";
-import { LOUPKIDS_FAQ } from "@/lib/content/loupkids-site";
+import { getPublicFaqs } from "@/lib/content/cms";
 import { SITE } from "@/lib/site";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -13,8 +15,9 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/faq` },
 };
 
-export default function FaqPage() {
-  const faqs = LOUPKIDS_FAQ.map((f) => ({
+export default async function FaqPage() {
+  const faqItems = await getPublicFaqs();
+  const faqs = faqItems.map((f) => ({
     question: f.q,
     answer: typeof f.a === "string" ? f.a : f.a.paragraphs.join(" "),
   }));
@@ -31,7 +34,7 @@ export default function FaqPage() {
 
       <section className="lk-section">
         <div className="lk-container-narrow">
-          {LOUPKIDS_FAQ.map((faq, i) => (
+          {faqItems.map((faq, i) => (
             <FadeIn key={faq.q} delay={i * 0.03}>
               <details className="group border-b border-[var(--lk-line)] py-6">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">

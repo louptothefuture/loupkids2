@@ -47,7 +47,7 @@ export async function getPosts(): Promise<Post[]> {
       seoTitle, seoDescription
     }`,
     {},
-    { next: { revalidate: 300 } },
+    { next: { revalidate: 300, tags: ["post"] } },
   );
 
   if (!raw?.length || raw.length < enrichedFallback.length) {
@@ -74,7 +74,7 @@ export async function getFaqs(): Promise<Faq[]> {
   return client.fetch(
     `*[_type == "faqItem"] | order(section asc, order asc) { question, answer, section }`,
     {},
-    { next: { revalidate: 300 } },
+    { next: { revalidate: 300, tags: ["faq"] } },
   );
 }
 
@@ -83,7 +83,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
   return client.fetch(
     `*[_type == "testimonial"] | order(order asc) { quote, attribution, rating, featured }`,
     {},
-    { next: { revalidate: 300 } },
+    { next: { revalidate: 300, tags: ["testimonials"] } },
   );
 }
 
@@ -92,7 +92,7 @@ export async function getPress(): Promise<PressMention[]> {
   const raw = await client.fetch(
     `*[_type == "pressLogo"] | order(order asc) { outlet, pullQuote, url, logo }`,
     {},
-    { next: { revalidate: 300 } },
+    { next: { revalidate: 300, tags: ["press"] } },
   );
   return raw.map((r: any) => ({ ...r, logoUrl: urlFor(r.logo) }));
 }
@@ -102,7 +102,7 @@ export async function getSpecs(): Promise<Spec[]> {
   return client.fetch(
     `*[_type == "productSpec"] | order(group asc, order asc) { label, value, group }`,
     {},
-    { next: { revalidate: 300 } },
+    { next: { revalidate: 300, tags: ["specs"] } },
   );
 }
 
@@ -111,7 +111,7 @@ export async function getHomepage(): Promise<HomepageCopy> {
   const doc = await client.fetch(
     `*[_type == "homepage"][0] { heroHeadline, heroSubline, heroCta, manifestoLines, howItWorksIntro }`,
     {},
-    { next: { revalidate: 300 } },
+    { next: { revalidate: 300, tags: ["homepage"] } },
   );
   return { ...FALLBACK_HOMEPAGE, ...(doc ?? {}) };
 }

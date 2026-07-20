@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
-import { LOUPKIDS_ABOUT } from "@/lib/content/loupkids-site";
+import { getAboutPageContent } from "@/lib/content/cms";
 import { SITE } from "@/lib/site";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "About — How Loup Started",
@@ -14,67 +16,14 @@ export const metadata: Metadata = {
 };
 
 const STORY_MEDIA = [
-  {
-    src: "/images/renders/shop/a_3.jpg",
-    alt: "Early Loup hardware form",
-    label: "Sketch to hardware",
-  },
-  {
-    src: "/images/renders/shop/a_9.jpg",
-    alt: "Loup hardware detail",
-    label: "25 hardware iterations",
-  },
-  {
-    src: "/images/renders/shop/a_11.jpg",
-    alt: "Loup enclosure development",
-    label: "100+ enclosure prints",
-  },
-  {
-    src: "/images/renders/shop/a_4.jpg",
-    alt: "Loup production design",
-    label: "Prototype in hand",
-  },
+  { src: "/images/renders/shop/a_3.jpg", alt: "Early Loup hardware form", label: "Sketch to hardware" },
+  { src: "/images/renders/shop/a_9.jpg", alt: "Loup hardware detail", label: "25 hardware iterations" },
+  { src: "/images/renders/shop/a_11.jpg", alt: "Loup enclosure development", label: "100+ enclosure prints" },
+  { src: "/images/renders/shop/a_4.jpg", alt: "Loup production design", label: "Prototype in hand" },
 ] as const;
 
-export default function AboutPage() {
-  const [
-    oldPhone,
-    pretendCalls,
-    walkieTalkies,
-    kidQuotes,
-    simple,
-    headlines,
-    parentPressure,
-    notAgainstScreens,
-    internetRisks,
-    publicHealth,
-    startedBuilding,
-    nameStory,
-    closing,
-  ] = LOUPKIDS_ABOUT.paragraphs;
-
-  const timeline = [
-    {
-      label: "01 / Play became real",
-      title: "The calls started as pretend.",
-      paragraphs: [walkieTalkies, kidQuotes, simple],
-    },
-    {
-      label: "02 / The pressure arrived",
-      title: "Connection came with a cost.",
-      paragraphs: [headlines, parentPressure],
-    },
-    {
-      label: "03 / The line we drew",
-      title: "The first phone shouldn’t be a feed.",
-      paragraphs: [notAgainstScreens, internetRisks, publicHealth],
-    },
-    {
-      label: "04 / The name found us",
-      title: "Wolves howl to stay close.",
-      paragraphs: [nameStory],
-    },
-  ];
+export default async function AboutPage() {
+  const about = await getAboutPageContent();
 
   return (
     <article className="bg-[#fafaf8] text-[var(--lk-ink)]">
@@ -85,11 +34,12 @@ export default function AboutPage() {
             Built, not promised
           </div>
           <h1 className="lk-display mt-6 max-w-4xl text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.94] tracking-[-0.055em]">
-            {LOUPKIDS_ABOUT.title}
+            {about.title}
           </h1>
           <div className="mt-8 max-w-3xl space-y-4 text-lg leading-relaxed text-[var(--lk-muted)] sm:text-xl">
-            <p>{oldPhone}</p>
-            <p>{pretendCalls}</p>
+            {about.introParagraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            ))}
           </div>
         </FadeIn>
       </section>
@@ -119,17 +69,13 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl">
           <p className="lk-label">The build — timeline + media</p>
           <ol className="relative mt-10 space-y-12 before:absolute before:bottom-4 before:left-[5px] before:top-3 before:w-px before:bg-[#7657d5]/35 sm:space-y-16">
-            {timeline.map((item, i) => (
+            {about.timeline.map((item, i) => (
               <li key={item.label} className="relative pl-8">
                 <span className="absolute left-0 top-2 h-[11px] w-[11px] rounded-full border-2 border-[#fafaf8] bg-[#7657d5] ring-1 ring-[#7657d5]/30" />
                 <FadeIn className="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_15rem] md:gap-10">
                   <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#654bbd]">
-                      {item.label}
-                    </p>
-                    <h2 className="lk-display mt-3 text-2xl tracking-tight sm:text-3xl">
-                      {item.title}
-                    </h2>
+                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#654bbd]">{item.label}</p>
+                    <h2 className="lk-display mt-3 text-2xl tracking-tight sm:text-3xl">{item.title}</h2>
                     <div className="mt-4 max-w-2xl space-y-3 leading-relaxed text-[var(--lk-muted)]">
                       {item.paragraphs.map((paragraph) => (
                         <p key={paragraph.slice(0, 36)}>{paragraph}</p>
@@ -139,15 +85,15 @@ export default function AboutPage() {
                   <figure>
                     <div className="relative aspect-square overflow-hidden rounded-2xl border border-[var(--lk-line)] bg-white">
                       <Image
-                        src={STORY_MEDIA[i].src}
-                        alt={STORY_MEDIA[i].alt}
+                        src={item.image ?? STORY_MEDIA[i]?.src ?? STORY_MEDIA[0].src}
+                        alt={item.imageAlt ?? STORY_MEDIA[i]?.alt ?? "Loup story"}
                         fill
                         sizes="(max-width: 767px) 100vw, 15rem"
                         className="object-cover"
                       />
                     </div>
                     <figcaption className="mt-2 text-xs uppercase tracking-[0.12em] text-[var(--lk-muted)]">
-                      {STORY_MEDIA[i].label}
+                      {item.imageCaption ?? STORY_MEDIA[i]?.label}
                     </figcaption>
                   </figure>
                 </FadeIn>
@@ -161,20 +107,17 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl">
           <p className="lk-label">Who’s behind it</p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <FadeIn className="rounded-2xl border border-[var(--lk-line)] p-6 sm:p-8">
-              <div className="h-11 w-11 rounded-full bg-[#7657d5]/10" />
-              <p className="lk-display mt-5 text-xl">A parent who wanted another option</p>
-              <p className="mt-3 leading-relaxed text-[var(--lk-muted)]">
-                The question was simple: how do you give a kid independence without handing them the internet?
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.06} className="rounded-2xl border border-[var(--lk-line)] p-6 sm:p-8">
-              <div className="h-11 w-11 rounded-full bg-[#7657d5]/10" />
-              <p className="lk-display mt-5 text-xl">A daughter who named the wolf</p>
-              <p className="mt-3 leading-relaxed text-[var(--lk-muted)]">
-                She turned Loop into Loup—and gave the product its reason for being: staying close to the pack.
-              </p>
-            </FadeIn>
+            {about.teamBlocks.map((block, i) => (
+              <FadeIn
+                key={block.title}
+                delay={i * 0.06}
+                className="rounded-2xl border border-[var(--lk-line)] p-6 sm:p-8"
+              >
+                <div className="h-11 w-11 rounded-full bg-[#7657d5]/10" />
+                <p className="lk-display mt-5 text-xl">{block.title}</p>
+                <p className="mt-3 leading-relaxed text-[var(--lk-muted)]">{block.body}</p>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -192,10 +135,8 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="lk-label">Manufacturing partner</p>
-            <h2 className="lk-display mt-4 text-3xl tracking-tight sm:text-4xl">
-              From idea to prototype.
-            </h2>
-            <p className="mt-5 leading-relaxed text-[var(--lk-muted)]">{startedBuilding}</p>
+            <h2 className="lk-display mt-4 text-3xl tracking-tight sm:text-4xl">{about.manufacturingTitle}</h2>
+            <p className="mt-5 leading-relaxed text-[var(--lk-muted)]">{about.manufacturingBody}</p>
           </div>
         </FadeIn>
       </section>
@@ -203,7 +144,7 @@ export default function AboutPage() {
       <section className="bg-white px-[var(--lk-section-x)] py-16 text-center sm:py-24">
         <FadeIn className="mx-auto max-w-3xl">
           <p className="lk-label">Where we are now</p>
-          <p className="lk-display mt-5 text-3xl tracking-tight sm:text-5xl">{closing}</p>
+          <p className="lk-display mt-5 text-3xl tracking-tight sm:text-5xl">{about.closing}</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/shop/loup" className="lk-btn">
               {LOUPKIDS_CTA.primary}

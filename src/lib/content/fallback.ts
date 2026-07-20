@@ -7,10 +7,10 @@ import { LOUPKIDS_JOURNAL_POSTS } from "./journal";
  */
 
 export const FALLBACK_HOMEPAGE: HomepageCopy = {
-  heroHeadline: "Phones for the anti-screen age.",
+  heroHeadline: "Kids Phones for the Anti-Screen Age",
   heroSubline:
-    "You aren't alone in being frustrated. 8 out of 10 parents hate that they feel forced into the smartphone trap. Loup is the escape hatch.",
-  heroCta: "Get LOUP — $129",
+    "We didn't build a smarter landline. We built the phone that comes before the smartphone.",
+  heroCta: "Pre-order Loup",
   manifestoLines: [
     "The vanishing playground.",
     "5.5 hours a day on screens.",
