@@ -4,11 +4,10 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/shopify/types";
-import { useCart } from "@/components/cart/CartProvider";
 import { trackViewItem } from "@/lib/analytics";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
-import { LoupkidsGuaranteeBadge } from "@/components/loupkids/conversion";
+import { StripeCheckoutButton } from "@/components/loupkids/conversion";
 
 function formatPrice(amount: string, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -19,7 +18,6 @@ function formatPrice(amount: string, currency: string) {
 }
 
 export function ProductView({ product }: { product: Product }) {
-  const { addItem, pending } = useCart();
   const optionName = product.options[0]?.name;
   const [selected, setSelected] = useState(product.variants[0]);
   const [activeImage, setActiveImage] = useState(0);
@@ -73,13 +71,13 @@ export function ProductView({ product }: { product: Product }) {
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain p-5 sm:p-8"
+                  className="object-contain p-3 sm:p-8"
                 />
               )}
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="mt-3 grid grid-cols-5 gap-2">
+        <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-5 md:grid-cols-6">
           {gallery.map((img, i) => (
             <button
               key={img.url}
@@ -111,13 +109,14 @@ export function ProductView({ product }: { product: Product }) {
             )}
           </div>
           <p className="mt-1 text-sm text-[var(--lk-muted)]">
-            Silver anodized aluminum · Pre-order · ships Q4 2026
+            Aluminum sides & buttons · ABS front · Pre-order · ships October 2026
           </p>
         </div>
 
-        <p className="line-clamp-4 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">
-          {product.description}
-        </p>
+        <div
+          className="space-y-3 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)] [&_p]:m-0"
+          dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+        />
 
         {featuredQuote ? (
           <blockquote className="border-l-2 border-[var(--lk-line)] pl-4 text-sm leading-relaxed text-[var(--lk-muted)]">
@@ -156,25 +155,18 @@ export function ProductView({ product }: { product: Product }) {
         )}
 
         <div className="border-t border-[var(--lk-line)] pt-5">
-          <button
-            type="button"
-            onClick={() =>
-              addItem(selected.id, {
-                title: product.title,
-                variantTitle: selected.title,
-                price: parseFloat(selected.price.amount),
-              })
-            }
-            disabled={pending || !selected.availableForSale}
-            className="lk-btn lk-btn-lg w-full disabled:opacity-60"
-          >
-            {selected.availableForSale ? (pending ? "Adding…" : LOUPKIDS_CTA.product) : "Sold out"}
-          </button>
-          <LoupkidsGuaranteeBadge align="start" className="mt-3 max-w-none" />
+          {selected.availableForSale ? (
+            <StripeCheckoutButton label={LOUPKIDS_CTA.product} />
+          ) : (
+            <button type="button" disabled className="lk-btn lk-btn-lg w-full disabled:opacity-60">
+              Sold out
+            </button>
+          )}
           <ul className="mt-4 space-y-1.5 text-sm leading-snug text-[var(--lk-muted)]">
-            <li>10 contacts free · Loup-to-Loup always free</li>
+            <li>Rechargeable and replaceable battery</li>
+            <li>Customizable back plates</li>
+            <li>Loup-to-Loup always free · parent-to-kid Loup free</li>
             <li>Plus from $10/mo for external numbers · cancel anytime</li>
-            <li>Built for everyday kid use</li>
           </ul>
         </div>
       </div>

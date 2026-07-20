@@ -9,7 +9,7 @@ export const BRAIN_COMPARISON = {
   eyebrow: "What happens to their brain",
   headline: "Screen time vs. real conversation",
   subline:
-    "Staring at a screen is solitary and overstimulating. Talking in person builds empathy, focus, and real connection.",
+    "Staring at a screen is solitary and overstimulating. Talking — voices, turns, real back-and-forth — builds focus, creativity, and independence.",
   screen: {
     title: "Looking at a screen",
     intro: "Solitary, visual, and highly stimulating.",
@@ -41,31 +41,31 @@ export const BRAIN_COMPARISON = {
     ],
   },
   inPerson: {
-    title: "Talking in person",
-    intro: "Social bonding, deep listening, and physical cues.",
+    title: "Just talking",
+    intro: "Voice, turn-taking, and the room to invent — no feed required.",
     facts: [
       {
-        id: "synchrony",
-        label: "Brain synchrony",
-        body: "Neural activity aligns between two people — face-to-face creates 9× more cross-brain links than video chat.",
-        source: "Neuroscience News",
+        id: "spontaneity",
+        label: "Spontaneity",
+        body: "Unscripted back-and-forth is live improvisation — kids hold an idea, wait their turn, and pivot. No feed to finish the sentence for them.",
+        source: "MIT · Harvard",
       },
       {
-        id: "social-reading",
-        label: "Social reading",
-        body: "The brain processes non-verbal cues — body language, eye contact, and vocal tone — in real time.",
+        id: "creativity",
+        label: "Creativity",
+        body: "Talking leaves gaps. Gaps are where imagination starts — stories, plans, jokes — instead of another scroll filling the silence.",
+        source: "Review of Education",
+      },
+      {
+        id: "independence",
+        label: "Independence",
+        body: "A call they start themselves builds agency: reach their people, solve a small problem, come home — without an algorithm deciding what happens next.",
         source: "Stanford Lifestyle Medicine",
       },
       {
-        id: "mirror-neurons",
-        label: "Mirror neurons",
-        body: "Mirror neurons help us feel what another person feels — building empathy and trust.",
-        source: "Neuroscience News",
-      },
-      {
-        id: "engagement",
+        id: "tuned-in",
         label: "Fully tuned in",
-        body: "In-person talk gets you leaning in — voices, laughs, and eye contact make conversations feel more alive and real.",
+        body: "Voice-only conversation pulls attention into one thread — laughs, pauses, tone — not a second screen competing for the next hit.",
         source: "Stanford Lifestyle Medicine",
       },
     ],

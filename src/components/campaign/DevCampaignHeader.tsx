@@ -48,7 +48,7 @@ export function DevCampaignHeader() {
             href="/shop/loup"
             className="btn-sticker hidden border-2 border-ink bg-ink px-4 py-2 text-sm text-white sm:inline-flex"
           >
-            Get LOUP $149
+            Get LOUP $129
           </Link>
           <button
             onClick={() => setMenuOpen((v) => !v)}
@@ -87,7 +87,7 @@ export function DevCampaignHeader() {
                 onClick={() => setMenuOpen(false)}
                 className="btn-sticker mt-3 self-start border-2 border-ink bg-ink px-5 py-3 text-white"
               >
-                Get LOUP $149
+                Get LOUP $129
               </Link>
             </div>
           </motion.nav>

@@ -8,8 +8,8 @@
   --lk-muted-light: #666666;
   --lk-line: rgba(10, 10, 10, 0.12);
   --lk-accent: #0a0a0a;
-  --lk-section-y: clamp(4.5rem, 10vw, 7.5rem);
-  --lk-section-x: clamp(1.25rem, 4vw, 3rem);
+  --lk-section-y: clamp(3.5rem, 10vw, 7.5rem);
+  --lk-section-x: clamp(1.75rem, 5.5vw, 3rem);
   --lk-gap: clamp(1.25rem, 2.5vw, 2rem);
   --lk-text-base: 1.125rem;
   --lk-text-lead: clamp(1.125rem, 1.8vw, 1.3125rem);
@@ -22,6 +22,7 @@
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 /* —— Typography scale —— */
@@ -32,8 +33,15 @@
 }
 
 .loupkids-theme .lk-h1 {
-  font-size: clamp(2.25rem, 6.5vw, 4.75rem);
-  line-height: 1.04;
+  font-size: clamp(1.875rem, 7vw, 4.75rem);
+  line-height: 1.05;
+}
+
+@media (max-width: 639px) {
+  .loupkids-theme .lk-h1 {
+    font-size: clamp(1.75rem, 8.2vw, 2.25rem);
+    max-width: 14ch;
+  }
 }
 
 .loupkids-theme .lk-h2 {

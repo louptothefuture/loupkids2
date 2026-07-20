@@ -1,34 +1,26 @@
-import Image from "next/image";
 import Link from "next/link";
 
-export const LOUP_LOGO = {
-  src: "/images/loup-logo.png",
-  width: 790,
-  height: 340,
-} as const;
-
+/** Wordmark — text only (logo asset was invisible on the dark hero). */
 export function LoupLogo({
   variant = "dark",
   height = 28,
   className = "",
-  priority = false,
 }: {
   variant?: "dark" | "light";
   height?: number;
   className?: string;
   priority?: boolean;
 }) {
-  const width = Math.round((height * LOUP_LOGO.width) / LOUP_LOGO.height);
+  const color = variant === "light" ? "text-white" : "text-[var(--lk-ink)]";
+  const size = Math.max(18, Math.round(height * 0.85));
 
   return (
-    <Image
-      src={LOUP_LOGO.src}
-      alt=""
-      width={width}
-      height={height}
-      priority={priority}
-      className={`block h-auto w-auto shrink-0 ${variant === "light" ? "brightness-0 invert" : ""} ${className}`}
-    />
+    <span
+      className={`block shrink-0 font-semibold tracking-[-0.04em] ${color} ${className}`}
+      style={{ fontSize: size, lineHeight: 1 }}
+    >
+      LOUP
+    </span>
   );
 }
 
@@ -38,7 +30,6 @@ export function LoupLogoLink({
   height = 28,
   className = "",
   label = "Loup home",
-  priority = false,
 }: {
   href?: string;
   variant?: "dark" | "light";
@@ -49,7 +40,7 @@ export function LoupLogoLink({
 }) {
   return (
     <Link href={href} aria-label={label} className={`inline-flex items-center ${className}`}>
-      <LoupLogo variant={variant} height={height} priority={priority} />
+      <LoupLogo variant={variant} height={height} />
     </Link>
   );
 }

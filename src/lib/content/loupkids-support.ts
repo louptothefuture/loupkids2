@@ -79,7 +79,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Out of the box you get 10 contacts free—enough for close friends and direct family. Loup-to-Loup calling is always free. The $10/month Plus plan adds unlimited contacts, external phone numbers in and out, and pager mode.",
+        body: "Loup-to-Loup is always free, as are calls from parents to their kid's Loup. We offer competitive plans to make and receive calls to external numbers too. The $10/month Plus plan adds external phone numbers in and out, and pager mode.",
       },
       {
         heading: "Subscribe",
@@ -203,18 +203,24 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
 export const LOUPKIDS_SETUP_STEPS = [
   {
     step: "1",
-    title: "Pair",
-    body: "Connect Loup to Wi-Fi, open the parent app, and create your account.",
+    section: "Set it up",
+    title: "Pair Loup with your Wi-Fi",
+    body: "Open the parent app, scan the code on the back of Loup, and choose your home network. You’ll be ready in about two minutes.",
+    placeholder: "Setup screen",
   },
   {
     step: "2",
-    title: "Set conditions",
-    body: "Choose call hours, quiet times, and every contact your kid is allowed to reach.",
+    section: "Choose their people",
+    title: "Add the people they actually call",
+    body: "Parents, grandparents, best friends — you decide who’s in. No strangers, spam, or surprise calls.",
+    placeholder: "Contacts list",
   },
   {
     step: "3",
-    title: "Set 'em free",
-    body: "Let them call friends on a closed network — no strangers, spam, or open internet.",
+    section: "Then hand it over",
+    title: "Your kid picks up the phone",
+    body: "They turn the dial, choose a name, and press the talk bar. No menus to learn. No apps to get lost in.",
+    placeholder: "Device screen",
   },
 ] as const;
 
@@ -261,18 +267,36 @@ export const LOUPKIDS_RESOURCES = [
     type: "Journal",
     description: "The case for devices that do one thing well.",
   },
-] as const;
-
-export const LOUPKIDS_PRESS_IMAGES = [
-  { src: "/images/loupkids/red+just+loup.png", label: "Loup — Signal Red" },
-  { src: "/images/loupkids/black+just+loup.png", label: "Loup — Black" },
-  { src: "/images/loupkids/front+of+phone+with+type.png", label: "Loup — front detail" },
   {
-    src: "/images/loupkids/kids-on-phones-tout-2-032724-383a248fa70e473eaab4fc83db6f269c.jpg",
-    label: "Lifestyle — kids with Loup",
+    title: "White, tactile, and built for kids who need more help",
+    href: "/journal/white-tactile-neurodivergence-and-hard-of-sight",
+    type: "Journal",
+    description: "Why e-ink and physical dials matter for neurodivergence and hard of sight.",
   },
-  { src: "/images/loupkids/kid+black+and+white.png", label: "Lifestyle — editorial" },
-  { src: "/images/loupkids/vertical+flat+2.jpg", label: "Product — flat lay" },
+  {
+    title: "The public health crisis hiding in our pockets",
+    href: "/journal/the-public-health-crisis-hiding-in-our-pockets",
+    type: "Journal",
+    description: "Heavy childhood screen use — and why we'll look back on it like smoking.",
+  },
+  {
+    title: "The problem with locking down a smartphone",
+    href: "/journal/the-problem-with-locking-down-a-smartphone",
+    type: "Journal",
+    description: "Why parental controls for kids' phones aren't the same as the right first phone.",
+  },
+  {
+    title: "The age kids should get their first phone",
+    href: "/journal/the-age-kids-should-get-their-first-phone",
+    type: "Journal",
+    description: "Skip the magic birthday — readiness, reachability, and the gap years.",
+  },
+  {
+    title: "I just need a break — why the phone comes out at 5:15",
+    href: "/journal/i-just-need-a-break-which-is-why-i-give-my-kid-a-phone",
+    type: "Journal",
+    description: "Parenting guilt, boredom, and why you don't have to be the cruise director.",
+  },
 ] as const;
 
 export const LOUPKIDS_FOOTER_LEGAL = [
@@ -288,7 +312,6 @@ export const LOUPKIDS_FOOTER_SUPPORT = [
   { href: "/help", label: "Help center" },
   { href: "/setup", label: "Setup guide" },
   { href: "/resources", label: "Parent resources" },
-  { href: "/press", label: "Press & media kit" },
   { href: "/reserve", label: "Waitlist" },
 ] as const;
 

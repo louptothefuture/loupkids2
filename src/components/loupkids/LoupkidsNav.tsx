@@ -73,7 +73,7 @@ export function LoupkidsNav() {
             : "border-b border-[var(--lk-line)] bg-white/95 backdrop-blur-sm"
         }`}
       >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-[var(--lk-section-x)] py-4">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-[var(--lk-section-x)] py-3.5 pt-[max(0.875rem,env(safe-area-inset-top))] sm:gap-4 sm:py-4">
           <LoupLogoLink href="/" variant={logoVariant} height={26} priority />
 
           <div className="flex items-center gap-3 sm:gap-4">

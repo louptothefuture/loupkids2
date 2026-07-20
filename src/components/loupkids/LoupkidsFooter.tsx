@@ -36,9 +36,6 @@ export function LoupkidsFooter() {
             <a href={`mailto:${SITE.email}`} className="block transition-colors hover:text-white">
               {SITE.email}
             </a>
-            <a href={`mailto:${SITE.press}`} className="block transition-colors hover:text-white">
-              {SITE.press}
-            </a>
             <p className="pt-3 text-sm leading-relaxed">
               Parent updates, launch news, and journal picks.{" "}
               <a

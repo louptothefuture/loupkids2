@@ -2,28 +2,24 @@
 
 import { useState } from "react";
 import { LOUPKIDS_GALLERY } from "@/lib/content/loupkids-site";
-import { FadeIn } from "./FadeIn";
 import { LoupkidsImage } from "./LoupkidsImage";
-import { RevealHeadline } from "./RevealHeadline";
 
 export function LoupkidsGallerySection() {
   const [lightbox, setLightbox] = useState<(typeof LOUPKIDS_GALLERY)[number] | null>(null);
 
   return (
-    <section id="gallery" className="lk-section-white border-t border-[var(--lk-line)]">
-      <FadeIn className="lk-container px-[var(--lk-section-x)] pb-6 pt-12 sm:pb-8 sm:pt-14">
-        <RevealHeadline as="h2" className="lk-display lk-h2">
-          In the wild
-        </RevealHeadline>
-      </FadeIn>
-
-      <div className="flex gap-3 overflow-x-auto px-[var(--lk-section-x)] pb-8 [scrollbar-width:thin]">
+    <section
+      id="gallery"
+      aria-label="Loup in the wild"
+      className="lk-section-white border-t border-[var(--lk-line)] py-10 sm:py-12"
+    >
+      <div className="flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-[var(--lk-section-x)] pb-1 [scrollbar-width:thin] sm:gap-3">
         {LOUPKIDS_GALLERY.map((img) => (
           <button
             key={img.src}
             type="button"
             onClick={() => setLightbox(img)}
-            className="relative h-56 w-40 shrink-0 overflow-hidden bg-neutral-100 sm:h-60 sm:w-44"
+            className="relative h-52 w-[38vw] max-w-[11rem] shrink-0 snap-start overflow-hidden bg-neutral-100 sm:h-60 sm:w-44 sm:max-w-none"
           >
             <LoupkidsImage src={img.src} alt={img.alt} fill sizes="180px" className="object-cover" />
           </button>

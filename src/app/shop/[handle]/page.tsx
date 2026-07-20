@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProduct, getProducts } from "@/lib/shopify";
-import { getSpecs, getTestimonials } from "@/lib/content";
+import { getSpecs } from "@/lib/content";
 import { ProductView } from "@/components/product/ProductView";
 import { ProductJsonLd } from "@/components/seo/JsonLd";
+import { LoupkidsCustomizeStoreSection } from "@/components/loupkids/LoupkidsCustomizeStoreSection";
 import { LOUPKIDS_COMPARISON } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
 
@@ -59,7 +60,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const product = await getProduct(handle);
   if (!product) notFound();
 
-  const [specs, testimonials] = await Promise.all([getSpecs(), getTestimonials()]);
+  const specs = await getSpecs();
   const isDevice = handle === "loup";
 
   const specGroups = [...new Set(specs.map((s) => s.group))];
@@ -80,19 +81,19 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             <div className="grid gap-8 md:grid-cols-3">
               {[
                 {
-                  src: "/images/renders/three-quarter.jpg",
-                  title: "USB-C + physical controls",
-                  body: "Charges in 70 minutes, runs 5 days. Scroll dial and talk bar you can feel without looking.",
+                  src: "/images/renders/shop/a_9.jpg",
+                  title: "Rechargeable & replaceable battery",
+                  body: "USB-C charges in 70 minutes, runs ~5 days. The battery is rechargeable and replaceable — not glued shut.",
                 },
                 {
-                  src: "/images/renders/back.jpg",
-                  title: "Built to be carried",
-                  body: "Machined body and a scroll dial with real detents — operable inside a pocket.",
+                  src: "/images/renders/shop/a_8.jpg",
+                  title: "Customizable back plates",
+                  body: "Swap the plate when you want a new look. Patterns and customs ship after launch — Silver first.",
                 },
                 {
-                  src: "/images/renders/d.jpg",
-                  title: "Machined aluminum",
-                  body: "Silver anodized unibody — built to survive a backpack, not look like a toy.",
+                  src: "/images/renders/shop/a_4.jpg",
+                  title: "Aluminum + ABS",
+                  body: "Machined aluminum sides and buttons, ABS front — built to survive a backpack, not look like a toy.",
                 },
               ].map((card) => (
                 <figure key={card.title} className="lk-image-hover border border-[var(--lk-line)]">
@@ -113,6 +114,8 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
               ))}
             </div>
           </Section>
+
+          <LoupkidsCustomizeStoreSection />
 
           <Section title="Loup vs. the other options">
             <div className="overflow-x-auto border border-[var(--lk-line)]">
@@ -167,17 +170,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                       ))}
                   </dl>
                 </div>
-              ))}
-            </div>
-          </Section>
-
-          <Section title="What parents are saying" id="reviews">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {testimonials.map((t) => (
-                <figure key={t.attribution} className="flex h-full flex-col border border-[var(--lk-line)] p-6">
-                  <blockquote className="flex-1 text-sm leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
-                  <figcaption className="mt-4 text-xs text-[var(--lk-muted)]">{t.attribution}</figcaption>
-                </figure>
               ))}
             </div>
           </Section>

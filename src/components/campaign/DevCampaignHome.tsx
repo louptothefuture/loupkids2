@@ -50,7 +50,7 @@ export async function DevCampaignHome() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-20">
           <div className="relative z-10">
             <p className="label-mono mb-4 inline-block border-2 border-ink bg-white px-3 py-1">
-              For kids 6–16 · zero screen time
+              For kids · zero screen time
             </p>
             <h1 className="display max-w-xl text-5xl text-ink sm:text-6xl lg:text-7xl">
               {copy.heroHeadline}
@@ -157,7 +157,7 @@ export async function DevCampaignHome() {
               <h2 className="display text-4xl text-ink sm:text-5xl">Anodized. Not disposable.</h2>
             </div>
             <Link href="/shop/loup" className="link-underline label-mono text-ink">
-              Reserve Loup — $149 →
+              Pre-order Loup — $129 →
             </Link>
           </div>
         </Reveal>
@@ -175,7 +175,7 @@ export async function DevCampaignHome() {
               />
               <div className="flex items-center justify-between border-t-2 border-ink px-5 py-3">
                 <span className="display text-xl text-ink">Silver</span>
-                <span className="label-mono text-ink-soft">$149 →</span>
+                <span className="label-mono text-ink-soft">$129 →</span>
               </div>
             </Link>
           </Reveal>
@@ -213,7 +213,7 @@ export async function DevCampaignHome() {
             </p>
             <div className="mt-8">
               <Link href="/shop/loup" className="btn-sticker border-2 border-white bg-white px-8 py-4 text-xl text-ink">
-                Get LOUP — $149
+                Get LOUP — $129
               </Link>
             </div>
           </Reveal>

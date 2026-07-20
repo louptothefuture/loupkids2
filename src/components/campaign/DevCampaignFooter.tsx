@@ -5,7 +5,7 @@ const COLUMNS = [
   {
     heading: "Shop",
     links: [
-      { href: "/shop/loup", label: "Reserve Loup" },
+      { href: "/shop/loup", label: "Pre-order Loup" },
       { href: "/account", label: "Order Tracking" },
     ],
   },
@@ -20,7 +20,6 @@ const COLUMNS = [
   {
     heading: "Company",
     links: [
-      { href: "/press", label: "Press & Media Kit" },
       { href: "/contact", label: "Contact" },
       { href: "/faq#shipping", label: "Shipping & Returns" },
     ],

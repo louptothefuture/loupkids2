@@ -45,7 +45,9 @@ export function LoupkidsGuaranteeBadge({
   }
 
   return (
-    <p className={`flex w-full flex-wrap items-center gap-x-1.5 gap-y-0.5 text-sm leading-relaxed ${alignClass} ${text} ${className}`}>
+    <p
+      className={`flex w-full flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.8125rem] leading-snug sm:text-sm sm:leading-relaxed ${alignClass} ${text} ${className}`}
+    >
       {content}
     </p>
   );

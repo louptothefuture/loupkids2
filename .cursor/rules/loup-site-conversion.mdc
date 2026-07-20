@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Loup marketing site (V2)
 
-Premium screen-free kid phone ($149) for anxious parents. Stack: Next.js App Router, `loupkids-theme`, `LoupkidsShell`.
+Premium screen-free kid phone ($129 pre-launch / $169 launch) for anxious parents. Stack: Next.js App Router, `loupkids-theme`, `LoupkidsShell`.
 
 ## Visual reference
 
@@ -19,7 +19,7 @@ Match **https://loupkids.com** hierarchy: Inter, black/white editorial, minimal.
 
 `/` → `/shop/loup` → cart → checkout
 
-- **One CTA verb:** `Reserve Loup — $149` (short: `Order Loup`)
+- **One CTA verb:** `Pre-order Loup — $129` (short: `Pre-order Loup`)
 - Reuse `src/lib/content/loupkids-conversion.ts` and `src/components/loupkids/conversion/` — extend, don’t reinvent
 - **Proof before price:** `LoupkidsStarRating` under hero H1; `LoupkidsGuaranteeBadge` under every buy/checkout button
 - **Depth on PDP only:** comparison, specs, full reviews — not duplicated on homepage

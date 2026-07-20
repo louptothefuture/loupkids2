@@ -31,11 +31,5 @@ export const LOUPKIDS_START_HERE = {
       type: "Help",
       description: "Pair Loup to your home network in the parent app.",
     },
-    {
-      title: "Press & media kit",
-      href: "/press",
-      type: "Media",
-      description: "Facts, quotes, imagery, and boilerplate for coverage.",
-    },
   ],
 } as const;

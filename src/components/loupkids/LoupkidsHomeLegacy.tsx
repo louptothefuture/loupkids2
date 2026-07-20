@@ -110,7 +110,7 @@ export function LoupkidsHomeLegacy() {
             <Link href="/reserve" className="font-medium text-white underline-offset-2 hover:underline">
               Join the 1,000+ families on the waitlist
             </Link>
-            <p>Shipping Q4 2026</p>
+            <p>Shipping October 2026</p>
           </motion.div>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -216,9 +216,9 @@ export function LoupkidsHomeLegacy() {
       </section>
 
       <section className="lk-section-tight lk-section-white grid grid-cols-2 sm:grid-cols-3">
-        {LOUPKIDS_CUSTOMIZE.plates.map((src, i) => (
-          <FadeIn key={src} delay={i * 0.04} y={8} className="relative aspect-square border border-[var(--lk-line)] bg-neutral-50">
-            <LoupkidsImage src={src} alt="Loup back plate" fill sizes="33vw" className="object-contain p-6" />
+        {LOUPKIDS_CUSTOMIZE.plates.map((plate, i) => (
+          <FadeIn key={plate.src} delay={i * 0.04} y={8} className="relative aspect-square border border-[var(--lk-line)] bg-neutral-50">
+            <LoupkidsImage src={plate.src} alt={plate.alt} fill sizes="33vw" className="object-contain p-6" />
           </FadeIn>
         ))}
       </section>

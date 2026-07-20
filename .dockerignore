@@ -1,0 +1,21 @@
+.git
+.github
+.cursor
+.next
+.vercel
+node_modules
+coverage
+lighthouse
+agent-transcripts
+
+.env
+.env.*
+!.env.example
+
+*.log
+*.pem
+.DS_Store
+
+# Raw source renders are not used by the application.
+FInal renders not fucked up
+Renders same size

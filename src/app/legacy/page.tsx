@@ -99,7 +99,7 @@ export default async function LegacyHomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 pb-10 pt-12 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:pb-0 lg:pt-16">
           <div className="relative z-10">
             <p className="label-mono mb-5 inline-block rotate-[-1.5deg] border-2 border-ink bg-sun px-3 py-1 shadow-sticker-sm">
-              For kids 6–16 · zero screen time
+              For kids · zero screen time
             </p>
             <h1 className="display text-[17vw] leading-[0.88] sm:text-8xl lg:text-[6.5rem]">
               {copy.heroHeadline}

@@ -12,8 +12,8 @@ export async function TestimonialsSection() {
     <section id="testimonials" className="border-b border-ink/10 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
-          <p className="label-mono text-steel">Families</p>
-          <h2 className="display mt-3 text-4xl sm:text-5xl">What parents are saying</h2>
+          <p className="label-mono text-steel">Beta</p>
+          <h2 className="display mt-3 text-4xl sm:text-5xl">What beta testers are saying</h2>
         </Reveal>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {featured.map((t, i) => (

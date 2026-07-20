@@ -1,20 +1,20 @@
 /** Shared conversion copy — CTAs, hero, feature cards, trust signals */
 
 export const LOUPKIDS_CTA = {
-  primary: "Reserve Loup — $149",
-  primaryShort: "Order Loup",
-  hero: "Reserve Loup",
-  product: "Reserve My Loup — $149",
+  primary: "Pre-order Loup — $129",
+  primaryShort: "Pre-order Loup",
+  hero: "Pre-order Loup",
+  product: "Pre-order My Loup — $129",
   checkout: "Complete My Order →",
   waitlist: "Join cellular waitlist",
   newsletter: "Get parent updates",
 } as const;
 
 export const LOUPKIDS_HERO_COPY = {
-  eyebrow: "Phones for the anti-screen age",
-  headline: "No feeds. No AI. No strangers. Just connection.",
-  subline: "Call the people you approve. Nothing else.",
-  priceLine: "$149 pre-order — $199 at launch. Ships Q4 2026.",
+  eyebrow: "Kids Phones for the Anti-Screen Age",
+  headline: "Kids Phones for the Anti-Screen Age",
+  subline: "We didn't build a smarter landline. We built the phone that comes before the smartphone.",
+  priceLine: "$129 pre-launch — $169 at launch. Ships October 2026.",
 } as const;
 
 export const LOUPKIDS_GUARANTEE = {
@@ -26,7 +26,7 @@ export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
   intro:
-    "Out of the box Loup gives you 10 contacts free—enough for most kids' actual needs (close friends + direct family). Loup-to-Loup calling is always free.",
+    "Loup-to-Loup is always free, as are calls from parents to their kid's Loup. We offer competitive plans to make and receive calls to external numbers too.",
   tiers: [
     {
       label: "Loup to Loup",
@@ -40,14 +40,46 @@ export const LOUPKIDS_CALLING_PRICING = {
         "Unlimited contacts, make and receive calls from external phone numbers, and pager mode — so you can reach them for dinner without yelling across the house. (\"Hi mom, no I haven't cleaned my room yet, but I will.\") Undercuts many alternatives by at least half. Cancel anytime.",
     },
   ],
-  cta: { label: "Reserve Loup — $149", href: "/shop/loup" },
+  cta: { label: "Pre-order Loup — $129", href: "/shop/loup" },
   helpLink: { label: "How Plus plans work", href: "/help/calling-plan" },
 } as const;
 
 export const LOUPKIDS_TRUST = {
   rating: 4.9,
   reviewCount: 5,
-  reviewHref: "/shop/loup#reviews",
+  reviewHref: "/shop/loup",
+} as const;
+
+export const LOUPKIDS_PULL_QUOTE =
+  "We didn't dumb down a smartphone. We didn't modernize a landline. We built a rolodex for the age of independence.";
+
+export const LOUPKIDS_WHY_NOT_JUST = {
+  headline: "Why not just...",
+  blocks: [
+    {
+      title: "Get them a watch?",
+      body: [
+        "A watch is built for tracking, not talking. There's a reason nobody naturally holds their wrist to their ear — the calling experience is awkward, the screen is tiny, and you're still one app download away from the internet.",
+      ],
+      but: "Connectivity without the chemistry.",
+    },
+    {
+      title: "Lock down a smartphone?",
+      body: [
+        "A lobotomized smartphone is still a smartphone. The app store is still there. The browser is still there. And trust us — they always find a way around.",
+        "Parental controls are a patch, not a solution. And the apps, the storage, the carrier plan? You're paying for all of it.",
+      ],
+      but: "You're managing restrictions forever instead of starting with the right device.",
+    },
+    {
+      title: "Stick with a landline?",
+      body: [
+        "A landline is a kids' toy dressed up as a phone. One room, one wall, one purpose — and your kid still has to remember which button is grandma.",
+        "LOUP travels. Home, school, grandparents' — any Wi-Fi, same contacts, same controls.",
+      ],
+      but: "A kids' landline by another name isn't progress.",
+    },
+  ],
 } as const;
 
 export const LOUPKIDS_STORY_SHORT = {

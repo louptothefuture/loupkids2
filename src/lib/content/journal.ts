@@ -17,6 +17,11 @@ export const LOUPKIDS_JOURNAL_TOPICS: Record<string, string> = {
   "navigating-the-no-mans-land-of-parenting": "Parenting",
   "boring-tech-can-be-anything-but": "Product",
   "the-borrowed-childhood": "Screen time",
+  "white-tactile-neurodivergence-and-hard-of-sight": "Accessibility",
+  "the-public-health-crisis-hiding-in-our-pockets": "Screen time",
+  "the-problem-with-locking-down-a-smartphone": "Screen time",
+  "the-age-kids-should-get-their-first-phone": "Parenting",
+  "i-just-need-a-break-which-is-why-i-give-my-kid-a-phone": "Parenting",
 };
 
 export const LOUPKIDS_JOURNAL_TOPIC_FILTERS = [
@@ -26,6 +31,7 @@ export const LOUPKIDS_JOURNAL_TOPIC_FILTERS = [
   "Strategy",
   "Product",
   "Development",
+  "Accessibility",
 ] as const;
 
 const COVERS = [
@@ -340,6 +346,310 @@ export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
         h2("This is a boundary, not a cage"),
         p(
           "LOUP isn't about restriction; it's about protection. It's about giving them the freedom to roam the neighborhood without giving them a direct pipeline to the darkest corners of the internet. We're fighting for the minutes. Because once those minutes are gone, you don't get a refund.",
+        ),
+      ],
+    },
+  },
+  {
+    slug: "white-tactile-neurodivergence-and-hard-of-sight",
+    title: "White, Tactile, and Built for Kids Who Need More Help — Not Less Noise",
+    excerpt:
+      "E-ink, high-contrast white faces, and physical dials aren't aesthetic flourishes. For neurodivergent kids and kids who are hard of sight, they're the difference between a usable phone and another glowing trap.",
+    publishedAt: "2026-07-12",
+    author: AUTHOR,
+    category: CATEGORY,
+    coverImage: "/images/lifestyle-new/hand-holding-hi.jpg",
+    relatedSlugs: [
+      "why-your-kid-needs-a-paper-phone-e-ink-vs-oled-the-anti-lilypad-guide",
+      "the-public-health-crisis-hiding-in-our-pockets",
+    ],
+    seoTitle: "White Tactile Design for Neurodivergence & Hard of Sight",
+    seoDescription:
+      "Why anti-screen hardware — e-ink, white high-contrast faces, and tactile controls — aids neurodivergent kids and kids with low vision.",
+    body: {
+      source: "plain",
+      blocks: [
+        p(
+          "Most \"kids' phones\" start from the same wrong assumption: that every child benefits from a bright glass rectangle, as long as you slap parental controls on top. That ignores an entire population of kids for whom the screen itself is the problem — not just the apps.",
+        ),
+        p(
+          "Neurodivergent kids. Kids who are hard of sight. Kids with sensory processing differences who melt under notification light and infinite scroll. The anti-screen movement isn't only about \"less Instagram.\" At its best, it is about designing connection for people who need additional assistance — not designing around them.",
+        ),
+        h2("Why white and tactile matter"),
+        p(
+          "A white, matte face with a high-contrast e-ink strip is easier to read in hard light than a glossy OLED. Paper-like displays don't pulse, don't glow in a dark bedroom, and don't compete with the room for attention. For kids with low vision or light sensitivity, that difference is practical — not philosophical.",
+        ),
+        p(
+          "Tactile controls — a knurled scroll dial, a physical call bar you can find by feel — are accessibility features. Eyes on the sidewalk. Eyes closed. Hands in a pocket. Motor planning that prefers click-detents over precise glass gestures. White space and raised controls aren't \"retro styling.\" They are a map your fingers can learn.",
+        ),
+        h2("Neurodivergence and the attention casino"),
+        p(
+          "For many ADHD and autistic kids, a smartphone is not a neutral tool. It is a casino floor: variable rewards, endless novelty, social pressure that never clocks out. Parental controls can mute an app. They cannot remove the architecture that was built to hijack attention.",
+        ),
+        p(
+          "Voice-only hardware with a closed contact list removes the casino. What's left is the thing those kids often need most: a predictable way to reach the people they trust, without a feed waiting in the same device.",
+        ),
+        h2("Hard of sight is not an edge case"),
+        p(
+          "If your child is hard of sight — low vision, contrast sensitivity, photophobia — a modern phone UI is a maze of tiny type, animated chrome, and autoplaying video. An e-ink contact strip with large, stable text and a dial you can operate without staring is closer to how assistive tools actually work: fewer pixels, more certainty.",
+        ),
+        p(
+          "We are not claiming Loup replaces clinical assistive technology. We are saying the default first phone should not make life harder for kids who already navigate extra friction every day.",
+        ),
+        h2("What the anti-screen movement owes them"),
+        p(
+          "Anti-screen advocacy that only talks about \"willpower\" and \"screen time limits\" leaves neurodivergent and low-vision kids behind. Limits assume a device that is basically fine if you use it less. Accessibility assumes a device that is usable when you need it — and quiet when you don't.",
+        ),
+        p(
+          "That is why we built white, tactile, voice-first hardware. Connection for kids who need additional assistance should not require surviving another glowing rectangle. It should feel like a phone you can hold, find, and trust — with your eyes, or without them.",
+        ),
+      ],
+    },
+  },
+  {
+    slug: "the-public-health-crisis-hiding-in-our-pockets",
+    title: "The Public Health Crisis Hiding in Our Pockets",
+    excerpt:
+      "Anxiety, sleep loss, attentional fragmentation, and social contagion aren't \"parenting vibes.\" Heavy childhood screen use is a public health problem — and one day we'll talk about it the way we talk about smoking.",
+    publishedAt: "2026-07-12",
+    author: AUTHOR,
+    category: CATEGORY,
+    coverImage: "/images/lifestyle-new/kids-phones-line.jpg",
+    relatedSlugs: [
+      "the-borrowed-childhood",
+      "white-tactile-neurodivergence-and-hard-of-sight",
+    ],
+    seoTitle: "Childhood Screens Are a Public Health Crisis",
+    seoDescription:
+      "Why heavy childhood screen use belongs in the same conversation as other public health crises — and why we'll look back on it like smoking.",
+    body: {
+      source: "plain",
+      blocks: [
+        p(
+          "We keep treating kids and smartphones like a lifestyle debate — as if the only question is whether parents are \"strict\" or \"chill.\" That framing is too small. What we are watching is a population-level shift in sleep, anxiety, attention, and social development. That is not a taste difference. That is public health.",
+        ),
+        h2("The symptoms are already population-scale"),
+        p(
+          "Teen anxiety and depression climbed in lockstep with smartphone ubiquity. Sleep got shorter and later. Free play shrank. Spontaneous talk — the conversational bridge that builds brains — got crowded out by skims and streaks. None of these trends needed a conspiracy theory. They needed a product category that put an always-on casino in every pocket.",
+        ),
+        p(
+          "Public health crises are often invisible while they scale. Lead in paint looked like progress until it didn't. Smoking looked like adulthood until the data made denial impossible. Childhood screen exposure is in that awkward middle chapter — where the industry still sells \"connection,\" and families are left holding the bill in sleep and mood.",
+        ),
+        h2("We will look back on this like smoking"),
+        p(
+          "One day, \"I grew up with a phone in my hand from age nine\" will sound the way \"we smoked in the car with the kids\" sounds now: not evil in every individual case, but collective negligence we finally named. Heavy screen usage will be remembered as an exposure — something we normalized before we understood the dose.",
+        ),
+        p(
+          "That does not mean every screen is poison. Movies together on a weekend are not the same as a feed engineered for infinite return. The crisis is the default: unsupervised, algorithmically amplified, all-day access during the years when attention and identity are still under construction.",
+        ),
+        h2("What a serious response looks like"),
+        p(
+          "A public health response is not a lecture. It is a change in the environment. Seatbelts. Smoke-free flights. Age gates that actually mean something. For kids, that means delaying the open internet phone — and offering a real substitute so \"wait\" is not the same as \"disconnected.\"",
+        ),
+        p(
+          "Loup exists because we refuse the false choice between isolation and the feed. Voice. Approved contacts. No apps. Hardware that cannot become a slot machine. If this is a crisis, then boring tech is not nostalgia. It is harm reduction.",
+        ),
+        p(
+          "We are not waiting for perfect consensus. We are building the off-ramp while the data is still catching up to what parents already feel in their houses at 10 p.m.",
+        ),
+      ],
+    },
+  },
+  {
+    slug: "the-problem-with-locking-down-a-smartphone",
+    title: "The Problem With Locking Down a Smartphone",
+    excerpt:
+      "Parental controls for kids' phones sound responsible. In practice, a lobotomized smartphone is still a smartphone — app store, browser, and workarounds included. Here's why filters aren't a first phone.",
+    publishedAt: "2026-07-13",
+    author: AUTHOR,
+    category: CATEGORY,
+    coverImage:
+      "/images/loupkids/journal/the-problem-with-locking-down-a-smartphone.jpg",
+    relatedSlugs: [
+      "the-parental-control-myth",
+      "the-age-kids-should-get-their-first-phone",
+    ],
+    seoTitle: "Parental Controls for Kids' Phones Don't Fix Smartphones",
+    seoDescription:
+      "Why parental controls for kids' phones fail: a locked-down smartphone still has an app store, a browser, and workarounds. Start with the right device instead.",
+    body: {
+      source: "plain",
+      blocks: [
+        p(
+          "Search \"parental controls for kids phone\" and you'll find an industry of settings, subscriptions, and screenshots of Screen Time menus. The pitch is comforting: keep the smartphone, subtract the danger. Approve apps. Cap minutes. Block Safari. Sleep Mode at nine.",
+        ),
+        p(
+          "We've tried that path. A lobotomized smartphone is still a smartphone. The app store is still there. The browser is still there. And trust us — they always find a way around.",
+        ),
+        h2("Parental controls are a patch, not a product"),
+        p(
+          "Controls assume the device is basically fine if you manage it hard enough. That might be true for an adult phone with a few social apps. It is not true for a glass rectangle designed — from the silicon up — to maximize return visits. You are not configuring a tool. You are refereeing a casino.",
+        ),
+        p(
+          "Every restriction creates a new game: guest modes, secondary browsers, \"educational\" apps that open YouTube, friends' phones, school Chromebooks, workarounds traded in group chats. Parents who \"win\" for a week are usually behind again by Friday. The labor never ends. The architecture does not change.",
+        ),
+        h2("You're paying for what you don't want"),
+        p(
+          "Even when the filters mostly hold, the economics are upside down. Storage for apps you'll never approve. A carrier plan for a device that shouldn't be browsing. Software subscriptions to police hardware you already own. You're managing restrictions forever instead of starting with the right device — and you're paying for the wrong category the whole time.",
+        ),
+        h2("Independence without the internet"),
+        p(
+          "Kids don't need less reachability. They need reachability that isn't welded to feeds, strangers, and infinite scroll. Voice. Approved contacts. Quiet hours you set once. Hardware that cannot become a second phone when the rules get boring.",
+        ),
+        p(
+          "That is why we built Loup — not a stricter smartphone, but a different object. If your search history is full of parental-control tutorials, the problem isn't that you haven't found the perfect setting. It's that you're trying to sand down a product that was never meant to be a first phone.",
+        ),
+      ],
+    },
+  },
+  {
+    slug: "the-age-kids-should-get-their-first-phone",
+    title: "The Age Kids Should Get Their First Phone",
+    excerpt:
+      "There isn't one magic birthday. There's a readiness question: do they need to reach people — or are they ready for the open internet? How to decide without surrendering to \"everyone else has one.\"",
+    publishedAt: "2026-07-13",
+    author: AUTHOR,
+    category: CATEGORY,
+    coverImage:
+      "/images/loupkids/journal/the-age-kids-should-get-their-first-phone.jpg",
+    relatedSlugs: [
+      "wait-until-8th-and-the-strategy-of-collective-bargaining",
+      "the-problem-with-locking-down-a-smartphone",
+    ],
+    seoTitle: "What Age Should Kids Get Their First Phone?",
+    seoDescription:
+      "When should kids get their first phone? Skip the magic birthday — focus on readiness, reachability, and why a screen-free first phone beats a locked-down smartphone.",
+    body: {
+      source: "plain",
+      blocks: [
+        p(
+          "Parents ask the same question in every carpool: what age should kids get their first phone? Forums answer with a number — 10, 12, Wait Until 8th — as if childhood were a software release schedule. The number is the wrong unit. The better question is: what problem are you solving?",
+        ),
+        h2("Two different \"first phones\""),
+        p(
+          "One kind of first phone solves reachability: after practice, at a friend's house, walking home, paging them for dinner. The other kind unlocks the open internet: apps, browsers, group chats that never sleep, feeds engineered to keep them coming back. Those are not the same milestone. Treating them as one is how \"everyone else has one\" becomes a smartphone at nine.",
+        ),
+        p(
+          "If the need is \"I need to reach my kid,\" you do not need an App Store. If the need is \"they want TikTok,\" that is a different conversation — and it probably shouldn't be answered with hardware that includes TikTok by default.",
+        ),
+        h2("Readiness signs that actually matter"),
+        p(
+          "Age is a crude proxy. Look instead for: can they keep a simple device charged and not lost? Do they follow agreed quiet hours without a weekly courtroom? Do they have people they need to call — not just people they want to scroll with? Are you ready to approve contacts and model the boundary with other parents?",
+        ),
+        p(
+          "If the answer is mostly yes on reachability and mostly no on open-internet maturity, you are in the gap years: old enough to roam a little, too young for a pocket casino. That is exactly where a voice-first, parent-approved device belongs.",
+        ),
+        h2("Why \"later\" fails without a substitute"),
+        p(
+          "\"Wait Until 8th\" only works when \"wait\" isn't the same as \"disconnected.\" Isolated holdouts lose to social pressure. Collective delay works better — and so does a real substitute your kid can show their friends without feeling like they got a baby toy.",
+        ),
+        p(
+          "Loup is built for that middle: connection without the feed. Not because every kid of a certain age \"deserves\" a phone — because the first phone should match the job. Reach people you trust. Come home. Grow up without borrowing childhood to an algorithm.",
+        ),
+        p(
+          "So what age? The age when they need a line to their people — and you are ready to give them one that isn't also a portal to everything else.",
+        ),
+      ],
+    },
+  },
+  {
+    slug: "i-just-need-a-break-which-is-why-i-give-my-kid-a-phone",
+    title: "I Just Need a Break, Which Is Why I Give My Kid a Phone to Play With",
+    excerpt:
+      "It's 5:15 PM, you're exhausted, and the phone comes out. That guilt is real — and so is the hidden truth underneath it: you don't need to be their cruise director. Boredom is brain work.",
+    publishedAt: "2026-07-13",
+    author: AUTHOR,
+    category: CATEGORY,
+    coverImage:
+      "/images/loupkids/journal/i-just-need-a-break-which-is-why-i-give-my-kid-a-phone.jpg",
+    relatedSlugs: [
+      "why-spontaneous-talk-is-the-ultimate-brain-food-for-kids",
+      "the-borrowed-childhood",
+    ],
+    seoTitle: "Why Giving Kids a Phone When You're Exhausted Isn't Failure",
+    seoDescription:
+      "Handing over your phone at 5:15 PM doesn't make you a bad parent. Why boredom builds brains — and how to stop being the cruise director.",
+    body: {
+      source: "plain",
+      blocks: [
+        p(
+          "It's 5:15 PM. You've been answering questions, breaking up arguments, and managing emotions since 6:00 AM. You need to chop an onion for dinner, or maybe you just need ten uninterrupted minutes to sit in a quiet room and stare at the wall.",
+        ),
+        p("Your child wanders in, dragging their feet: \"I'm boooored.\""),
+        p(
+          "You know what you're \"supposed\" to do. You're supposed to set up a sensory bin, or suggest a craft, or send them out to explore nature. Instead, you reach into your pocket, hand over your phone, and say, \"Here. Just for a few minutes.\"",
+        ),
+        p("Cue the immediate, crushing wave of parenting guilt."),
+        p(
+          "If this sounds familiar, take a deep breath and let yourself off the hook. You are exhausted, and using a screen to buy yourself a moment of sanity is a valid survival tactic. But beneath that guilt is a fascinating, hidden truth that can actually take the pressure off both of you: You do not need to be their cruise director.",
+        ),
+        p(
+          "In fact, stepping back and letting them be bored is one of the best things you can do for their developing brains.",
+        ),
+        h2("The \"Cruise Director\" Trap"),
+        p(
+          "Modern parenting comes with a heavy, unspoken rule: if your child is bored, you are failing.",
+        ),
+        p(
+          "We have been conditioned to intervene at the first sign of under-stimulation. We overschedule their weekends, buy educational toys that light up and sing, and frantically Google \"activities for 5-year-olds\" the moment there's a lull in the day. We treat boredom like a problem that needs to be solved immediately.",
+        ),
+        p(
+          "But when we constantly swoop in to rescue our kids from having nothing to do, we accidentally rob them of the space they need to figure out who they are.",
+        ),
+        h2("The Science: What Happens When Kids Are Bored"),
+        p(
+          "When you stop entertaining your child, their brain actually turns on.",
+        ),
+        p(
+          "Neuroscientists refer to this as the Default Mode Network (DMN). The DMN is a collection of brain regions that activate specifically when we are not focused on an external task (like a screen or a structured game). It is the brain's internal workshop — the place where children process their experiences, imagine future scenarios, and build their sense of self.",
+        ),
+        p("The data strongly backs up the benefits of unstructured, under-stimulated time:"),
+        p(
+          "It builds emotional regulation: A 2024 study in the Journal of Experimental Child Psychology observed 130 children aged 4 to 6. The researchers found that kids who experience boredom and are allowed to navigate it on their own develop significantly stronger self-regulation and emotional control.",
+        ),
+        p(
+          "It acts as a catalyst for creativity: A 2024 review published in the Review of Education found that boredom, when combined with low stimulation, is consistently associated with enhanced creative thinking.",
+        ),
+        p(
+          "It sparks imagination: As Dr. Michael Rich, a pediatrician at Harvard Medical School, notes: \"Boredom is the space in which creativity and imagination happen.\"",
+        ),
+        p(
+          "A bored child isn't an apathetic child. They are actively seeking meaning and purpose. If we constantly hand them a pre-packaged solution (a screen, a structured game, an outing), they never have to flex the mental muscles required to find that purpose themselves.",
+        ),
+        h2("Why Letting Them Be Bored Is So Agonizing"),
+        p("If boredom is so great, why don't we do it more? Because the transition phase is awful."),
+        p(
+          "Before a child reaches that magical state of deep, independent play, they have to pass through the \"Whine Barrier.\" They will complain. They will follow you around. They will dramatically flop onto the floor and declare that they have absolutely nothing to play with, despite being surrounded by toys.",
+        ),
+        p(
+          "It is loud, annoying, and deeply uncomfortable for us as parents. Learning to sit with the discomfort of having nothing to do is a skill, and like any skill, it takes practice.",
+        ),
+        h2("Tips for Embracing the \"Nothing\""),
+        p(
+          "You don't have to go cold turkey on screens or suddenly institute a 1980s-style \"go outside and don't come back until the streetlights come on\" policy. You can build their boredom tolerance gradually.",
+        ),
+        h2("1. Shift the responsibility"),
+        p(
+          "When your child says, \"I'm bored,\" resist the urge to rattle off a list of activities. Instead, sympathize without solving. Try saying: \"I know, it's really hard to feel bored. I can't wait to see what you come up with.\" Then, go back to what you were doing.",
+        ),
+        h2("2. Provide \"loose parts\""),
+        p(
+          "Single-purpose toys (like a remote-control car that only does one thing) lose their appeal quickly. Open-ended materials — cardboard boxes, uncooked beans and a spoon, a pile of Legos, or blank paper and tape — invite kids to project their own imagination onto the objects.",
+        ),
+        h2("3. Start small"),
+        p(
+          "If your child is used to constant entertainment, don't expect them to entertain themselves for an hour. Aim for 10 minutes. Tell them you need to do a chore and that they are in charge of their own play until you are done.",
+        ),
+        h2("4. Let the mess happen"),
+        p(
+          "Often, independent play requires making a mess. Building a fort destroys the living room; tinkering with crafts creates paper scraps everywhere. If you want them to occupy themselves, you have to temporarily lower your standards for a spotless house.",
+        ),
+        h2("5. Forgive the phone moments"),
+        p(
+          "Sometimes, you are just touched out, burned out, and running on empty. On those days, handing over the phone so you can drink your coffee in peace isn't a failure — it's triage. Give yourself some grace.",
+        ),
+        p(
+          "The goal isn't to be a perfect, screen-free parent. The goal is to slowly realize that when your kid is complaining about having nothing to do, you don't have to fix it. You can just smile, step back, and let their brain do the rest.",
         ),
       ],
     },

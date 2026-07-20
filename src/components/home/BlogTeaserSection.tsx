@@ -55,7 +55,7 @@ export function PreOrderSection() {
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
             <Link href="/shop/loup" className="btn-sticker bg-surface px-8 py-3.5 text-ink">
-              Pre-order — $149
+              Pre-order — $129
             </Link>
             <Link
               href="/reserve"

@@ -57,14 +57,14 @@ export function DevConvertHome() {
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-ink">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-ink bg-[#1a1a1a]">
               <LoupkidsImage
-                src={LOUPKIDS_IMAGES.heroKitchen}
-                alt="Girl with Loup on the kitchen counter while a parent cooks"
+                src={LOUPKIDS_IMAGES.hero}
+                alt="Hand holding Loup — hi."
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-[40%_30%]"
+                className="object-cover object-[58%_45%]"
               />
             </div>
           </Reveal>
@@ -120,11 +120,12 @@ export function DevConvertHome() {
             </div>
           </div>
           <Reveal delay={0.08} className="lg:sticky lg:top-28">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-white/20 bg-neutral-900">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-black">
               <LoupVideo
                 src={LOUPKIDS_VIDEOS.cutoutPhone}
-                poster={LOUPKIDS_IMAGES.threeQuarter}
-                className="object-contain"
+                poster={LOUPKIDS_IMAGES.handHoldingHi}
+                fit="contain"
+                className="border-0 outline-none ring-0"
               />
             </div>
           </Reveal>
