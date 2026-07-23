@@ -217,9 +217,9 @@ export const LOUPKIDS_SETUP_STEPS = [
   },
   {
     step: "3",
-    section: "Then hand it over",
-    title: "Your kid picks up the phone",
-    body: "They turn the dial, choose a name, and press the talk bar. No menus to learn. No apps to get lost in.",
+    section: "Purity of purpose",
+    title: "As simple as pick up and talk.",
+    body: "Turn the dial, choose a name, and press the talk bar. We stripped away the menus and the apps, leaving only the voices you know and trust.",
     placeholder: "Device screen",
   },
 ] as const;
