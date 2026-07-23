@@ -15,8 +15,8 @@ export default function SetupPage() {
     <div>
       <LoupkidsPageHeader
         eyebrow="Support / setup guide"
-        title="Easy as 1, 2, 3"
-        description="Pair Loup, add contacts, and let your kid call their people — box to first call in about ten minutes."
+        title="Three steps. One first call."
+        description="Scroll or tap each step — the preview updates to match."
       />
 
       <section className="lk-section-white lk-page-body">
