@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LOUPKIDS_CTA, LOUPKIDS_GUARANTEE } from "@/lib/content/loupkids-conversion";
+import {
+  LOUPKIDS_CTA,
+  LOUPKIDS_GUARANTEE,
+  LOUPKIDS_OFFER,
+  LOUPKIDS_SHIPPING,
+} from "@/lib/content/loupkids-conversion";
 
 const DISMISS_KEY = "loup-sticky-cta-dismissed";
 
@@ -12,7 +17,9 @@ export function LoupkidsStickyCta() {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(true); // avoid flash until we read storage
 
+  // Homepage already has hero + final CTAs — sticky drawer is noise there
   const hidden =
+    pathname === "/" ||
     pathname === "/shop/loup" ||
     pathname.startsWith("/studio") ||
     pathname === "/home-full";
@@ -69,7 +76,7 @@ export function LoupkidsStickyCta() {
           </button>
         </div>
         <Link href="/shop/loup" className="lk-btn lk-btn-lg w-full flex-1 text-center text-[0.8125rem] sm:text-[1rem]">
-          {LOUPKIDS_CTA.primary}
+          {LOUPKIDS_CTA.sticky}
         </Link>
         <button
           type="button"
@@ -90,7 +97,10 @@ export function LoupkidsStickyCta() {
           </span>
         </button>
         <p className="mt-2.5 hidden text-center text-sm leading-snug text-[var(--lk-muted)] sm:block">
-          {LOUPKIDS_GUARANTEE.title}
+          {LOUPKIDS_OFFER.callingBadge}
+        </p>
+        <p className="mt-1 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
+          {LOUPKIDS_SHIPPING.stickyNote} · {LOUPKIDS_GUARANTEE.title}
         </p>
       </div>
     </div>

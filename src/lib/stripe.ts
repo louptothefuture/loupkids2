@@ -11,7 +11,7 @@ export function getStripe() {
 
 export const STRIPE_LOUP = {
   name: "Loup — Silver",
-  description: "Pre-order · ships October 2026 · aluminum sides & buttons, ABS front",
+  description: "Pre-order · ships within 60 days · aluminum sides & buttons, ABS front",
   unitAmountCents: SITE.price * 100,
   currency: "usd",
 } as const;

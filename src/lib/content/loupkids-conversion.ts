@@ -1,47 +1,101 @@
 /** Shared conversion copy — CTAs, hero, feature cards, trust signals */
 
+export const LOUPKIDS_PRICE = {
+  amount: 149,
+  compareAt: 199,
+  formatted: "$149",
+  compareFormatted: "$199",
+  saveLine: "Save $50",
+  stackLine: "$149",
+} as const;
+
 export const LOUPKIDS_CTA = {
-  primary: "Pre-order Loup — $129",
+  primary: "Pre-order Loup — $149",
   primaryShort: "Pre-order Loup",
-  hero: "Pre-order Loup",
-  product: "Pre-order My Loup — $129",
-  checkout: "Complete My Order →",
+  hero: "Pre-order Loup — $149",
+  product: "Pre-order Loup — $149",
+  checkout: "Complete Order →",
   waitlist: "Join cellular waitlist",
-  newsletter: "Get parent updates",
+  newsletter: "Get launch updates",
+  sticky: "Pre-order Loup — $149",
+  nav: "Pre-Order $149",
+} as const;
+
+export const LOUPKIDS_OFFER = {
+  callingBadge: "Includes 1 Year of Free Unlimited Domestic Calling",
+  callingPill: "⚡ Includes 1 Year Free Unlimited Domestic Calling",
+  priceStackNote: "Save $50",
 } as const;
 
 export const LOUPKIDS_HERO_COPY = {
-  eyebrow: "Kids Phones for the Anti-Screen Age",
-  headline: "Kids Phones for the Anti-Screen Age",
-  subline: "We didn't build a smarter landline. We built the phone that comes before the smartphone.",
-  priceLine: "$129 pre-launch — $169 at launch. Ships October 2026.",
+  eyebrow: "The phone before the smartphone",
+  headline: "Their first phone. Not their first feed.",
+  subline: "Parent-approved Wi-Fi calling for kids. Zero apps, zero feeds, zero screen addiction.",
+  priceLine: "$149",
 } as const;
+
+/** Category-creator H1 for press / PR landing pages */
+export const LOUPKIDS_HERO_CATEGORY = "The phone before the smartphone." as const;
 
 export const LOUPKIDS_GUARANTEE = {
-  title: "30-day guarantee",
-  body: "Full refund if it's not right.",
+  title: "30-day risk-free trial",
+  body: "Starts the day your Loup arrives. 100% refundable anytime prior to shipping.",
 } as const;
 
+export const LOUPKIDS_SHIPPING = {
+  line: "Guaranteed shipping within 60 days",
+  stickyNote: "Ships within 60 days",
+  buyBox:
+    "Pre-Order Today — Guaranteed Shipping Within 60 Days. 100% Refundable Anytime Prior to Dispatch.",
+} as const;
+
+/** Wi-Fi device — not cellular E911 */
+export const LOUPKIDS_E911 = {
+  short:
+    "Wi-Fi Voice Device: Operates over Wi-Fi networks and parent mobile hotspots. Does not support E911 cellular emergency dialing.",
+} as const;
+
+export const LOUPKIDS_COPPA = {
+  badge:
+    "Kids' Privacy Guaranteed: Zero data harvesting, zero ads, end-to-end encrypted voice loops. COPPA Compliant.",
+  href: "/legal/coppa",
+} as const;
+
+export const LOUPKIDS_CART_TRUST = [
+  "Ships Within 60 Days",
+  "100% Refundable Pre-Order",
+  "1 Year Free Domestic Calling",
+] as const;
+
+/**
+ * Calling economics:
+ * - Loup-to-Loup + Pager Mode (Wi-Fi intercom) = $0 forever
+ * - Domestic PSTN calling = 1 year free with device, then optional $10/mo
+ */
 export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
   intro:
-    "Loup-to-Loup is always free, as are calls from parents to their kid's Loup. We offer competitive plans to make and receive calls to external numbers too.",
+    "Your pre-order includes 1 Year of Free Unlimited Domestic Calling. Loup-to-Loup and Pager Mode stay $0 forever. After year one, renew unlimited domestic calling for $10/mo — or keep using Wi-Fi core for free.",
   tiers: [
     {
-      label: "Loup to Loup",
-      price: "Always free",
-      body: "Calls between Loup devices are unlimited — no plan, no monthly bill.",
+      label: "Core (always included)",
+      price: "$0/mo forever",
+      body: "Loup-to-Loup calls, Pager Mode (Wi-Fi family intercom), parent app, and up to 10 approved contacts. No forced subscription.",
     },
     {
-      label: "Plus plan",
-      price: "From $10/month",
-      body:
-        "Unlimited contacts, make and receive calls from external phone numbers, and pager mode — so you can reach them for dinner without yelling across the house. (\"Hi mom, no I haven't cleaned my room yet, but I will.\") Undercuts many alternatives by at least half. Cancel anytime.",
+      label: "Launch offer (with device)",
+      price: "1 year free",
+      body: "Unlimited domestic calling to approved contacts — included with every $149 pre-order for the first year.",
+    },
+    {
+      label: "Domestic calling (after year 1)",
+      price: "$10/month",
+      body: "Optional renewal for unlimited domestic PSTN calling. Cancel anytime. Core Wi-Fi features stay free.",
     },
   ],
-  cta: { label: "Pre-order Loup — $129", href: "/shop/loup" },
-  helpLink: { label: "How Plus plans work", href: "/help/calling-plan" },
+  cta: { label: "Pre-order Loup — $149", href: "/shop/loup" },
+  helpLink: { label: "How calling plans work", href: "/help/calling-plan" },
 } as const;
 
 export const LOUPKIDS_TRUST = {
@@ -66,7 +120,7 @@ export const LOUPKIDS_WHY_NOT_JUST = {
     {
       title: "Lock down a smartphone?",
       body: [
-        "A lobotomized smartphone is still a smartphone. The app store is still there. The browser is still there. And trust us — they always find a way around.",
+        "A restricted smartphone is still a smartphone. The app store is still there. The browser is still there. And trust us — they always find a way around.",
         "Parental controls are a patch, not a solution. And the apps, the storage, the carrier plan? You're paying for all of it.",
       ],
       but: "You're managing restrictions forever instead of starting with the right device.",
@@ -74,10 +128,10 @@ export const LOUPKIDS_WHY_NOT_JUST = {
     {
       title: "Stick with a landline?",
       body: [
-        "A landline is a kids' toy dressed up as a phone. One room, one wall, one purpose — and your kid still has to remember which button is grandma.",
+        "A landline stays in one room. Kids still have to remember which button is grandma — and they can't take it to school or a friend's house.",
         "LOUP travels. Home, school, grandparents' — any Wi-Fi, same contacts, same controls.",
       ],
-      but: "A kids' landline by another name isn't progress.",
+      but: "A fixed landline isn't independence.",
     },
   ],
 } as const;
@@ -85,7 +139,7 @@ export const LOUPKIDS_WHY_NOT_JUST = {
 export const LOUPKIDS_STORY_SHORT = {
   headline: "Why We Started Loup",
   paragraphs: [
-    "We kept putting off the phone — not because we didn't trust our kids, but because we knew what came with it.",
+    "We built LOUP because my daughter wanted to explore the neighborhood, but didn't need an algorithmic smartphone.",
     "Loup is the device we wished existed: connection without the scroll, the spam, or the algorithm.",
   ],
   cta: { label: "Read the whole story", href: "/about" },
@@ -99,8 +153,8 @@ export const LOUPKIDS_FEATURE_CARDS = [
   },
   {
     icon: "📖",
-    title: "E-Ink, App-Free",
-    body: "Paper-like screen. Zero feeds, games, or rabbit holes.",
+    title: "Zero Dopamine Display",
+    body: "E-ink contact strip. Zero feeds, zero social media, zero open internet browsing.",
   },
   {
     icon: "🌙",
@@ -110,17 +164,17 @@ export const LOUPKIDS_FEATURE_CARDS = [
   {
     icon: "📢",
     title: "Pager Mode",
-    body: "Parents can page their kids at any point for free — call or bell. No yelling across the house.",
-  },
-  {
-    icon: "🚨",
-    title: "911 Ready",
-    body: "Press-and-hold emergency calls. Built for real emergencies, not pocket dials.",
+    body: "In-home family intercom over Wi-Fi — $0/mo forever. Call or bell. No yelling across the house.",
   },
   {
     icon: "📶",
-    title: "Wi-Fi Only",
-    body: "No SIM. No surprise bills. Connects at home or school.",
+    title: "Wi-Fi Voice Network",
+    body: "No SIM. No surprise bills. Home, school, or parent hotspot.",
+  },
+  {
+    icon: "🔒",
+    title: "Child Privacy",
+    body: "Zero data harvesting, zero ads. COPPA compliant with verifiable parental consent.",
   },
 ] as const;
 
@@ -129,3 +183,24 @@ export const LOUPKIDS_PRESS_QUOTES = [
   { outlet: "Wired", quote: "A communication device with nothing to look at." },
   { outlet: "Good Morning America", quote: "The gift every parent in the anti-screen movement is talking about." },
 ] as const;
+
+export const LOUPKIDS_FINAL_CTA = {
+  headline: "Ready when you are.",
+  body: "The phone before their first smartphone — $149 launch price, 1 year free domestic calling, ships within 60 days.",
+} as const;
+
+export const LOUPKIDS_IN_THE_BOX = [
+  "1x LOUP Phone",
+  "1x Selected Backplate",
+  "1x USB-C Braided Charging Cable",
+  "1 Year Free Unlimited Domestic Calling Pass",
+  "Lifetime Parent Companion App Access",
+] as const;
+
+/** PDP buy box — keep short; depth lives below the fold */
+export const LOUPKIDS_PDP = {
+  tagline: "The phone before their first smartphone.",
+  value:
+    "Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet.",
+  trustLine: "Ships within 60 days · 30-day trial · 100% refundable before dispatch",
+} as const;

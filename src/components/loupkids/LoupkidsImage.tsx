@@ -19,7 +19,7 @@ export function LoupkidsImage({
   width?: number;
   height?: number;
 }) {
-  const isGif = src.endsWith(".gif");
+  const unoptimized = src.endsWith(".gif") || src.endsWith(".svg");
 
   if (fill) {
     return (
@@ -30,7 +30,7 @@ export function LoupkidsImage({
         priority={priority}
         sizes={sizes ?? "100vw"}
         className={className}
-        unoptimized={isGif}
+        unoptimized={unoptimized}
       />
     );
   }
@@ -44,7 +44,7 @@ export function LoupkidsImage({
       priority={priority}
       sizes={sizes}
       className={className}
-      unoptimized={isGif}
+      unoptimized={unoptimized}
     />
   );
 }

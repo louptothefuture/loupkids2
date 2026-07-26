@@ -5,8 +5,8 @@ import { ImageBox } from "./ImageBox";
 
 const DIFFERENTIATORS = [
   {
-    title: "Zero screen time",
-    body: "E-Ink contact list, not a feed.",
+    title: "Zero dopamine feeds",
+    body: "E-Ink contact list — not a social feed.",
   },
   {
     title: "Approved contacts only",

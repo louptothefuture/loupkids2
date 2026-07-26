@@ -2,6 +2,7 @@ import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import {
   LOUPKIDS_CTA,
+  LOUPKIDS_FINAL_CTA,
   LOUPKIDS_GUARANTEE,
   LOUPKIDS_HERO_COPY,
   LOUPKIDS_PULL_QUOTE,
@@ -103,15 +104,15 @@ const DEFAULT_HOMEPAGE: MarketingHomepage = {
   heroHeadline: LOUPKIDS_HERO_COPY.headline,
   heroSubline: LOUPKIDS_HERO_COPY.subline,
   heroPriceLine: LOUPKIDS_HERO_COPY.priceLine,
-  heroCtaLabel: LOUPKIDS_CTA.hero,
+  heroCtaLabel: LOUPKIDS_CTA.primary,
   heroImage: LOUPKIDS_IMAGES.hero,
   heroImageAlt: "Hand holding Loup — hi.",
   pullQuote: LOUPKIDS_PULL_QUOTE,
   phoneSectionTitle: LOUPKIDS_PHONE.title,
   phoneSectionSubtitle: LOUPKIDS_PHONE.subtitle,
   accordionItems: LOUPKIDS_ACCORDION.map((item) => ({ title: item.title, body: item.body })),
-  finalCtaHeadline: "Ready when you are.",
-  finalCtaBody: "The phone before their first smartphone — 30-day guarantee, ships October 2026.",
+  finalCtaHeadline: LOUPKIDS_FINAL_CTA.headline,
+  finalCtaBody: LOUPKIDS_FINAL_CTA.body,
   finalCtaLabel: LOUPKIDS_CTA.primary,
   footerBody: LOUPKIDS_FOOTER.body,
   testimonialHeadline: "What beta testers are saying",
@@ -127,13 +128,13 @@ const DEFAULT_ABOUT: AboutPageContent = {
       paragraphs: LOUPKIDS_ABOUT.paragraphs.slice(2, 5),
     },
     {
-      label: "02 / The pressure arrived",
-      title: "Connection came with a cost.",
+      label: "02 / Looking for balance",
+      title: "We wanted connection — carefully.",
       paragraphs: LOUPKIDS_ABOUT.paragraphs.slice(5, 7),
     },
     {
-      label: "03 / The line we drew",
-      title: "The first phone shouldn't be a feed.",
+      label: "03 / A gentler first step",
+      title: "Talk first. Feeds can wait.",
       paragraphs: LOUPKIDS_ABOUT.paragraphs.slice(7, 10),
     },
     {
@@ -145,7 +146,7 @@ const DEFAULT_ABOUT: AboutPageContent = {
   teamBlocks: [
     {
       title: "A parent who wanted another option",
-      body: "The question was simple: how do you give a kid independence without handing them the internet?",
+      body: "The question was simple: how do you give a kid more independence while keeping connection feeling safe?",
     },
     {
       title: "A daughter who named the wolf",
@@ -161,7 +162,7 @@ const DEFAULT_SETUP: SetupGuideContent = {
   eyebrow: "Support / setup guide",
   title: "Easy as 1, 2, 3",
   description:
-    "Pair Loup, add contacts, and let your kid call their people — box to first call in about ten minutes.",
+    "Pair Loup, add contacts, and let kids call their people — box to first call in about ten minutes.",
   steps: LOUPKIDS_SETUP_STEPS.map((s) => ({
     step: s.step,
     section: s.section,

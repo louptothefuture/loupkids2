@@ -80,7 +80,7 @@ const docs = [
     phoneSectionSubtitle: LOUPKIDS_PHONE.subtitle,
     accordionItems: LOUPKIDS_ACCORDION.map(({ title, body }) => ({ _type: "accordionItem", title, body })),
     finalCtaHeadline: "Ready when you are.",
-    finalCtaBody: "The phone before their first smartphone — 30-day guarantee, ships October 2026.",
+    finalCtaBody: "The phone before their first smartphone — 30-day trial from arrival, shipping within 60 days.",
     finalCtaLabel: LOUPKIDS_CTA.primary,
     footerBody: LOUPKIDS_FOOTER.body,
     testimonialHeadline: "What beta testers are saying",
@@ -132,7 +132,7 @@ const docs = [
     eyebrow: "Support / setup guide",
     title: "Easy as 1, 2, 3",
     description:
-      "Pair Loup, add contacts, and let your kid call their people — box to first call in about ten minutes.",
+      "Pair Loup, add contacts, and let kids call their people — box to first call in about ten minutes.",
     steps: LOUPKIDS_SETUP_STEPS.map((step) => ({ _type: "setupStep", ...step })),
     heroImageAlt: "Kid talking on Loup at the kitchen counter while a parent cooks",
     heroCaption: "First call from the kitchen — setup takes about ten minutes.",

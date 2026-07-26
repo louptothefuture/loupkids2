@@ -7,21 +7,21 @@ import { LOUPKIDS_JOURNAL_POSTS } from "./journal";
  */
 
 export const FALLBACK_HOMEPAGE: HomepageCopy = {
-  heroHeadline: "Kids Phones for the Anti-Screen Age",
+  heroHeadline: "Their first phone. Not their first feed.",
   heroSubline:
-    "We didn't build a smarter landline. We built the phone that comes before the smartphone.",
-  heroCta: "Pre-order Loup",
+    "Parent-approved Wi-Fi calling for kids. Zero apps, zero feeds, zero screen addiction.",
+  heroCta: "Pre-order Loup — $149",
   manifestoLines: [
     "The vanishing playground.",
     "5.5 hours a day on screens.",
     "It's taken over everything.",
-    "95% of teens constantly online.",
-    "No social media.",
-    "No games.",
-    "No rabbit holes.",
+    "Nearly 1 in 2 teens online almost constantly (Pew 2024).",
+    "Zero dopamine feeds.",
+    "Zero games.",
+    "Zero open browsing.",
   ],
   howItWorksIntro:
-    "The phone before their first smartphone. They stay connected. You stay in control. No apps. No algorithms. No compromise.",
+    "The phone before their first smartphone. They stay connected. You stay in control. Zero feeds. Zero algorithms. No compromise.",
 };
 
 export const FALLBACK_FAQS: Faq[] = [
@@ -53,19 +53,19 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "Loup-to-Loup is always free, as are calls from parents to their kid's Loup. We offer competitive plans to make and receive calls to external numbers too — Plus plans start at $10/month, cancel anytime.",
+      "Loup-to-Loup and Pager Mode stay $0/mo forever. Every device includes 1 Year of Free Unlimited Domestic Calling. After year one, renew domestic calling for $10/mo — or keep Wi-Fi core free.",
   },
   {
     section: "Plans & Calling",
     question: "How do parents control the contact list?",
     answer:
-      "From the free LOUP parent app (iOS and Android). Add, remove, and approve contacts in seconds. Your kid's device updates instantly over Wi-Fi or its built-in connection. Nobody outside the approved list can call in or be called.",
+      "From the free LOUP parent app (iOS and Android). Add, remove, and approve contacts in seconds. The device updates instantly over Wi-Fi or its built-in connection. Nobody outside the approved list can call in or be called.",
   },
   {
     section: "Plans & Calling",
     question: "Does LOUP work away from home Wi-Fi?",
     answer:
-      "LOUP connects over Wi-Fi — at home, school, or anywhere you trust. There's no SIM card and no cellular bill. LOUP-to-LOUP calling works wherever both devices have Wi-Fi. Add the $10/month plan if you want your kid to reach real phone numbers outside Wi-Fi.",
+      "LOUP connects over Wi-Fi — at home, school, or anywhere you trust. There's no SIM card and no cellular bill. LOUP-to-LOUP calling works wherever both devices have Wi-Fi. Add the $10/month plan if you want kids to reach real phone numbers outside Wi-Fi.",
   },
   {
     section: "Shipping",
@@ -83,7 +83,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Returns & Warranty",
     question: "What's the return policy?",
     answer:
-      "30 days, no questions, free return shipping. If LOUP isn't right for your family, send it back for a full refund.",
+      "30-day risk-free trial starts the day your Loup arrives. 100% refundable anytime prior to shipping. Free return shipping if it's not right for your family.",
   },
   {
     section: "Returns & Warranty",

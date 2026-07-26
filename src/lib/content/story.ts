@@ -73,14 +73,14 @@ export const STORY_BEATS: StoryBeat[] = [
     lines: ["BETTER CONNECTION.", "NOT LESS."],
     body:
       "For parents who want peace of mind. For kids who want a phone they'll actually carry. For communities — scouts, church groups, homeschool co-ops, sports teams — who want connection without chaos.",
-    cta: { label: "Pre-order LOUP — $129", href: "/shop/loup" },
+    cta: { label: "Pre-order LOUP — $149", href: "/shop/loup" },
   },
 ];
 
 export const LANDING_STATS = [
   { stat: "8 in 10", label: "parents hate the smartphone trap" },
   { stat: "5.5 hrs", label: "daily screen time for kids 8–12" },
-  { stat: "−25%", label: "free play since smartphones went mainstream" },
+  { stat: "−25%", label: "unstructured free play as screens replaced real-world play" },
 ];
 
 export const FEED_LOOP = [

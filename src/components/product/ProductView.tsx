@@ -5,8 +5,14 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/shopify/types";
 import { trackViewItem } from "@/lib/analytics";
-import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
-import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
+import {
+  LOUPKIDS_CTA,
+  LOUPKIDS_E911,
+  LOUPKIDS_IN_THE_BOX,
+  LOUPKIDS_OFFER,
+  LOUPKIDS_PDP,
+  LOUPKIDS_PRICE,
+} from "@/lib/content/loupkids-conversion";
 import { StripeCheckoutButton } from "@/components/loupkids/conversion";
 
 function formatPrice(amount: string, currency: string) {
@@ -21,7 +27,7 @@ export function ProductView({ product }: { product: Product }) {
   const optionName = product.options[0]?.name;
   const [selected, setSelected] = useState(product.variants[0]);
   const [activeImage, setActiveImage] = useState(0);
-  const featuredQuote = FALLBACK_TESTIMONIALS.find((t) => t.featured) ?? FALLBACK_TESTIMONIALS[0];
+  const multiVariant = Boolean(optionName && product.options[0].values.length > 1);
 
   useEffect(() => {
     trackViewItem({
@@ -95,37 +101,30 @@ export function ProductView({ product }: { product: Product }) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:max-w-md lg:justify-self-end xl:max-w-lg">
+      {/* Buy box — title → price → offer → value → buy → one trust line */}
+      <div className="flex flex-col gap-6 lg:sticky lg:top-24 lg:max-w-md lg:justify-self-end xl:max-w-lg">
         <div>
           <h1 className="lk-display text-3xl sm:text-4xl">{product.title}</h1>
           <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="text-2xl font-medium sm:text-3xl">
+            <span className="text-2xl font-medium tracking-tight sm:text-3xl">
               {formatPrice(selected.price.amount, selected.price.currencyCode)}
             </span>
-            {selected.compareAtPrice && (
-              <span className="text-lg text-[var(--lk-muted)] line-through">
-                {formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)}
-              </span>
-            )}
+            <span className="text-base text-[var(--lk-muted)] line-through">
+              {selected.compareAtPrice
+                ? formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)
+                : LOUPKIDS_PRICE.compareFormatted}
+            </span>
+            <span className="text-sm text-[var(--lk-muted)]">({LOUPKIDS_PRICE.saveLine})</span>
           </div>
-          <p className="mt-1 text-sm text-[var(--lk-muted)]">
-            Aluminum sides & buttons · ABS front · Pre-order · ships October 2026
-          </p>
+          <p className="mt-3 text-sm font-medium text-[var(--lk-ink)]">{LOUPKIDS_OFFER.callingBadge}</p>
         </div>
 
-        <div
-          className="space-y-3 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)] [&_p]:m-0"
-          dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-        />
+        <div className="space-y-2">
+          <p className="text-[0.9375rem] font-medium text-[var(--lk-ink)]">{LOUPKIDS_PDP.tagline}</p>
+          <p className="text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{LOUPKIDS_PDP.value}</p>
+        </div>
 
-        {featuredQuote ? (
-          <blockquote className="border-l-2 border-[var(--lk-line)] pl-4 text-sm leading-relaxed text-[var(--lk-muted)]">
-            &ldquo;{featuredQuote.quote}&rdquo;
-            <footer className="mt-2 text-xs not-italic text-[var(--lk-muted)]">{featuredQuote.attribution}</footer>
-          </blockquote>
-        ) : null}
-
-        {optionName && product.options[0].values.length > 1 && (
+        {multiVariant && (
           <fieldset>
             <legend className="mb-2 text-sm font-medium text-[var(--lk-ink)]">
               {optionName}: {selected.title}
@@ -154,21 +153,26 @@ export function ProductView({ product }: { product: Product }) {
           </fieldset>
         )}
 
-        <div className="border-t border-[var(--lk-line)] pt-5">
+        <div>
           {selected.availableForSale ? (
-            <StripeCheckoutButton label={LOUPKIDS_CTA.product} />
+            <StripeCheckoutButton label={LOUPKIDS_CTA.product} showGuarantee={false} />
           ) : (
             <button type="button" disabled className="lk-btn lk-btn-lg w-full disabled:opacity-60">
               Sold out
             </button>
           )}
-          <ul className="mt-4 space-y-1.5 text-sm leading-snug text-[var(--lk-muted)]">
-            <li>Rechargeable and replaceable battery</li>
-            <li>Customizable back plates</li>
-            <li>Loup-to-Loup always free · parent-to-kid Loup free</li>
-            <li>Plus from $10/mo for external numbers · cancel anytime</li>
-          </ul>
+          <p className="mt-3 text-sm leading-snug text-[var(--lk-muted)]">{LOUPKIDS_PDP.trustLine}</p>
+          <p className="mt-2 text-xs leading-relaxed text-[var(--lk-muted)]/90">{LOUPKIDS_E911.short}</p>
         </div>
+
+        <details className="border-t border-[var(--lk-line)] pt-4">
+          <summary className="cursor-pointer text-sm font-medium text-[var(--lk-ink)]">In the box</summary>
+          <ul className="mt-3 space-y-1.5 text-sm leading-snug text-[var(--lk-muted)]">
+            {LOUPKIDS_IN_THE_BOX.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </details>
       </div>
     </div>
   );

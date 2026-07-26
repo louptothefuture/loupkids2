@@ -30,9 +30,6 @@ export default async function AboutPage() {
       <section className="border-b border-[var(--lk-line)] bg-white px-[var(--lk-section-x)] py-16 sm:py-24">
         <FadeIn className="mx-auto max-w-5xl">
           <p className="lk-label">About</p>
-          <div className="mt-4 inline-flex rounded-full border border-[#7657d5]/25 bg-[#7657d5]/[0.08] px-3 py-1 text-xs font-medium text-[#5c42b5]">
-            Built, not promised
-          </div>
           <h1 className="lk-display mt-6 max-w-4xl text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.94] tracking-[-0.055em]">
             {about.title}
           </h1>
@@ -46,7 +43,7 @@ export default async function AboutPage() {
 
       <section className="border-b border-[var(--lk-line)] px-[var(--lk-section-x)] py-10 sm:py-14">
         <div className="mx-auto max-w-5xl">
-          <p className="lk-label">Proof, in numbers</p>
+          <p className="lk-label">Along the way</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             {[
               ["25×", "hardware iterations"],
@@ -67,7 +64,7 @@ export default async function AboutPage() {
 
       <section className="border-b border-[var(--lk-line)] px-[var(--lk-section-x)] py-14 sm:py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="lk-label">The build — timeline + media</p>
+          <p className="lk-label">The story, in chapters</p>
           <ol className="relative mt-10 space-y-12 before:absolute before:bottom-4 before:left-[5px] before:top-3 before:w-px before:bg-[#7657d5]/35 sm:space-y-16">
             {about.timeline.map((item, i) => (
               <li key={item.label} className="relative pl-8">

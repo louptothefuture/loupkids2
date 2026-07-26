@@ -16,7 +16,7 @@ const STATS = [
   { stat: "8 in 10", label: "parents hate feeling forced into the smartphone trap" },
   {
     stat: "−25%",
-    label: "decline in traditional free play since smartphones went mainstream",
+    label: "unstructured free play as screens replaced real-world play",
     tag: "The Vanishing Playground",
   },
   {
@@ -24,7 +24,7 @@ const STATS = [
     label: "a day on entertainment screens for kids 8–12",
     tag: "The Play Gap",
   },
-  { stat: "95%", label: 'of teens say they are "constantly" online' },
+  { stat: "~1 in 2", label: "teens online almost constantly; 95% have smartphone access (Pew 2024)" },
 ];
 
 const DOESNT_DO = [

@@ -1,0 +1,13 @@
+{
+  "backedUpAt": "2026-07-25T05:05:00+08:00",
+  "project": "loupkids-v2",
+  "projectId": "prj_dhgSIJjA7MXQTUGOvf3BlJAdo2zl",
+  "deploymentId": "dpl_5payxYJKqLbmqmfNCcn85mrVK1c2",
+  "deploymentUrl": "https://loupkids-v2-9z1q68wqi-loup1.vercel.app",
+  "aliases": ["https://loupkids-v2.vercel.app"],
+  "gitSha": "5f0810f9b0059bec65f5dc1f5e8208546e00c264",
+  "gitBranch": "conversion-trim",
+  "commitMessage": "Soften About page tone — less manifesto, more parent story.",
+  "rollback": "vercel promote dpl_5payxYJKqLbmqmfNCcn85mrVK1c2 --scope loup1",
+  "gitRestore": "git checkout backup/vercel-prod-2026-07-25"
+}

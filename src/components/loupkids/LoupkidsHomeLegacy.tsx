@@ -117,7 +117,7 @@ export function LoupkidsHomeLegacy() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.95, duration: 0.6, ease }}
           >
-            <LoupkidsOrderCta variant="dark" showGuarantee={false} />
+            <LoupkidsOrderCta variant="dark" density="hero" />
           </motion.div>
         </div>
         <div className="absolute bottom-5 right-[var(--lk-section-x)] z-10 max-w-[11rem] sm:max-w-xs">

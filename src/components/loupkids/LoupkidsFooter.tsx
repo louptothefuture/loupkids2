@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { LOUPKIDS_COPPA, LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_FOOTER, LOUPKIDS_FOOTER_NAV } from "@/lib/content/loupkids-site";
 import { LOUPKIDS_FOOTER_LEGAL, LOUPKIDS_FOOTER_SUPPORT } from "@/lib/content/loupkids-support";
 import { SITE } from "@/lib/site";
@@ -29,6 +29,12 @@ export function LoupkidsFooter({ body }: { body?: string }) {
           {footerBody}
         </p>
 
+        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/55">
+          <Link href={LOUPKIDS_COPPA.href} className="underline underline-offset-4 transition-colors hover:text-white">
+            {LOUPKIDS_COPPA.badge}
+          </Link>
+        </p>
+
         <div className="mt-12 grid items-start gap-x-10 gap-y-8 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           <FooterLinks links={LOUPKIDS_FOOTER_NAV} />
           <FooterLinks links={LOUPKIDS_FOOTER_SUPPORT} />
@@ -38,7 +44,7 @@ export function LoupkidsFooter({ body }: { body?: string }) {
               {SITE.email}
             </a>
             <p className="pt-3 text-sm leading-relaxed">
-              Parent updates, launch news, and journal picks.{" "}
+              Launch updates &amp; $20 off.{" "}
               <a
                 href={`mailto:${SITE.email}?subject=Stay%20in%20The%20Loup`}
                 className="underline underline-offset-4 transition-colors hover:text-white"

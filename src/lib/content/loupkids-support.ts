@@ -49,7 +49,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Limits",
-        body: "Each Loup supports up to 20 approved contacts. Your child cannot add contacts on the device; every change happens in the parent app and syncs automatically.",
+        body: "Each Loup supports up to 20 approved contacts. Kids cannot add contacts on the device; every change happens in the parent app and syncs automatically.",
       },
     ],
   },
@@ -64,11 +64,11 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "What happens during quiet hours",
-        body: "Incoming calls are silenced and sent to voice message. Outgoing calls from your child are also blocked during quiet hours unless you override from the app.",
+        body: "Incoming calls are silenced and sent to voice message. Outgoing calls from kids are also blocked during quiet hours unless you override from the app.",
       },
       {
         heading: "Emergency override",
-        body: "You can always call Loup from the parent app during quiet hours. Your child can also hold the call bar for three seconds to reach your phone if you've enabled emergency contacts.",
+        body: "You can always call Loup from the parent app during quiet hours. Kids can also hold the call bar for three seconds to reach your phone if you've enabled emergency contacts.",
       },
     ],
   },
@@ -79,7 +79,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Loup-to-Loup is always free, as are calls from parents to their kid's Loup. We offer competitive plans to make and receive calls to external numbers too. The $10/month Plus plan adds external phone numbers in and out, and pager mode.",
+        body: "Loup-to-Loup and Pager Mode stay $0/mo forever. Your device includes 1 Year of Free Unlimited Domestic Calling. After year one, renew unlimited domestic calling for $10/mo — or keep Wi-Fi core free.",
       },
       {
         heading: "Subscribe",
@@ -159,7 +159,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "There's no universal answer — but there is a better sequence.",
     sections: [
       {
-        body: "The average age of a first smartphone keeps dropping. That doesn't mean it's right for your kid — it means the default shifted without a conversation.",
+        body: "The average age of a first smartphone keeps dropping. That doesn't mean it's right for kids — it means the default shifted without a conversation.",
       },
       {
         heading: "Voice before video",
@@ -186,7 +186,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Step 1: Recruit three families",
-        body: "You need a critical mass in your kid's actual social circle — not just your opinion group online. Three families who will hold the line together changes the pickup-line conversation.",
+        body: "You need a critical mass in kids' actual social circle — not just your opinion group online. Three families who will hold the line together changes the pickup-line conversation.",
       },
       {
         heading: "Step 2: Give kids a real alternative",
@@ -217,9 +217,9 @@ export const LOUPKIDS_SETUP_STEPS = [
   },
   {
     step: "3",
-    section: "Then hand it over",
-    title: "Your kid picks up the phone",
-    body: "They turn the dial, choose a name, and press the talk bar. No menus to learn. No apps to get lost in.",
+    section: "Purity of purpose",
+    title: "As simple as pick up and talk.",
+    body: "Turn the dial, choose a name, and press the talk bar. We stripped away the menus and the apps, leaving only the voices you know and trust.",
     placeholder: "Device screen",
   },
 ] as const;
@@ -229,7 +229,7 @@ export const LOUPKIDS_RESOURCES = [
     title: "Delaying the smartphone without the fight",
     href: "/help/delaying-the-smartphone",
     type: "Guide",
-    description: "Hold the line at pickup without leaving your kid disconnected.",
+    description: "Hold the line at pickup without leaving kids disconnected.",
   },
   {
     title: "What's the right age for a first phone?",

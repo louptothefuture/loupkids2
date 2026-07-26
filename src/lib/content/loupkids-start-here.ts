@@ -17,7 +17,7 @@ export const LOUPKIDS_START_HERE = {
       title: "Delaying the smartphone",
       href: "/help/delaying-the-smartphone",
       type: "Guide",
-      description: "Hold the line without leaving your kid disconnected.",
+      description: "Hold the line without leaving kids disconnected.",
     },
     {
       title: "Setup guide",

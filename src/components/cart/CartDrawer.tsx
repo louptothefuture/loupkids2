@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "./CartProvider";
 import { trackBeginCheckout } from "@/lib/analytics";
-import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { LOUPKIDS_CART_TRUST, LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LoupkidsGuaranteeBadge } from "@/components/loupkids/conversion";
 
 function formatMoney(amount: string, currencyCode: string) {
@@ -69,7 +69,7 @@ export function CartDrawer() {
             {!cart || cart.lines.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-4 p-8 text-center">
                 <p className="lk-display text-2xl text-[var(--lk-muted)]">Nothing here yet</p>
-                <p className="text-sm text-[var(--lk-muted)]">Give your kid connection without the scroll.</p>
+                <p className="text-sm text-[var(--lk-muted)]">Connection for kids — without the scroll.</p>
                 <Link href="/shop/loup" onClick={closeCart} className="lk-btn">
                   {LOUPKIDS_CTA.primaryShort}
                 </Link>
@@ -138,9 +138,16 @@ export function CartDrawer() {
                       {formatMoney(cart.cost.subtotalAmount.amount, cart.cost.subtotalAmount.currencyCode)}
                     </span>
                   </div>
-                  <p className="mb-4 text-xs text-[var(--lk-muted)]">
+                  <p className="mb-3 text-xs text-[var(--lk-muted)]">
                     Free shipping · shipping &amp; tax at checkout
                   </p>
+                  <ul className="mb-4 flex flex-wrap gap-x-3 gap-y-1 text-xs text-[var(--lk-muted)]">
+                    {LOUPKIDS_CART_TRUST.map((badge) => (
+                      <li key={badge} className="before:mr-1 before:content-['·'] first:before:content-none">
+                        {badge}
+                      </li>
+                    ))}
+                  </ul>
                   <button
                     onClick={handleCheckout}
                     disabled={pending}

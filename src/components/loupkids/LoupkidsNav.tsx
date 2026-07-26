@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
-import { LOUPKIDS_NAV } from "@/lib/content/loupkids-site";
+import { LOUPKIDS_NAV, LOUPKIDS_NAV_DESKTOP } from "@/lib/content/loupkids-site";
 import { LoupLogoLink } from "./LoupLogo";
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -76,27 +76,56 @@ export function LoupkidsNav() {
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-[var(--lk-section-x)] py-3.5 pt-[max(0.875rem,env(safe-area-inset-top))] sm:gap-4 sm:py-4">
           <LoupLogoLink href="/" variant={logoVariant} height={26} priority />
 
+          <nav
+            aria-label="Primary"
+            className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-6 lg:flex"
+          >
+            {LOUPKIDS_NAV_DESKTOP.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-sm whitespace-nowrap ${linkClass} ${
+                  pathname === item.href || pathname.startsWith(`${item.href}/`)
+                    ? transparent
+                      ? "text-white"
+                      : "font-medium text-[var(--lk-ink)]"
+                    : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
           <div className="flex items-center gap-3 sm:gap-4">
             {(!isHome || scrolled || menuOpen) && (
               <Link href="/shop/loup" className={ctaClass}>
-                {LOUPKIDS_CTA.primaryShort}
+                {LOUPKIDS_CTA.nav}
               </Link>
             )}
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className={`flex cursor-pointer items-center justify-center p-1 ${iconClass}`}
+              className={`flex cursor-pointer items-center justify-center p-1 lg:hidden ${iconClass}`}
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <MenuIcon open={menuOpen} />
+            </button>
+            <button
+              type="button"
+              aria-label={`Cart${count > 0 ? `, ${count} items` : ""}`}
+              className={`hidden cursor-pointer text-sm lg:inline ${linkClass}`}
+              onClick={openCart}
+            >
+              Cart{count > 0 ? ` (${count})` : ""}
             </button>
           </div>
         </div>
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-white pt-20">
+        <div className="fixed inset-0 z-40 bg-white pt-20 lg:hidden">
           <nav aria-label="Main" className="flex flex-col px-8 py-6">
             {LOUPKIDS_NAV.map((item) => (
               <Link

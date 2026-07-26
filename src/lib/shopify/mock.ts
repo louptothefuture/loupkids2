@@ -16,14 +16,14 @@ export const MOCK_LOUP: Product = {
   handle: "loup",
   title: "Loup",
   description:
-    "The phone before their first smartphone. Your kid stays reachable. You stay in control. No feeds, no algorithms, no strangers — just the people you approve, and nothing else. Voice calls to a parent-built contact list. E-Ink display. Wi-Fi only — no SIM, no carrier bill. Aluminum sides and buttons built to survive being a kid's. Loup-to-Loup calling is always free; add real phone numbers for $10/month.",
+    "The phone before their first smartphone. Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet. Includes 1 year free unlimited domestic calling.",
   descriptionHtml:
-    "<p>The phone before their first smartphone.</p><p>Your kid stays reachable. You stay in control. No feeds, no algorithms, no strangers — just the people you approve, and nothing else.</p><p>Voice calls to a parent-built contact list. E-Ink display. Wi-Fi only — no SIM, no carrier bill. Aluminum sides and buttons built to survive being a kid's. Loup-to-Loup calling is always free; add real phone numbers for $10/month.</p>",
+    "<p>The phone before their first smartphone.</p><p>Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet.</p>",
   availableForSale: true,
   options: [{ name: "Finish", values: ["Silver"] }],
   priceRange: {
-    minVariantPrice: money(129),
-    maxVariantPrice: money(129),
+    minVariantPrice: money(149),
+    maxVariantPrice: money(149),
   },
   variants: [
     {
@@ -31,8 +31,8 @@ export const MOCK_LOUP: Product = {
       title: "Silver",
       availableForSale: true,
       quantityAvailable: 250,
-      price: money(129),
-      compareAtPrice: money(169),
+      price: money(149),
+      compareAtPrice: money(199),
       selectedOptions: [{ name: "Finish", value: "Silver" }],
       image: {
         url: "/images/renders/shop/a_4.jpg",
@@ -87,9 +87,9 @@ export const MOCK_LOUP: Product = {
     },
   ],
   seo: {
-    title: "Pre-order Loup — Silver | $129 Pre-Launch",
+    title: "Pre-order Loup — Silver | $149",
     description:
-      "Loup is the smartphone alternative for kids. Aluminum sides and buttons, ABS front. Voice calls to a parent-approved list, zero screen time. Free shipping, 30-day returns.",
+      "Loup is the smartphone alternative for kids. Aluminum sides and buttons, ABS front. Voice calls to a parent-approved list. Zero dopamine feeds, zero social media, zero open browsing. $149 launch (MSRP $199). Includes 1 year free unlimited domestic calling. Ships within 60 days.",
   },
 };
 

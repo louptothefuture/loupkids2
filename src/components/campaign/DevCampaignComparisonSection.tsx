@@ -14,7 +14,7 @@ export function DevCampaignComparisonSection() {
             Loup vs. the other options
           </h2>
           <p className="mt-4 max-w-2xl text-base text-ink-soft">
-            What you get with Loup — and what smartphones, watches, and flip phones can&apos;t match.
+            What you get with Loup — and what smartphones, watches, and landlines can&apos;t match.
           </p>
         </Reveal>
 

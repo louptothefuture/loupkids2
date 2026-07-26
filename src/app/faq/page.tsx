@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { FaqAnswer } from "@/components/loupkids/FaqAnswer";
+import { LoupkidsWhyNotJustSection } from "@/components/loupkids/LoupkidsWhyNotJustSection";
 import { FaqJsonLd } from "@/components/seo/JsonLd";
 import { getPublicFaqs } from "@/lib/content/cms";
 import { SITE } from "@/lib/site";
@@ -65,6 +66,8 @@ export default async function FaqPage() {
           </p>
         </div>
       </section>
+
+      <LoupkidsWhyNotJustSection />
     </div>
   );
 }

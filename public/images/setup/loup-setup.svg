@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="1170" viewBox="0 0 540 1170" role="img" aria-labelledby="title desc">
+  <title id="title">Loup parent app setup flow</title>
+  <desc id="desc">Create an account, add Loup, scan the code, choose Wi-Fi, and finish setup.</desc>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #0b0b0b; }
+    .frame { opacity: 0; }
+    .muted { fill: #777; }
+    .label { font-size: 17px; font-weight: 700; letter-spacing: 1.4px; fill: #8b8b8b; }
+    .title { font-size: 36px; font-weight: 800; letter-spacing: -1.1px; }
+    .body { font-size: 20px; fill: #707070; }
+    .button { font-size: 21px; font-weight: 700; fill: #fff; }
+    .button-light { font-size: 21px; font-weight: 700; }
+    .card-title { font-size: 22px; font-weight: 750; }
+    .card-body { font-size: 17px; fill: #777; }
+    .f1 { animation: f1 18s steps(1,end) infinite; }
+    .f2 { animation: f2 18s steps(1,end) infinite; }
+    .f3 { animation: f3 18s steps(1,end) infinite; }
+    .f4 { animation: f4 18s steps(1,end) infinite; }
+    .f5 { animation: f5 18s steps(1,end) infinite; }
+    .f6 { animation: f6 18s steps(1,end) infinite; }
+    @keyframes f1 { 0%,16.65% {opacity:1} 16.66%,100% {opacity:0} }
+    @keyframes f2 { 0%,16.65% {opacity:0} 16.66%,33.31% {opacity:1} 33.32%,100% {opacity:0} }
+    @keyframes f3 { 0%,33.31% {opacity:0} 33.32%,49.97% {opacity:1} 49.98%,100% {opacity:0} }
+    @keyframes f4 { 0%,49.97% {opacity:0} 49.98%,66.63% {opacity:1} 66.64%,100% {opacity:0} }
+    @keyframes f5 { 0%,66.63% {opacity:0} 66.64%,83.29% {opacity:1} 83.30%,100% {opacity:0} }
+    @keyframes f6 { 0%,83.29% {opacity:0} 83.30%,100% {opacity:1} }
+    @media (prefers-reduced-motion: reduce) {
+      .frame { animation: none !important; opacity: 0; }
+      .f1 { opacity: 1; }
+    }
+  </style>
+
+  <rect width="540" height="1170" fill="#fff"/>
+  <g aria-hidden="true">
+    <text x="34" y="54" font-size="20" font-weight="700">9:41</text>
+    <rect x="192" y="20" width="156" height="34" rx="17" fill="#050505"/>
+    <path d="M398 49v-9h6v9zm10 0V35h6v14zm10 0V30h6v19z" fill="#050505"/>
+    <path d="M437 37c10-10 25-10 35 0M442 42c7-7 18-7 25 0M449 48c3-3 8-3 11 0" fill="none" stroke="#050505" stroke-width="3.2" stroke-linecap="round"/>
+    <rect x="482" y="30" width="36" height="20" rx="5" fill="none" stroke="#050505" stroke-width="2"/>
+    <rect x="519" y="36" width="3" height="8" rx="1.5" fill="#050505"/>
+    <rect x="486" y="34" width="26" height="12" rx="3" fill="#050505"/>
+  </g>
+
+  <g class="frame f1">
+    <text x="34" y="180" class="label">WELCOME</text>
+    <text x="34" y="236" class="title">Create your account</text>
+    <text x="34" y="278" class="body">Your Loup stays managed by you.</text>
+    <rect x="34" y="340" width="472" height="74" rx="19" fill="#fff" stroke="#c8c8c8" stroke-width="2"/>
+    <circle cx="88" cy="377" r="15" fill="none" stroke="#111" stroke-width="3"/>
+    <path d="M81 377h14M88 370v14" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+    <text x="132" y="385" class="button-light">Continue with email</text>
+    <rect x="34" y="434" width="472" height="74" rx="19" fill="#0b0b0b"/>
+    <text x="270" y="481" text-anchor="middle" class="button">Create account</text>
+    <text x="270" y="552" text-anchor="middle" class="body">Already have an account? <tspan font-weight="700" fill="#111">Sign in</tspan></text>
+  </g>
+
+  <g class="frame f2">
+    <circle cx="58" cy="126" r="28" fill="#f6f6f6"/>
+    <path d="M67 126H50m0 0 8-8m-8 8 8 8" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="34" y="204" class="label">DEVICE SETUP</text>
+    <text x="34" y="260" class="title">Add your Loup</text>
+    <text x="34" y="302" class="body">Use the code on the back of the device.</text>
+    <rect x="34" y="356" width="472" height="160" rx="25" fill="#f7f7f7" stroke="#d8d8d8" stroke-width="2"/>
+    <rect x="62" y="388" width="96" height="96" rx="22" fill="#0b0b0b"/>
+    <path d="M91 414h38v38H91zM98 421h10v10H98zm18 0h6v6h-6zm-18 18h6v6h-6zm14 0h10v10h-10z" fill="#fff"/>
+    <text x="184" y="423" class="card-title">Scan the code</text>
+    <text x="184" y="454" class="card-body">Fastest setup</text>
+    <text x="184" y="482" class="card-body">Takes about two minutes</text>
+    <rect x="34" y="550" width="472" height="74" rx="19" fill="#0b0b0b"/>
+    <text x="270" y="597" text-anchor="middle" class="button">Open scanner</text>
+  </g>
+
+  <g class="frame f3">
+    <circle cx="58" cy="126" r="28" fill="#f6f6f6"/>
+    <path d="M67 126H50m0 0 8-8m-8 8 8 8" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="34" y="204" class="label">PAIR DEVICE</text>
+    <text x="34" y="260" class="title">Scan the code</text>
+    <text x="34" y="302" class="body">Keep the full code inside the frame.</text>
+    <rect x="34" y="350" width="472" height="472" rx="34" fill="#161616"/>
+    <path d="M100 418v-34h34M440 418v-34h-34M100 754v34h34M440 754v34h-34" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+    <g transform="translate(195 505)" fill="#fff">
+      <rect width="150" height="150" rx="8"/>
+      <g fill="#111">
+        <rect x="14" y="14" width="42" height="42"/><rect x="94" y="14" width="42" height="42"/><rect x="14" y="94" width="42" height="42"/>
+        <rect x="25" y="25" width="20" height="20" fill="#fff"/><rect x="105" y="25" width="20" height="20" fill="#fff"/><rect x="25" y="105" width="20" height="20" fill="#fff"/>
+        <rect x="70" y="18" width="10" height="10"/><rect x="62" y="36" width="18" height="10"/><rect x="78" y="54" width="12" height="12"/>
+        <rect x="62" y="74" width="14" height="16"/><rect x="84" y="72" width="10" height="10"/><rect x="102" y="70" width="30" height="12"/>
+        <rect x="66" y="100" width="12" height="28"/><rect x="86" y="96" width="14" height="14"/><rect x="108" y="114" width="24" height="14"/>
+      </g>
+    </g>
+    <text x="270" y="880" text-anchor="middle" class="body">Looking for Loup…</text>
+  </g>
+
+  <g class="frame f4">
+    <circle cx="58" cy="126" r="28" fill="#f6f6f6"/>
+    <path d="M67 126H50m0 0 8-8m-8 8 8 8" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="34" y="204" class="label">DEVICE FOUND</text>
+    <text x="34" y="260" class="title">This is your Loup</text>
+    <text x="34" y="302" class="body">Confirm the device before connecting Wi-Fi.</text>
+    <rect x="34" y="358" width="472" height="184" rx="26" fill="#f7f7f7" stroke="#d8d8d8" stroke-width="2"/>
+    <rect x="62" y="390" width="104" height="120" rx="24" fill="#e6e6e2"/>
+    <rect x="76" y="405" width="43" height="90" rx="3" fill="#111"/>
+    <circle cx="139" cy="421" r="4" fill="#858581"/>
+    <text x="194" y="430" class="card-title">Ridley’s Loup</text>
+    <text x="194" y="464" class="card-body">Ready to connect</text>
+    <text x="194" y="495" class="card-body">Code ••7K2</text>
+    <rect x="34" y="580" width="472" height="74" rx="19" fill="#0b0b0b"/>
+    <text x="270" y="627" text-anchor="middle" class="button">Confirm device</text>
+  </g>
+
+  <g class="frame f5">
+    <circle cx="58" cy="126" r="28" fill="#f6f6f6"/>
+    <path d="M67 126H50m0 0 8-8m-8 8 8 8" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="34" y="204" class="label">WI-FI</text>
+    <text x="34" y="260" class="title">Choose a network</text>
+    <text x="34" y="302" class="body">Loup uses your home Wi-Fi for calls.</text>
+    <g>
+      <rect x="34" y="352" width="472" height="86" rx="20" fill="#f7f7f7" stroke="#111" stroke-width="2"/>
+      <text x="62" y="391" class="card-title">Home Wi-Fi</text><text x="62" y="418" class="card-body">Strong signal</text>
+      <path d="M442 391c10-10 25-10 35 0M448 398c6-6 17-6 23 0M456 406c2-2 5-2 7 0" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+      <rect x="34" y="452" width="472" height="86" rx="20" fill="#fff" stroke="#ddd" stroke-width="2"/>
+      <text x="62" y="491" class="card-title">Guest</text><text x="62" y="518" class="card-body">Available</text>
+      <path d="M442 491c10-10 25-10 35 0M448 498c6-6 17-6 23 0M456 506c2-2 5-2 7 0" fill="none" stroke="#777" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <rect x="34" y="586" width="472" height="74" rx="19" fill="#0b0b0b"/>
+    <text x="270" y="633" text-anchor="middle" class="button">Connect</text>
+  </g>
+
+  <g class="frame f6">
+    <circle cx="270" cy="252" r="66" fill="#0b0b0b"/>
+    <path d="M240 254l20 20 42-48" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="270" y="372" text-anchor="middle" class="title">Loup is ready</text>
+    <text x="270" y="414" text-anchor="middle" class="body">Connected to Home Wi-Fi.</text>
+    <rect x="34" y="482" width="472" height="140" rx="24" fill="#f7f7f7" stroke="#d8d8d8" stroke-width="2"/>
+    <circle cx="92" cy="552" r="34" fill="#111"/>
+    <circle cx="92" cy="542" r="10" fill="none" stroke="#fff" stroke-width="3"/>
+    <path d="M72 577c3-18 37-18 40 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <text x="148" y="542" class="card-title">Next: approved contacts</text>
+    <text x="148" y="576" class="card-body">Choose who can call this Loup.</text>
+    <rect x="34" y="664" width="472" height="74" rx="19" fill="#0b0b0b"/>
+    <text x="270" y="711" text-anchor="middle" class="button">Add contacts</text>
+  </g>
+</svg>
