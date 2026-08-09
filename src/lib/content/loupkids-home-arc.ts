@@ -105,8 +105,8 @@ export const HOME_HOW_IT_WORKS = [
   },
   {
     step: "03",
-    title: "Scroll and call",
-    body: "On Loup, kids turn the wheel, pick a name, and press to talk.",
+    title: "Rotate. Click. Call.",
+    body: "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts.",
   },
 ] as const;
 
@@ -117,7 +117,7 @@ export const HOME_LAUNCH = {
   bonusBanner: "Loup↔Loup + App→Loup always free",
   bullets: [
     "Order now for $129 — First 500 only",
-    "First 500: 1 year unlimited domestic included · then $10/mo (cancel anytime)",
+    "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime)",
     "Ships within 60 days · 100% refundable before dispatch",
     "30-day risk-free trial starts on delivery",
   ],

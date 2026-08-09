@@ -59,8 +59,8 @@ const FACES: {
   up: [number, number, number];
 }[] = [
   {
-    title: "Scroll and call",
-    body: "Turn the wheel, pick a name, press to talk.",
+    title: "Rotate. Click. Call.",
+    body: "Turn the dial, pick a name, press to talk.",
     rot: [0, 0, 0],
     up: [0, 0, -1],
   },
@@ -406,26 +406,34 @@ export function Glb3ScrollStage({
       needsRender = true;
     };
 
-    const applyFaceLabel = (idx: number) => {
-      faceIdx = idx;
+    /** Progress + title/body — call at nav start so copy isn't a beat behind the orbit. */
+    const syncFaceCopy = (idx: number) => {
       const pct = Math.round((idx / (FACES.length - 1)) * 100);
       if (progressRef.current) {
         progressRef.current.textContent = `${idx + 1} / ${FACES.length}`;
       }
       if (barRef.current) barRef.current.style.width = `${pct}%`;
       setFrameIdx(idx);
-      if (plateLooks && backPlateMat) {
-        if (idx === PLATE_FACE) {
-          plateIdx = 0;
-          applyPlateLook(0);
-          plateNextAt = performance.now() + PLATE_STEP_MS;
-        } else {
-          // Leave customize on white (last look)
-          plateIdx = plateLooks.looks.length - 1;
-          applyPlateLook(plateIdx);
-          plateNextAt = Number.POSITIVE_INFINITY;
-        }
+    };
+
+    const applyPlateForFace = (idx: number) => {
+      if (!plateLooks || !backPlateMat) return;
+      if (idx === PLATE_FACE) {
+        plateIdx = 0;
+        applyPlateLook(0);
+        plateNextAt = performance.now() + PLATE_STEP_MS;
+      } else {
+        // Leave customize on white (last look)
+        plateIdx = plateLooks.looks.length - 1;
+        applyPlateLook(plateIdx);
+        plateNextAt = Number.POSITIVE_INFINITY;
       }
+    };
+
+    const applyFaceLabel = (idx: number) => {
+      faceIdx = idx;
+      syncFaceCopy(idx);
+      applyPlateForFace(idx);
     };
 
     const applyCameraUp = (up: [number, number, number]) => {
@@ -471,12 +479,13 @@ export function Glb3ScrollStage({
         applyPlateLook(plateIdx);
         plateNextAt = Number.POSITIVE_INFINITY;
       }
-      // Label updates when the move lands — mid-orbit looked "tilted"
       faceIdx = next;
+      // Copy tracks the turn immediately (was waiting until orbit finished)
+      syncFaceCopy(next);
+      applyPlateForFace(next);
 
       if (reduce) {
         setPivotQuat(next);
-        applyFaceLabel(next);
         if (formKey) formKey.intensity = formI(next);
         holdUntil = performance.now() + HOLD_MS;
         return true;
@@ -931,7 +940,7 @@ export function Glb3ScrollStage({
             pivot.quaternion.copy(qTo);
             pivot.updateMatrixWorld(true);
             applyCameraUp(upTo);
-            applyFaceLabel(faceIdx);
+            // Copy already synced at nav start — just settle lights
             if (formKey) formKey.intensity = formI(faceIdx);
             animating = false;
           }

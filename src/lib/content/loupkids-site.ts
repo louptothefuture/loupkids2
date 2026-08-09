@@ -372,8 +372,8 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     q: "Are there monthly fees or subscriptions?",
     a: {
       paragraphs: [
-        "Loup-to-Loup and Pager Mode (Wi-Fi intercom): $0/mo forever. Parent app and up to 10 approved contacts included — no forced subscription.",
-        "Every First 500 order ($129) includes 1 Year of Free Unlimited Domestic Calling. After year one, renew unlimited domestic calling for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
+        "Loup↔Loup and App→Loup are always free. Parent app and up to 10 approved contacts included — no forced subscription.",
+        "First 500 orders ($129) include 1 year of unlimited calls to external contacts. After year one, renew for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
       ],
     },
   },

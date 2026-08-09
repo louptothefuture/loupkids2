@@ -53,7 +53,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "Loup-to-Loup and Pager Mode stay $0/mo forever. Every device includes 1 Year of Free Unlimited Domestic Calling. After year one, renew domestic calling for $10/mo — or keep Wi-Fi core free.",
+      "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts. After year one, renew domestic calling for $10/mo — or keep Wi-Fi core free.",
   },
   {
     section: "Plans & Calling",

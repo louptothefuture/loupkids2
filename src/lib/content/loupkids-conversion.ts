@@ -25,13 +25,13 @@ export const LOUPKIDS_CTA = {
 export const LOUPKIDS_OFFER = {
   callingBadge: "Loup↔Loup + App→Loup always free",
   callingNote:
-    "First 500: 1 year unlimited domestic included · then $10/mo (cancel anytime).",
+    "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   callingPill: "Loup↔Loup + App→Loup always free",
   priceStackNote: "First 500 · Save 33%",
   scarcityLine: "First 500 · Save 33%",
   /** Full economics line for bullets / meta */
   callingCanonical:
-    "First 500: 1 year unlimited domestic included · then $10/mo (cancel anytime). Loup↔Loup + App→Loup always free.",
+    "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
 } as const;
 
 export const LOUPKIDS_HERO_COPY = {
@@ -84,17 +84,17 @@ export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
   intro:
-    "Loup↔Loup and App→Loup are always free. First 500 orders include 1 year of unlimited domestic calling — then $10/mo (cancel anytime), or keep the free Wi-Fi core.",
+    "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts — then $10/mo (cancel anytime), or keep the free Wi-Fi core.",
   tiers: [
     {
-      label: "Loup to Loup",
+      label: "Loup to Loup + App→Loup",
       price: "Always free",
-      body: "Calls between Loup devices are unlimited — no plan, no monthly bill.",
+      body: "Calls between Loup devices and from the parent app to Loup are unlimited — no plan, no monthly bill.",
     },
     {
-      label: "Domestic calling",
+      label: "External contacts",
       price: "Year 1 free · then $10/mo",
-      body: 'First 500: unlimited US & Canada calling included for year one. After that, $10/mo (cancel anytime) — or keep Loup↔Loup and App→Loup free forever. Pager mode included.',
+      body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10/mo (cancel anytime) — or keep Loup↔Loup and App→Loup free forever.",
     },
   ],
   cta: { label: "Order Loup — $129", href: "/shop/loup" },

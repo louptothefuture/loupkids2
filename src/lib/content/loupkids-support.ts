@@ -79,7 +79,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Loup-to-Loup and Pager Mode stay $0/mo forever. Your device includes 1 Year of Free Unlimited Domestic Calling. After year one, renew unlimited domestic calling for $10/mo — or keep Wi-Fi core free.",
+        body: "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts. After year one, renew unlimited domestic calling for $10/mo — or keep Wi-Fi core free.",
       },
       {
         heading: "Subscribe",
