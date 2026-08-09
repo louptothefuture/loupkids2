@@ -80,7 +80,7 @@ export function Glb2ScrollStage() {
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
-  const phaseRef = useRef<HTMLSpanElement>(null);
+  const phaseRef = useRef<HTMLParagraphElement>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
