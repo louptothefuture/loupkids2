@@ -17,11 +17,7 @@ import {
   LOUPKIDS_STORY_SHORT,
 } from "@/lib/content/loupkids-conversion";
 import { SITE } from "@/lib/site";
-import {
-  LoupkidsGuaranteeBadge,
-  LoupkidsOrderCta,
-  LoupkidsTestimonialCarousel,
-} from "./conversion";
+import { LoupkidsOrderCta } from "./conversion";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsAccordion } from "./LoupkidsAccordion";
 import { LoupkidsCallingPricingSection } from "./LoupkidsCallingPricingSection";
@@ -120,13 +116,9 @@ export function LoupkidsHomeLegacy() {
             <LoupkidsOrderCta variant="dark" density="hero" />
           </motion.div>
         </div>
-        <div className="absolute bottom-5 right-[var(--lk-section-x)] z-10 max-w-[11rem] sm:max-w-xs">
-          <LoupkidsGuaranteeBadge variant="dark" align="end" />
-        </div>
       </section>
 
       <LoupkidsStatsSection />
-      <LoupkidsTestimonialCarousel />
 
       {/* Phone + accordion — matches loupkids.com */}
       <section className="lk-section-black lk-section">

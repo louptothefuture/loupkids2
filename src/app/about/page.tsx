@@ -22,11 +22,11 @@ export default async function AboutPage() {
     <article>
       <h1 className="sr-only">The Story</h1>
 
-      <section className="border-b border-[var(--lk-line)] bg-[var(--lk-cobalt)] px-[var(--lk-section-x)] py-12 sm:py-14">
+      <section className="border-b border-white/10 bg-[var(--lk-ink)] px-[var(--lk-section-x)] py-12 sm:py-14 text-white">
         <FadeIn className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-white/60">1 year in the making</p>
           <p className="lk-display mt-2 text-2xl text-white sm:text-3xl">12 steps of failure.</p>
-          <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-2xl bg-[var(--lk-cobalt-deep)] md:rounded-3xl">
+          <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-2xl bg-[var(--lk-navy-deep)] md:rounded-3xl">
             <video
               className="h-full w-full object-cover"
               autoPlay

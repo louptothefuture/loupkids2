@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { BrainComparisonSection } from "@/components/loupkids/BrainComparisonSection";
 import { LoupkidsJournalList } from "@/components/loupkids/LoupkidsJournalList";
 import { getPosts } from "@/lib/content";
 import { SITE } from "@/lib/site";
@@ -18,8 +17,6 @@ export default async function BlogPage() {
   return (
     <div>
       <h1 className="sr-only">Journal</h1>
-
-      <BrainComparisonSection />
 
       <section className="lk-section-white lk-section-content">
         <div className="lk-container">

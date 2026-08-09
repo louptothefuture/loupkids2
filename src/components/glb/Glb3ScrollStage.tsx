@@ -18,7 +18,7 @@ const HOLD_MS = 200;
 const EMBED_DWELL_MS = 2200;
 const MODEL_SCALE = 1.3;
 /** Warm off-white — white phone needs a slightly darker stage to lift. */
-const STAGE_BG = "#f5f2ee";
+const STAGE_BG = "#f6f5f2"; // matches --lk-bg / --lk-cream
 /** CSS SVG noise — faint paper grain over the stage. */
 const GRAIN_BG =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -987,15 +987,15 @@ export function Glb3ScrollStage({
       ref={stageRef}
       className={
         embed
-          ? "relative h-full w-full overflow-hidden bg-[#f5f2ee] text-neutral-900"
-          : "relative h-[100dvh] w-full overflow-hidden bg-[#f5f2ee] text-neutral-900"
+          ? "relative h-full w-full overflow-hidden bg-[var(--lk-cream,#f6f5f2)] text-neutral-900"
+          : "relative h-[100dvh] w-full overflow-hidden bg-[var(--lk-cream,#f6f5f2)] text-neutral-900"
       }
       style={{
         position: "relative",
         height: embed ? "100%" : "100dvh",
         width: "100%",
         overflow: "hidden",
-        background: "#f5f2ee",
+        background: STAGE_BG,
         color: "#171717",
       }}
     >

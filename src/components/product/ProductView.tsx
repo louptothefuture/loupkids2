@@ -158,7 +158,7 @@ export function ProductView({ product }: { product: Product }) {
 
         <div>
           {selected.availableForSale ? (
-            <StripeCheckoutButton label={LOUPKIDS_CTA.product} showGuarantee />
+            <StripeCheckoutButton label={LOUPKIDS_CTA.product} />
           ) : (
             <button type="button" disabled className="lk-btn lk-btn-lg w-full disabled:opacity-60">
               Sold out

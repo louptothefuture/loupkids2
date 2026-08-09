@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LoupkidsHome } from "@/components/loupkids/LoupkidsHome";
-import { getFeaturedTestimonials, getMarketingHomepage } from "@/lib/content/cms";
+import { getMarketingHomepage } from "@/lib/content/cms";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 300;
@@ -12,10 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [content, testimonials] = await Promise.all([
-    getMarketingHomepage(),
-    getFeaturedTestimonials(),
-  ]);
-
-  return <LoupkidsHome content={content} testimonials={testimonials} />;
+  const content = await getMarketingHomepage();
+  return <LoupkidsHome content={content} />;
 }

@@ -4,7 +4,6 @@ import { LOUPKIDS_STORE, LOUPKIDS_STORE_PRODUCTS } from "@/lib/content/loupkids-
 import { FadeIn } from "./FadeIn";
 import { LoupkidsCustomizeStoreSection } from "./LoupkidsCustomizeStoreSection";
 import { LoupkidsImage } from "./LoupkidsImage";
-import { LoupkidsGuaranteeBadge } from "./conversion";
 
 function formatPrice(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
@@ -67,7 +66,6 @@ export function LoupkidsStore() {
           </div>
 
           <div className="mt-12 border-t border-[var(--lk-line)] pt-8 text-center">
-            <LoupkidsGuaranteeBadge className="mb-4" />
             <p className="text-sm text-[var(--lk-muted)]">
               Questions before you buy?{" "}
               <Link href="/faq" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">

@@ -4,7 +4,7 @@ import { LOUPKIDS_COMPARISON, LOUPKIDS_SPECS } from "@/lib/content/loupkids-site
 import { FadeIn } from "./FadeIn";
 import { RevealHeadline } from "./RevealHeadline";
 
-const loupCol = "bg-[var(--lk-cobalt)] px-5 py-4 text-white sm:px-6 sm:py-5";
+const loupCol = "bg-[var(--lk-ink)] px-5 py-4 text-white sm:px-6 sm:py-5";
 
 export function LoupkidsComparisonSection() {
   const { columns, rows } = LOUPKIDS_COMPARISON;

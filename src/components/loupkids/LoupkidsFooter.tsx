@@ -44,7 +44,6 @@ export function LoupkidsFooter({ body }: { body?: string }) {
               {SITE.email}
             </a>
             <p className="pt-3 text-sm leading-relaxed">
-              Launch updates &amp; $20 off.{" "}
               <a
                 href={`mailto:${SITE.email}?subject=Stay%20in%20The%20Loup`}
                 className="underline underline-offset-4 transition-colors hover:text-white"

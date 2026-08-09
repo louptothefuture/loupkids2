@@ -49,7 +49,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Limits",
-        body: "Each Loup supports up to 20 approved contacts. Kids cannot add contacts on the device; every change happens in the parent app and syncs automatically.",
+        body: "Approved contacts are unlimited. Kids cannot add contacts on the device; every change happens in the parent app and syncs automatically.",
       },
     ],
   },

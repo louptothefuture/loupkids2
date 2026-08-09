@@ -9,7 +9,7 @@ import { LoupkidsGuaranteeBadge } from "./LoupkidsGuaranteeBadge";
 export function StripeCheckoutButton({
   label = LOUPKIDS_CTA.product,
   className = "lk-btn lk-btn-lg w-full",
-  showGuarantee = true,
+  showGuarantee = false,
   guaranteeVariant = "light",
 }: {
   label?: string;

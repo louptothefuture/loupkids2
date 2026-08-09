@@ -6,12 +6,10 @@ import {
   LOUPKIDS_FINAL_CTA,
 } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_ACCORDION, LOUPKIDS_FOOTER, LOUPKIDS_IMAGES, LOUPKIDS_PHONE } from "@/lib/content/loupkids-site";
-import type { Testimonial } from "@/lib/content/types";
 import { LoupkidsHomeClient } from "./LoupkidsHomeClient";
 
 export type LoupkidsHomeProps = {
   content: MarketingHomepage;
-  testimonials: Testimonial[];
   /** Brighter color/motion skin — used by /wrapped concept route */
   fun?: boolean;
 };
@@ -32,11 +30,11 @@ export const DEFAULT_HOME_CONTENT: MarketingHomepage = {
   finalCtaBody: LOUPKIDS_FINAL_CTA.body,
   finalCtaLabel: LOUPKIDS_CTA.primary,
   footerBody: LOUPKIDS_FOOTER.body,
-  testimonialHeadline: "What parents are saying",
+  testimonialHeadline: "",
 };
 
-export function LoupkidsHome({ content, testimonials, fun }: LoupkidsHomeProps) {
-  const page = <LoupkidsHomeClient content={content} testimonials={testimonials} />;
+export function LoupkidsHome({ content, fun }: LoupkidsHomeProps) {
+  const page = <LoupkidsHomeClient content={content} />;
   if (!fun) return page;
   return <div className="lk-fun-page">{page}</div>;
 }

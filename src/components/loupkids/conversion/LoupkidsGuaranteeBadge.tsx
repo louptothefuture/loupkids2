@@ -24,16 +24,11 @@ export function LoupkidsGuaranteeBadge({
         : "justify-center text-center";
 
   const content = (
-    <>
-      <span aria-hidden="true" className="shrink-0">
-        🛡️
-      </span>
-      <span className="text-pretty">
-        <strong className={strong}>{LOUPKIDS_GUARANTEE.title}</strong>
-        {" — "}
-        {LOUPKIDS_GUARANTEE.body}
-      </span>
-    </>
+    <span className="text-pretty">
+      <strong className={strong}>{LOUPKIDS_GUARANTEE.title}</strong>
+      {" — "}
+      {LOUPKIDS_GUARANTEE.body}
+    </span>
   );
 
   if (compact) {

@@ -15,7 +15,7 @@ const Glb3Embed = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-full w-full items-center justify-center bg-[#f5f2ee] text-sm text-[var(--lk-muted)]">
+      <div className="flex h-full w-full items-center justify-center bg-[var(--lk-cream)] text-sm text-[var(--lk-muted)]">
         Loading preview…
       </div>
     ),

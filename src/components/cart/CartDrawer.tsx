@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "./CartProvider";
 import { trackBeginCheckout } from "@/lib/analytics";
 import { LOUPKIDS_CART_TRUST, LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
-import { LoupkidsGuaranteeBadge } from "@/components/loupkids/conversion";
 
 function formatMoney(amount: string, currencyCode: string) {
   return new Intl.NumberFormat("en-US", {
@@ -155,7 +154,6 @@ export function CartDrawer() {
                   >
                     {LOUPKIDS_CTA.checkout}
                   </button>
-                  <LoupkidsGuaranteeBadge compact className="mt-3" />
                   {isMock && (
                     <p className="mt-3 text-center text-xs text-[var(--lk-muted-light)]">
                       Preview mode — checkout activates when Shopify is connected.

@@ -7,13 +7,11 @@ import type { MarketingHomepage } from "@/lib/content/cms";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_CONVERT_ANTI } from "@/lib/content/loupkids-convert";
 import { HOME_HERO, HOME_STORY } from "@/lib/content/loupkids-home-arc";
-import type { Testimonial } from "@/lib/content/types";
-import { LoupkidsOrderCta, LoupkidsTestimonialCarousel } from "./conversion";
+import { LoupkidsOrderCta } from "./conversion";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsCallingPricingSection } from "./LoupkidsCallingPricingSection";
 import { LoupkidsFeaturePlay } from "./LoupkidsFeaturePlay";
 import { LoupkidsFooter } from "./LoupkidsFooter";
-import { LoupkidsFunGallery } from "./LoupkidsFunGallery";
 import { LoupkidsHowItWorksStrip } from "./LoupkidsHowItWorksStrip";
 import { LoupkidsImage } from "./LoupkidsImage";
 import { LoupkidsLaunchOfferSection } from "./LoupkidsLaunchOfferSection";
@@ -23,16 +21,10 @@ import { LoupkidsWhyNotJustSection } from "./LoupkidsWhyNotJustSection";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Mobile-first DTC cadence:
- * Hook → Relevancy → Story → Features → Gallery → How it works → Proof → Offer
+ * Mobile-first DTC cadence (pre-launch — no gallery / quotes / star proof):
+ * Hook → Relevancy → Story → Features → How it works → Calling → Why not → Offer
  */
-export function LoupkidsHomeClient({
-  content,
-  testimonials,
-}: {
-  content: MarketingHomepage;
-  testimonials: Testimonial[];
-}) {
+export function LoupkidsHomeClient({ content }: { content: MarketingHomepage }) {
   const reduce = useReducedMotion();
   const headline = HOME_HERO.headline;
   const subline = HOME_HERO.subline;
@@ -56,7 +48,7 @@ export function LoupkidsHomeClient({
                 }}
                 className="lk-display text-[clamp(2.35rem,5vw,3.75rem)] leading-[1.05] tracking-tight"
               >
-                {lines.map((line, i) => (
+                {lines.map((line) => (
                   <motion.span
                     key={line}
                     variants={{
@@ -155,17 +147,8 @@ export function LoupkidsHomeClient({
       </section>
 
       <LoupkidsFeaturePlay />
-      <LoupkidsFunGallery />
       <LoupkidsHowItWorksStrip />
       <LoupkidsCallingPricingSection compact />
-
-      <FadeIn>
-        <LoupkidsTestimonialCarousel
-          headline={content.testimonialHeadline || "What parents are saying"}
-          testimonials={testimonials}
-        />
-      </FadeIn>
-
       <LoupkidsWhyNotJustSection />
       <LoupkidsLaunchOfferSection />
       <LoupkidsFooter body={content.footerBody} />
