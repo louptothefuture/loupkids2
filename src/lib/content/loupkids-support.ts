@@ -45,7 +45,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Real phone numbers",
-        body: "To reach smartphones and landlines, enable the $10/month calling plan in Billing. Then add contacts with their phone numbers — only US and Canada numbers are supported today.",
+        body: "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). Add contacts with phone numbers in the parent app — US and Canada only today. After year one, renew the calling plan in Billing if you want external numbers.",
       },
       {
         heading: "Limits",
@@ -79,11 +79,11 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts. After year one, renew unlimited domestic calling for $10/mo — or keep Wi-Fi core free.",
+        body: "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
       },
       {
         heading: "Subscribe",
-        body: "In the parent app, go to Billing → Calling Plan and tap Subscribe. You'll be charged $10/month per Loup device; cancel anytime with no penalty.",
+        body: "After the included First 500 year, renew in the parent app under Billing → Calling Plan. $10/month per Loup device; cancel anytime with no penalty.",
       },
       {
         heading: "What's included",

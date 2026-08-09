@@ -72,19 +72,18 @@ export const LOUPKIDS_COPPA = {
 export const LOUPKIDS_CART_TRUST = [
   "Ships Within 60 Days",
   "100% Refundable Before Dispatch",
-  "Year 1 domestic included (First 500)",
+  "First 500: year 1 external calling included",
 ] as const;
 
 /**
- * Calling economics:
- * - Loup-to-Loup + parent→Loup pager = always free
- * - First 500: year 1 unlimited domestic included, then $10/mo
+ * Calling economics — keep in sync with LOUPKIDS_OFFER.callingCanonical
+ * - Loup↔Loup + App→Loup = always free
+ * - First 500: year 1 unlimited external contacts, then $10/mo
  */
 export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
-  intro:
-    "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts — then $10/mo (cancel anytime), or keep the free Wi-Fi core.",
+  intro: LOUPKIDS_OFFER.callingCanonical,
   tiers: [
     {
       label: "Loup to Loup + App→Loup",
@@ -211,7 +210,7 @@ export const LOUPKIDS_PRESS_QUOTES = [
 
 export const LOUPKIDS_FINAL_CTA = {
   headline: "Ready when you are.",
-  body: "The phone before their first smartphone — First 500 for $129 (Save 33%). Year 1 unlimited domestic included, then $10/mo. Ships within 60 days.",
+  body: `The phone before their first smartphone — First 500 for $129 (Save 33%). ${LOUPKIDS_OFFER.callingCanonical} Ships within 60 days.`,
 } as const;
 
 export const LOUPKIDS_IN_THE_BOX = [

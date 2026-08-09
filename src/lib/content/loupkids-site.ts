@@ -201,7 +201,7 @@ export const LOUPKIDS_ACCORDION = [
   },
   {
     title: "WiFi Only",
-    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. First 500: 1 year unlimited domestic included · then $10/mo (cancel anytime).",
+    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   },
   {
     title: "Data? Closed — you own it.",
@@ -372,8 +372,8 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     q: "Are there monthly fees or subscriptions?",
     a: {
       paragraphs: [
-        "Loup↔Loup and App→Loup are always free. Parent app and unlimited approved contacts included — no forced subscription.",
-        "First 500 orders ($129) include 1 year of unlimited calls to external contacts. After year one, renew for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
+        "Loup↔Loup + App→Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
+        "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
       ],
     },
   },
@@ -471,7 +471,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 export const LOUPKIDS_STORE = {
   headline: "Pre-order Loup",
   subheadline:
-    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Includes 1 year free unlimited domestic calling. Guaranteed shipping within 60 days.",
+    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -481,7 +481,7 @@ export const LOUPKIDS_STORE_PRODUCTS = [
     title: "Loup — Silver",
     price: 129,
     compareAt: 199 as number | null,
-    note: "Pre-order · Ships within 60 days · 1yr free domestic calling",
+    note: "Order · Ships within 60 days · First 500 year-1 external calling",
     image: LOUPKIDS_IMAGES.loupAluminium,
     href: "/shop/loup",
     sizes: [] as string[],
@@ -500,8 +500,16 @@ export const LOUPKIDS_SPECS = [
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
   { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
-  { group: "Calling", label: "Real phone numbers", value: "Year 1 free (First 500) · then $10/mo, unlimited US & Canada, cancel anytime" },
-  { group: "Calling", label: "Contacts", value: "Parent-approved list; Loup-to-Loup and parent-to-kid free" },
+  {
+    group: "Calling",
+    label: "Real phone numbers",
+    value: "Loup↔Loup + App→Loup always free · First 500: year 1 external · then $10/mo",
+  },
+  {
+    group: "Calling",
+    label: "Contacts",
+    value: "Unlimited parent-approved list; Loup↔Loup and App→Loup always free",
+  },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card, parent app" },
   { group: "In the Box", label: "Also included", value: "30-day trial from arrival · refundable pre-ship" },
@@ -541,7 +549,12 @@ export const LOUPKIDS_COMPARISON = {
     },
     {
       label: "Monthly cost",
-      values: ["$0 core · domestic free year 1", "Carrier plan required", "Carrier plan required", "Home phone plan"],
+      values: [
+        "$0 core · First 500 year-1 external",
+        "Carrier plan required",
+        "Carrier plan required",
+        "Home phone plan",
+      ],
     },
     {
       label: "Parent controls",

@@ -11,7 +11,8 @@ export function getStripe() {
 
 export const STRIPE_LOUP = {
   name: "Loup — Silver",
-  description: "First 500 · $129 · unlimited domestic calls · ships within 60 days",
+  description:
+    "First 500 · $129 · Loup↔Loup + App→Loup free · year-1 external calling · ships within 60 days",
   unitAmountCents: SITE.price * 100,
   currency: "usd",
 } as const;

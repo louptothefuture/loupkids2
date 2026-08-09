@@ -114,10 +114,12 @@ export const HOME_LAUNCH = {
   eyebrow: "Order",
   priceHeader: "$129",
   scarcityLine: "First 500 · Save 33%",
-  bonusBanner: "Loup↔Loup + App→Loup always free",
+  /** Prefer LOUPKIDS_OFFER.callingCanonical in UI — kept for legacy imports */
+  bonusBanner:
+    "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   bullets: [
     "Order now for $129 — First 500 only",
-    "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime)",
+    "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
     "Ships within 60 days · 100% refundable before dispatch",
     "30-day risk-free trial starts on delivery",
   ],
@@ -138,5 +140,8 @@ export const HOME_PILLARS = [
   { title: "Approved Contacts Only", body: "Only people you approve can call in or out." },
   { title: "App to Phone Pager", body: "Page kids from the parent app — call or bell, $0 forever." },
   { title: "Customizable Plates", body: "Swap the plate. Show what you're into." },
-  { title: "WiFi Only", body: "No SIM. First 500: year 1 unlimited domestic included — then $10/mo." },
+  {
+    title: "WiFi Only",
+    body: "No SIM. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
+  },
 ] as const;

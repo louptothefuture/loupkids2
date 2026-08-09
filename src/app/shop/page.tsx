@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Order Loup — Silver | $129",
   description:
-    "Order Loup — First 500 for $129 (Save 33% vs $199). Year 1 unlimited domestic included, then $10/mo. Ships within 60 days.",
+    "Order Loup — First 500 for $129 (Save 33% vs $199). Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Ships within 60 days.",
   alternates: { canonical: `${SITE.url}/shop/loup` },
 };
 

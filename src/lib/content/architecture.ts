@@ -88,13 +88,13 @@ export const PRICING_TIERS = [
     period: "First 500 · $199 at launch",
     highlight: true,
     features: [
-      "1 Year Free Unlimited Domestic Calling",
-      "Loup-to-Loup & Pager Mode — $0/mo forever",
+      "Loup↔Loup + App→Loup always free",
+      "First 500: 1 year unlimited external contacts · then $10/mo",
       "Parent app — contacts, quiet hours, page",
       "Works on home, school & hotspot Wi-Fi",
-      "After year 1: optional $10/mo domestic calling",
+      "Unlimited parent-approved contacts",
     ],
-    cta: "Pre-order now",
+    cta: "Order now",
     href: "/shop/loup",
   },
   {

@@ -53,7 +53,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts. After year one, renew domestic calling for $10/mo — or keep Wi-Fi core free.",
+      "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
   },
   {
     section: "Plans & Calling",
@@ -65,7 +65,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Does LOUP work away from home Wi-Fi?",
     answer:
-      "LOUP connects over Wi-Fi — at home, school, or anywhere you trust. There's no SIM card and no carrier bill. LOUP-to-LOUP calling works wherever both devices have Wi-Fi. First 500 includes year 1 unlimited domestic; then $10/mo if you want external numbers after that.",
+      "Loup connects over Wi-Fi — at home, school, or anywhere you trust. No SIM card and no carrier bill. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   },
   {
     section: "Shipping",
@@ -171,8 +171,16 @@ export const FALLBACK_SPECS: Spec[] = [
   { group: "Hardware", label: "Durability", value: "IP54 splash resistant, drop-tested to 2 meters" },
   { group: "Hardware", label: "Size & Weight", value: '4.3" × 2.6" × 0.5" — 118 g' },
   { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
-  { group: "Calling", label: "Real phone numbers", value: "Year 1 free (First 500) · then $10/mo, unlimited US & Canada, cancel anytime" },
-  { group: "Calling", label: "Contacts", value: "Parent-approved list; Loup-to-Loup and parent-to-kid free" },
+  {
+    group: "Calling",
+    label: "Real phone numbers",
+    value: "Loup↔Loup + App→Loup always free · First 500: year 1 external · then $10/mo",
+  },
+  {
+    group: "Calling",
+    label: "Contacts",
+    value: "Unlimited parent-approved list; Loup↔Loup and App→Loup always free",
+  },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
   { group: "Battery & Charging", label: "Battery", value: "Rechargeable and replaceable" },
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
@@ -187,7 +195,10 @@ export const FALLBACK_POSTS: Post[] = LOUPKIDS_JOURNAL_POSTS;
 export const PRESS_KIT_FACTS = [
   { label: "Founded", value: "2025, Providence RI" },
   { label: "Product", value: "LOUP — screenless voice phone for kids" },
-  { label: "Price", value: "$129 device · free LOUP-to-LOUP · $10/mo real numbers" },
+  {
+    label: "Price",
+    value: "$129 device · Loup↔Loup + App→Loup free · First 500 year-1 external",
+  },
   { label: "Category", value: "Smartphone alternative / anti-screen hardware" },
   { label: "Contact", value: "hi@loupkids.com" },
 ];

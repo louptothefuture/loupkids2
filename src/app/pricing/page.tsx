@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "LOUP device pricing — First 500 for $129 ($199 at launch), includes 1 year free unlimited domestic calling; $10/mo optional after year one.",
+    "Loup device pricing — First 500 for $129 ($199 at launch). Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
   alternates: { canonical: `${SITE.url}/pricing` },
 };
 
