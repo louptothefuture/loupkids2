@@ -59,8 +59,8 @@ const FACES: {
   up: [number, number, number];
 }[] = [
   {
-    title: "Rotate. Click. Call.",
-    body: "Turn the dial, pick a name, press to talk.",
+    title: "Scroll. Click. Call.",
+    body: "It's pretty simple really, because that's the point.",
     rot: [0, 0, 0],
     up: [0, 0, -1],
   },

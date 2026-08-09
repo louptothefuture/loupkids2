@@ -105,8 +105,8 @@ export const HOME_HOW_IT_WORKS = [
   },
   {
     step: "03",
-    title: "Rotate. Click. Call.",
-    body: "Loup↔Loup and App→Loup are always free. First 500 get 1 year of unlimited calls to external contacts.",
+    title: "Scroll. Click. Call.",
+    body: "It's pretty simple really, because that's the point.",
   },
 ] as const;
 

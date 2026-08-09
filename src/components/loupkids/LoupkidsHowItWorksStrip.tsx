@@ -96,23 +96,23 @@ export function LoupkidsHowItWorksStrip({
               <div className="h-px flex-1 bg-[var(--lk-line)]" />
             </div>
 
-            {/* Device phase — step 3 + GLB embed */}
-            <div className="mt-8 sm:mt-10">
+            {/* Device phase — phone left, copy right */}
+            <div className="mt-8 grid items-center gap-8 sm:mt-10 md:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)] md:gap-10 lg:gap-14">
+              <div className="h-[min(70vh,640px)] overflow-hidden rounded-2xl ring-1 ring-black/8">
+                <Glb3Embed mode="embed" />
+              </div>
+
               <FadeIn>
                 <span className="inline-flex h-6 w-fit items-center rounded-md bg-[var(--lk-ink)] px-2 text-[0.7rem] font-semibold tracking-wide text-white">
                   {STEP_CALL.step}
                 </span>
-                <h3 className="lk-display mt-3 text-xl leading-tight md:text-2xl">
+                <h3 className="lk-display mt-3 text-[clamp(1.75rem,3.5vw,2.35rem)] leading-[1.08]">
                   {STEP_CALL.title}
                 </h3>
-                <p className="mt-2 max-w-lg text-sm leading-relaxed text-[var(--lk-muted)] md:text-[0.9375rem]">
+                <p className="mt-3 max-w-sm text-sm leading-relaxed text-[var(--lk-muted)] md:text-[0.975rem]">
                   {STEP_CALL.body}
                 </p>
               </FadeIn>
-
-              <div className="mt-6 h-[min(70vh,640px)] overflow-hidden rounded-2xl ring-1 ring-black/8 sm:mt-8">
-                <Glb3Embed mode="embed" />
-              </div>
             </div>
           </div>
         </FadeIn>
