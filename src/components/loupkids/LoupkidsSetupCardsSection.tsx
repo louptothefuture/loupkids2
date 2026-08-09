@@ -9,7 +9,7 @@ import { RevealHeadline } from "./RevealHeadline";
 /** Homepage setup walkthrough — matches the interactive block on dev.loupkids.com */
 export function LoupkidsSetupCardsSection() {
   return (
-    <section className="border-y border-[var(--lk-line)] bg-[#f3f0e8] px-[var(--lk-section-x)] py-14 sm:py-16 lg:py-20">
+    <section className="border-y border-[var(--lk-line)] bg-[var(--lk-cream)] px-[var(--lk-section-x)] py-16 sm:py-20 lg:py-24">
       <div className="lk-container mb-10 max-w-3xl sm:mb-12">
         <FadeIn>
           <p className="lk-label">See the complete experience</p>

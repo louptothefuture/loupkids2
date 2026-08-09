@@ -6,15 +6,15 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "LOUP device pricing — $149 launch ($199 MSRP), includes 1 year free unlimited domestic calling; $10/mo optional after year one.",
+    "LOUP device pricing — First 500 for $129 ($199 at launch), includes 1 year free unlimited domestic calling; $10/mo optional after year one.",
   alternates: { canonical: `${SITE.url}/pricing` },
 };
 
 export default function PricingPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-      <h1 className="display text-4xl">Pricing</h1>
-      <p className="mt-3 text-ink-soft">One device. One optional plan. No surprises.</p>
+      <h1 className="sr-only">Pricing</h1>
+      <p className="text-ink-soft">One device. One optional plan. No surprises.</p>
 
       <div className="mt-10 space-y-6">
         {PRICING_TIERS.map((tier) => (

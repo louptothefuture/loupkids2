@@ -3,7 +3,7 @@ import { FadeIn } from "../FadeIn";
 
 export function LoupkidsPressStrip() {
   return (
-    <section className="border-b border-[var(--lk-line)] bg-white px-[var(--lk-section-x)] py-8">
+    <section className="border-b border-[var(--lk-line)] bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-8">
       <FadeIn className="lk-container">
         <div className="grid gap-6 sm:grid-cols-3">
           {LOUPKIDS_PRESS_QUOTES.map((item, i) => (

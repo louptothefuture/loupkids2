@@ -12,8 +12,13 @@ export function LoupkidsShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="loupkids-theme flex min-h-full flex-col">
+      <a href="#main" className="lk-skip">
+        Skip to content
+      </a>
       <LoupkidsNav />
-      <main className={`flex-1 ${isHome ? "" : "pt-[72px]"}`}>{children}</main>
+      <main id="main" className="lk-main flex-1">
+        {children}
+      </main>
       {!isHome && <LoupkidsFooter />}
       <LoupkidsStickyCta />
     </div>

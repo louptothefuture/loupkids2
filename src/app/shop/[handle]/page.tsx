@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProduct, getProducts } from "@/lib/shopify";
 import { getSpecs } from "@/lib/content";
 import { ProductView } from "@/components/product/ProductView";
 import { ProductJsonLd } from "@/components/seo/JsonLd";
+import { LoupkidsBuiltLikeGear } from "@/components/loupkids/LoupkidsBuiltLikeGear";
+import { LoupkidsCallingPricingSection } from "@/components/loupkids/LoupkidsCallingPricingSection";
 import { LoupkidsCustomizeStoreSection } from "@/components/loupkids/LoupkidsCustomizeStoreSection";
 import { LOUPKIDS_COMPARISON } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
@@ -77,51 +78,16 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
       {isDevice && (
         <>
-          <Section title="Built like gear, not like a toy">
-            <div className="grid gap-8 md:grid-cols-3">
-              {[
-                {
-                  src: "/images/renders/shop/a_9.jpg",
-                  title: "Rechargeable & replaceable battery",
-                  body: "USB-C charges in 70 minutes, runs ~5 days. The battery is rechargeable and replaceable — not glued shut.",
-                },
-                {
-                  src: "/images/renders/shop/a_8.jpg",
-                  title: "Customizable back plates",
-                  body: "Swap the plate when you want a new look. Patterns and customs ship after launch — Silver first.",
-                },
-                {
-                  src: "/images/renders/shop/a_4.jpg",
-                  title: "Aluminum + ABS",
-                  body: "Machined aluminum sides and buttons, ABS front — built to survive a backpack, not look like a toy.",
-                },
-              ].map((card) => (
-                <figure key={card.title} className="lk-image-hover border border-[var(--lk-line)]">
-                  <div className="relative aspect-square overflow-hidden bg-neutral-50">
-                    <Image
-                      src={card.src}
-                      alt={card.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="p-5">
-                    <h3 className="lk-display text-lg">{card.title}</h3>
-                    <p className="mt-2 text-sm text-[var(--lk-muted)]">{card.body}</p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </Section>
+          <LoupkidsBuiltLikeGear />
+          <LoupkidsCallingPricingSection />
 
           <LoupkidsCustomizeStoreSection />
 
           <Section title="Loup vs. the other options">
-            <div className="overflow-x-auto border border-[var(--lk-line)]">
+            <div className="overflow-x-auto rounded-2xl bg-[var(--lk-surface)] shadow-[var(--lk-card-shadow)]">
               <table className="w-full min-w-[720px] border-collapse text-sm">
                 <thead>
-                  <tr className="border-b border-[var(--lk-line)] bg-neutral-50 text-left">
+                  <tr className="border-b border-[var(--lk-line)] bg-[var(--lk-cream)] text-left">
                     <th className="p-4" />
                     {COMPARISON.columns.map((col, i) => (
                       <th key={col} className={`p-4 font-medium ${i === 0 ? "text-[var(--lk-ink)]" : "text-[var(--lk-muted)]"}`}>
@@ -139,7 +105,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                       {row.values.map((value, i) => (
                         <td
                           key={i}
-                          className={`p-4 align-top ${i === 0 ? "bg-neutral-50/80 font-medium" : "text-[var(--lk-muted)]"}`}
+                          className={`p-4 align-top ${i === 0 ? "bg-[var(--lk-cream)]/80 font-medium" : "text-[var(--lk-muted)]"}`}
                         >
                           {value}
                         </td>
@@ -154,7 +120,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
           <Section title="The fine print" id="specs">
             <div className="grid gap-8 md:grid-cols-2">
               {specGroups.map((group) => (
-                <div key={group} className="border border-[var(--lk-line)] p-6">
+                <div key={group} className="lk-card p-6">
                   <h3 className="lk-display text-lg">{group}</h3>
                   <dl className="mt-4 space-y-3">
                     {specs

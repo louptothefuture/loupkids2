@@ -30,21 +30,12 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
+/** Always solid — transparent-over-split-hero made links disappear. */
 export function LoupkidsNav() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const { cart, openCart } = useCart();
   const count = cart?.totalQuantity ?? 0;
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const transparent = isHome && !scrolled && !menuOpen;
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -57,24 +48,14 @@ export function LoupkidsNav() {
     setMenuOpen(false);
   }, [pathname]);
 
-  const linkClass = transparent
-    ? "text-white/85 transition-colors hover:text-white"
-    : "text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]";
-  const logoVariant = transparent ? "light" : "dark";
-  const ctaClass = transparent ? "lk-btn lk-btn-sm lk-btn-white" : "lk-btn lk-btn-sm";
-  const iconClass = transparent ? "text-white" : "text-[var(--lk-ink)]";
+  const linkClass =
+    "inline-flex min-h-11 items-center text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]";
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          transparent
-            ? "bg-transparent"
-            : "border-b border-[var(--lk-line)] bg-white/95 backdrop-blur-sm"
-        }`}
-      >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-[var(--lk-section-x)] py-3.5 pt-[max(0.875rem,env(safe-area-inset-top))] sm:gap-4 sm:py-4">
-          <LoupLogoLink href="/" variant={logoVariant} height={26} priority />
+      <header className="lk-nav fixed inset-x-0 top-0 z-50 border-b border-[var(--lk-line)] bg-[var(--lk-surface)]/95 backdrop-blur-sm">
+        <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between gap-3 px-[var(--lk-section-x)] sm:gap-4">
+          <LoupLogoLink href="/" variant="dark" height={26} priority />
 
           <nav
             aria-label="Primary"
@@ -86,9 +67,7 @@ export function LoupkidsNav() {
                 href={item.href}
                 className={`text-sm whitespace-nowrap ${linkClass} ${
                   pathname === item.href || pathname.startsWith(`${item.href}/`)
-                    ? transparent
-                      ? "text-white"
-                      : "font-medium text-[var(--lk-ink)]"
+                    ? "font-medium text-[var(--lk-ink)]"
                     : ""
                 }`}
               >
@@ -98,16 +77,14 @@ export function LoupkidsNav() {
           </nav>
 
           <div className="flex items-center gap-3 sm:gap-4">
-            {(!isHome || scrolled || menuOpen) && (
-              <Link href="/shop/loup" className={ctaClass}>
-                {LOUPKIDS_CTA.nav}
-              </Link>
-            )}
+            <Link href="/shop/loup" className="lk-btn lk-btn-sm">
+              {LOUPKIDS_CTA.nav}
+            </Link>
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className={`flex cursor-pointer items-center justify-center p-1 lg:hidden ${iconClass}`}
+              className="-mr-2 flex h-11 w-11 cursor-pointer items-center justify-center text-[var(--lk-ink)] lg:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <MenuIcon open={menuOpen} />
@@ -115,7 +92,7 @@ export function LoupkidsNav() {
             <button
               type="button"
               aria-label={`Cart${count > 0 ? `, ${count} items` : ""}`}
-              className={`hidden cursor-pointer text-sm lg:inline ${linkClass}`}
+              className={`hidden cursor-pointer text-sm lg:inline-flex ${linkClass}`}
               onClick={openCart}
             >
               Cart{count > 0 ? ` (${count})` : ""}
@@ -125,7 +102,7 @@ export function LoupkidsNav() {
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-white pt-20 lg:hidden">
+        <div className="fixed inset-0 z-40 bg-[var(--lk-surface)] pt-20 lg:hidden">
           <nav aria-label="Main" className="flex flex-col px-8 py-6">
             {LOUPKIDS_NAV.map((item) => (
               <Link

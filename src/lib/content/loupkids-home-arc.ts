@@ -1,89 +1,142 @@
-/** Homepage 5-act narrative — keep soul, cut noise */
+/** Homepage DTC cadence — mobile-first conversion arc */
 
 export const HOME_HERO = {
-  headline: "Their first phone. Not their first feed.",
-  subline: "Parent-approved Wi-Fi calling for kids. Zero apps, zero feeds, zero screen addiction.",
-  incentivePill: "⚡ Includes 1 Year Free Unlimited Domestic Calling",
+  headline: "Their first phone. Safe from day one.",
+  subline:
+    "Peace of mind for you, real connection for them. A voice-only phone so kids can reach their people — and still be kids.",
   trustLine: "Ships within 60 days. 30-day trial starts upon delivery.",
 } as const;
 
-export const HOME_TENSION = {
-  header: "You aren't alone in feeling frustrated.",
-  subhead: "8 out of 10 parents feel forced into the smartphone trap. Loup is the escape hatch.",
+/** Relevancy — why this moment matters */
+export const HOME_RELEVANCY = {
+  eyebrow: "Why families choose Loup",
+  header: "You are not alone in wanting a better first phone.",
+  subhead: "Parents want kids reachable and free to grow. Loup makes both feel possible.",
   metrics: [
     {
       stat: "46%",
-      label: "Of teens report being online almost constantly.",
+      label: "Of teens say they are online almost constantly — families want a calmer first step.",
       cite: "Pew Research, 2024",
       citeHref:
         "https://www.pewresearch.org/internet/2024/12/12/teens-social-media-and-technology-2024/",
     },
     {
       stat: "5.5 hrs",
-      label: "Daily average spent on entertainment screens by kids 8–12.",
+      label: "Daily entertainment-screen average for kids 8–12 — room to reclaim play and voice.",
+      cite: "Common Sense Media, 2021",
+      citeHref: "https://www.commonsensemedia.org/research/the-common-sense-census-media-use-by-tweens-and-teens-2021",
     },
     {
-      stat: "−25%",
-      label: "Decline in unstructured real-world outdoor play.",
+      stat: "Play",
+      label: "Kids thrive with outdoor play, friendship, and conversation — Loup protects that space.",
     },
   ],
 } as const;
 
-export const HOME_MANIFESTO = {
-  lines: [
-    "We didn't dumb down a smartphone.",
-    "We didn't modernize a landline.",
-    "We built a rolodex for the age of independence.",
+/** Brief story — depth lives on /about */
+export const HOME_STORY = {
+  eyebrow: "Why we built it",
+  headline: "Built for connection — and for childhood.",
+  paragraphs: [
+    "We wanted kids to call friends and family with confidence. Not because childhood needed less joy — because it needed more of the right kind: voices, playdates, and being present.",
+    "So we built a pocket phone that only reaches the people parents approve. Voice. Presence. Independence. Room left for being a kid.",
+  ],
+  cta: { label: "How it started", href: "/about" },
+  image: "/images/lifestyle-new/kids-phones-line.jpg",
+  imageAlt: "Kids with phones — the moment families look for a gentler first option",
+} as const;
+
+/** Feature band headline — accordion bodies live in LOUPKIDS_ACCORDION */
+export const HOME_FEATURES = {
+  eyebrow: "The phone",
+  headline: "Everything you need. Nothing you don't.",
+  image: "/images/renders/shop/a_4.jpg",
+  imageAlt: "Loup with LOUP wordmark on the face",
+} as const;
+
+/** Fun gallery — lifestyle + product; layout uses `tile` for bento */
+export const HOME_GALLERY = {
+  eyebrow: "In the wild",
+  headline: "Designed kid-first. Built for real conversation. Cool enough to call their own.",
+  items: [
+    {
+      src: "/images/lifestyle-new/kid-smile.jpg",
+      alt: "Kid smiling outdoors",
+      tile: "hero" as const,
+    },
+    {
+      src: "/images/lifestyle-new/two-kids.jpg",
+      alt: "Two kids together",
+      tile: "mid" as const,
+    },
+    {
+      src: "/images/lifestyle-new/hand-holding-hi.jpg",
+      alt: "Hand holding Loup showing hi.",
+      tile: "mid" as const,
+    },
+    {
+      src: "/images/lifestyle-new/boy-holding.jpg",
+      alt: "Kid holding Loup",
+      tile: "wide" as const,
+    },
+    {
+      src: "/images/lifestyle-new/girl-kitchen.jpg",
+      alt: "Kid with Loup in the kitchen",
+      tile: "square" as const,
+    },
+    {
+      src: "/images/renders/shop/a_4.jpg",
+      alt: "Loup product hardware",
+      tile: "square" as const,
+    },
   ],
 } as const;
 
 export const HOME_HOW_IT_WORKS = [
   {
-    step: "1",
-    title: "Approve trusted contacts",
-    body: "Parents set up the people kids can call — in about 2 minutes.",
+    step: "01",
+    title: "Connect over Wi-Fi",
+    body: "Pair Loup to your home network in the parent app — about two minutes.",
   },
   {
-    step: "2",
-    title: "Contacts sync over Wi-Fi",
-    body: "The list lands on Loup automatically. No typing on the device.",
+    step: "02",
+    title: "Approve contacts",
+    body: "In the parent app, choose who kids can call. No strangers, spam, or surprise calls.",
   },
   {
-    step: "3",
-    title: "Kids scroll and call",
-    body: "Turn the wheel, pick a name, press to talk. That's the whole interface.",
-  },
-] as const;
-
-export const HOME_PILLARS = [
-  {
-    title: "Tactile scroll wheel",
-    body: "Physical control engineered for kids' hands — not a glass slab.",
-  },
-  {
-    title: "E-paper display",
-    body: "Zero dopamine backlights. High outdoor visibility. Zero entertainment screens.",
-  },
-  {
-    title: "Wi-Fi voice network",
-    body: "Crystal-clear calling at home, school, or on a parent mobile hotspot.",
-  },
-  {
-    title: "In-home Pager Mode",
-    body: "Instant family walkie-talkie over Wi-Fi — $0/mo forever.",
+    step: "03",
+    title: "Scroll and call",
+    body: "On Loup, kids turn the wheel, pick a name, and press to talk.",
   },
 ] as const;
 
 export const HOME_LAUNCH = {
-  priceHeader: "$149 Launch Price",
-  bonusBanner: "⚡ Included Bonus: 1 Year of Free Unlimited Domestic Calling ($120 Value)",
+  eyebrow: "Order",
+  priceHeader: "$129",
+  scarcityLine: "First 500 · Save 33%",
+  bonusBanner: "Loup↔Loup + App→Loup always free",
   bullets: [
-    "Automatically unlocked with every $149 launch pre-order",
-    "Loup-to-Loup calls & In-Home Pager Mode stay $0/mo forever",
-    "No forced auto-renewals or hidden carrier fees",
+    "Order now for $129 — First 500 only",
+    "First 500: 1 year unlimited domestic included · then $10/mo (cancel anytime)",
+    "Ships within 60 days · 100% refundable before dispatch",
+    "30-day risk-free trial starts on delivery",
   ],
-  shipLine: "Ships within 60 days. 100% refundable anytime prior to dispatch.",
-  trialLine: "30-Day Risk-Free Trial starts the day your Loup arrives.",
   e911:
-    "Wi-Fi Voice Device: Operates over Wi-Fi and mobile hotspots. Does not support E911 cellular emergency dialing.",
+    "Wi-Fi Voice Device: Operates over Wi-Fi and mobile hotspots. Does not support E911 emergency dialing.",
 } as const;
+
+/** @deprecated aliases — keep old imports from breaking during rebuild */
+export const HOME_TENSION = HOME_RELEVANCY;
+export const HOME_MANIFESTO = {
+  lines: [
+    "We didn't copy a smartphone.",
+    "We didn't revive a landline.",
+    "We built a cheerful first phone for real independence.",
+  ],
+} as const;
+export const HOME_PILLARS = [
+  { title: "Approved Contacts Only", body: "Only people you approve can call in or out." },
+  { title: "App to Phone Pager", body: "Page kids from the parent app — call or bell, $0 forever." },
+  { title: "Customizable Plates", body: "Swap the plate. Show what you're into." },
+  { title: "WiFi Only", body: "No SIM. First 500: year 1 unlimited domestic included — then $10/mo." },
+] as const;

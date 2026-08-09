@@ -1,5 +1,5 @@
 /**
- * ponytail: homepage arc + price/offer blockers.
+ * ponytail: homepage DTC arc + price/offer blockers.
  * Run: node scripts/check-audit-p0.mjs
  */
 import { readFileSync } from "node:fs";
@@ -11,31 +11,37 @@ const siteConfig = readFileSync(join(root, "src/lib/site.ts"), "utf8");
 const home = readFileSync(join(root, "src/components/loupkids/LoupkidsHomeClient.tsx"), "utf8");
 const arc = readFileSync(join(root, "src/lib/content/loupkids-home-arc.ts"), "utf8");
 const faq = readFileSync(join(root, "src/app/faq/page.tsx"), "utf8");
+const site = readFileSync(join(root, "src/lib/content/loupkids-site.ts"), "utf8");
+const accordion = site.slice(site.indexOf("LOUPKIDS_ACCORDION"), site.indexOf("LOUPKIDS_NOTHING"));
 
 const checks = [
-  [/price:\s*149/, siteConfig, "SITE.price must be 149"],
-  [/Pre-order Loup — \$149/, conversion, "CTA must say Pre-order Loup — $149"],
-  [/Their first phone\. Not their first feed\./, arc, "Hero H1 missing from home arc"],
-  [/Parent-approved Wi-Fi calling for kids/, arc, "Hero subline missing"],
-  [/You aren't alone in feeling frustrated/, arc, "Act 2 header missing"],
-  [/We built a rolodex for the age of independence/, arc, "Manifesto line missing"],
-  [/LoupkidsStatsSection/, home, "Act 2 stats missing"],
-  [/LoupkidsManifestoSection/, home, "Act 3 manifesto missing"],
-  [/LoupkidsHowItWorksStrip/, home, "Act 4 how-it-works missing"],
-  [/LoupkidsHardwarePillars/, home, "Act 4 pillars missing"],
-  [/LoupkidsLaunchOfferSection/, home, "Act 5 launch offer missing"],
-  [/ObjectionStrip|LOUPKIDS_OBJECTIONS/, home, "Objection strip must be removed from homepage"],
-  [/Join cellular waitlist|Need cellular later/, home, "Cellular waitlist must be removed from homepage"],
-  [/LoupkidsCallingPricingSection/, home, "Subscription pricing table must leave homepage"],
+  [/price:\s*129/, siteConfig, "SITE.price must be 129"],
+  [/Order Loup — \$129/, conversion, "CTA must say Order Loup — $129"],
+  [/First 500/, conversion, "First 500 offer missing"],
+  [/Their first phone\. Safe from day one\./, arc, "Hero H1 missing from home arc"],
+  [/Total security for you, real connection for them/, arc, "Hero subline missing"],
+  [/You aren't alone in feeling frustrated/, arc, "Relevancy header missing"],
+  [/Built for connection, not the scroll/, arc, "Story brief missing"],
+  [/Everything you need\. Nothing you don't\./, arc, "Features headline missing"],
+  [/App to Phone Pager/, accordion, "Accordion must say App to Phone Pager"],
+  [/Emergency/, accordion, "Accordion must not include Emergency"],
+  [/Designed kid-first/, arc, "Fun gallery missing"],
+  [/LoupkidsStatsSection/, home, "Relevancy section missing"],
+  [/LoupkidsFeaturePlay/, home, "Feature play missing"],
+  [/LoupkidsFunGallery/, home, "Fun gallery component missing"],
+  [/LoupkidsHowItWorksStrip/, home, "How-it-works missing"],
+  [/LoupkidsLaunchOfferSection/, home, "Launch offer missing"],
   [/LoupkidsWhyNotJustSection/, faq, "Why Not Just must live on FAQ"],
   [/your child/, arc, "Home arc must not say your child"],
-  [/Kids stay reachable/, conversion, "PDP value must say Kids (not Your kid)"],
-  [/your kid/, conversion, "Conversion copy must not say your kid"],
+  [/Kids stay reachable/, conversion, "PDP value must say Kids"],
 ];
 
 let failed = 0;
 for (const [re, hay, msg] of checks) {
-  const shouldMatch = !String(msg).includes("must be removed") && !String(msg).includes("must not") && !String(msg).includes("must leave");
+  const shouldMatch =
+    !String(msg).includes("must be removed") &&
+    !String(msg).includes("must not") &&
+    !String(msg).includes("must leave");
   const hit = re.test(hay);
   if (shouldMatch ? !hit : hit) {
     console.error("FAIL:", msg);
@@ -47,4 +53,4 @@ if (failed) {
   console.error(`${failed} check(s) failed`);
   process.exit(1);
 }
-console.log("Homepage arc checks passed");
+console.log("DTC homepage arc checks passed");

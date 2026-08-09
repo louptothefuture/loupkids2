@@ -20,7 +20,7 @@ export default async function OrderSuccessPage({
         <p className="lk-label">Pre-order confirmed</p>
         <h1 className="lk-display lk-h2 mt-3">You&apos;re in.</h1>
         <p className="lk-lead lk-prose-muted mx-auto mt-4 max-w-md">
-          Thanks for pre-ordering Loup. We&apos;ll email you with shipping updates — October 2026.
+          Thanks for ordering Loup. We&apos;ll email you with shipping updates — ships within 60 days.
         </p>
         {session_id ? (
           <p className="mt-3 text-sm text-[var(--lk-muted)]">Reference: {session_id}</p>

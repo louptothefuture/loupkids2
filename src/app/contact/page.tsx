@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="lk-section">
+    <section className="border-b border-[var(--lk-line)] px-[var(--lk-section-x)] py-12 sm:py-14">
       <FadeIn className="lk-container-narrow">
-        <h1 className="lk-display text-[clamp(2rem,5vw,3.5rem)]">Get in Touch</h1>
-        <div className="mt-10">
+        <h1 className="sr-only">Get in Touch</h1>
+        <div>
           <ContactForm />
         </div>
         <dl className="mt-12 space-y-4 border-t border-[var(--lk-line)] pt-8 text-[var(--lk-muted)]">

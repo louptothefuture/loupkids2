@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         {post.coverImage && (
-          <div className="relative mt-8 aspect-[16/9] overflow-hidden bg-neutral-100">
+          <div className="relative mt-8 aspect-[16/9] overflow-hidden bg-[var(--lk-cream)]">
             <Image
               src={post.coverImage}
               alt={post.title}
@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <PortableText value={post.body.value as any} />}
         </div>
 
-        <aside className="mt-14 border border-[var(--lk-line)] p-8">
+        <aside className="lk-card mt-14 p-8">
           <p className="leading-relaxed text-[var(--lk-muted)]">
             Screens are the default. We&apos;re building the alternative. LOUP gives kids a way to stay connected without handing them the internet. Voice-only, parent-controlled, designed for the years before a smartphone makes sense.
           </p>
@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <li key={r.slug}>
                   <Link
                     href={`/journal/${r.slug}`}
-                    className="group block border border-[var(--lk-line)] p-5 transition-opacity hover:opacity-80"
+                    className="lk-card group block p-5 transition-opacity hover:opacity-80"
                   >
                     <p className="lk-label">{r.category.title}</p>
                     <p className="lk-display mt-1 text-lg">{r.title}</p>

@@ -5,12 +5,12 @@ import { LOUPKIDS_IMAGES } from "@/lib/content/loupkids-site";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsImage } from "./LoupkidsImage";
 
-/** Act 3 — manifesto + sticky hardware close-up (soul of the brand) */
+/** Manifesto on cobalt — no black field */
 export function LoupkidsManifestoSection() {
   return (
-    <section className="lk-section-black border-y border-white/10">
-      <div className="mx-auto grid max-w-[1200px] lg:grid-cols-2 lg:items-stretch">
-        <FadeIn className="relative min-h-[22rem] overflow-hidden bg-black sm:min-h-[28rem] lg:min-h-[min(88vh,40rem)] lg:sticky lg:top-0 lg:h-[min(100svh,44rem)]">
+    <section className="lk-section-cobalt border-y border-white/15">
+      <div className="lk-container grid lg:grid-cols-2 lg:items-stretch">
+        <FadeIn className="relative min-h-[22rem] overflow-hidden bg-[var(--lk-cobalt-deep)] sm:min-h-[28rem] lg:min-h-[min(88vh,40rem)] lg:sticky lg:top-0 lg:h-[min(100svh,44rem)]">
           <LoupkidsImage
             src={LOUPKIDS_IMAGES.productHi}
             alt="Loup e-paper face and tactile scroll wheel — studio close-up"
@@ -27,7 +27,7 @@ export function LoupkidsManifestoSection() {
                 <li
                   key={line}
                   className={`lk-display text-[clamp(1.65rem,3.8vw,2.75rem)] leading-[1.15] tracking-tight ${
-                    i === HOME_MANIFESTO.lines.length - 1 ? "text-white" : "text-white/55"
+                    i === HOME_MANIFESTO.lines.length - 1 ? "text-white" : "text-white/60"
                   }`}
                 >
                   {line}

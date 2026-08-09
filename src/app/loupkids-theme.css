@@ -1,14 +1,55 @@
-/* Loupkids.com faithful theme — Inter + Inconsolata, editorial minimal */
+/* Loupkids theme — Atkinson Hyperlegible, black / white editorial */
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
 
 .loupkids-theme {
-  --lk-bg: #ffffff;
-  --lk-ink: #0a0a0a;
-  --lk-muted: #444444;
+  /* Off-white canvas · black ink — no color accents */
+  --lk-bg: #f6f5f2;
+  --lk-ink: #121212;
+  --lk-muted: #5a5a5a;
   --lk-muted-light: #666666;
-  --lk-line: rgba(10, 10, 10, 0.12);
-  --lk-accent: #0a0a0a;
-  --lk-section-y: clamp(3.5rem, 10vw, 7.5rem);
+  --lk-line: rgba(18, 18, 18, 0.12);
+  --lk-line-soft: rgba(18, 18, 18, 0.08);
+  --lk-surface: #fafaf8;
+  --lk-cream: #f6f5f2;
+  /* 8px spacing scale */
+  --lk-space-2: 0.5rem;
+  --lk-space-3: 0.75rem;
+  --lk-space-4: 1rem;
+  --lk-space-6: 1.5rem;
+  --lk-space-8: 2rem;
+  --lk-space-12: 3rem;
+  --lk-space-16: 4rem;
+  --lk-card-pad-x: clamp(1.5rem, 3vw, 2rem);
+  --lk-card-pad-y: clamp(1.5rem, 3vw, 2rem);
+  --lk-card-shadow:
+    0 1px 2px rgba(18, 18, 18, 0.04),
+    0 8px 20px rgba(18, 18, 18, 0.05),
+    0 20px 48px rgba(18, 18, 18, 0.08);
+  /* Dark bands = near-black (legacy navy/cobalt names kept) */
+  --lk-navy: #121212;
+  --lk-navy-deep: #0a0a0a;
+  --lk-navy-soft: #efefef;
+  --lk-cobalt: var(--lk-navy);
+  --lk-cobalt-deep: var(--lk-navy-deep);
+  --lk-cobalt-soft: var(--lk-navy-soft);
+  /* Accents collapse to ink (legacy fuchsia names kept) */
+  --lk-fuchsia: #121212;
+  --lk-fuchsia-deep: #0a0a0a;
+  --lk-fuchsia-soft: #efefef;
+  --lk-neon: #666666;
+  --lk-neon-deep: #444444;
+  --lk-neon-soft: #f0f0f0;
+  --lk-accent-ink: #121212;
+  --lk-accent-b-ink: #121212;
+  --lk-accent: var(--lk-ink);
+  --lk-accent-deep: var(--lk-navy-deep);
+  --lk-accent-soft: var(--lk-navy-soft);
+  --lk-accent-warm: var(--lk-ink);
+  --lk-accent-b: var(--lk-ink);
+  --lk-fun: var(--lk-navy-soft);
+  --lk-cyan: var(--lk-neon);
+  /* matches .lk-band: 64 / 80 / 96 */
+  --lk-section-y: clamp(4rem, 8vw, 6rem);
   --lk-section-x: clamp(1.75rem, 5.5vw, 3rem);
   --lk-gap: clamp(1.25rem, 2.5vw, 2rem);
   --lk-text-base: 1.125rem;
@@ -17,7 +58,7 @@
   --lk-text-stat: clamp(1.3125rem, 2.4vw, 1.625rem);
   background: var(--lk-bg);
   color: var(--lk-ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-atkinson), "Atkinson Hyperlegible", system-ui, sans-serif;
   font-size: var(--lk-text-base);
   font-weight: 400;
   line-height: 1.6;
@@ -25,10 +66,31 @@
   overflow-x: clip;
 }
 
+@keyframes lk-accent-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.loupkids-theme .lk-gradient-text {
+  /* Monochrome — no chromatic gradient */
+  background-image: none;
+  color: var(--lk-ink);
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  animation: none;
+}
+
 /* —— Typography scale —— */
 .loupkids-theme .lk-display {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 500;
+  font-family: var(--font-atkinson), "Atkinson Hyperlegible", system-ui, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -60,7 +122,7 @@
 }
 
 .loupkids-theme .lk-label {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-atkinson), "Atkinson Hyperlegible", system-ui, sans-serif;
   font-size: var(--lk-text-small);
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -70,7 +132,7 @@
 }
 
 .loupkids-theme .lk-eyebrow {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-atkinson), "Atkinson Hyperlegible", system-ui, sans-serif;
   font-size: var(--lk-text-small);
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -119,7 +181,7 @@
 
 .loupkids-theme .lk-stat-tagline {
   margin-top: 1.25rem;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-atkinson), "Atkinson Hyperlegible", system-ui, sans-serif;
   font-size: var(--lk-text-small);
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -127,30 +189,112 @@
   color: var(--lk-muted-light);
 }
 
-/* —— Cards —— */
+/* —— Cards —— elevated, no hairline frames, even inset on all four sides */
 .loupkids-theme .lk-card {
-  border: 1px solid var(--lk-line);
-  background: #fff;
-  border-radius: 3px;
+  border: none;
+  background: var(--lk-surface);
+  border-radius: 1.25rem;
+  box-shadow: var(--lk-card-shadow);
+  padding: var(--lk-card-pad-y) var(--lk-card-pad-x);
+}
+
+/* Media-led cards manage their own inset */
+.loupkids-theme .lk-card-flush {
+  padding: 0;
+}
+
+/* Compact list rows */
+.loupkids-theme .lk-card-sm {
+  padding: 0.75rem 1rem;
 }
 
 .loupkids-theme .lk-card-dark {
-  background: #141414;
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--lk-ink);
+  border: none;
+  box-shadow: var(--lk-card-shadow);
 }
 
 .loupkids-theme .lk-card-active {
-  border-color: rgba(10, 10, 10, 0.22);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: none;
+  box-shadow:
+    0 2px 4px rgba(20, 18, 26, 0.05),
+    0 12px 28px rgba(10, 24, 48, 0.12);
 }
 
 .loupkids-theme .lk-section-black .lk-card-active {
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  border: none;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 .loupkids-theme .lk-card-pad {
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding: var(--lk-card-pad-y) var(--lk-card-pad-x);
+}
+
+/* —— Fixed nav height: single source of truth for the header and its offset —— */
+.loupkids-theme {
+  --lk-nav-h: calc(4.5rem + env(safe-area-inset-top));
+}
+
+@media (min-width: 640px) {
+  .loupkids-theme {
+    --lk-nav-h: calc(5rem + env(safe-area-inset-top));
+  }
+}
+
+.loupkids-theme .lk-nav {
+  height: var(--lk-nav-h);
+  padding-top: env(safe-area-inset-top);
+}
+
+.loupkids-theme .lk-main {
+  padding-top: var(--lk-nav-h);
+}
+
+/* Keyboard skip link — visible only on focus */
+.loupkids-theme .lk-skip {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--lk-ink);
+  color: var(--lk-surface);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.loupkids-theme .lk-skip:focus {
+  transform: translateY(0);
+}
+
+/* —— One section rhythm: 64 / 80 / 96 on the 8px grid —— */
+.loupkids-theme .lk-band {
+  padding-block: 4rem;
+  padding-inline: var(--lk-section-x);
+}
+
+@media (min-width: 640px) {
+  .loupkids-theme .lk-band {
+    padding-block: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loupkids-theme .lk-band {
+    padding-block: 6rem;
+  }
+}
+
+/* Self-guttered wrapper: gutter inside the 1200px grid (nav + hero pattern) */
+.loupkids-theme .lk-wrap {
+  max-width: 1200px;
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: var(--lk-section-x);
 }
 
 .loupkids-theme .lk-section-cards {
@@ -169,9 +313,12 @@
   gap: var(--lk-gap);
 }
 
+/* Sits inside an already-guttered section, so the measure is the 1200px grid
+   minus both gutters — that lands its left edge on the same line as the nav. */
 .loupkids-theme .lk-container {
-  max-width: 1140px;
+  max-width: calc(1200px - 2 * var(--lk-section-x));
   margin: 0 auto;
+  width: 100%;
 }
 
 .loupkids-theme .lk-container-narrow {
@@ -190,7 +337,7 @@
 }
 
 .loupkids-theme .lk-section-header {
-  padding: clamp(2.5rem, 5vw, 3.25rem) var(--lk-section-x);
+  padding: clamp(1.75rem, 3vw, 2.5rem) var(--lk-section-x);
 }
 
 .loupkids-theme .lk-section-content {
@@ -215,62 +362,132 @@
 }
 
 .loupkids-theme .lk-section-black {
-  background: #0a0a0a;
-  color: #fff;
+  /* Deep navy bands — no cobalt, no pure black fields */
+  background: var(--lk-navy);
+  color: var(--lk-surface);
 }
 
-.loupkids-theme .lk-section-black .lk-rule {
+.loupkids-theme .lk-section-cobalt {
+  background: var(--lk-navy);
+  color: var(--lk-surface);
+}
+
+.loupkids-theme .lk-section-black .lk-rule,
+.loupkids-theme .lk-section-cobalt .lk-rule {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
 .loupkids-theme .lk-section-white {
-  background: #fff;
+  background: var(--lk-surface);
   color: var(--lk-ink);
 }
 
 .loupkids-theme .lk-section-muted {
-  background: #f5f5f5;
+  background: var(--lk-cream);
   color: var(--lk-ink);
 }
 
 .loupkids-theme .lk-section-black .lk-label,
-.loupkids-theme .lk-section-black .lk-eyebrow {
+.loupkids-theme .lk-section-black .lk-eyebrow,
+.loupkids-theme .lk-section-cobalt .lk-label,
+.loupkids-theme .lk-section-cobalt .lk-eyebrow {
   color: rgba(255, 255, 255, 0.55);
 }
 
-.loupkids-theme .lk-section-black [class*="divide-"] {
+.loupkids-theme .lk-section-black [class*="divide-"],
+.loupkids-theme .lk-section-cobalt [class*="divide-"] {
   border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* —— Buttons —— */
+/* —— Buttons: black primary —— */
 .loupkids-theme .lk-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 1rem 2rem;
   font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  border: 1px solid var(--lk-ink);
-  background: var(--lk-ink);
-  color: #fff;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  border: 2px solid var(--lk-navy);
+  border-radius: 999px;
+  color: var(--lk-surface);
+  background: var(--lk-navy);
+  background-image: none;
+  animation: none;
+  box-shadow: 0 4px 0 var(--lk-navy-deep), 0 8px 20px rgba(18, 18, 18, 0.22);
+  transition:
+    transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+  will-change: transform;
 }
 
 .loupkids-theme .lk-btn:hover {
-  opacity: 0.88;
+  transform: translateY(-2px);
+  background: var(--lk-navy-deep);
+  border-color: var(--lk-navy-deep);
+  box-shadow: 0 6px 0 #000, 0 12px 28px rgba(18, 18, 18, 0.3);
+  filter: none;
+  animation: none;
+}
+
+.loupkids-theme .lk-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--lk-navy-deep), 0 2px 8px rgba(18, 18, 18, 0.22);
+}
+
+/* Focus indicator: fuchsia clears 3:1 on both the off-white canvas (3.16)
+   and the navy bands (5.14), so one ring works everywhere. */
+.loupkids-theme :focus-visible,
+.loupkids-theme .lk-btn:focus-visible {
+  outline: 3px solid var(--lk-fuchsia);
+  outline-offset: 3px;
 }
 
 .loupkids-theme .lk-btn-outline {
-  background: transparent;
-  color: var(--lk-ink);
+  background-image: none;
+  background-color: transparent;
+  animation: none;
+  color: var(--lk-navy);
+  border-color: var(--lk-navy);
+  box-shadow: none;
+}
+
+.loupkids-theme .lk-btn-outline:hover {
+  background: var(--lk-navy-soft);
+  color: var(--lk-navy-deep);
+  border-color: var(--lk-navy);
+  filter: none;
 }
 
 .loupkids-theme .lk-btn-white {
-  border-color: #fff;
-  background: #fff;
-  color: var(--lk-ink);
+  background-image: none;
+  background-color: var(--lk-surface);
+  animation: none;
+  border-color: var(--lk-surface);
+  color: var(--lk-navy);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.loupkids-theme .lk-btn-white:hover {
+  background: var(--lk-surface);
+  border-color: var(--lk-surface);
+  color: var(--lk-navy-deep);
+  box-shadow: 0 6px 0 var(--lk-navy-deep), 0 12px 28px rgba(10, 24, 48, 0.22);
+  filter: none;
+}
+
+.loupkids-theme .lk-btn-accent {
+  border-color: var(--lk-navy);
+  background: var(--lk-navy);
+  box-shadow: 0 4px 0 var(--lk-navy-deep), 0 8px 20px rgba(18, 18, 18, 0.22);
+}
+
+.loupkids-theme .lk-btn-accent:hover {
+  background: var(--lk-navy-deep);
+  border-color: var(--lk-navy-deep);
+  box-shadow: 0 6px 0 #000, 0 12px 28px rgba(18, 18, 18, 0.3);
 }
 
 .loupkids-theme .lk-btn-sm {
@@ -281,7 +498,7 @@
 .loupkids-theme .lk-btn-lg {
   padding: 1.25rem 2.75rem;
   font-size: 1rem;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
 }
 
 @media (min-width: 640px) {
@@ -291,10 +508,35 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .loupkids-theme .lk-gradient-text {
+    animation: none;
+    background-image: none;
+    color: var(--lk-accent-ink);
+    -webkit-text-fill-color: var(--lk-accent-ink);
+  }
+
+  /* Base .lk-btn already sets its own background; re-declaring it here would
+     land after .lk-btn-white/.lk-btn-outline and erase their variant colours. */
+  .loupkids-theme .lk-btn {
+    animation: none;
+    background-image: none;
+  }
+
+  .loupkids-theme .lk-btn,
+  .loupkids-theme .lk-btn:hover,
+  .loupkids-theme .lk-btn:active {
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+    transform: none;
+  }
+}
+
 /* —— Cards & tables —— */
 .loupkids-theme .lk-spec-card {
-  border: 1px solid var(--lk-line);
-  background: #fff;
+  border: none;
+  background: var(--lk-surface);
+  border-radius: 1.25rem;
+  box-shadow: var(--lk-card-shadow);
   padding: clamp(1.5rem, 3vw, 2.25rem);
 }
 
@@ -311,7 +553,7 @@
 }
 
 .loupkids-theme .lk-read-link {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-atkinson), "Atkinson Hyperlegible", system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -323,17 +565,24 @@
 }
 
 .loupkids-theme .lk-read-link:hover {
-  color: var(--lk-ink);
+  color: var(--lk-accent-deep);
   text-decoration: underline;
 }
 
 .loupkids-theme .lk-product-tile {
-  border: 1px solid var(--lk-line);
-  transition: border-color 0.2s ease;
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: var(--lk-card-shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+  background: var(--lk-surface);
 }
 
 .loupkids-theme .lk-product-tile:hover {
-  border-color: rgba(10, 10, 10, 0.28);
+  box-shadow:
+    0 2px 4px rgba(20, 18, 26, 0.05),
+    0 14px 36px rgba(10, 24, 48, 0.12);
+  transform: translateY(-2px);
 }
 
 .loupkids-theme .lk-product-tile .lk-image-hover:hover img {
@@ -343,6 +592,122 @@
 @media (prefers-reduced-motion: reduce) {
   .loupkids-theme .lk-image-hover:hover img {
     transform: none;
+  }
+}
+
+/* —— How-it-works step micro-animations —— */
+@keyframes lk-light-shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  40% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(1px, 1px) rotate(0.5deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(-0.5deg);
+  }
+}
+
+@keyframes lk-wifi-pulse {
+  0%,
+  100% {
+    opacity: 0.22;
+  }
+  40%,
+  55% {
+    opacity: 1;
+  }
+}
+
+@keyframes lk-wifi-dot-pulse {
+  0%,
+  70%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  82% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes lk-wheel-spin {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20.8px);
+  }
+}
+
+.loupkids-theme .lk-how-step .lk-step-phone-shake {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: lk-light-shake 3.2s ease-in-out infinite;
+}
+
+.loupkids-theme .lk-how-step:hover .lk-step-phone-shake {
+  animation-duration: 0.5s;
+}
+
+.loupkids-theme .lk-step-wifi #wifi-arc-1,
+.loupkids-theme .lk-step-wifi #wifi-arc-2,
+.loupkids-theme .lk-step-wifi #wifi-arc-3 {
+  animation: lk-wifi-pulse 2s ease-in-out infinite;
+}
+
+.loupkids-theme .lk-step-wifi #wifi-arc-1 {
+  animation-delay: 0s;
+}
+
+.loupkids-theme .lk-step-wifi #wifi-arc-2 {
+  animation-delay: 0.3s;
+}
+
+.loupkids-theme .lk-step-wifi #wifi-arc-3 {
+  animation-delay: 0.6s;
+}
+
+.loupkids-theme .lk-step-wifi #wifi-dot {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: lk-wifi-dot-pulse 2s ease-in-out infinite;
+  animation-delay: 0.9s;
+}
+
+.loupkids-theme .lk-wheel-rotating {
+  animation: lk-wheel-spin 2.8s linear infinite;
+}
+
+.loupkids-theme .lk-how-step:hover .lk-wheel-rotating {
+  animation: lk-wheel-spin 0.9s steps(8, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loupkids-theme .lk-how-step .lk-step-phone-shake,
+  .loupkids-theme .lk-step-wifi #wifi-arc-1,
+  .loupkids-theme .lk-step-wifi #wifi-arc-2,
+  .loupkids-theme .lk-step-wifi #wifi-arc-3,
+  .loupkids-theme .lk-step-wifi #wifi-dot,
+  .loupkids-theme .lk-wheel-rotating,
+  .loupkids-theme .lk-how-step:hover .lk-step-phone-shake,
+  .loupkids-theme .lk-how-step:hover .lk-wheel-rotating {
+    animation: none;
+  }
+
+  .loupkids-theme .lk-step-wifi #wifi-arc-1,
+  .loupkids-theme .lk-step-wifi #wifi-arc-2,
+  .loupkids-theme .lk-step-wifi #wifi-arc-3,
+  .loupkids-theme .lk-step-wifi #wifi-dot {
+    opacity: 1;
   }
 }
 

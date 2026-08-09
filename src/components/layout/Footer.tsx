@@ -17,7 +17,7 @@ const LEGAL = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-white py-10">
+    <footer className="border-t border-ink/10 bg-[var(--lk-surface)] py-10">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {LINKS.map((l) => (

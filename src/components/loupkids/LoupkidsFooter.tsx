@@ -11,7 +11,7 @@ function FooterLinks({ links }: { links: readonly { href: string; label: string 
     <ul className="space-y-2.5">
       {links.map((item) => (
         <li key={item.href}>
-          <Link href={item.href} className="text-[0.9375rem] text-white/65 transition-colors hover:text-white">
+          <Link href={item.href} className="inline-flex min-h-6 items-center text-[0.9375rem] text-white/65 transition-colors hover:text-white">
             {item.label}
           </Link>
         </li>
@@ -40,7 +40,7 @@ export function LoupkidsFooter({ body }: { body?: string }) {
           <FooterLinks links={LOUPKIDS_FOOTER_SUPPORT} />
           <FooterLinks links={LOUPKIDS_FOOTER_LEGAL} />
           <div className="space-y-2.5 text-[0.9375rem] text-white/65">
-            <a href={`mailto:${SITE.email}`} className="block transition-colors hover:text-white">
+            <a href={`mailto:${SITE.email}`} className="inline-flex min-h-6 items-center transition-colors hover:text-white">
               {SITE.email}
             </a>
             <p className="pt-3 text-sm leading-relaxed">
@@ -55,7 +55,7 @@ export function LoupkidsFooter({ body }: { body?: string }) {
           </div>
         </div>
 
-        <p className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/35">
+        <p className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/70">
           © {new Date().getFullYear()} Loup
         </p>
       </div>

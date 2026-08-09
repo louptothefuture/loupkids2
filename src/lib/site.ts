@@ -3,7 +3,7 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://loupkids.com",
   tagline: "Reach kids anytime — without handing them the internet.",
   description:
-    "Loup is the phone before their first smartphone — approved contacts only, no feeds, no algorithms. Pre-order yours for $149 — includes 1 year free unlimited domestic calling.",
+    "Loup is the phone before their first smartphone — approved contacts only, no feeds, no algorithms. First 500 order for $129 (Save 33%) and First 500 includes 1 year unlimited domestic calling, then $10/mo.",
   email: "hi@loupkids.com",
   press: "hi@loupkids.com",
   social: {
@@ -11,7 +11,7 @@ export const SITE = {
     tiktok: "https://tiktok.com/@loupkids",
     youtube: "https://youtube.com/@loupkids",
   },
-  price: 149,
+  price: 129,
   compareAtPrice: 199,
   planPrice: 10,
   currency: "USD",

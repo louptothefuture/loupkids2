@@ -4,7 +4,7 @@ import { useState } from "react";
 import { trackLead } from "@/lib/analytics";
 
 const inputClass =
-  "w-full border border-[var(--lk-line)] bg-white px-4 py-3 text-base outline-none transition-colors focus:border-[var(--lk-ink)]";
+  "w-full border border-[var(--lk-line)] bg-[var(--lk-surface)] px-4 py-3 text-base outline-none transition-colors focus:border-[var(--lk-ink)]";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");

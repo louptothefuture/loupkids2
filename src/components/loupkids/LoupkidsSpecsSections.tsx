@@ -4,7 +4,7 @@ import { LOUPKIDS_COMPARISON, LOUPKIDS_SPECS } from "@/lib/content/loupkids-site
 import { FadeIn } from "./FadeIn";
 import { RevealHeadline } from "./RevealHeadline";
 
-const loupCol = "bg-[#0a0a0a] px-5 py-4 text-white sm:px-6 sm:py-5";
+const loupCol = "bg-[var(--lk-cobalt)] px-5 py-4 text-white sm:px-6 sm:py-5";
 
 export function LoupkidsComparisonSection() {
   const { columns, rows } = LOUPKIDS_COMPARISON;
@@ -16,7 +16,7 @@ export function LoupkidsComparisonSection() {
           Loup vs. the other options
         </RevealHeadline>
 
-        <div className="lk-table-wrap mt-10 overflow-x-auto border border-[var(--lk-line)] bg-white sm:mt-12">
+        <div className="lk-table-wrap mt-10 overflow-x-auto rounded-2xl bg-[var(--lk-surface)] shadow-[var(--lk-card-shadow)] sm:mt-12">
           <table className="w-full min-w-[720px] border-collapse text-[0.9375rem] sm:text-base">
             <colgroup>
               <col className="w-[22%]" />
@@ -27,7 +27,7 @@ export function LoupkidsComparisonSection() {
             </colgroup>
             <thead>
               <tr className="border-b border-[var(--lk-line)] text-left">
-                <th className="bg-neutral-50/90 p-4 sm:p-5" scope="col" />
+                <th className="bg-[var(--lk-cream)]/90 p-4 sm:p-5" scope="col" />
                 {columns.map((col, i) => (
                   <th
                     key={col}
@@ -35,7 +35,7 @@ export function LoupkidsComparisonSection() {
                     className={
                       i === 0
                         ? `${loupCol} lk-display text-lg font-medium tracking-wide sm:text-xl`
-                        : "bg-neutral-50/90 p-4 sm:p-5 text-base font-medium text-[var(--lk-muted)] sm:text-lg"
+                        : "bg-[var(--lk-cream)]/90 p-4 sm:p-5 text-base font-medium text-[var(--lk-muted)] sm:text-lg"
                     }
                   >
                     {col}
@@ -48,7 +48,7 @@ export function LoupkidsComparisonSection() {
                 <tr key={row.label} className="border-b border-[var(--lk-line)] last:border-0">
                   <th
                     scope="row"
-                    className="bg-neutral-50/40 p-4 sm:p-5 text-left align-top text-xs font-medium uppercase tracking-wide text-[var(--lk-muted)] sm:text-sm sm:font-normal sm:normal-case sm:tracking-normal"
+                    className="bg-[var(--lk-cream)]/40 p-4 sm:p-5 text-left align-top text-xs font-medium uppercase tracking-wide text-[var(--lk-muted)] sm:text-sm sm:font-normal sm:normal-case sm:tracking-normal"
                   >
                     {row.label}
                   </th>

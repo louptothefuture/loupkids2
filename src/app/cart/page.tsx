@@ -16,8 +16,8 @@ export default function CartPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
-      <h1 className="display text-5xl">Your bag</h1>
-      <p className="mt-4 text-ink-soft">
+      <h1 className="sr-only">Your bag</h1>
+      <p className="text-ink-soft">
         Your bag opens on the right. Checkout is secure, powered by Shopify — cards, Apple Pay,
         Google Pay, and Shop Pay all work.
       </p>

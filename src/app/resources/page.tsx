@@ -60,13 +60,13 @@ export default async function ResourcesPage() {
             <FadeIn delay={0.1} className="mt-8">
               <Link
                 href={`/journal/${startArticle.slug}`}
-                className="lk-card group grid overflow-hidden transition-shadow hover:lk-card-active md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
+                className="lk-card lk-card-flush group grid overflow-hidden transition-shadow hover:lk-card-active md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
               >
-                <div className="relative aspect-[4/3] bg-neutral-100 md:aspect-auto md:min-h-[260px]">
+                <div className="relative aspect-[4/3] bg-[var(--lk-cream)] md:aspect-auto md:min-h-[260px]">
                   {startCover ? (
                     <LoupkidsImage src={startCover} alt={startArticle.title} fill sizes="50vw" className="object-cover" />
                   ) : null}
-                  <span className="lk-label absolute left-4 top-4 border border-[var(--lk-line)] bg-white px-3 py-1.5">
+                  <span className="lk-label absolute left-4 top-4 rounded-full bg-[var(--lk-surface)] px-3 py-1.5 shadow-[var(--lk-card-shadow)]">
                     Start here
                   </span>
                 </div>
@@ -105,7 +105,7 @@ export default async function ResourcesPage() {
               <p className="mt-3 max-w-lg text-[0.9375rem] leading-relaxed text-white/70">
                 Downloadable playbooks, school-pact templates, and conversation scripts — all hosted here, not on a feed.
               </p>
-              <Link href="/journal" className="mt-5 inline-block text-sm underline underline-offset-4 text-white/80 hover:text-white">
+              <Link href="/journal" className="mt-5 inline-flex min-h-6 items-center text-sm underline underline-offset-4 text-white/80 hover:text-white">
                 Browse the journal →
               </Link>
             </div>

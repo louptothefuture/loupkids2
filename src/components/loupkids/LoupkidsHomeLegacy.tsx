@@ -163,7 +163,7 @@ export function LoupkidsHomeLegacy() {
               <LoupkidsAccordion items={LOUPKIDS_NOTHING.items} />
             </div>
           </div>
-          <FadeIn delay={0.1} y={14} className="relative aspect-[4/5] overflow-hidden bg-neutral-100 lg:sticky lg:top-28">
+          <FadeIn delay={0.1} y={14} className="relative aspect-[4/5] overflow-hidden bg-[var(--lk-cream)] lg:sticky lg:top-28">
             <LoupkidsImage src={LOUPKIDS_IMAGES.kidBw} alt="Kid with Loup" fill sizes="50vw" className="object-cover" />
           </FadeIn>
         </div>
@@ -217,7 +217,7 @@ export function LoupkidsHomeLegacy() {
 
       <section className="lk-section-tight lk-section-white grid grid-cols-2 sm:grid-cols-3">
         {LOUPKIDS_CUSTOMIZE.plates.map((plate, i) => (
-          <FadeIn key={plate.src} delay={i * 0.04} y={8} className="relative aspect-square border border-[var(--lk-line)] bg-neutral-50">
+          <FadeIn key={plate.src} delay={i * 0.04} y={8} className="relative aspect-square overflow-hidden rounded-2xl bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)]">
             <LoupkidsImage src={plate.src} alt={plate.alt} fill sizes="33vw" className="object-contain p-6" />
           </FadeIn>
         ))}
@@ -237,7 +237,7 @@ export function LoupkidsHomeLegacy() {
           </p>
           <LoupkidsOrderCta variant="light" />
           <p className="text-sm text-[var(--lk-muted)]">
-            Need cellular?{" "}
+            Questions?{" "}
             <Link href="/reserve" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
               {LOUPKIDS_CTA.waitlist}
             </Link>
@@ -246,7 +246,7 @@ export function LoupkidsHomeLegacy() {
       </section>
 
       {/* Newsletter */}
-      <section className="lk-section-black px-[var(--lk-section-x)] py-[clamp(4rem,8vw,6rem)] text-white">
+      <section className="lk-section-black px-[var(--lk-section-x)] py-16 sm:py-20 lg:py-24 text-white">
         <FadeIn className="mx-auto max-w-lg text-center">
           <RevealHeadline as="h2" className="lk-display lk-h2 text-white">
             {LOUPKIDS_NEWSLETTER.headline}

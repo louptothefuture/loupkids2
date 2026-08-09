@@ -52,11 +52,10 @@ function FactColumn({
   tone: "screen" | "person";
 }) {
   const [openId, setOpenId] = useState<string | null>(null);
-  const headerBg = tone === "screen" ? "bg-[#f4f6f8]" : "bg-[#fafafa]";
 
   return (
     <div className={`lk-card flex h-full flex-col overflow-hidden ${tone === "screen" ? "lk-brain-col-screen" : "lk-brain-col-person"}`}>
-      <div className={`border-b border-[var(--lk-line)] px-5 py-5 sm:px-6 ${headerBg}`}>
+      <div className="border-b border-[var(--lk-line)] px-5 py-5 sm:px-6">
         <h3 className="lk-display text-xl sm:text-2xl">{title}</h3>
         <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{intro}</p>
       </div>

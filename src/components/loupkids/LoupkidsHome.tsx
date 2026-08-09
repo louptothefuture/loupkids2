@@ -12,6 +12,8 @@ import { LoupkidsHomeClient } from "./LoupkidsHomeClient";
 export type LoupkidsHomeProps = {
   content: MarketingHomepage;
   testimonials: Testimonial[];
+  /** Brighter color/motion skin — used by /wrapped concept route */
+  fun?: boolean;
 };
 
 export const DEFAULT_HOME_CONTENT: MarketingHomepage = {
@@ -30,9 +32,11 @@ export const DEFAULT_HOME_CONTENT: MarketingHomepage = {
   finalCtaBody: LOUPKIDS_FINAL_CTA.body,
   finalCtaLabel: LOUPKIDS_CTA.primary,
   footerBody: LOUPKIDS_FOOTER.body,
-  testimonialHeadline: "What beta testers are saying",
+  testimonialHeadline: "What parents are saying",
 };
 
-export function LoupkidsHome({ content, testimonials }: LoupkidsHomeProps) {
-  return <LoupkidsHomeClient content={content} testimonials={testimonials} />;
+export function LoupkidsHome({ content, testimonials, fun }: LoupkidsHomeProps) {
+  const page = <LoupkidsHomeClient content={content} testimonials={testimonials} />;
+  if (!fun) return page;
+  return <div className="lk-fun-page">{page}</div>;
 }

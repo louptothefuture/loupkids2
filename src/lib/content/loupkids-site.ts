@@ -100,47 +100,51 @@ export const LOUPKIDS_JOURNAL_COVERS: Record<string, string> = {
     "/images/loupkids/journal/i-just-need-a-break-which-is-why-i-give-my-kid-a-phone.jpg",
 };
 
-/** Header nav — scraped from loupkids.com header */
+/** Header nav — product → story → support */
 export const LOUPKIDS_NAV = [
-  { href: "/shop/loup", label: "The Phone" },
+  { href: "/shop/loup", label: "Shop" },
   { href: "/setup", label: "How It Works" },
-  { href: "/legal/privacy", label: "Safety & Privacy" },
   { href: "/about", label: "The Story" },
   { href: "/faq", label: "FAQ" },
-  { href: "/resources", label: "Resources" },
   { href: "/journal", label: "Journal" },
+  { href: "/resources", label: "Resources" },
   { href: "/help", label: "Help" },
+  { href: "/legal/privacy", label: "Safety" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
-/** Primary desktop links — shorter set for top bar */
+/** Primary desktop links — same cadence, shorter set */
 export const LOUPKIDS_NAV_DESKTOP = [
-  { href: "/shop/loup", label: "The Phone" },
+  { href: "/shop/loup", label: "Shop" },
   { href: "/setup", label: "How It Works" },
-  { href: "/legal/privacy", label: "Safety & Privacy" },
   { href: "/about", label: "The Story" },
   { href: "/faq", label: "FAQ" },
+  { href: "/journal", label: "Journal" },
 ] as const;
 
-/** Footer nav — scraped from loupkids.com homepage footer */
+/** Footer nav — mirrors primary IA */
 export const LOUPKIDS_FOOTER_NAV = [
   { href: "/", label: "Home" },
+  { href: "/shop/loup", label: "Shop" },
+  { href: "/setup", label: "How It Works" },
   { href: "/about", label: "The Story" },
-  { href: "/resources", label: "Resources" },
-  { href: "/journal", label: "Journal" },
   { href: "/faq", label: "FAQ" },
-  { href: "/ode", label: "Ode" },
+  { href: "/journal", label: "Journal" },
+  { href: "/ode", label: "Ode to the Screen" },
+  { href: "/resources", label: "Resources" },
+  { href: "/help", label: "Help" },
+  { href: "/legal/privacy", label: "Safety" },
   { href: "/contact", label: "Contact Us" },
 ] as const;
 
 export const LOUPKIDS_HERO = {
-  headline: "Their first phone. Not their first feed.",
+  headline: "Their first phone. Safe from day one.",
 };
 
 export const LOUPKIDS_INTRO = {
-  subhead: "You aren't alone in being frustrated.",
-  body: "8 out of 10 parents hate that they feel \"forced\" into the smartphone trap.",
-  cta: "Loup is the escape hatch.",
+  subhead: "You are not alone in wanting something gentler.",
+  body: "Lots of families want kids reachable — without rushing the smartphone years.",
+  cta: "Loup is the happy middle path.",
 };
 
 /** Section 2 stats — corrected citations (Pew 2024; free-play reframed) */
@@ -173,30 +177,31 @@ export const LOUPKIDS_PRODUCT_SHOTS = [
   { src: LOUPKIDS_IMAGES.deskLoop, alt: "Loup on a kid desk" },
 ] as const;
 
+/** Feature accordion — from loupkids-v2; no emergency calling */
 export const LOUPKIDS_ACCORDION = [
   {
     title: "Approved Contacts Only",
-    body: "Give kids the freedom to connect while giving yourself total peace of mind. Only the contacts you approve in the LOUP parent app can call in or out. Say goodbye to spam, strangers, and robocalls—it's just voices you know and trust.",
+    body: "Give kids the freedom to connect while giving yourself total peace of mind. Only the contacts you approve in the LOUP parent app can call in or out. Say goodbye to spam, strangers, and robocalls — just voices you know and trust.",
   },
   {
-    title: "Zero Dopamine Displays",
-    body: "E-ink contact strip — the same low-power display used in e-readers. Zero social feeds. Zero open internet browsing. Zero games. Just names, time, and battery so kids can focus and live in the moment.",
+    title: "App-free and Focus Friendly",
+    body: "Intentionally designed without apps, using E-Ink (the same low-power display as e-readers). Eye-friendly, feed-free, and built so kids can focus and live in the moment.",
   },
   {
     title: "Set Boundaries",
-    body: "Maintain household routines and ensure a healthy tech-life balance. Use the companion app to set Quiet Hours that prevent incoming and outgoing calls on your schedule. Whether it's homework time, dinner time, or bedtime, you have total control over when the phone is active.",
+    body: "Use the companion app to set Quiet Hours that prevent incoming and outgoing calls on your schedule — homework, dinner, bedtime. You control when the phone is active.",
   },
   {
-    title: "Pager Mode — $0/mo forever",
-    body: "In-home / family intercom over Wi-Fi. Parents can page kids anytime — call or bell — at no charge. Domestic phone calling is included free for 1 year with your device, then optional at $10/mo.",
+    title: "App to Phone Pager",
+    body: "Parents can page kids anytime for free — call or bell over Wi-Fi. No yelling across the house, no extra charges. $0/mo forever.",
   },
   {
-    title: "Emergency Clarity",
-    body: "Wi-Fi Voice Device: Operates over Wi-Fi networks and parent mobile hotspots. Does not support E911 cellular emergency dialing. Keep a phone available for emergencies when off Wi-Fi.",
+    title: "Customizable Plates",
+    body: "Swap the back plate. Pick a vibe. Show what you're into — without turning the phone into a screen.",
   },
   {
     title: "WiFi Only",
-    body: "No SIM card. No cellular bill. Connects over home, school, or mobile hotspot Wi-Fi — simple and affordable.",
+    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. First 500: 1 year unlimited domestic included · then $10/mo (cancel anytime).",
   },
   {
     title: "Data? Closed — you own it.",
@@ -208,7 +213,7 @@ export const LOUPKIDS_NOTHING = {
   headline: "Chock Full of Nothing. No social media. No games. No rabbit holes.",
   items: [
     { title: "Purity of Purpose", body: "No social media. No games. No rabbit holes." },
-    { title: "WiFi Only", body: "No SIM card. No cellular bill. Connects over home or school WiFi — simple and affordable." },
+    { title: "WiFi Only", body: "No SIM card. No carrier bill. Connects over home or school Wi-Fi — simple and affordable." },
     { title: "Parent Control App", body: "Approve contacts, set call hours, and page them directly. Full control from your phone." },
     { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive being a kid." },
     { title: "Data? Closed — you own it.", body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app." },
@@ -274,8 +279,8 @@ export const LOUPKIDS_COMPANION = {
 
 export const LOUPKIDS_CUSTOMIZE = {
   headline: "Show what you're into",
-  body: "Swap the plates. Pick a vibe. Patterns and customs — coming soon.",
-  badge: "Coming soon",
+  body: "Swap the back plate when you want a new look. Patterns and customs ship after launch — Silver first.",
+  badge: "After launch",
   plates: [
     { src: "/images/plates/bffs.png", alt: "BFFs back plate" },
     { src: "/images/plates/kitty.png", alt: "Kitty back plate" },
@@ -302,11 +307,11 @@ export const LOUPKIDS_ABOUT = {
   paragraphs: [
     "My daughter came into my office and found an old phone sitting on the floor—one of those heavy, plastic relics from before everything had a screen.",
     "She picked it up and started pretending to call people. For weeks after, she'd pretend to dial friends, telling stories, and generally being lost in her own world.",
-    "A couple months later she got a pair of walkie-talkies. She handed one to a friend down the street, and the game became real. They were talking every day, sharing everything:",
+    "In mid 2025 she got a pair of walkie-talkies. She handed one to a friend down the street, and the game became real. They were talking every day, sharing everything:",
     "\"My dad stepped in dog 💩 today.\" \"I saw Goonies last night.\" \"Want to come over to play?\"",
     "It was simple, playful, real.",
     "At the same time, I kept seeing headlines about kids and screens—anxiety, distraction, lost sleep.",
-    "Parents everywhere were trying to balance connection and protection. I felt it too. My daughter's friends were already getting tablets and smartphones, and it was hard not to feel the pressure.",
+    "Parents everywhere were trying to balance connection and protection. I felt it too. My daughter's friends were already getting smartphones, and it was hard not to feel the pressure.",
     "I'm not against screens—cartoons on the weekends, we watch movies and play video games together—but I didn't want her first experience of independent connection to be through something designed to keep her scrolling.",
     "I also didn't want social media pressure, spam, or the open internet to arrive before she was ready. There had to be a gentler middle step.",
     "A lot of parents I know feel the same quiet unease: kids need to reach us, and each other, but smartphones ask for more attention than most eight-year-olds can spare. We wanted connection without the constant pull of a feed.",
@@ -322,13 +327,16 @@ export const LOUPKIDS_ODE = {
     "The technology in our homes is incredible. It provides information, facilitates deep learning, and offers new ways to connect.",
     "It is a platform for gaming, media, music and connection.",
     "Its value is undeniable.",
-    "But we worry about the mindless consumption. The doom-scrolling. the quick, empty dopamine hits that keep kids glued to a device.",
-    "Worse yet, the tech and media industry is designed to not only do this, but push it.",
-    "They're not just aware of the addiction loop—they're actively building and monetizing it.",
+    "We love movie nights, shared playlists, and the way a good game can fill a living room with laughter.",
+    "Screens can be wonderful — especially when the whole family is in on it together.",
+    "What we want next for kids is just as bright: real independence to call their people, with childhood still full of play, presence, and voice.",
+    "That is why we built Loup — a cheerful first phone for staying close to the pack, while the big screens stay for the moments you share at home.",
   ],
   image: LOUPKIDS_IMAGES.familyMovie,
   imageAlt: "A family watching a movie together at home",
-};
+  ctaLabel: "Meet Loup",
+  ctaHref: "/shop/loup",
+} as const;
 
 export type LoupkidsFaqAnswer =
   | string
@@ -341,17 +349,17 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Does Loup support 911 / E911?",
-    a: "No. Loup is a Wi-Fi voice device. It operates over Wi-Fi networks and parent mobile hotspots. It does not support E911 cellular emergency dialing. Keep a phone available for emergencies when off Wi-Fi.",
+    a: "No. Loup is a Wi-Fi voice device. It operates over Wi-Fi networks and parent mobile hotspots. It does not support E911 emergency dialing. Keep a phone available for emergencies when off Wi-Fi.",
   },
   {
-    q: "Does Loup require a SIM card or a cell carrier?",
-    a: "No, Loup is SIM-Free and works over Wi-Fi. This eliminates the need for cell carrier contracts and recurring data plans.",
+    q: "Does Loup require a SIM card or a carrier plan?",
+    a: "No, Loup is SIM-Free and works over Wi-Fi. This eliminates the need for carrier contracts and recurring data plans.",
   },
   {
-    q: "How is Loup different from a regular cell phone or a \"dumb phone\"?",
+    q: "How is Loup different from a regular phone or a \"dumb phone\"?",
     a: {
       paragraphs: [
-        "Loup is fundamentally a closed-loop system. Unlike regular cell phones or \"dumb phones,\" which are open systems that require a SIM card and can receive calls from anyone, Loup offers:",
+        "Loup is fundamentally a closed-loop system. Unlike regular phones or \"dumb phones,\" which are open systems that require a SIM card and can receive calls from anyone, Loup offers:",
       ],
       bullets: [
         "App-less, voice-only interaction (dopamine loops).",
@@ -365,7 +373,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     a: {
       paragraphs: [
         "Loup-to-Loup and Pager Mode (Wi-Fi intercom): $0/mo forever. Parent app and up to 10 approved contacts included — no forced subscription.",
-        "Every $149 pre-order includes 1 Year of Free Unlimited Domestic Calling. After year one, renew unlimited domestic calling for $10/mo — or keep using Wi-Fi core for free.",
+        "Every First 500 order ($129) includes 1 Year of Free Unlimited Domestic Calling. After year one, renew unlimited domestic calling for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
       ],
     },
   },
@@ -405,6 +413,15 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     },
   },
   {
+    q: "How does my child connect to a new Wi-Fi network if they aren't at home?",
+    a: {
+      paragraphs: [
+        "Since Loup has no keyboard or browser, kids can't type in Wi-Fi passwords themselves. This keeps the device secure. Instead, parents use the Loup app to pre-save safe Wi-Fi networks — like school, grandparents' houses, or the local library.",
+        "If your child is going to a new friend's house, add that network from the parent app ahead of time (Settings → Wi-Fi), or they can connect to a trusted adult's mobile hotspot. Networks you save sync to Loup over Wi-Fi when the device is online.",
+      ],
+    },
+  },
+  {
     q: "If it's screenless, why does it have any interface at all?",
     a: {
       paragraphs: [
@@ -434,8 +451,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     a: {
       paragraphs: ["The device features a simple, clean, and intuitive design:"],
       bullets: [
-        "E-Ink Display for a clear contact list.",
-        "Touchscreen and Scroll Wheel to select contacts.",
+        "E-Ink Display navigated via physical buttons and a tactile Scroll Wheel to select contacts.",
         "Microphone and Headphone Jack.",
         "Volume and Power buttons.",
         "USB-C Charging",
@@ -455,7 +471,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 export const LOUPKIDS_STORE = {
   headline: "Pre-order Loup",
   subheadline:
-    "Aluminum sides & buttons, ABS front — $149 launch ($199 MSRP). Includes 1 year free unlimited domestic calling. Guaranteed shipping within 60 days.",
+    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Includes 1 year free unlimited domestic calling. Guaranteed shipping within 60 days.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -463,7 +479,7 @@ export const LOUPKIDS_STORE = {
 export const LOUPKIDS_STORE_PRODUCTS = [
   {
     title: "Loup — Silver",
-    price: 149,
+    price: 129,
     compareAt: 199 as number | null,
     note: "Pre-order · Ships within 60 days · 1yr free domestic calling",
     image: LOUPKIDS_IMAGES.loupAluminium,
@@ -484,10 +500,10 @@ export const LOUPKIDS_SPECS = [
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
   { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
-  { group: "Calling", label: "Real phone numbers", value: "$10/month, unlimited US & Canada, cancel anytime" },
+  { group: "Calling", label: "Real phone numbers", value: "Year 1 free (First 500) · then $10/mo, unlimited US & Canada, cancel anytime" },
   { group: "Calling", label: "Contacts", value: "Parent-approved list; Loup-to-Loup and parent-to-kid free" },
-  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no cellular bill" },
-  { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card" },
+  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
+  { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card, parent app" },
   { group: "In the Box", label: "Also included", value: "30-day trial from arrival · refundable pre-ship" },
 ] as const;
 
@@ -525,7 +541,7 @@ export const LOUPKIDS_COMPARISON = {
     },
     {
       label: "Monthly cost",
-      values: ["$0 core · domestic free year 1", "Cellular plan required", "Cellular plan required", "Home phone plan"],
+      values: ["$0 core · domestic free year 1", "Carrier plan required", "Carrier plan required", "Home phone plan"],
     },
     {
       label: "Parent controls",
@@ -545,7 +561,7 @@ export const LOUPKIDS_COMPARISON = {
       label: "First-year calling",
       values: ["$0 included", "$30+/mo typical", "$30+/mo typical", "Plan required"],
     },
-    { label: "Price", values: ["$149", "$400–1,200", "$150–400 + plan", "$20–80 + plan"] },
+    { label: "Price", values: ["$129", "$400–1,200", "$150–400 + plan", "$20–80 + plan"] },
   ],
 } as const;
 

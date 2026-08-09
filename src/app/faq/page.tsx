@@ -27,13 +27,9 @@ export default async function FaqPage() {
     <div>
       <FaqJsonLd faqs={faqs.map((f) => ({ ...f, section: "General" }))} />
 
-      <section className="lk-section border-b border-[var(--lk-line)]">
-        <FadeIn className="lk-container-narrow">
-          <h1 className="lk-display text-[clamp(2rem,5vw,3.5rem)]">FAQ</h1>
-        </FadeIn>
-      </section>
+      <h1 className="sr-only">FAQ</h1>
 
-      <section className="lk-section">
+      <section className="px-[var(--lk-section-x)] py-12 sm:py-14">
         <div className="lk-container-narrow">
           {faqItems.map((faq, i) => (
             <FadeIn key={faq.q} delay={i * 0.03}>

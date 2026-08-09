@@ -57,7 +57,7 @@ function PhoneShell({
         <span className="absolute -left-[3px] top-[6.75rem] h-7 w-[3px] rounded-l bg-[#2a2a2a]" aria-hidden />
         <span className="absolute -left-[3px] top-[9.25rem] h-12 w-[3px] rounded-l bg-[#2a2a2a]" aria-hidden />
         <span className="absolute -right-[3px] top-[8.5rem] h-[4.5rem] w-[3px] rounded-r bg-[#2a2a2a]" aria-hidden />
-        <div className="relative aspect-[9/19.5] overflow-hidden rounded-[1.95rem] bg-white">
+        <div className="relative aspect-[9/19.5] overflow-hidden rounded-[1.95rem] bg-[var(--lk-surface)]">
           <AnimatePresence mode="wait">
             <motion.div
               key={visual.src}
@@ -72,7 +72,7 @@ function PhoneShell({
                 alt={visual.alt}
                 fill
                 sizes="(max-width: 1024px) 70vw, 18rem"
-                className="object-contain object-top bg-white"
+                className="object-contain object-top bg-[var(--lk-surface)]"
                 priority={priority}
               />
             </motion.div>
@@ -83,7 +83,13 @@ function PhoneShell({
   );
 }
 
-export function LoupkidsSetupGuideInteractive({ steps }: { steps: Step[] }) {
+export function LoupkidsSetupGuideInteractive({
+  steps,
+  showHelp = true,
+}: {
+  steps: Step[];
+  showHelp?: boolean;
+}) {
   const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -113,7 +119,7 @@ export function LoupkidsSetupGuideInteractive({ steps }: { steps: Step[] }) {
   return (
     <div className="lk-container">
       <div className="mb-10 lg:hidden">
-        <div className="rounded-3xl border border-[var(--lk-line)] bg-[#fafafa] px-5 py-6">
+        <div className="rounded-3xl bg-[var(--lk-surface)] px-5 py-6 shadow-[var(--lk-card-shadow)]">
           <p className="text-center text-xs font-medium uppercase tracking-[0.14em] text-[var(--lk-muted)]">
             Step {active + 1} of {steps.length} · {current.mediaLabel}
           </p>
@@ -168,7 +174,7 @@ export function LoupkidsSetupGuideInteractive({ steps }: { steps: Step[] }) {
                 ref={(el) => {
                   itemRefs.current[i] = el;
                 }}
-                className={i > 0 ? "mt-3 sm:mt-4" : ""}
+                className={i > 0 ? "mt-6 sm:mt-8" : ""}
               >
                 <FadeIn delay={i * 0.04}>
                   <button
@@ -179,15 +185,15 @@ export function LoupkidsSetupGuideInteractive({ steps }: { steps: Step[] }) {
                     aria-current={isActive ? "step" : undefined}
                     className={`group relative grid w-full grid-cols-[2.3rem_1fr] gap-4 rounded-2xl border px-3 py-5 text-left transition-colors sm:gap-5 sm:px-4 sm:py-6 ${
                       isActive
-                        ? "border-[var(--lk-ink)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)]"
-                        : "border-transparent hover:border-[var(--lk-line)] hover:bg-white/70"
+                        ? "border-transparent bg-[var(--lk-surface)] shadow-[var(--lk-card-shadow)]"
+                        : "border-transparent hover:border-[var(--lk-line)] hover:bg-[var(--lk-surface)]/70"
                     }`}
                   >
                     <span
                       className={`relative z-[1] mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium transition-colors ${
                         isActive
                           ? "bg-[var(--lk-ink)] text-white"
-                          : "border border-[var(--lk-line)] bg-white text-[var(--lk-muted)]"
+                          : "border border-[var(--lk-line)] bg-[var(--lk-surface)] text-[var(--lk-muted)]"
                       }`}
                       aria-hidden
                     >
@@ -218,7 +224,7 @@ export function LoupkidsSetupGuideInteractive({ steps }: { steps: Step[] }) {
         </ol>
 
         <FadeIn delay={0.08} className="hidden lg:sticky lg:top-28 lg:block">
-          <div className="rounded-3xl border border-[var(--lk-line)] bg-[#fafafa] px-6 py-7">
+          <div className="rounded-3xl bg-[var(--lk-surface)] px-6 py-7 shadow-[var(--lk-card-shadow)]">
             <div className="flex items-center justify-between gap-3">
               <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--lk-muted)]">
                 Step {active + 1} of {steps.length}
@@ -261,8 +267,8 @@ export function LoupkidsSetupGuideInteractive({ steps }: { steps: Step[] }) {
                   onClick={() => setActive(i)}
                   className={`rounded-xl border px-2 py-2.5 text-center transition-colors ${
                     active === i
-                      ? "border-[var(--lk-ink)] bg-white"
-                      : "border-[var(--lk-line)] bg-transparent hover:bg-white/80"
+                      ? "border-[var(--lk-ink)] bg-[var(--lk-surface)]"
+                      : "border-[var(--lk-line)] bg-transparent hover:bg-[var(--lk-surface)]/80"
                   }`}
                 >
                   <span className="block text-[0.65rem] font-medium uppercase tracking-[0.1em] text-[var(--lk-muted)]">
@@ -278,17 +284,19 @@ export function LoupkidsSetupGuideInteractive({ steps }: { steps: Step[] }) {
         </FadeIn>
       </div>
 
-      <FadeIn delay={0.16} className="lk-prose-muted mt-12 border-t border-[var(--lk-line)] pt-8 sm:mt-14">
-        Stuck? Browse the{" "}
-        <Link href="/help" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-          knowledge base
-        </Link>{" "}
-        or{" "}
-        <Link href="/contact" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-          contact support
-        </Link>
-        .
-      </FadeIn>
+      {showHelp ? (
+        <FadeIn delay={0.16} className="lk-prose-muted mt-12 border-t border-[var(--lk-line-soft)] pt-8 sm:mt-14">
+          Stuck? Browse the{" "}
+          <Link href="/help" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+            knowledge base
+          </Link>{" "}
+          or{" "}
+          <Link href="/contact" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+            contact support
+          </Link>
+          .
+        </FadeIn>
+      ) : null}
     </div>
   );
 }

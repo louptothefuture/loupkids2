@@ -19,7 +19,7 @@ export function DevCampaignHeader() {
   const count = cart?.totalQuantity ?? 0;
 
   return (
-    <header className="sticky top-0 z-30 border-b-2 border-ink bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-30 border-b-2 border-ink bg-[var(--lk-surface)]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <LoupLogoLink href="/dev-home" label="Loup home" height={30} />
 
@@ -35,7 +35,7 @@ export function DevCampaignHeader() {
           <button
             onClick={openCart}
             aria-label={`Bag, ${count} items`}
-            className="label-mono relative cursor-pointer rounded-full border-2 border-ink px-4 py-2 text-ink transition-colors hover:bg-neutral-100"
+            className="label-mono relative cursor-pointer rounded-full border-2 border-ink px-4 py-2 text-ink transition-colors hover:bg-[var(--lk-cream)]"
           >
             Bag
             {count > 0 && (

@@ -30,19 +30,18 @@ export default async function HelpArticlePage({ params }: Props) {
 
   return (
     <div>
-      <section className="lk-section-white lk-section-header border-b border-[var(--lk-line)]">
-        <FadeIn className="lk-container-prose text-left">
+      <section className="lk-section-white lk-page-body">
+        <FadeIn className="lk-container-prose">
           <Link href="/help" className="lk-read-link inline-block">
             ← Help center
           </Link>
-          <h1 className="lk-display lk-h2">{article.title}</h1>
-          <p className="lk-lead lk-prose-muted mt-4">{article.summary}</p>
-        </FadeIn>
-      </section>
-
-      <section className="lk-section-white lk-page-body">
-        <FadeIn className="lk-container-prose">
-          <div>
+          <h1 className="lk-display mt-5 text-[clamp(1.5rem,3vw,2rem)] leading-tight">
+            {article.title}
+          </h1>
+          <p className="mt-2 max-w-xl text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">
+            {article.summary}
+          </p>
+          <div className="mt-8">
             {article.sections.map((section, i) => (
               <div
                 key={i}

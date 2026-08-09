@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { BrainComparisonSection } from "@/components/loupkids/BrainComparisonSection";
-import { FadeIn } from "@/components/loupkids/FadeIn";
 import { LoupkidsJournalList } from "@/components/loupkids/LoupkidsJournalList";
 import { getPosts } from "@/lib/content";
 import { SITE } from "@/lib/site";
@@ -18,14 +17,7 @@ export default async function BlogPage() {
 
   return (
     <div>
-      <section className="lk-section-white lk-section-header border-b border-[var(--lk-line)]">
-        <FadeIn className="lk-container-prose text-center">
-          <h1 className="lk-display lk-h2">Journal</h1>
-          <p className="lk-lead lk-prose-muted mx-auto mt-4">
-            Essays on screen time, first phones, and the years before a smartphone.
-          </p>
-        </FadeIn>
-      </section>
+      <h1 className="sr-only">Journal</h1>
 
       <BrainComparisonSection />
 

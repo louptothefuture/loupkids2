@@ -28,11 +28,22 @@ function isDevCampaign(pathname: string) {
 }
 
 function isConvertRoute(pathname: string) {
-  return pathname === "/convert" || pathname.startsWith("/convert/");
+  return (
+    pathname === "/convert" ||
+    pathname.startsWith("/convert/") ||
+    pathname === "/launch" ||
+    pathname.startsWith("/launch/")
+  );
 }
 
 export function ConditionalChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+
+  // Full-bleed demos — no marketing shell
+  if (pathname === "/glb" || pathname === "/glb2" || pathname === "/glb3") {
+    return <main className="min-h-full">{children}</main>;
+  }
+
   const bold = isBoldRoute(pathname);
 
   if (bold) {

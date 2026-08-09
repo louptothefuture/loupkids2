@@ -28,7 +28,7 @@ export function PhoneSection() {
                 <motion.div
                   key={f.title}
                   whileHover={{ y: -4 }}
-                  className="pop-card bg-white p-4 text-ink"
+                  className="pop-card bg-[var(--lk-surface)] p-4 text-ink"
                 >
                   <p className="text-sm font-black uppercase">{f.title}</p>
                   <p className="mt-1 text-xs font-semibold text-ink/75">{f.body}</p>
@@ -78,7 +78,7 @@ export function NothingSection() {
 
 export function StoryTeaserSection() {
   return (
-    <section className="relative bg-white py-24">
+    <section className="relative bg-[var(--lk-surface)] py-24">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         <PopHeadline as="h2" size="lg" tone="dark">
           Kids don&apos;t need

@@ -9,144 +9,147 @@ import { SITE } from "@/lib/site";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "About — How Loup Started",
+  title: "The Story — How Loup Started",
   description:
-    "The story behind Loup — from a kid pretending to call on an old phone to a screenless device built for real connection.",
+    "Why we built a phone with no screens, no feeds, and no algorithms — the story behind Loup.",
   alternates: { canonical: `${SITE.url}/about` },
 };
-
-const STORY_MEDIA = [
-  { src: "/images/renders/shop/a_3.jpg", alt: "Early Loup hardware form", label: "Sketch to hardware" },
-  { src: "/images/renders/shop/a_9.jpg", alt: "Loup hardware detail", label: "25 hardware iterations" },
-  { src: "/images/renders/shop/a_11.jpg", alt: "Loup enclosure development", label: "100+ enclosure prints" },
-  { src: "/images/renders/shop/a_4.jpg", alt: "Loup production design", label: "Prototype in hand" },
-] as const;
 
 export default async function AboutPage() {
   const about = await getAboutPageContent();
 
   return (
-    <article className="bg-[#fafaf8] text-[var(--lk-ink)]">
-      <section className="border-b border-[var(--lk-line)] bg-white px-[var(--lk-section-x)] py-16 sm:py-24">
-        <FadeIn className="mx-auto max-w-5xl">
-          <p className="lk-label">About</p>
-          <h1 className="lk-display mt-6 max-w-4xl text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.94] tracking-[-0.055em]">
-            {about.title}
-          </h1>
-          <div className="mt-8 max-w-3xl space-y-4 text-lg leading-relaxed text-[var(--lk-muted)] sm:text-xl">
-            {about.introParagraphs.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-            ))}
+    <article>
+      <h1 className="sr-only">The Story</h1>
+
+      <section className="border-b border-[var(--lk-line)] bg-[var(--lk-cobalt)] px-[var(--lk-section-x)] py-12 sm:py-14">
+        <FadeIn className="mx-auto max-w-3xl">
+          <p className="text-sm font-medium text-white/60">1 year in the making</p>
+          <p className="lk-display mt-2 text-2xl text-white sm:text-3xl">12 steps of failure.</p>
+          <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-2xl bg-[var(--lk-cobalt-deep)] md:rounded-3xl">
+            <video
+              className="h-full w-full object-cover"
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              aria-label="Loup in 12 steps of failure"
+            >
+              <source src="/videos/loup-12-steps.mp4?v=3" type="video/mp4" />
+            </video>
           </div>
         </FadeIn>
       </section>
 
-      <section className="border-b border-[var(--lk-line)] px-[var(--lk-section-x)] py-10 sm:py-14">
-        <div className="mx-auto max-w-5xl">
-          <p className="lk-label">Along the way</p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-3">
-            {[
-              ["25×", "hardware iterations"],
-              ["100+", "enclosure prints"],
-              ["Shenzhen", "prototype in hand"],
-            ].map(([value, label]) => (
-              <FadeIn
-                key={value}
-                className="border-t-2 border-[#7657d5] bg-white px-5 py-5 shadow-[0_4px_18px_rgba(33,24,60,0.05)]"
-              >
-                <p className="lk-display text-3xl tracking-tight">{value}</p>
-                <p className="mt-1 text-sm text-[var(--lk-muted)]">{label}</p>
-              </FadeIn>
-            ))}
-          </div>
+      <section className="border-b border-[var(--lk-line)] bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-12 sm:py-14">
+        <div className="mx-auto grid max-w-3xl gap-0 overflow-hidden rounded-2xl shadow-[var(--lk-card-shadow)] sm:grid-cols-3 md:rounded-3xl">
+          {[
+            ["12", "hardware iterations"],
+            ["1 year", "in the making"],
+            ["July 26th", "Production ready Prototype in Hand"],
+          ].map(([value, label], i) => (
+            <FadeIn
+              key={value}
+              className={`px-5 py-5 ${i > 0 ? "border-t border-[var(--lk-line)] sm:border-l sm:border-t-0" : ""}`}
+            >
+              <p className="lk-display text-2xl tracking-tight sm:text-3xl">{value}</p>
+              <p className="mt-1 text-sm text-[var(--lk-muted)]">{label}</p>
+            </FadeIn>
+          ))}
         </div>
       </section>
 
-      <section className="border-b border-[var(--lk-line)] px-[var(--lk-section-x)] py-14 sm:py-20">
-        <div className="mx-auto max-w-5xl">
-          <p className="lk-label">The story, in chapters</p>
-          <ol className="relative mt-10 space-y-12 before:absolute before:bottom-4 before:left-[5px] before:top-3 before:w-px before:bg-[#7657d5]/35 sm:space-y-16">
-            {about.timeline.map((item, i) => (
-              <li key={item.label} className="relative pl-8">
-                <span className="absolute left-0 top-2 h-[11px] w-[11px] rounded-full border-2 border-[#fafaf8] bg-[#7657d5] ring-1 ring-[#7657d5]/30" />
-                <FadeIn className="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_15rem] md:gap-10">
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#654bbd]">{item.label}</p>
-                    <h2 className="lk-display mt-3 text-2xl tracking-tight sm:text-3xl">{item.title}</h2>
-                    <div className="mt-4 max-w-2xl space-y-3 leading-relaxed text-[var(--lk-muted)]">
+      {/* Chapters — zig-zag on desktop, stacked on mobile */}
+      <section className="border-b border-[var(--lk-line)] bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-16 sm:py-20 lg:py-24">
+        <div className="lk-container space-y-16 md:space-y-28">
+          {about.timeline.map((item, index) => {
+            const imageLeft = index % 2 === 1;
+            return (
+              <FadeIn key={item.label}>
+                <div
+                  className={`flex flex-col items-center gap-8 md:gap-14 ${
+                    imageLeft ? "md:flex-row-reverse" : "md:flex-row"
+                  }`}
+                >
+                  <div className="w-full flex-1">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-neutral-500 md:text-sm">
+                      {item.label}
+                    </p>
+                    <h2 className="lk-display text-2xl tracking-tight md:text-4xl">{item.title}</h2>
+                    <div className="mt-4 space-y-3 text-[0.9375rem] leading-relaxed text-neutral-600 md:text-base">
                       {item.paragraphs.map((paragraph) => (
                         <p key={paragraph.slice(0, 36)}>{paragraph}</p>
                       ))}
                     </div>
                   </div>
-                  <figure>
-                    <div className="relative aspect-square overflow-hidden rounded-2xl border border-[var(--lk-line)] bg-white">
-                      <Image
-                        src={item.image ?? STORY_MEDIA[i]?.src ?? STORY_MEDIA[0].src}
-                        alt={item.imageAlt ?? STORY_MEDIA[i]?.alt ?? "Loup story"}
-                        fill
-                        sizes="(max-width: 767px) 100vw, 15rem"
-                        className="object-cover"
-                      />
-                    </div>
-                    <figcaption className="mt-2 text-xs uppercase tracking-[0.12em] text-[var(--lk-muted)]">
-                      {item.imageCaption ?? STORY_MEDIA[i]?.label}
-                    </figcaption>
-                  </figure>
-                </FadeIn>
-              </li>
-            ))}
-          </ol>
+                  {item.image ? (
+                    <figure className="w-full flex-1">
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)] md:rounded-3xl">
+                        <Image
+                          src={item.image}
+                          alt={item.imageAlt ?? item.title}
+                          fill
+                          sizes="(max-width: 767px) 100vw, 50vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    </figure>
+                  ) : null}
+                </div>
+              </FadeIn>
+            );
+          })}
         </div>
       </section>
 
-      <section className="border-b border-[var(--lk-line)] bg-white px-[var(--lk-section-x)] py-14 sm:py-20">
-        <div className="mx-auto max-w-5xl">
-          <p className="lk-label">Who’s behind it</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {about.teamBlocks.map((block, i) => (
+      <section className="border-b border-[var(--lk-line)] bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-16 sm:py-20 lg:py-24">
+        <FadeIn className="lk-container flex flex-col items-center gap-8 md:flex-row md:gap-14">
+          <div className="relative aspect-[4/3] w-full flex-1 overflow-hidden rounded-2xl bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)] md:rounded-3xl">
+            <Image
+              src="/images/renders/shop/a_4.jpg"
+              alt="Loup production prototype"
+              fill
+              sizes="(max-width: 767px) 100vw, 50vw"
+              className="object-contain object-center p-6"
+            />
+          </div>
+          <div className="w-full flex-1">
+            <h2 className="lk-display text-2xl tracking-tight md:text-4xl">{about.manufacturingTitle}</h2>
+            <p className="mt-4 text-[0.9375rem] leading-relaxed text-neutral-600 md:text-base">
+              {about.manufacturingBody}
+            </p>
+          </div>
+        </FadeIn>
+      </section>
+
+      <section className="border-b border-[var(--lk-line)] bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-16 sm:py-20 lg:py-24">
+        <div className="lk-container">
+          <h2 className="lk-display text-2xl md:text-4xl">Who&apos;s behind it</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {about.teamBlocks.map((block) => (
               <FadeIn
                 key={block.title}
-                delay={i * 0.06}
-                className="rounded-2xl border border-[var(--lk-line)] p-6 sm:p-8"
+                className="lk-card rounded-2xl p-6 md:rounded-3xl"
               >
-                <div className="h-11 w-11 rounded-full bg-[#7657d5]/10" />
-                <p className="lk-display mt-5 text-xl">{block.title}</p>
-                <p className="mt-3 leading-relaxed text-[var(--lk-muted)]">{block.body}</p>
+                <p className="lk-display text-xl">{block.title}</p>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{block.body}</p>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-[var(--lk-line)] px-[var(--lk-section-x)] py-14 sm:py-20">
-        <FadeIn className="mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-[1.05fr_1fr] md:gap-12">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--lk-line)] bg-white">
-            <Image
-              src="/images/renders/shop/a_4.jpg"
-              alt="Loup production prototype"
-              fill
-              sizes="(max-width: 767px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <p className="lk-label">Manufacturing partner</p>
-            <h2 className="lk-display mt-4 text-3xl tracking-tight sm:text-4xl">{about.manufacturingTitle}</h2>
-            <p className="mt-5 leading-relaxed text-[var(--lk-muted)]">{about.manufacturingBody}</p>
-          </div>
-        </FadeIn>
-      </section>
-
-      <section className="bg-white px-[var(--lk-section-x)] py-16 text-center sm:py-24">
-        <FadeIn className="mx-auto max-w-3xl">
-          <p className="lk-label">Where we are now</p>
-          <p className="lk-display mt-5 text-3xl tracking-tight sm:text-5xl">{about.closing}</p>
+      <section className="lk-section-black px-[var(--lk-section-x)] py-16 sm:py-20 lg:py-24 text-center">
+        <FadeIn className="mx-auto max-w-2xl">
+          <p className="lk-display text-[clamp(1.5rem,4vw,2.5rem)] text-white">{about.closing}</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/shop/loup" className="lk-btn">
+            <Link href="/shop/loup" className="lk-btn lk-btn-white">
               {LOUPKIDS_CTA.primary}
             </Link>
-            <Link href="/faq" className="lk-btn lk-btn-outline">
+            <Link
+              href="/faq"
+              className="lk-btn border border-white/30 bg-transparent text-white hover:bg-white/10"
+            >
               Read the FAQ
             </Link>
           </div>

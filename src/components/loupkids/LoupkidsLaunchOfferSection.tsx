@@ -1,71 +1,60 @@
-"use client";
-
-import { LOUPKIDS_CTA, LOUPKIDS_IN_THE_BOX, LOUPKIDS_PRICE } from "@/lib/content/loupkids-conversion";
+import Link from "next/link";
+import {
+  LOUPKIDS_CTA,
+  LOUPKIDS_IN_THE_BOX,
+  LOUPKIDS_PRICE,
+} from "@/lib/content/loupkids-conversion";
 import { HOME_LAUNCH } from "@/lib/content/loupkids-home-arc";
-import { LoupkidsOrderCta } from "./conversion";
 import { FadeIn } from "./FadeIn";
-import { RevealHeadline } from "./RevealHeadline";
 
-/** Act 5 — single launch offer card + in the box (no subscription table) */
 export function LoupkidsLaunchOfferSection() {
   return (
-    <section className="lk-section-white px-[var(--lk-section-x)] py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-[720px]">
-        <FadeIn className="text-center">
-          <RevealHeadline as="h2" className="lk-display lk-h2" instant>
-            Pre-order Loup.
-          </RevealHeadline>
-          <p className="mt-3 text-[var(--lk-muted)]">
-            The phone before the smartphone — launch pricing while it lasts.
+    <section className="lk-band bg-[var(--lk-bg)] text-[var(--lk-ink)]">
+      <div className="mx-auto max-w-[720px] text-center">
+        <FadeIn>
+          <h2 className="lk-display text-[clamp(2rem,4vw,3rem)] leading-[1.08] text-[var(--lk-accent-ink)]">
+            Order Loup.
+          </h2>
+          <p className="mx-auto mt-4 max-w-md text-[var(--lk-muted)]">
+            First 500 · Save 33%. Year 1 domestic included · Loup↔Loup always free.
           </p>
-        </FadeIn>
 
-        <FadeIn delay={0.06} className="mt-10 rounded-3xl border border-[var(--lk-line)] bg-[#fafafa] p-6 sm:mt-12 sm:p-10">
-          <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
-            <p className="lk-display text-3xl tracking-tight sm:text-4xl">{HOME_LAUNCH.priceHeader}</p>
-            <span className="text-lg text-[var(--lk-muted)] line-through">{LOUPKIDS_PRICE.compareFormatted} MSRP</span>
-            <span className="text-sm font-medium text-[var(--lk-ink)]">({LOUPKIDS_PRICE.saveLine})</span>
+          <div className="lk-card mt-8 text-left">
+            <p className="text-sm font-medium text-[var(--lk-accent-b)]">{HOME_LAUNCH.scarcityLine}</p>
+            <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p className="lk-display text-3xl sm:text-4xl">{HOME_LAUNCH.priceHeader}</p>
+              <p className="text-base text-[var(--lk-muted)] line-through">
+                {LOUPKIDS_PRICE.compareFormatted}
+              </p>
+            </div>
+            <p className="mt-3 text-sm font-medium leading-snug">{HOME_LAUNCH.bonusBanner}</p>
+            <ul className="mt-5 space-y-2 text-sm leading-snug text-[var(--lk-muted)]">
+              {HOME_LAUNCH.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+
+            <Link href="/shop/loup" className="lk-btn lk-btn-convert lk-btn-lg mt-8 w-full">
+              {LOUPKIDS_CTA.primary}
+            </Link>
+            <p className="mt-4 text-xs leading-relaxed text-[var(--lk-muted)]">{HOME_LAUNCH.e911}</p>
           </div>
 
-          <p className="mt-5 rounded-xl bg-[var(--lk-ink)] px-4 py-3 text-center text-sm font-medium text-white sm:text-[0.9375rem]">
-            {HOME_LAUNCH.bonusBanner}
-          </p>
-
-          <ul className="mt-6 space-y-2.5 text-[0.9375rem] text-[var(--lk-ink)]">
-            {HOME_LAUNCH.bullets.map((b) => (
-              <li key={b} className="flex gap-2">
-                <span aria-hidden className="shrink-0">
-                  ✓
-                </span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 border-t border-[var(--lk-line)] pt-6">
-            <p className="text-sm font-medium uppercase tracking-[0.1em] text-[var(--lk-muted)]">In the box</p>
-            <ul className="mt-3 space-y-1.5 text-[0.9375rem] text-[var(--lk-muted)]">
+          <details className="mt-8 border-t border-[var(--lk-line-soft)] pt-4 text-left">
+            <summary className="cursor-pointer text-sm font-medium">In the box</summary>
+            <ul className="mt-3 space-y-1.5 text-sm text-[var(--lk-muted)]">
               {LOUPKIDS_IN_THE_BOX.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-          </div>
+          </details>
 
-          <div className="mt-8 flex justify-center">
-            <LoupkidsOrderCta
-              variant="light"
-              size="large"
-              density="full"
-              label={LOUPKIDS_CTA.primary}
-              className="!max-w-none items-center"
-            />
-          </div>
-
-          <div className="mt-6 space-y-2 text-center text-xs leading-relaxed text-[var(--lk-muted)] sm:text-sm">
-            <p>{HOME_LAUNCH.shipLine}</p>
-            <p>{HOME_LAUNCH.trialLine}</p>
-            <p>{HOME_LAUNCH.e911}</p>
-          </div>
+          <p className="mt-8 text-sm text-[var(--lk-muted)]">
+            Questions?{" "}
+            <Link href="/faq" className="font-semibold text-[var(--lk-ink)] underline underline-offset-4">
+              Read the FAQ
+            </Link>
+          </p>
         </FadeIn>
       </div>
     </section>

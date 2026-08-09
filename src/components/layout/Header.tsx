@@ -20,7 +20,7 @@ export function Header() {
   const count = cart?.totalQuantity ?? 0;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-ink/10 bg-white">
+    <header className="sticky top-0 z-30 border-b border-ink/10 bg-[var(--lk-surface)]">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <LoupLogoLink height={26} />
 

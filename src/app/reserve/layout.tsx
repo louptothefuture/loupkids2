@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Pre-order LOUP",
-  description: "Join the LOUP waitlist for cellular launch or get notified about Wi-Fi batches.",
+  description: "Order Loup — First 500 pricing. Ships within 60 days.",
   alternates: { canonical: `${SITE.url}/reserve` },
 };
 

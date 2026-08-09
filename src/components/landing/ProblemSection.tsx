@@ -16,7 +16,7 @@ export function ProblemSection() {
 
         <div className="mt-14 grid gap-6 sm:grid-cols-3">
           {LANDING_STATS.map((item) => (
-            <div key={item.stat} className="pop-card bg-white p-6 text-ink">
+            <div key={item.stat} className="pop-card bg-[var(--lk-surface)] p-6 text-ink">
               <p className="stat-number">{item.stat}</p>
               <p className="mt-2 text-sm font-semibold text-ink">{item.label}</p>
             </div>

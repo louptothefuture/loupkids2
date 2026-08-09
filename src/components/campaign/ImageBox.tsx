@@ -13,7 +13,7 @@ export function ImageBox({
   objectFit?: "cover" | "contain";
 }) {
   return (
-    <div className={`relative overflow-hidden bg-neutral-100 ${className}`}>
+    <div className={`relative overflow-hidden bg-[var(--lk-cream)] ${className}`}>
       <LoupkidsImage
         src={src}
         alt={alt}

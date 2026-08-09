@@ -9,7 +9,7 @@ type ContactLoopProps = {
 
 /** Approved contacts on a clean circular orbit */
 export function ContactLoop({ className = "", variant = "dark" }: ContactLoopProps) {
-  const pillBg = variant === "dark" ? "bg-ink text-white" : "bg-white text-ink";
+  const pillBg = variant === "dark" ? "bg-ink text-white" : "bg-[var(--lk-surface)] text-ink";
   const ring = variant === "dark" ? "border-ink/25" : "border-white/40";
 
   return (

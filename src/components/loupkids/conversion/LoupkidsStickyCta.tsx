@@ -21,6 +21,7 @@ export function LoupkidsStickyCta() {
   const hidden =
     pathname === "/" ||
     pathname === "/shop/loup" ||
+    pathname === "/hardware" ||
     pathname.startsWith("/studio") ||
     pathname === "/home-full";
 
@@ -36,8 +37,9 @@ export function LoupkidsStickyCta() {
     if (hidden || dismissed) return;
     const onScroll = () => {
       const scrolled = window.scrollY > 520;
+      // Hide before footer so the card doesn’t sit on legal links
       const nearBottom =
-        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 160;
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 420;
       setVisible(scrolled && !nearBottom);
     };
     onScroll();
@@ -45,21 +47,24 @@ export function LoupkidsStickyCta() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [hidden, dismissed]);
 
-  if (hidden || dismissed || !visible) return null;
+  if (hidden || dismissed) return null;
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--lk-line)] bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-sm sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[min(calc(100vw-2rem),18.5rem)] sm:border sm:bg-white sm:p-4 sm:pt-3 sm:pb-4 sm:shadow-[0_12px_40px_rgba(0,0,0,0.14)] sm:backdrop-blur-none"
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-[var(--lk-line)] bg-[var(--lk-surface)]/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-sm transition-transform duration-300 ease-out sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[min(calc(100vw-2rem),20rem)] sm:border sm:bg-[var(--lk-surface)] sm:p-4 sm:pt-3 sm:pb-4 sm:shadow-[0_12px_40px_rgba(0,0,0,0.14)] sm:backdrop-blur-none ${
+        visible ? "translate-y-0" : "pointer-events-none translate-y-[110%]"
+      }`}
       role="complementary"
-      aria-label="Pre-order Loup"
+      aria-label="Order Loup"
+      aria-hidden={!visible}
     >
       <div className="mx-auto flex max-w-lg items-center gap-3 sm:mx-0 sm:block sm:max-w-none">
         <div className="mb-0 hidden items-start justify-between gap-3 sm:mb-2.5 sm:flex">
-          <p className="text-sm text-[var(--lk-muted)]">Pre-order open</p>
+          <p className="text-sm text-[var(--lk-muted)]">Launch pricing open</p>
           <button
             type="button"
             aria-label="Dismiss"
-            className="relative -mr-1 -mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]"
+            className="relative -mr-2 -mt-2 flex h-11 w-11 shrink-0 items-center justify-center text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]"
             onClick={() => {
               try {
                 sessionStorage.setItem(DISMISS_KEY, "1");
@@ -75,13 +80,18 @@ export function LoupkidsStickyCta() {
             </span>
           </button>
         </div>
-        <Link href="/shop/loup" className="lk-btn lk-btn-lg w-full flex-1 text-center text-[0.8125rem] sm:text-[1rem]">
-          {LOUPKIDS_CTA.sticky}
+        <Link
+          href="/shop/loup"
+          className="lk-btn w-full flex-1 whitespace-nowrap px-4 py-3 text-center text-sm sm:text-[0.9375rem]"
+          tabIndex={visible ? undefined : -1}
+        >
+          {LOUPKIDS_CTA.nav}
         </Link>
         <button
           type="button"
           aria-label="Dismiss"
-          className="flex h-10 w-10 shrink-0 items-center justify-center text-[var(--lk-muted)] sm:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center text-[var(--lk-muted)] sm:hidden"
+          tabIndex={visible ? undefined : -1}
           onClick={() => {
             try {
               sessionStorage.setItem(DISMISS_KEY, "1");
@@ -96,8 +106,11 @@ export function LoupkidsStickyCta() {
             ×
           </span>
         </button>
-        <p className="mt-2.5 hidden text-center text-sm leading-snug text-[var(--lk-muted)] sm:block">
+        <p className="mt-2.5 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
           {LOUPKIDS_OFFER.callingBadge}
+        </p>
+        <p className="mt-0.5 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
+          {LOUPKIDS_OFFER.callingNote}
         </p>
         <p className="mt-1 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
           {LOUPKIDS_SHIPPING.stickyNote} · {LOUPKIDS_GUARANTEE.title}

@@ -1,0 +1,123 @@
+/* Campaign copy — Atkinson + bold color blocks (noindex /launch only) */
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/fonts/AtkinsonHyperlegible-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/fonts/AtkinsonHyperlegible-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.launch-campaign {
+  /* Sampled from the shared refs: product blue #3b52e0, LP blue #4853d1, coral #f86060 */
+  --launch-blue: #3b52e0;
+  --launch-coral: #f86060;
+  --launch-ink: #0a0a0a;
+  --launch-soft: #f7f3f2;
+
+  /* Remap site tokens so shared campaign sections recolor */
+  --lk-bg: #ffffff;
+  --lk-surface: #ffffff;
+  --lk-cream: #f7f3f2;
+  --lk-ink: #0a0a0a;
+  --lk-muted: #555555;
+  --lk-line: rgba(10, 10, 10, 0.12);
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #555555;
+  --color-paper: #ffffff;
+  --color-cream: #f7f3f2;
+  --color-surface: #ffffff;
+  --color-block-coral: #f86060;
+  --color-block-cobalt: #3b52e0;
+  --font-display: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-mono: "Atkinson Hyperlegible", system-ui, sans-serif;
+
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
+  color: var(--launch-ink);
+  background: #fff;
+}
+
+.launch-campaign,
+.launch-campaign * {
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif !important;
+}
+
+.launch-campaign h1,
+.launch-campaign h2,
+.launch-campaign h3,
+.launch-campaign .launch-display,
+.launch-campaign .display {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.launch-campaign a {
+  text-decoration: none;
+}
+
+/* Soften sticker-era chrome on reused sections */
+.launch-campaign .border-ink,
+.launch-campaign .border-2 {
+  border-color: rgba(10, 10, 10, 0.12) !important;
+}
+
+.launch-campaign .bg-ink {
+  background-color: var(--launch-blue) !important;
+}
+
+.launch-campaign .btn-sticker {
+  border-radius: 9999px !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
+}
+
+.launch-campaign .rounded-2xl {
+  border-radius: 1.5rem !important;
+}
+
+/* Sticky bag CTA → campaign blue */
+.launch-campaign .fixed.inset-x-0.bottom-0 {
+  background: var(--launch-blue) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  backdrop-filter: none !important;
+}
+
+.launch-campaign .fixed.inset-x-0.bottom-0 p,
+.launch-campaign .fixed.inset-x-0.bottom-0 .text-ink-soft {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.launch-campaign .fixed.inset-x-0.bottom-0 a {
+  background: #fff !important;
+  color: var(--launch-blue) !important;
+  border: 0 !important;
+  border-radius: 9999px !important;
+}
+
+/* Alternating band colors for funnel sections after proof */
+.launch-campaign .launch-funnel > section:nth-of-type(1) {
+  background: #fff !important;
+}
+
+.launch-campaign .launch-funnel > section:nth-of-type(2) {
+  background: var(--launch-soft) !important;
+}
+
+.launch-campaign .launch-funnel > section:nth-of-type(3) {
+  background: var(--launch-soft) !important;
+}
+
+.launch-campaign .launch-funnel > section:nth-of-type(4) {
+  background: #fff !important;
+}

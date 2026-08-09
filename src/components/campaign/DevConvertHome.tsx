@@ -15,7 +15,7 @@ import { DevConvertStickyCta } from "./DevConvertStickyCta";
 
 function ConvertCta({ className = "", dark = false }: { className?: string; dark?: boolean }) {
   const btnClass = dark
-    ? "btn-sticker w-full border-2 border-white bg-white px-8 py-4 text-center text-lg text-ink sm:w-auto sm:text-xl"
+    ? "btn-sticker w-full border-2 border-white bg-[var(--lk-surface)] px-8 py-4 text-center text-lg text-ink sm:w-auto sm:text-xl"
     : "btn-sticker w-full border-2 border-ink bg-ink px-8 py-4 text-center text-lg text-white sm:w-auto sm:text-xl";
   const textClass = dark ? "text-white/75" : "text-ink-soft";
   const strongClass = dark ? "text-white" : "text-ink";
@@ -43,7 +43,7 @@ export function DevConvertHome() {
 
   return (
     <>
-      <section className="border-b-2 border-ink bg-white pb-8 pt-6 sm:pb-12 sm:pt-10">
+      <section className="border-b-2 border-ink bg-[var(--lk-surface)] pb-8 pt-6 sm:pb-12 sm:pt-10">
         <div className="mx-auto grid max-w-5xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12">
           <Reveal>
             <h1 className="display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
@@ -71,7 +71,7 @@ export function DevConvertHome() {
         </div>
       </section>
 
-      <div className="border-b-2 border-ink bg-neutral-50 py-5">
+      <div className="border-b-2 border-ink bg-[var(--lk-cream)] py-5">
         <Marquee fast>
           {LOUPKIDS_CONVERT_ANTI.map((line) => (
             <span key={line} className="display mx-8 inline-flex items-center gap-6 text-xl text-ink sm:text-2xl">
@@ -82,7 +82,7 @@ export function DevConvertHome() {
         </Marquee>
       </div>
 
-      <section className="border-b-2 border-ink bg-white py-14 lg:py-18">
+      <section className="border-b-2 border-ink bg-[var(--lk-surface)] py-14 lg:py-18">
         <div className="mx-auto grid max-w-5xl items-start gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
           <Reveal>
             <h2 className="display text-3xl text-ink sm:text-4xl">{LOUPKIDS_STORY_SHORT.headline}</h2>

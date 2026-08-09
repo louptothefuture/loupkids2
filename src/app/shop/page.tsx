@@ -3,9 +3,9 @@ import { redirect } from "next/navigation";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Pre-order Loup — Silver | $149",
+  title: "Order Loup — Silver | $129",
   description:
-    "Pre-order Loup — aluminum sides & buttons, ABS front — $149 launch ($199 MSRP), includes 1 year free unlimited domestic calling, ships within 60 days.",
+    "Order Loup — First 500 for $129 (Save 33% vs $199). Year 1 unlimited domestic included, then $10/mo. Ships within 60 days.",
   alternates: { canonical: `${SITE.url}/shop/loup` },
 };
 

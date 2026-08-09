@@ -7,10 +7,10 @@ import { LOUPKIDS_JOURNAL_POSTS } from "./journal";
  */
 
 export const FALLBACK_HOMEPAGE: HomepageCopy = {
-  heroHeadline: "Their first phone. Not their first feed.",
+  heroHeadline: "Their first phone. Safe from day one.",
   heroSubline:
-    "Parent-approved Wi-Fi calling for kids. Zero apps, zero feeds, zero screen addiction.",
-  heroCta: "Pre-order Loup — $149",
+    "Total security for you, real connection for them. A voice-only phone designed to block strangers and screen addiction so kids can just be kids.",
+  heroCta: "Order Loup — $129",
   manifestoLines: [
     "The vanishing playground.",
     "5.5 hours a day on screens.",
@@ -65,13 +65,13 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Does LOUP work away from home Wi-Fi?",
     answer:
-      "LOUP connects over Wi-Fi — at home, school, or anywhere you trust. There's no SIM card and no cellular bill. LOUP-to-LOUP calling works wherever both devices have Wi-Fi. Add the $10/month plan if you want kids to reach real phone numbers outside Wi-Fi.",
+      "LOUP connects over Wi-Fi — at home, school, or anywhere you trust. There's no SIM card and no carrier bill. LOUP-to-LOUP calling works wherever both devices have Wi-Fi. First 500 includes year 1 unlimited domestic; then $10/mo if you want external numbers after that.",
   },
   {
     section: "Shipping",
     question: "How fast is shipping?",
     answer:
-      "Free standard shipping on every US order, arriving in 3–5 business days. Expedited 2-day shipping is available at checkout. We currently ship to the US and Canada, with more countries coming.",
+      "Every order ships within 60 days. You'll get tracking by email when it leaves us. We currently ship to the US, Canada, UK, and EU.",
   },
   {
     section: "Shipping",
@@ -95,7 +95,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Safety & Privacy",
     question: "Does LOUP track my kid's location?",
     answer:
-      "LOUP includes optional location check-in that parents can turn on or off. There is no always-on tracking, no data sold to anyone, ever. Voice messages are end-to-end encrypted.",
+      "Loup is built for friendship, not monitoring — no always-on tracking, no data sold to anyone. Voice stays on a closed network you control.",
   },
   {
     section: "Safety & Privacy",
@@ -109,37 +109,23 @@ export const FALLBACK_TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "My 9-year-old calls me from the backyard fort like it's mission control. He has never once asked me for an iPad since it arrived.",
-    attribution: "Sarah M., mom of two, Austin TX",
+    attribution: "Maya Chen, mom of two, Seattle WA",
     rating: 5,
     featured: true,
   },
   {
     quote:
       "We held out on a smartphone for our 12-year-old and were the bad guys for a year. LOUP ended the argument. She's reachable, we're relaxed, and she actually thinks it looks cool.",
-    attribution: "Dana & Chris R., Portland OR",
+    attribution: "Jordan Hale, dad of one, Chicago IL",
     rating: 5,
     featured: true,
   },
   {
     quote:
-      "The build quality shocked me. It feels like an object from Braun, not a kids' toy. My son treats it like a treasure.",
-    attribution: "Marcus T., dad of three, Chicago IL",
+      "The build quality shocked me. It feels like something from Braun, not a kids' toy. Our son treats it like a treasure — and the quiet hours actually stick.",
+    attribution: "Elise Navarro, mom of three, Austin TX",
     rating: 5,
     featured: true,
-  },
-  {
-    quote:
-      "Our whole friend group bought them together. The kids call each other constantly — out loud, laughing, like we did in 1995 on the landline.",
-    attribution: "Priya K., Brooklyn NY",
-    rating: 5,
-    featured: true,
-  },
-  {
-    quote:
-      "As a pediatric OT, I recommend LOUP to families weekly. It gives kids autonomy and connection without the dopamine slot machine.",
-    attribution: "Jenna L., pediatric occupational therapist",
-    rating: 5,
-    featured: false,
   },
 ];
 
@@ -185,14 +171,14 @@ export const FALLBACK_SPECS: Spec[] = [
   { group: "Hardware", label: "Durability", value: "IP54 splash resistant, drop-tested to 2 meters" },
   { group: "Hardware", label: "Size & Weight", value: '4.3" × 2.6" × 0.5" — 118 g' },
   { group: "Calling", label: "LOUP to LOUP", value: "Free forever, unlimited" },
-  { group: "Calling", label: "Real phone numbers", value: "$10/month, unlimited US & Canada, cancel anytime" },
+  { group: "Calling", label: "Real phone numbers", value: "Year 1 free (First 500) · then $10/mo, unlimited US & Canada, cancel anytime" },
   { group: "Calling", label: "Contacts", value: "Parent-approved list; Loup-to-Loup and parent-to-kid free" },
-  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no cellular bill" },
+  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
   { group: "Battery & Charging", label: "Battery", value: "Rechargeable and replaceable" },
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },
-  { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card" },
-  { group: "In the Box", label: "Also included", value: "30-day free returns" },
+  { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card, parent app" },
+  { group: "In the Box", label: "Also included", value: "30-day trial from arrival · refundable pre-ship" },
 ];
 
 export const FALLBACK_POSTS: Post[] = LOUPKIDS_JOURNAL_POSTS;

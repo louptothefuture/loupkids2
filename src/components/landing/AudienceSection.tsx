@@ -26,7 +26,7 @@ export function AudienceSection() {
               onClick={() => setActive(i)}
               aria-pressed={active === i}
               className={`cursor-pointer rounded-full border-[3px] border-ink px-5 py-2.5 text-sm font-black uppercase shadow-[3px_3px_0_#0a0a0a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${
-                active === i ? "bg-ink text-white" : "bg-white text-ink"
+                active === i ? "bg-ink text-white" : "bg-[var(--lk-surface)] text-ink"
               }`}
             >
               {u.label}
@@ -35,7 +35,7 @@ export function AudienceSection() {
         </div>
 
         <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2">
-          <div className="pop-card pop-card-tilt-left flex flex-col bg-white p-8 text-ink">
+          <div className="pop-card pop-card-tilt-left flex flex-col bg-[var(--lk-surface)] p-8 text-ink">
             <h3 className="display text-left text-2xl">{current.headline}</h3>
             <p className="mt-4 text-base font-semibold leading-relaxed text-ink">
               {current.body}

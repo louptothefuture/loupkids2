@@ -25,8 +25,8 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
         body: "Select your home Wi-Fi network and enter the password. Loup connects over 2.4 GHz Wi-Fi — if your router splits bands, pick the 2.4 GHz network or enable a combined SSID.",
       },
       {
-        heading: "School Wi-Fi",
-        body: "You can add additional networks later from Settings → Wi-Fi in the parent app. Some school networks require IT approval; contact your school if Loup cannot join guest Wi-Fi.",
+        heading: "Adding External Networks (School, Friends, Family)",
+        body: "Because Loup is screen-safe and has no keyboard, your child cannot connect to new Wi-Fi networks on their own. You can manage and add additional trusted networks at any time from Settings → Wi-Fi in the parent app. Going to a friend's house? Pre-load the network credentials in your app, and Loup will connect automatically when they arrive. Note: Some school or public networks require web-based IT approval (captive portals); contact your school if Loup cannot join their guest Wi-Fi.",
       },
     ],
   },
@@ -171,7 +171,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "The Loup sequence",
-        body: "Loup is designed for the gap years: after they need a walkie-talkie, before they need Instagram. Many families use it from 8–14, then revisit a smartphone together when the kid can articulate why they want one.",
+        body: "Loup is designed for the gap years: after they need a walkie-talkie, before they need Instagram. Many families use it from 8–14, then revisit a smartphone together when kids can articulate why they want one.",
       },
     ],
   },
@@ -205,7 +205,7 @@ export const LOUPKIDS_SETUP_STEPS = [
     step: "1",
     section: "Set it up",
     title: "Pair Loup with your Wi-Fi",
-    body: "Open the parent app, scan the code on the back of Loup, and choose your home network. You’ll be ready in about two minutes.",
+    body: "Open the parent app, scan the code on Loup’s screen, and choose your home network. You’ll be ready in about two minutes.",
     placeholder: "Setup screen",
   },
   {

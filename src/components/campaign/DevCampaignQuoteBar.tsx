@@ -21,7 +21,7 @@ export function DevCampaignQuoteBar() {
   if (!t) return null;
 
   return (
-    <section className="border-b-2 border-ink bg-white py-12 sm:py-14">
+    <section className="border-b-2 border-ink bg-[var(--lk-surface)] py-12 sm:py-14">
       <Reveal className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <blockquote className="display text-xl leading-snug text-ink sm:text-2xl">&ldquo;{t.quote}&rdquo;</blockquote>
         <p className="label-mono mt-4 text-ink-soft">{t.attribution}</p>

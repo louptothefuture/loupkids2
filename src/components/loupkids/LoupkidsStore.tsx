@@ -28,7 +28,7 @@ export function LoupkidsStore() {
             {STORE_PRODUCTS.map((product, i) => (
               <FadeIn key={product.title} delay={i * 0.04}>
                 <article className="lk-product-tile group flex h-full flex-col">
-                  <Link href={product.href} className="lk-image-hover relative block aspect-square overflow-hidden bg-neutral-50">
+                  <Link href={product.href} className="lk-image-hover relative block aspect-square overflow-hidden bg-[var(--lk-cream)]">
                     <LoupkidsImage
                       src={product.image}
                       alt={product.title}

@@ -15,8 +15,10 @@ export function LegalLayout({
     <div>
       <section className="lk-section-white lk-section-header border-b border-[var(--lk-line)]">
         <FadeIn className="lk-container-prose text-left">
-          <h1 className="lk-display lk-h2">{title}</h1>
-          <p className="lk-label mt-4">Last updated {updated}</p>
+          <h1 className="lk-display text-[clamp(1.75rem,3.5vw,2.5rem)] leading-tight">{title}</h1>
+          <p className="mt-3 text-xs font-medium uppercase tracking-[0.14em] text-[var(--lk-muted)]">
+            Last updated {updated}
+          </p>
         </FadeIn>
       </section>
 

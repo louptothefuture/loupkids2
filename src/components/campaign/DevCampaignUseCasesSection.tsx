@@ -10,7 +10,7 @@ export function DevCampaignUseCasesSection() {
   const item = LOUPKIDS_USE_CASES[active];
 
   return (
-    <section id="use-cases" className="border-b-2 border-ink bg-neutral-50 py-20 lg:py-24">
+    <section id="use-cases" className="border-b-2 border-ink bg-[var(--lk-cream)] py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
           <h2 className="display max-w-2xl text-4xl text-ink sm:text-5xl">
@@ -27,7 +27,7 @@ export function DevCampaignUseCasesSection() {
               className={`cursor-pointer border-2 px-4 py-2 text-sm font-medium transition-colors ${
                 i === active
                   ? "border-ink bg-ink text-white"
-                  : "border-ink bg-white text-ink-soft hover:text-ink"
+                  : "border-ink bg-[var(--lk-surface)] text-ink-soft hover:text-ink"
               }`}
             >
               {uc.label}
@@ -41,7 +41,7 @@ export function DevCampaignUseCasesSection() {
             <p className="mt-4 text-base leading-relaxed text-ink-soft">{item.body}</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border-2 border-ink bg-neutral-100">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border-2 border-ink bg-[var(--lk-cream)]">
               <LoupkidsImage src={item.image} alt={item.alt} fill sizes="50vw" className="object-cover" />
             </div>
           </Reveal>

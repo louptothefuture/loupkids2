@@ -34,12 +34,12 @@ export async function POST(request: NextRequest) {
 
   if (type === "all") {
     for (const tag of Object.keys(ROUTE_TAGS)) {
-      revalidateTag(tag);
+      revalidateTag(tag, "max");
       revalidated.push(tag);
     }
     revalidatePath("/", "layout");
   } else {
-    revalidateTag(type);
+    revalidateTag(type, "max");
     revalidated.push(type);
     for (const route of ROUTE_TAGS[type] ?? []) {
       revalidatePath(route);

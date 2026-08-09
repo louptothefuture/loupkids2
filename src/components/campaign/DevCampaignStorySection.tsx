@@ -28,7 +28,7 @@ const DIFFERENTIATORS = [
 
 export function DevCampaignStorySection() {
   return (
-    <section className="border-y-2 border-ink bg-white py-20 lg:py-24">
+    <section className="border-y-2 border-ink bg-[var(--lk-surface)] py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
@@ -58,7 +58,7 @@ export function DevCampaignStorySection() {
         <Reveal delay={0.1}>
           <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {DIFFERENTIATORS.map((item) => (
-              <div key={item.title} className="rounded-2xl border-2 border-ink bg-neutral-50 p-5">
+              <div key={item.title} className="rounded-2xl border-2 border-ink bg-[var(--lk-cream)] p-5">
                 <h3 className="display text-lg text-ink">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.body}</p>
               </div>

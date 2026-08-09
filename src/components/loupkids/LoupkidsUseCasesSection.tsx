@@ -53,7 +53,7 @@ export function LoupkidsUseCasesSection() {
             ) : null}
           </div>
 
-          <div className="relative order-1 aspect-[4/3] overflow-hidden bg-neutral-100 lg:order-2">
+          <div className="relative order-1 aspect-[4/3] overflow-hidden bg-[var(--lk-cream)] lg:order-2">
             <LoupkidsImage src={item.image} alt={item.alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
           </div>
         </div>

@@ -51,7 +51,7 @@ export function PreOrderSection() {
             Get your phone before the feed
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-surface/60">
-            Pre-order for launch delivery, or join the cellular waitlist — no payment required.
+            Order now for $129 — ships within 60 days.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
             <Link href="/shop/loup" className="btn-sticker bg-surface px-8 py-3.5 text-ink">

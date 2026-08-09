@@ -39,7 +39,11 @@ export function LoupLogoLink({
   priority?: boolean;
 }) {
   return (
-    <Link href={href} aria-label={label} className={`inline-flex items-center ${className}`}>
+    <Link
+      href={href}
+      aria-label={label}
+      className={`inline-flex min-h-11 items-center ${className}`}
+    >
       <LoupLogo variant={variant} height={height} />
     </Link>
   );

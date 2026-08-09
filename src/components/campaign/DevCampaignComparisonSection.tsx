@@ -7,7 +7,7 @@ export function DevCampaignComparisonSection() {
   const { columns, rows } = LOUPKIDS_COMPARISON;
 
   return (
-    <section id="compare" className="border-b-2 border-ink bg-white py-20 lg:py-24">
+    <section id="compare" className="border-b-2 border-ink bg-[var(--lk-surface)] py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
           <h2 className="display text-4xl text-ink sm:text-5xl">
@@ -23,7 +23,7 @@ export function DevCampaignComparisonSection() {
             <table className="w-full min-w-[720px] border-collapse text-left text-sm sm:text-base">
               <thead>
                 <tr className="border-b-2 border-ink">
-                  <th className="bg-neutral-50 p-4 sm:p-5" scope="col" />
+                  <th className="bg-[var(--lk-cream)] p-4 sm:p-5" scope="col" />
                   {columns.map((col, i) => (
                     <th
                       key={col}
@@ -31,7 +31,7 @@ export function DevCampaignComparisonSection() {
                       className={
                         i === 0
                           ? `${loupCell} display text-lg sm:text-xl`
-                          : "bg-neutral-50 p-4 sm:p-5 font-medium text-ink-soft sm:p-5"
+                          : "bg-[var(--lk-cream)] p-4 sm:p-5 font-medium text-ink-soft sm:p-5"
                       }
                     >
                       {col}
@@ -44,7 +44,7 @@ export function DevCampaignComparisonSection() {
                   <tr key={row.label} className="border-b border-ink last:border-0">
                     <th
                       scope="row"
-                      className="bg-neutral-50/80 p-4 text-left align-top text-xs font-medium uppercase tracking-wide text-ink-soft sm:p-5 sm:text-sm sm:normal-case sm:tracking-normal"
+                      className="bg-[var(--lk-cream)]/80 p-4 text-left align-top text-xs font-medium uppercase tracking-wide text-ink-soft sm:p-5 sm:text-sm sm:normal-case sm:tracking-normal"
                     >
                       {row.label}
                     </th>

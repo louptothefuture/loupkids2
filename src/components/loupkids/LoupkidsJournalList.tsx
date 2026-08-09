@@ -82,11 +82,11 @@ export function LoupkidsJournalList({ posts }: { posts: Post[] }) {
                     className={`group grid items-start gap-8 py-14 sm:py-16 md:grid-cols-[minmax(0,45%)_1fr] md:gap-12 ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}
                   >
                     {cover ? (
-                      <div className="lk-image-hover relative aspect-[4/3] w-full overflow-hidden bg-neutral-100">
+                      <div className="lk-image-hover relative aspect-[4/3] w-full overflow-hidden bg-[var(--lk-cream)]">
                         <LoupkidsImage src={cover} alt="" fill sizes="(max-width: 768px) 100vw, 45vw" className="object-cover" />
                       </div>
                     ) : (
-                      <div className="aspect-[4/3] bg-neutral-100" />
+                      <div className="aspect-[4/3] bg-[var(--lk-cream)]" />
                     )}
 
                     <div className="flex min-h-full flex-col justify-center">

@@ -115,7 +115,7 @@ const DEFAULT_HOMEPAGE: MarketingHomepage = {
   finalCtaBody: LOUPKIDS_FINAL_CTA.body,
   finalCtaLabel: LOUPKIDS_CTA.primary,
   footerBody: LOUPKIDS_FOOTER.body,
-  testimonialHeadline: "What beta testers are saying",
+  testimonialHeadline: "What parents are saying",
 };
 
 const DEFAULT_ABOUT: AboutPageContent = {
@@ -123,19 +123,28 @@ const DEFAULT_ABOUT: AboutPageContent = {
   introParagraphs: LOUPKIDS_ABOUT.paragraphs.slice(0, 2),
   timeline: [
     {
-      label: "01 / Play became real",
+      label: "01 / The Spark",
       title: "The calls started as pretend.",
       paragraphs: LOUPKIDS_ABOUT.paragraphs.slice(2, 5),
+      image: "/images/about/01-old-phone-walkie.jpg",
+      imageAlt: "Old landline phone next to kids’ walkie-talkies",
+      imageCaption: "Old phone & walkie-talkies",
     },
     {
       label: "02 / Looking for balance",
       title: "We wanted connection — carefully.",
       paragraphs: LOUPKIDS_ABOUT.paragraphs.slice(5, 7),
+      image: "/images/about/02-girl-with-phone.jpg",
+      imageAlt: "Girl pretending to call on an old landline phone",
+      imageCaption: "Girl with phone",
     },
     {
       label: "03 / A gentler first step",
       title: "Talk first. Feeds can wait.",
       paragraphs: LOUPKIDS_ABOUT.paragraphs.slice(7, 10),
+      image: "/images/about/03-concept-sketch.png",
+      imageAlt: "Early Loup concept sketch with dial and e-paper notes",
+      imageCaption: "Sketch",
     },
     {
       label: "04 / The name found us",

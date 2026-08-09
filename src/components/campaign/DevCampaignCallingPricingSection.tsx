@@ -6,7 +6,7 @@ export function DevCampaignCallingPricingSection() {
   const { title, intro, tiers, helpLink } = LOUPKIDS_CALLING_PRICING;
 
   return (
-    <section className="border-b-2 border-ink bg-white py-14 lg:py-18">
+    <section className="border-b-2 border-ink bg-[var(--lk-surface)] py-14 lg:py-18">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <Reveal>
           <h2 className="display text-3xl text-ink sm:text-4xl">{title}</h2>
@@ -15,7 +15,7 @@ export function DevCampaignCallingPricingSection() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {tiers.map((tier, i) => (
             <Reveal key={tier.label} delay={i * 0.05}>
-              <div className="flex h-full flex-col rounded-2xl border-2 border-ink bg-neutral-50 p-5 sm:p-6">
+              <div className="flex h-full flex-col rounded-2xl border-2 border-ink bg-[var(--lk-cream)] p-5 sm:p-6">
                 <p className="label-mono text-ink-soft">{tier.label}</p>
                 <p className="display mt-3 text-3xl text-ink sm:text-4xl">{tier.price}</p>
                 <p className="mt-4 text-sm leading-relaxed text-ink-soft">{tier.body}</p>

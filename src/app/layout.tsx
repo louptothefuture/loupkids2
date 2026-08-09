@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inconsolata, Inter, Rubik } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./loupkids-theme.css";
 import { CartProvider } from "@/components/cart/CartProvider";
@@ -8,23 +8,22 @@ import { Analytics } from "@/components/Analytics";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/site";
 
-const rubik = Rubik({
-  variable: "--font-rubik",
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
+const atkinson = localFont({
+  src: [
+    {
+      path: "../../public/fonts/AtkinsonHyperlegible-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/AtkinsonHyperlegible-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-atkinson",
   display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const inconsolata = Inconsolata({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | LOUP",
   },
   description:
-    "Loup is the phone before their first smartphone — approved contacts only, no feeds, no algorithms. Pre-order yours for $149 — includes 1 year free unlimited domestic calling.",
+    "Loup is the phone before their first smartphone — approved contacts only, no feeds, no algorithms. First 500 order for $129 (Save 33%) and First 500 includes 1 year unlimited domestic calling, then $10/mo.",
   keywords: [
     "smartphone alternative for kids",
     "kids phone no screen",
@@ -59,11 +58,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${rubik.variable} ${inter.variable} ${inconsolata.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${atkinson.variable} h-full antialiased`}>
+      <body className={`${atkinson.className} flex min-h-full flex-col`}>
         <OrganizationJsonLd />
         <CartProvider>
           <ConditionalChrome>{children}</ConditionalChrome>

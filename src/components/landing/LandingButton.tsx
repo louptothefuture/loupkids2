@@ -20,7 +20,7 @@ export function LandingButton({
   const styles =
     variant === "dark"
       ? "bg-ink text-white hover:bg-black"
-      : "bg-white text-ink hover:bg-white/90";
+      : "bg-[var(--lk-surface)] text-ink hover:bg-[var(--lk-surface)]/90";
 
   return (
     <motion.div whileHover={{ scale: 1.04, rotate: -1.2 }} whileTap={{ scale: 0.96 }}>

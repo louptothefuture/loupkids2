@@ -29,7 +29,7 @@ export function LoupkidsHelpSearch({ articles }: { articles: readonly HelpArticl
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Wi-Fi, contacts, billing…"
-        className="w-full border border-[var(--lk-line)] bg-white px-4 py-3 text-[0.9375rem] outline-none focus:border-[var(--lk-ink)]"
+        className="w-full border border-[var(--lk-line)] bg-[var(--lk-surface)] px-4 py-3 text-[0.9375rem] outline-none focus:border-[var(--lk-ink)]"
       />
       {query.trim() ? (
         <ul className="mt-4 space-y-2">
@@ -40,7 +40,7 @@ export function LoupkidsHelpSearch({ articles }: { articles: readonly HelpArticl
               <li key={article.slug}>
                 <Link
                   href={`/help/${article.slug}`}
-                  className="block border border-[var(--lk-line)] px-4 py-3 transition-colors hover:border-[var(--lk-ink)]"
+                  className="lk-card lk-card-sm block transition-shadow hover:shadow-[0_2px_4px_rgba(20,18,26,0.05),0_14px_36px_rgba(30,75,255,0.12)]"
                 >
                   <span className="lk-label">{article.category}</span>
                   <span className="mt-1 block font-medium">{article.title}</span>

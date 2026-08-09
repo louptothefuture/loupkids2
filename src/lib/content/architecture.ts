@@ -14,7 +14,7 @@ export const HERO = {
   headline: "Phones for the anti-screen age.",
   subline:
     "A real phone — calls, voice messages, a mute button. No apps, no feed, no algorithm. Just your people.",
-  cta: "Pre-order — $149",
+  cta: "Pre-order — $129",
   ctaSecondary: "Join the waitlist",
   trust: ["Free shipping", "30-day returns", "2-year warranty"],
   videoPoster: "/images/street/phone-throw.jpg",
@@ -38,7 +38,7 @@ export const COMPARISON = {
     { label: "No glowing screen", values: [true, false, false, true, false, false] },
     { label: "Designed to look cool at recess", values: [true, false, false, false, false, true] },
     { label: "No engagement algorithms", values: [true, true, true, true, true, false] },
-    { label: "Wi-Fi — no cellular bill required", values: [true, false, false, true, false, false] },
+    { label: "Wi-Fi — no carrier bill required", values: [true, false, false, true, false, false] },
     { label: "Optional real phone numbers", values: [true, true, true, false, true, true] },
   ],
 };
@@ -84,8 +84,8 @@ export const GALLERY = [
 export const PRICING_TIERS = [
   {
     name: "Wi-Fi LOUP",
-    price: "$149",
-    period: "one-time · $199 MSRP",
+    price: "$129",
+    period: "First 500 · $199 at launch",
     highlight: true,
     features: [
       "1 Year Free Unlimited Domestic Calling",
@@ -98,13 +98,13 @@ export const PRICING_TIERS = [
     href: "/shop/loup",
   },
   {
-    name: "Cellular LOUP",
+    name: "Future LOUP",
     price: "Coming soon",
     period: "device + plan",
     highlight: false,
     features: [
       "Everything in Wi-Fi LOUP",
-      "LTE connectivity away from Wi-Fi",
+      "Connectivity away from Wi-Fi (future)",
       "Same parent controls & contact list",
       "Join the waitlist for launch pricing",
     ],

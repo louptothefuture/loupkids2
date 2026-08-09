@@ -73,7 +73,7 @@ export const STORY_BEATS: StoryBeat[] = [
     lines: ["BETTER CONNECTION.", "NOT LESS."],
     body:
       "For parents who want peace of mind. For kids who want a phone they'll actually carry. For communities — scouts, church groups, homeschool co-ops, sports teams — who want connection without chaos.",
-    cta: { label: "Pre-order LOUP — $149", href: "/shop/loup" },
+    cta: { label: "Pre-order LOUP — $129", href: "/shop/loup" },
   },
 ];
 

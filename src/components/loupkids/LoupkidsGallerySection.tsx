@@ -11,7 +11,7 @@ export function LoupkidsGallerySection() {
     <section
       id="gallery"
       aria-label="Loup in the wild"
-      className="lk-section-white border-t border-[var(--lk-line)] py-10 sm:py-12"
+      className="lk-section-white border-t border-[var(--lk-line)] py-12 sm:py-14"
     >
       <div className="flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-[var(--lk-section-x)] pb-1 [scrollbar-width:thin] sm:gap-3">
         {LOUPKIDS_GALLERY.map((img) => (
@@ -19,7 +19,7 @@ export function LoupkidsGallerySection() {
             key={img.src}
             type="button"
             onClick={() => setLightbox(img)}
-            className="relative h-52 w-[38vw] max-w-[11rem] shrink-0 snap-start overflow-hidden bg-neutral-100 sm:h-60 sm:w-44 sm:max-w-none"
+            className="relative h-52 w-[38vw] max-w-[11rem] shrink-0 snap-start overflow-hidden bg-[var(--lk-cream)] sm:h-60 sm:w-44 sm:max-w-none"
           >
             <LoupkidsImage src={img.src} alt={img.alt} fill sizes="180px" className="object-cover" />
           </button>

@@ -49,7 +49,7 @@ export function CartDrawer() {
           <motion.aside
             role="dialog"
             aria-label="Shopping cart"
-            className="loupkids-theme fixed right-0 top-0 z-50 flex h-dvh w-full max-w-md flex-col border-l border-[var(--lk-line)] bg-white"
+            className="loupkids-theme fixed right-0 top-0 z-50 flex h-dvh w-full max-w-md flex-col border-l border-[var(--lk-line)] bg-[var(--lk-surface)]"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -80,7 +80,7 @@ export function CartDrawer() {
                   {cart.lines.map((line) => (
                     <li key={line.id} className="flex gap-4 border-b border-[var(--lk-line)] py-4">
                       {line.merchandise.image && (
-                        <div className="relative h-24 w-20 shrink-0 overflow-hidden border border-[var(--lk-line)] bg-neutral-50">
+                        <div className="relative h-24 w-20 shrink-0 overflow-hidden rounded-xl bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)]">
                           <Image
                             src={line.merchandise.image.url}
                             alt={line.merchandise.image.altText ?? line.merchandise.product.title}

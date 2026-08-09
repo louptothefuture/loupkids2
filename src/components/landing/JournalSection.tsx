@@ -6,7 +6,7 @@ export async function JournalSection() {
   const latest = posts.slice(0, 3);
 
   return (
-    <section id="journal" className="bg-white py-20">
+    <section id="journal" className="bg-[var(--lk-surface)] py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -25,7 +25,7 @@ export async function JournalSection() {
             <Link
               key={post.slug}
               href={`/journal/${post.slug}`}
-              className={`pop-card group block h-full bg-white p-6 text-ink transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${i % 2 === 0 ? "pop-card-tilt-left" : "pop-card-tilt-right"}`}
+              className={`pop-card group block h-full bg-[var(--lk-surface)] p-6 text-ink transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${i % 2 === 0 ? "pop-card-tilt-left" : "pop-card-tilt-right"}`}
             >
               <p className="text-eyebrow text-ink">{post.category.title}</p>
               <h3 className="display mt-3 text-xl leading-tight text-ink group-hover:text-block-fuchsia">

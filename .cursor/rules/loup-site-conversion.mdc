@@ -9,7 +9,7 @@ Premium screen-free kid phone ($129 pre-launch / $169 launch) for anxious parent
 
 ## Visual reference
 
-Match **https://loupkids.com** hierarchy: Inter, black/white editorial, minimal. Improve **conversion copy and proof**, not campaign chrome.
+Match **https://loupkids.com** hierarchy: Atkinson Hyperlegible, black/white editorial, minimal. Improve **conversion copy and proof**, not campaign chrome.
 
 - **Public site:** `LoupkidsShell` + `src/components/loupkids/`
 - **Campaign only:** `/launch` (noindex) — bold color blocks; do not spread to `/`, `/shop`, `/journal`, etc.
@@ -26,9 +26,9 @@ Match **https://loupkids.com** hierarchy: Inter, black/white editorial, minimal.
 
 ## Homepage limits (~7 sections)
 
-Hero → press/stats → features (`LoupkidsFeatureGrid`) → story (2 sentences + link to `/about`) → testimonials → CTA → footer.
+Hero → press/stats → features → story (2 sentences + link to `/about`) → testimonials → CTA → footer.
 
-- **One feature section** — loupkids.com accordion on the black phone band (`LoupkidsAccordion` + `LOUPKIDS_ACCORDION`). No emoji cards, no `LoupkidsFeatureGrid` on homepage.
+- **One feature section** — black band with `LoupkidsAccordion` + `LOUPKIDS_ACCORDION`. No emoji cards, no `LoupkidsFeatureGrid` on homepage.
 - Companion section = app GIF + link to `/setup` only
 
 ## Information architecture

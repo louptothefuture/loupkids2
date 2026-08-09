@@ -16,7 +16,7 @@ export function LandingNav() {
   const count = cart?.totalQuantity ?? 0;
 
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-ink bg-white">
+    <header className="sticky top-0 z-40 border-b-2 border-ink bg-[var(--lk-surface)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         <LoupLogoLink height={28} />
         <nav aria-label="Landing" className="hidden items-center gap-8 md:flex">

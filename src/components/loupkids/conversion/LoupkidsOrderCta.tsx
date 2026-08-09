@@ -38,18 +38,21 @@ export function LoupkidsOrderCta({
       className={`flex w-full max-w-md flex-col gap-3 ${alignStart ? "items-start" : "items-center"} ${size === "large" ? "max-w-lg" : ""} ${className}`}
     >
       <p
-        className={`flex flex-wrap items-baseline gap-x-2 gap-y-0.5 ${alignStart ? "justify-start" : "justify-center"} ${muted}`}
+        className={`flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 ${alignStart ? "justify-start" : "justify-center"} ${muted}`}
       >
         <span className={`text-2xl font-medium tracking-tight ${ink}`}>{LOUPKIDS_PRICE.formatted}</span>
-        <span className="text-base line-through opacity-65">{LOUPKIDS_PRICE.compareFormatted}</span>
-        <span className={`text-sm ${ink}`}>({LOUPKIDS_PRICE.saveLine})</span>
+        <span className="text-base line-through opacity-55">{LOUPKIDS_PRICE.compareFormatted}</span>
+        <span className={`text-sm font-medium ${ink}`}>{LOUPKIDS_PRICE.launchNote}</span>
       </p>
 
-      <span
-        className={`inline-flex max-w-full rounded-full px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.06em] ring-1 ${pillBg}`}
-      >
-        {LOUPKIDS_OFFER.callingPill}
-      </span>
+      {/* Hero stays tight — 1yr calling lives on shop + launch offer */}
+      {density !== "hero" ? (
+        <span
+          className={`inline-flex max-w-full rounded-full px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.06em] ring-1 ${pillBg}`}
+        >
+          {LOUPKIDS_OFFER.callingPill}
+        </span>
+      ) : null}
 
       <Link href={href} className={`${btnClass} w-full sm:w-auto`}>
         {label}

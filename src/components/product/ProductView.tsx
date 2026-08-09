@@ -60,7 +60,7 @@ export function ProductView({ product }: { product: Product }) {
   return (
     <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
       <div className="min-w-0">
-        <div className="relative aspect-square overflow-hidden border border-[var(--lk-line)] bg-neutral-50">
+        <div className="relative aspect-square overflow-hidden rounded-2xl bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)]">
           <AnimatePresence mode="wait">
             <motion.div
               key={shown?.url}
@@ -91,11 +91,11 @@ export function ProductView({ product }: { product: Product }) {
               onClick={() => setActiveImage(i)}
               aria-label={`View image ${i + 1}`}
               aria-current={i === activeImage ? "true" : undefined}
-              className={`relative aspect-square cursor-pointer overflow-hidden border bg-white transition-opacity hover:opacity-80 ${
+              className={`relative aspect-square cursor-pointer overflow-hidden border bg-[var(--lk-cream)] transition-opacity hover:opacity-80 ${
                 i === activeImage ? "border-[var(--lk-ink)]" : "border-[var(--lk-line)]"
               }`}
             >
-              <Image src={img.url} alt="" fill sizes="80px" className="object-contain p-1.5" />
+              <Image src={img.url} alt="" fill sizes="80px" className="object-contain p-2.5" />
             </button>
           ))}
         </div>
@@ -114,9 +114,12 @@ export function ProductView({ product }: { product: Product }) {
                 ? formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)
                 : LOUPKIDS_PRICE.compareFormatted}
             </span>
-            <span className="text-sm text-[var(--lk-muted)]">({LOUPKIDS_PRICE.saveLine})</span>
+            <span className="text-sm font-medium text-[var(--lk-ink)]">{LOUPKIDS_PRICE.launchNote}</span>
           </div>
-          <p className="mt-3 text-sm font-medium text-[var(--lk-ink)]">{LOUPKIDS_OFFER.callingBadge}</p>
+          <div className="mt-3 space-y-1">
+            <p className="text-sm font-medium text-[var(--lk-ink)]">{LOUPKIDS_OFFER.callingBadge}</p>
+            <p className="text-sm text-[var(--lk-muted)]">{LOUPKIDS_OFFER.callingNote}</p>
+          </div>
         </div>
 
         <div className="space-y-2">
@@ -155,7 +158,7 @@ export function ProductView({ product }: { product: Product }) {
 
         <div>
           {selected.availableForSale ? (
-            <StripeCheckoutButton label={LOUPKIDS_CTA.product} showGuarantee={false} />
+            <StripeCheckoutButton label={LOUPKIDS_CTA.product} showGuarantee />
           ) : (
             <button type="button" disabled className="lk-btn lk-btn-lg w-full disabled:opacity-60">
               Sold out
