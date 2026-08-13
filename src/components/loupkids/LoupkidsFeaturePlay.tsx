@@ -1,12 +1,27 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { HOME_FEATURES } from "@/lib/content/loupkids-home-arc";
 import { LOUPKIDS_ACCORDION } from "@/lib/content/loupkids-site";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsAccordion } from "./LoupkidsAccordion";
-import { LoupkidsImage } from "./LoupkidsImage";
 
-/** Black feature band — accordion on dark */
+const Glb3Embed = dynamic(
+  () =>
+    import("@/components/glb/Glb3ScrollStage").then((m) => ({
+      default: m.Glb3ScrollStage,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center bg-[var(--lk-cream)] text-sm text-[var(--lk-muted)]">
+        Loading preview…
+      </div>
+    ),
+  },
+);
+
+/** Black feature band — accordion + live GLB */
 export function LoupkidsFeaturePlay() {
   return (
     <section className="bg-[var(--lk-ink)] text-white">
@@ -17,18 +32,14 @@ export function LoupkidsFeaturePlay() {
           </h2>
         </FadeIn>
 
-        <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:items-center md:gap-14">
-          <LoupkidsAccordion items={LOUPKIDS_ACCORDION} dark />
+        <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:items-start md:gap-14">
+          <div className="order-2 md:order-1">
+            <LoupkidsAccordion items={LOUPKIDS_ACCORDION} dark />
+          </div>
 
-          <div className="mx-auto w-full max-w-md md:mx-0 md:max-w-none md:sticky md:top-28">
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-[var(--lk-surface)]">
-              <LoupkidsImage
-                src={HOME_FEATURES.image}
-                alt={HOME_FEATURES.imageAlt}
-                fill
-                sizes="(max-width: 767px) 100vw, 50vw"
-                className="object-contain object-center p-4 sm:p-6"
-              />
+          <div className="order-1 mx-auto w-full max-w-[20.5rem] sm:max-w-[24rem] md:order-2 md:mx-0 md:max-w-none md:sticky md:top-28">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-cream)]">
+              <Glb3Embed mode="embed" />
             </div>
           </div>
         </div>

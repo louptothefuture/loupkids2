@@ -7,6 +7,7 @@ import { useCart } from "@/components/cart/CartProvider";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_NAV, LOUPKIDS_NAV_DESKTOP } from "@/lib/content/loupkids-site";
 import { LoupLogoLink } from "./LoupLogo";
+import { useWaitlist } from "./waitlist/WaitlistProvider";
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
@@ -34,6 +35,7 @@ function MenuIcon({ open }: { open: boolean }) {
 export function LoupkidsNav() {
   const pathname = usePathname();
   const { cart, openCart } = useCart();
+  const { openWaitlist } = useWaitlist();
   const count = cart?.totalQuantity ?? 0;
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -54,7 +56,7 @@ export function LoupkidsNav() {
   return (
     <>
       <header className="lk-nav fixed inset-x-0 top-0 z-50 border-b border-[var(--lk-line)] bg-[var(--lk-surface)]/95 backdrop-blur-sm">
-        <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between gap-3 px-[var(--lk-section-x)] sm:gap-4">
+        <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between gap-2 px-[var(--lk-section-x)] sm:gap-4">
           <LoupLogoLink href="/" variant="dark" height={26} priority />
 
           <nav
@@ -76,15 +78,19 @@ export function LoupkidsNav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 sm:gap-4">
-            <Link href="/shop/loup" className="lk-btn lk-btn-sm">
+          <div className="flex min-w-0 shrink items-center justify-end gap-1 sm:gap-3">
+            <button
+              type="button"
+              onClick={() => openWaitlist("nav")}
+              className="lk-btn lk-btn-sm min-w-0 cursor-pointer"
+            >
               {LOUPKIDS_CTA.nav}
-            </Link>
+            </button>
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className="-mr-2 flex h-11 w-11 cursor-pointer items-center justify-center text-[var(--lk-ink)] lg:hidden"
+              className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center text-[var(--lk-ink)] lg:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <MenuIcon open={menuOpen} />
@@ -133,9 +139,16 @@ export function LoupkidsNav() {
             >
               Cart{count > 0 ? ` (${count})` : ""}
             </button>
-            <Link href="/shop/loup" onClick={() => setMenuOpen(false)} className="lk-btn mt-8 w-full">
+            <button
+              type="button"
+              onClick={() => {
+                setMenuOpen(false);
+                openWaitlist("nav-mobile");
+              }}
+              className="lk-btn mt-8 w-full cursor-pointer"
+            >
               {LOUPKIDS_CTA.primary}
-            </Link>
+            </button>
           </nav>
         </div>
       )}

@@ -1,27 +1,30 @@
-import Link from "next/link";
+"use client";
+
 import {
   LOUPKIDS_CTA,
   LOUPKIDS_OFFER,
   LOUPKIDS_PRICE,
 } from "@/lib/content/loupkids-conversion";
 import { HOME_HERO } from "@/lib/content/loupkids-home-arc";
+import { useWaitlist } from "../waitlist/WaitlistProvider";
 
 export function LoupkidsOrderCta({
-  href = "/shop/loup",
   label = LOUPKIDS_CTA.primary,
   variant = "dark",
   className = "",
   size = "default",
   /** Hero: price + pill + short trust. Full: denser checkout stack. */
   density = "full",
+  source = "cta",
 }: {
-  href?: string;
   label?: string;
   variant?: "dark" | "light";
   className?: string;
   size?: "default" | "large";
   density?: "hero" | "full";
+  source?: string;
 }) {
+  const { openWaitlist } = useWaitlist();
   const btnClass =
     variant === "dark"
       ? `lk-btn lk-btn-white${size === "large" ? " lk-btn-lg" : ""}`
@@ -38,6 +41,12 @@ export function LoupkidsOrderCta({
       className={`flex w-full max-w-md flex-col gap-3 ${alignStart ? "items-start" : "items-center"} ${size === "large" ? "max-w-lg" : ""} ${className}`}
     >
       <p
+        className={`text-sm font-medium uppercase tracking-[0.06em] ${alignStart ? "text-left" : "text-center"} ${ink}`}
+      >
+        {LOUPKIDS_CTA.comingSoon}
+      </p>
+
+      <p
         className={`flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 ${alignStart ? "justify-start" : "justify-center"} ${muted}`}
       >
         <span className={`text-2xl font-medium tracking-tight ${ink}`}>{LOUPKIDS_PRICE.formatted}</span>
@@ -45,7 +54,6 @@ export function LoupkidsOrderCta({
         <span className={`text-sm font-medium ${ink}`}>{LOUPKIDS_PRICE.launchNote}</span>
       </p>
 
-      {/* Hero stays tight — 1yr calling lives on shop + launch offer */}
       {density !== "hero" ? (
         <span
           className={`inline-flex max-w-full rounded-full px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.06em] ring-1 ${pillBg}`}
@@ -54,14 +62,20 @@ export function LoupkidsOrderCta({
         </span>
       ) : null}
 
-      <Link href={href} className={`${btnClass} w-full sm:w-auto`}>
+      <button
+        type="button"
+        onClick={() => openWaitlist(source)}
+        className={`${btnClass} w-full cursor-pointer sm:w-auto`}
+      >
         {label}
-      </Link>
+      </button>
 
       <p
         className={`max-w-sm text-[0.8125rem] leading-snug ${alignStart ? "text-left" : "text-center"} ${muted}`}
       >
-        {density === "hero" ? HOME_HERO.trustLine : "Ships within 60 days. 100% refundable anytime prior to dispatch."}
+        {density === "hero"
+          ? "Sign up and we’ll email you when pre-orders open."
+          : HOME_HERO.trustLine}
       </p>
     </div>
   );

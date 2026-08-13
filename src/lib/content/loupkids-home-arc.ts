@@ -113,18 +113,16 @@ export const HOME_HOW_IT_WORKS = [
 export const HOME_LAUNCH = {
   eyebrow: "Order",
   priceHeader: "$129",
-  scarcityLine: "First 500 · Save 33%",
-  /** Prefer LOUPKIDS_OFFER.callingCanonical in UI — kept for legacy imports */
+  /** Prefer LOUPKIDS_OFFER_CARD in UI */
+  scarcityLine: "Founding Offer · First 500 Only",
   bonusBanner:
     "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   bullets: [
-    "Order now for $129 — First 500 only",
-    "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
-    "Ships within 60 days · 100% refundable before dispatch",
-    "30-day risk-free trial starts on delivery",
+    "Loup ↔ Loup calls: always free",
+    "App → Loup paging: always free",
+    "External contacts: free for 1 year, then $10/mo — cancel anytime",
   ],
-  e911:
-    "Wi-Fi Voice Device: Operates over Wi-Fi and mobile hotspots. Does not support E911 emergency dialing.",
+  e911: "Wi-Fi only · No SIM · No carrier bill. Does not support E911 emergency dialing.",
 } as const;
 
 /** @deprecated aliases — keep old imports from breaking during rebuild */

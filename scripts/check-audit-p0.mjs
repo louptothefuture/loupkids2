@@ -29,7 +29,6 @@ const checks = [
   [/LoupkidsStatsSection/, home, "Relevancy section missing"],
   [/LoupkidsFeaturePlay/, home, "Feature play missing"],
   [/LoupkidsFunGallery/, home, "Fun gallery component missing"],
-  [/LoupkidsHowItWorksStrip/, home, "How-it-works missing"],
   [/LoupkidsLaunchOfferSection/, home, "Launch offer missing"],
   [/LoupkidsWhyNotJustSection/, faq, "Why Not Just must live on FAQ"],
   [/your child/, arc, "Home arc must not say your child"],

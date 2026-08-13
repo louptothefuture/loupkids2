@@ -11,15 +11,16 @@ export const LOUPKIDS_PRICE = {
 } as const;
 
 export const LOUPKIDS_CTA = {
-  primary: "Order Loup — $129",
-  primaryShort: "Order Loup",
-  hero: "Order Loup — $129",
-  product: "Order Loup — $129",
+  primary: "Stay in touch",
+  primaryShort: "Stay in touch",
+  hero: "Stay in touch",
+  product: "Stay in touch",
   checkout: "Complete Order →",
-  waitlist: "Get parent updates",
+  waitlist: "Notify me",
   newsletter: "Get launch updates",
-  sticky: "Order Loup — $129",
-  nav: "Order $129",
+  sticky: "Stay in touch",
+  nav: "Stay in touch",
+  comingSoon: "Pre-orders coming soon",
 } as const;
 
 export const LOUPKIDS_OFFER = {
@@ -32,6 +33,26 @@ export const LOUPKIDS_OFFER = {
   /** Full economics line for bullets / meta */
   callingCanonical:
     "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+} as const;
+
+/** Homepage offer card + PDP buy-box — keep in sync */
+export const LOUPKIDS_OFFER_CARD = {
+  label: "Founding Offer · First 500 Only",
+  saveNote: "Save 33%",
+  productLine:
+    "A phone for your kid. No apps, no feeds, no strangers. Calls only — to the people you approve.",
+  callingBullets: [
+    "Loup ↔ Loup calls: always free",
+    "App → Loup paging: always free",
+    "External contacts: free for 1 year, then $10/mo — cancel anytime",
+  ],
+  logistics: [
+    "Ships within 60 days · 100% refundable before dispatch · 30-day trial on delivery",
+  ],
+  disclaimer: [
+    "Wi-Fi only · No SIM · No carrier bill",
+    "Does not support E911 emergency dialing",
+  ],
 } as const;
 
 export const LOUPKIDS_HERO_COPY = {
@@ -96,7 +117,7 @@ export const LOUPKIDS_CALLING_PRICING = {
       body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10/mo (cancel anytime) — or keep Loup↔Loup and App→Loup free forever.",
     },
   ],
-  cta: { label: "Order Loup — $129", href: "/shop/loup" },
+  cta: { label: "Stay in touch", href: "/shop/loup" },
   helpLink: { label: "How calling plans work", href: "/help/calling-plan" },
 } as const;
 
@@ -132,17 +153,17 @@ export const LOUPKIDS_PULL_QUOTE =
   "We didn't dumb down a smartphone. We didn't modernize a landline. We built a rolodex for the age of independence.";
 
 export const LOUPKIDS_WHY_NOT_JUST = {
-  headline: "Why not just...",
+  headline: "We get it. You've thought of this.",
   blocks: [
     {
-      title: "Get them a watch?",
+      title: "Why not just get a watch?",
       body: [
         "A watch is built for tracking, not talking. There's a reason nobody naturally holds their wrist to their ear — the calling experience is awkward, the screen is tiny, and you're still one app download away from the internet.",
       ],
       but: "Connectivity without the chemistry.",
     },
     {
-      title: "Lock down a smartphone?",
+      title: "Why not just lock down a smartphone?",
       body: [
         "A restricted smartphone is still a smartphone. The app store is still there. The browser is still there. And trust us — they always find a way around.",
         "Parental controls are a patch, not a solution. And the apps, the storage, the carrier plan? You're paying for all of it.",
@@ -150,7 +171,7 @@ export const LOUPKIDS_WHY_NOT_JUST = {
       but: "You're managing restrictions forever instead of starting with the right device.",
     },
     {
-      title: "Stick with a landline?",
+      title: "Why not stick with a landline?",
       body: [
         "A landline stays in one room. Kids still have to remember which button is grandma — and they can't take it to school or a friend's house.",
         "LOUP travels. Home, school, grandparents' — any Wi-Fi, same contacts, same controls.",

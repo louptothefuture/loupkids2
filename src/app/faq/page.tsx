@@ -35,7 +35,7 @@ export default async function FaqPage() {
             <FadeIn key={faq.q} delay={i * 0.03}>
               <details className="group border-b border-[var(--lk-line)] py-6">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
-                  <span className="lk-display text-lg sm:text-xl">{faq.q}</span>
+                  <span className="lk-display min-w-0 flex-1 text-lg sm:text-xl">{faq.q}</span>
                   <span
                     className="mt-1 shrink-0 text-xl text-[var(--lk-muted)] transition-transform duration-300 group-open:rotate-45"
                     aria-hidden="true"

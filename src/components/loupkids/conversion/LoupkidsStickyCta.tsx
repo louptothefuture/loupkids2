@@ -1,23 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import {
-  LOUPKIDS_CTA,
-  LOUPKIDS_GUARANTEE,
-  LOUPKIDS_OFFER,
-  LOUPKIDS_SHIPPING,
-} from "@/lib/content/loupkids-conversion";
+import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { useWaitlist } from "../waitlist/WaitlistProvider";
 
 const DISMISS_KEY = "loup-sticky-cta-dismissed";
 
 export function LoupkidsStickyCta() {
   const pathname = usePathname();
+  const { openWaitlist } = useWaitlist();
   const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(true); // avoid flash until we read storage
+  const [dismissed, setDismissed] = useState(true);
 
-  // Homepage already has hero + final CTAs — sticky drawer is noise there
   const hidden =
     pathname === "/" ||
     pathname === "/shop/loup" ||
@@ -37,7 +32,6 @@ export function LoupkidsStickyCta() {
     if (hidden || dismissed) return;
     const onScroll = () => {
       const scrolled = window.scrollY > 520;
-      // Hide before footer so the card doesn’t sit on legal links
       const nearBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 420;
       setVisible(scrolled && !nearBottom);
@@ -55,16 +49,16 @@ export function LoupkidsStickyCta() {
         visible ? "translate-y-0" : "pointer-events-none translate-y-[110%]"
       }`}
       role="complementary"
-      aria-label="Order Loup"
+      aria-label="Pre-orders coming soon"
       aria-hidden={!visible}
     >
       <div className="mx-auto flex max-w-lg items-center gap-3 sm:mx-0 sm:block sm:max-w-none">
         <div className="mb-0 hidden items-start justify-between gap-3 sm:mb-2.5 sm:flex">
-          <p className="text-sm text-[var(--lk-muted)]">Launch pricing open</p>
+          <p className="text-sm text-[var(--lk-muted)]">{LOUPKIDS_CTA.comingSoon}</p>
           <button
             type="button"
             aria-label="Dismiss"
-            className="relative -mr-2 -mt-2 flex h-11 w-11 shrink-0 items-center justify-center text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]"
+            className="relative -mr-2 -mt-2 flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center text-[var(--lk-muted)] transition-colors hover:text-[var(--lk-ink)]"
             onClick={() => {
               try {
                 sessionStorage.setItem(DISMISS_KEY, "1");
@@ -80,17 +74,18 @@ export function LoupkidsStickyCta() {
             </span>
           </button>
         </div>
-        <Link
-          href="/shop/loup"
-          className="lk-btn w-full flex-1 whitespace-nowrap px-4 py-3 text-center text-sm sm:text-[0.9375rem]"
+        <button
+          type="button"
+          onClick={() => openWaitlist("sticky")}
+          className="lk-btn w-full flex-1 cursor-pointer whitespace-nowrap px-4 py-3 text-center text-sm sm:text-[0.9375rem]"
           tabIndex={visible ? undefined : -1}
         >
-          {LOUPKIDS_CTA.nav}
-        </Link>
+          {LOUPKIDS_CTA.sticky}
+        </button>
         <button
           type="button"
           aria-label="Dismiss"
-          className="flex h-11 w-11 shrink-0 items-center justify-center text-[var(--lk-muted)] sm:hidden"
+          className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center text-[var(--lk-muted)] sm:hidden"
           tabIndex={visible ? undefined : -1}
           onClick={() => {
             try {
@@ -107,13 +102,7 @@ export function LoupkidsStickyCta() {
           </span>
         </button>
         <p className="mt-2.5 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
-          {LOUPKIDS_OFFER.callingBadge}
-        </p>
-        <p className="mt-0.5 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
-          {LOUPKIDS_OFFER.callingNote}
-        </p>
-        <p className="mt-1 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
-          {LOUPKIDS_SHIPPING.stickyNote} · {LOUPKIDS_GUARANTEE.title}
+          Sign up and we&apos;ll email you when founding pricing opens.
         </p>
       </div>
     </div>

@@ -495,6 +495,18 @@
   font-size: 0.8125rem;
 }
 
+.loupkids-theme .lk-nav .lk-btn-sm {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.6875rem;
+}
+
+@media (min-width: 640px) {
+  .loupkids-theme .lk-nav .lk-btn-sm {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+}
+
 .loupkids-theme .lk-btn-lg {
   padding: 1.25rem 2.75rem;
   font-size: 1rem;

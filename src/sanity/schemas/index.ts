@@ -9,6 +9,7 @@ import { homepage } from "./homepage";
 import { siteSettings } from "./siteSettings";
 import { aboutPage } from "./aboutPage";
 import { setupGuide } from "./setupGuide";
+import { waitlistLead } from "./waitlistLead";
 import { seoFields } from "./objects/seoFields";
 import { accordionItem } from "./objects/accordionItem";
 import { setupStep } from "./objects/setupStep";
@@ -28,4 +29,5 @@ export const schemaTypes = [
   siteSettings,
   aboutPage,
   setupGuide,
+  waitlistLead,
 ];

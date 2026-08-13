@@ -7,13 +7,11 @@ import type { Product } from "@/lib/shopify/types";
 import { trackViewItem } from "@/lib/analytics";
 import {
   LOUPKIDS_CTA,
-  LOUPKIDS_E911,
   LOUPKIDS_IN_THE_BOX,
-  LOUPKIDS_OFFER,
-  LOUPKIDS_PDP,
+  LOUPKIDS_OFFER_CARD,
   LOUPKIDS_PRICE,
 } from "@/lib/content/loupkids-conversion";
-import { StripeCheckoutButton } from "@/components/loupkids/conversion";
+import { useWaitlist } from "@/components/loupkids/waitlist/WaitlistProvider";
 
 function formatPrice(amount: string, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -28,6 +26,7 @@ export function ProductView({ product }: { product: Product }) {
   const [selected, setSelected] = useState(product.variants[0]);
   const [activeImage, setActiveImage] = useState(0);
   const multiVariant = Boolean(optionName && product.options[0].values.length > 1);
+  const { openWaitlist } = useWaitlist();
 
   useEffect(() => {
     trackViewItem({
@@ -101,11 +100,14 @@ export function ProductView({ product }: { product: Product }) {
         </div>
       </div>
 
-      {/* Buy box — title → price → offer → value → buy → one trust line */}
-      <div className="flex flex-col gap-6 lg:sticky lg:top-24 lg:max-w-md lg:justify-self-end xl:max-w-lg">
+      {/* Buy box — matches homepage offer card hierarchy */}
+      <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:max-w-md lg:justify-self-end xl:max-w-lg">
         <div>
           <h1 className="lk-display text-3xl sm:text-4xl">{product.title}</h1>
-          <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <p className="mt-3 text-sm font-medium uppercase tracking-[0.06em] text-[var(--lk-ink)]">
+            {LOUPKIDS_OFFER_CARD.label}
+          </p>
+          <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span className="text-2xl font-medium tracking-tight sm:text-3xl">
               {formatPrice(selected.price.amount, selected.price.currencyCode)}
             </span>
@@ -114,18 +116,24 @@ export function ProductView({ product }: { product: Product }) {
                 ? formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)
                 : LOUPKIDS_PRICE.compareFormatted}
             </span>
-            <span className="text-sm font-medium text-[var(--lk-ink)]">{LOUPKIDS_PRICE.launchNote}</span>
+            <span className="text-sm font-medium text-[var(--lk-ink)]">
+              {LOUPKIDS_OFFER_CARD.saveNote}
+            </span>
           </div>
-          <div className="mt-3 space-y-1">
-            <p className="text-sm font-medium text-[var(--lk-ink)]">{LOUPKIDS_OFFER.callingBadge}</p>
-            <p className="text-sm text-[var(--lk-muted)]">{LOUPKIDS_OFFER.callingNote}</p>
-          </div>
+          <p className="mt-3 text-sm leading-snug text-[var(--lk-ink)]">
+            {LOUPKIDS_OFFER_CARD.productLine}
+          </p>
         </div>
 
-        <div className="space-y-2">
-          <p className="text-[0.9375rem] font-medium text-[var(--lk-ink)]">{LOUPKIDS_PDP.tagline}</p>
-          <p className="text-[0.9375rem] leading-relaxed text-[var(--lk-muted)]">{LOUPKIDS_PDP.value}</p>
-        </div>
+        <div className="border-t border-[var(--lk-line-soft)]" />
+
+        <ul className="space-y-2 text-sm leading-snug text-[var(--lk-muted)]">
+          {LOUPKIDS_OFFER_CARD.callingBullets.map((b) => (
+            <li key={b}>✓ {b}</li>
+          ))}
+        </ul>
+
+        <div className="border-t border-[var(--lk-line-soft)]" />
 
         {multiVariant && (
           <fieldset>
@@ -157,15 +165,24 @@ export function ProductView({ product }: { product: Product }) {
         )}
 
         <div>
-          {selected.availableForSale ? (
-            <StripeCheckoutButton label={LOUPKIDS_CTA.product} />
-          ) : (
-            <button type="button" disabled className="lk-btn lk-btn-lg w-full disabled:opacity-60">
-              Sold out
-            </button>
-          )}
-          <p className="mt-3 text-sm leading-snug text-[var(--lk-muted)]">{LOUPKIDS_PDP.trustLine}</p>
-          <p className="mt-2 text-xs leading-relaxed text-[var(--lk-muted)]/90">{LOUPKIDS_E911.short}</p>
+          <button
+            type="button"
+            onClick={() => openWaitlist("pdp")}
+            className="lk-btn lk-btn-lg w-full cursor-pointer"
+          >
+            {LOUPKIDS_CTA.product}
+          </button>
+          <div className="mt-4 space-y-1 text-xs leading-relaxed text-[var(--lk-muted)]">
+            <p>{LOUPKIDS_CTA.comingSoon} — we&apos;ll email you when founding pricing opens.</p>
+            {LOUPKIDS_OFFER_CARD.logistics.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+          <div className="mt-5 space-y-0.5 border-t border-[var(--lk-line-soft)] pt-4 text-[0.6875rem] leading-relaxed text-[var(--lk-muted)]">
+            {LOUPKIDS_OFFER_CARD.disclaimer.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
         </div>
 
         <details className="border-t border-[var(--lk-line)] pt-4">

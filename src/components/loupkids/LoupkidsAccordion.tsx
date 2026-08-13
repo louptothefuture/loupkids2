@@ -31,7 +31,7 @@ export function LoupkidsAccordion({
                 aria-expanded={isOpen}
                 className="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left transition-opacity hover:opacity-80 sm:py-6"
               >
-                <span className={`lk-display text-xl sm:text-2xl ${titleText}`}>{item.title}</span>
+                  <span className={`lk-display min-w-0 text-xl sm:text-2xl ${titleText}`}>{item.title}</span>
                 <span
                   className={`shrink-0 text-xl transition-transform duration-300 ${iconText} ${isOpen ? "rotate-45" : ""}`}
                   aria-hidden="true"

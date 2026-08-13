@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { Marquee } from "@/components/Marquee";
 import type { MarketingHomepage } from "@/lib/content/cms";
-import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_CONVERT_ANTI } from "@/lib/content/loupkids-convert";
 import { HOME_HERO, HOME_STORY } from "@/lib/content/loupkids-home-arc";
 import { LoupkidsOrderCta } from "./conversion";
@@ -12,17 +11,15 @@ import { FadeIn } from "./FadeIn";
 import { LoupkidsCallingPricingSection } from "./LoupkidsCallingPricingSection";
 import { LoupkidsFeaturePlay } from "./LoupkidsFeaturePlay";
 import { LoupkidsFooter } from "./LoupkidsFooter";
-import { LoupkidsHowItWorksStrip } from "./LoupkidsHowItWorksStrip";
 import { LoupkidsImage } from "./LoupkidsImage";
 import { LoupkidsLaunchOfferSection } from "./LoupkidsLaunchOfferSection";
-import { LoupkidsStatsSection } from "./LoupkidsStatsSection";
 import { LoupkidsWhyNotJustSection } from "./LoupkidsWhyNotJustSection";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Mobile-first DTC cadence (pre-launch — no gallery / quotes / star proof):
- * Hook → Relevancy → Story → Features → How it works → Calling → Why not → Offer
+ * Mobile-first DTC cadence (pre-launch — no gallery / quotes / star proof / stats):
+ * Hook → Story → Features → How it works → Calling → Why not → Offer
  */
 export function LoupkidsHomeClient({ content }: { content: MarketingHomepage }) {
   const reduce = useReducedMotion();
@@ -80,8 +77,8 @@ export function LoupkidsHomeClient({ content }: { content: MarketingHomepage }) 
                 <LoupkidsOrderCta
                   variant="light"
                   density="hero"
-                  label={LOUPKIDS_CTA.primary}
-                  className="!items-start !max-w-none gap-3 [&_a]:w-full sm:[&_a]:w-auto [&_a]:px-8 [&_a]:py-3.5"
+                  source="hero"
+                  className="!items-start !max-w-none gap-3 [&_button]:w-full sm:[&_button]:w-auto [&_button]:px-8 [&_button]:py-3.5"
                 />
               </motion.div>
             </div>
@@ -115,8 +112,6 @@ export function LoupkidsHomeClient({ content }: { content: MarketingHomepage }) 
         </Marquee>
       </div>
 
-      <LoupkidsStatsSection />
-
       <section className="bg-[var(--lk-bg)] text-[var(--lk-ink)]">
         <div className="px-[var(--lk-section-x)] mx-auto grid max-w-[1200px] items-center gap-10 py-16 sm:py-20 md:grid-cols-2 md:gap-14">
           <FadeIn>
@@ -147,7 +142,6 @@ export function LoupkidsHomeClient({ content }: { content: MarketingHomepage }) 
       </section>
 
       <LoupkidsFeaturePlay />
-      <LoupkidsHowItWorksStrip />
       <LoupkidsCallingPricingSection compact />
       <LoupkidsWhyNotJustSection />
       <LoupkidsLaunchOfferSection />

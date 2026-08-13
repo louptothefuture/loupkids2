@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { makeLoupEinkUx } from "@/components/glb/loupEinkUx";
 
 /**
  * GLB3 — textured product turntable.
@@ -8,14 +9,20 @@ import { useEffect, useRef, useState } from "react";
  * Six story frames: front → back → top → dial → USB → volume.
  */
 const MODEL_SRC = "/models/stripped_down_glb3.glb";
-const EINK_LIST_SRC = "/models/loup-eink-list.svg";
-const EINK_CALL_SRC = "/models/loup-eink-calling.svg";
 const PIXEL_RATIO_CAP = 1.5;
 const DIST = 4.4;
+/** Homepage: pull back so the whole phone sits in the card with side margin. */
+const EMBED_DIST = 4.55;
+const EMBED_FOV = 34;
+/** Raise the phone in the embed frame (it was sitting on the bottom edge). */
+const EMBED_LOOK_Z = 0.16;
+const PAGE_FOV = 34;
 const TRANSITION_MS = 1200;
 const HOLD_MS = 200;
 /** Dwell on each face before auto-advance in embed mode. */
-const EMBED_DWELL_MS = 2200;
+const EMBED_DWELL_MS = 3200;
+/** After arrow/swipe, pause autoplay so manual control wins. */
+const EMBED_MANUAL_PAUSE_MS = 8000;
 const MODEL_SCALE = 1.3;
 /** Warm off-white — white phone needs a slightly darker stage to lift. */
 const STAGE_BG = "#f6f5f2"; // matches --lk-bg / --lk-cream
@@ -23,26 +30,11 @@ const STAGE_BG = "#f6f5f2"; // matches --lk-bg / --lk-cream
 const GRAIN_BG =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
-/** Grey e-ink panel crop inside the SVG artboard (correct tall aspect). */
-const EINK_CROP = { x: 49.61, y: 0, w: 82.2, h: 189.92 };
-const EINK_W = 246;
-const EINK_H = 570;
-/** Matches SVG panel fill (`#4d4d4d`). */
-const EINK_BG = "#4d4d4d";
 /** Soft form key on front only. */
 const FRONT_FORM_I = 0.45;
 /** Back-plate showcase on face 1 ("Make it your own"). */
 const PLATE_FACE = 1;
 const PLATE_STEP_MS = 850;
-/** "hi" Y stops in full SVG space — Mom → Mila → Ridley. */
-const HI_YS = [52.66, 87.43, 122.16];
-const HI_X = 52.72;
-const HI_STEP_MS = 650;
-const HI_HOLD_MS = 800;
-const HI_SCROLL_MS = HI_YS.length * HI_STEP_MS + HI_HOLD_MS;
-const DOT_STEP_MS = 400;
-/** Calling-dots in full SVG space (right of handset), mapped through crop. */
-const DOT_SVG = { xs: [96.12, 101.52, 106.93], y: 111.66, r: 1.15 };
 
 /** Export ships back-up; flip to screen-up, then yaw so USB faces +Z. */
 const MODEL_FLIP_X = Math.PI;
@@ -214,130 +206,6 @@ function makeContactShadow(THREE: typeof import("three")) {
   return mesh;
 }
 
-/** SVG rolodex → calling; time Helvetica in SVG, body Atkinson; dots loop on call. */
-async function makeEinkTexture(THREE: typeof import("three")) {
-  try {
-    const faces = [
-      new FontFace(
-        "Atkinson Hyperlegible",
-        "url(/fonts/AtkinsonHyperlegible-Regular.woff2)",
-        { weight: "400" },
-      ),
-      new FontFace(
-        "Atkinson Hyperlegible",
-        "url(/fonts/AtkinsonHyperlegible-Bold.woff2)",
-        { weight: "700" },
-      ),
-    ];
-    const loaded = await Promise.all(faces.map((f) => f.load()));
-    for (const f of loaded) document.fonts.add(f);
-    await document.fonts.ready;
-  } catch {
-    // system sans fallback
-  }
-
-  const loadSvg = async (src: string) => {
-    const res = await fetch(src);
-    let svgText = await res.text();
-    // Time stays Helvetica; force clock text to Helvetica explicitly
-    svgText = svgText.replace(
-      /(<text[^>]*class="clock"[^>]*style=")([^"]*)(")/g,
-      (_, a, style, c) =>
-        `${a}${style.replace(/font-family:[^;"]+/g, "font-family:Helvetica, Arial, sans-serif")}${c}`,
-    );
-    const blob = new Blob([svgText], { type: "image/svg+xml" });
-    const url = URL.createObjectURL(blob);
-    try {
-      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
-        const i = new Image();
-        i.onload = () => resolve(i);
-        i.onerror = () => reject(new Error(src));
-        i.src = url;
-      });
-      await new Promise((r) => setTimeout(r, 100));
-      return img;
-    } finally {
-      URL.revokeObjectURL(url);
-    }
-  };
-
-  const [listImg, callImg] = await Promise.all([
-    loadSvg(EINK_LIST_SRC),
-    loadSvg(EINK_CALL_SRC),
-  ]);
-
-  const W = EINK_W;
-  const H = EINK_H;
-  const canvas = document.createElement("canvas");
-  canvas.width = W;
-  canvas.height = H;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("2d");
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = 4;
-
-  const { x: cx, y: cy, w: cw, h: ch } = EINK_CROP;
-  const toCanvas = (sx: number, sy: number) => ({
-    x: ((sx - cx) / cw) * W,
-    y: ((sy - cy) / ch) * H,
-  });
-
-  const blit = (img: HTMLImageElement) => {
-    ctx.fillStyle = EINK_BG;
-    ctx.fillRect(0, 0, W, H);
-    ctx.drawImage(img, cx, cy, cw, ch, 0, 0, W, H);
-  };
-
-  const started = performance.now();
-  let lastKey = "";
-
-  const drawDots = (count: number) => {
-    // Baked stroke-dots stripped from SVG — paint live dots only
-    ctx.fillStyle = "#fff";
-    const r = (DOT_SVG.r / cw) * W;
-    for (let i = 0; i < count; i++) {
-      const p = toCanvas(DOT_SVG.xs[i], DOT_SVG.y);
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  };
-
-  const draw = (now: number) => {
-    const elapsed = now - started;
-
-    // Last frame loops: calling + dots 1 → 2 → 3 → repeat
-    if (elapsed >= HI_SCROLL_MS) {
-      const dotCount = (Math.floor((elapsed - HI_SCROLL_MS) / DOT_STEP_MS) % 3) + 1;
-      const key = `call-${dotCount}`;
-      if (key === lastKey) return false;
-      lastKey = key;
-      blit(callImg);
-      drawDots(dotCount);
-      texture.needsUpdate = true;
-      return true;
-    }
-
-    const step = Math.min(HI_YS.length - 1, Math.floor(elapsed / HI_STEP_MS));
-    const key = `hi-${step}`;
-    if (key === lastKey) return false;
-    lastKey = key;
-    blit(listImg);
-    const p = toCanvas(HI_X, HI_YS[step]);
-    ctx.fillStyle = "#fff";
-    ctx.font = `700 ${Math.round(H * 0.045)}px "Atkinson Hyperlegible", Helvetica, Arial, sans-serif`;
-    ctx.textBaseline = "alphabetic";
-    ctx.fillText("hi", p.x, p.y);
-    texture.needsUpdate = true;
-    return true;
-  };
-
-  draw(started);
-  return { texture, draw, dispose: () => texture.dispose() };
-}
-
 export function Glb3ScrollStage({
   mode = "page",
 }: {
@@ -382,6 +250,7 @@ export function Glb3ScrollStage({
     let needsRender = true;
     let reduce = false;
     let touchStartY = 0;
+    let touchStartX = 0;
     let einkDraw: ((now: number) => boolean) | null = null;
     let einkDispose: (() => void) | null = null;
     let formKey: import("three").DirectionalLight | null = null;
@@ -408,9 +277,10 @@ export function Glb3ScrollStage({
 
     /** Progress + title/body — call at nav start so copy isn't a beat behind the orbit. */
     const syncFaceCopy = (idx: number) => {
-      const pct = Math.round((idx / (FACES.length - 1)) * 100);
+      const count = FACES.length;
+      const pct = Math.round((idx / Math.max(1, count - 1)) * 100);
       if (progressRef.current) {
-        progressRef.current.textContent = `${idx + 1} / ${FACES.length}`;
+        progressRef.current.textContent = `${idx + 1} / ${count}`;
       }
       if (barRef.current) barRef.current.style.width = `${pct}%`;
       setFrameIdx(idx);
@@ -436,11 +306,16 @@ export function Glb3ScrollStage({
       applyPlateForFace(idx);
     };
 
+    const aimCamera = () => {
+      if (!camera) return;
+      camera.lookAt(0, 0, embed ? EMBED_LOOK_Z : 0);
+    };
+
     const applyCameraUp = (up: [number, number, number]) => {
       if (!camera) return;
       upCur = up;
       camera.up.set(up[0], up[1], up[2]);
-      camera.lookAt(0, 0, 0);
+      aimCamera();
     };
 
     const setPivotQuat = (idx: number) => {
@@ -455,9 +330,10 @@ export function Glb3ScrollStage({
       idx: number,
       opts?: { force?: boolean; wrap?: boolean },
     ) => {
+      const count = FACES.length;
       const next = opts?.wrap
-        ? ((idx % FACES.length) + FACES.length) % FACES.length
-        : Math.min(FACES.length - 1, Math.max(0, idx));
+        ? ((idx % count) + count) % count
+        : Math.min(count - 1, Math.max(0, idx));
       if (next === faceIdx) return false;
       if (!opts?.force && performance.now() < holdUntil) return false;
       if (!pivot || !qFrom || !qTo || !faceQuats[next]) return false;
@@ -493,7 +369,10 @@ export function Glb3ScrollStage({
 
       animStart = performance.now();
       animating = true;
-      holdUntil = animStart + TRANSITION_MS + HOLD_MS;
+      holdUntil =
+        animStart +
+        TRANSITION_MS +
+        (embed && opts?.force ? EMBED_MANUAL_PAUSE_MS : HOLD_MS);
       needsRender = true;
       return true;
     };
@@ -528,12 +407,22 @@ export function Glb3ScrollStage({
     };
 
     const onTouchStart = (e: TouchEvent) => {
-      if (embed) return;
+      if (embed) {
+        touchStartX = e.touches[0]?.clientX ?? 0;
+        return;
+      }
       touchStartY = e.touches[0]?.clientY ?? 0;
     };
 
     const onTouchEnd = (e: TouchEvent) => {
-      if (embed || reduce) return;
+      if (reduce) return;
+      if (embed) {
+        const x = e.changedTouches[0]?.clientX ?? touchStartX;
+        const dx = touchStartX - x;
+        if (Math.abs(dx) < 40) return;
+        goToFace(faceIdx + (dx > 0 ? 1 : -1), { wrap: true });
+        return;
+      }
       const y = e.changedTouches[0]?.clientY ?? touchStartY;
       const dy = touchStartY - y;
       if (Math.abs(dy) < 40) return;
@@ -565,10 +454,10 @@ export function Glb3ScrollStage({
       scene.background = new THREE.Color(STAGE_BG);
 
       // Fixed camera: looking down +Y at the face we rotate toward it
-      camera = new THREE.PerspectiveCamera(34, 1, 0.05, 80);
-      camera.position.set(0, DIST, 0);
+      camera = new THREE.PerspectiveCamera(embed ? EMBED_FOV : PAGE_FOV, 1, 0.05, 80);
+      camera.position.set(0, embed ? EMBED_DIST : DIST, 0);
       camera.up.set(0, 0, -1);
-      camera.lookAt(0, 0, 0);
+      camera.lookAt(0, 0, embed ? EMBED_LOOK_Z : 0);
 
       renderer = new THREE.WebGLRenderer({
         canvas,
@@ -756,12 +645,12 @@ export function Glb3ScrollStage({
         pivot.add(model);
         scene.add(pivot);
 
-        // Live UX preview on the e-ink panel (SVG → canvas → plane on screen)
+        // Live UX preview on the e-ink panel (canvas Atkinson UI → plane)
         // Assert: traverse assigns found.screen; TS ignores callback writes
         const screenMesh = found.screen as import("three").Mesh | null;
         if (screenMesh) {
           try {
-            const eink = await makeEinkTexture(THREE);
+            const eink = await makeLoupEinkUx(THREE);
             if (disposed) {
               eink.dispose();
               return;
@@ -871,11 +760,13 @@ export function Glb3ScrollStage({
         window.addEventListener("touchstart", onTouchStart, { passive: true });
         window.addEventListener("touchend", onTouchEnd, { passive: true });
       } else {
+        stage.addEventListener("touchstart", onTouchStart, { passive: true });
+        stage.addEventListener("touchend", onTouchEnd, { passive: true });
         viewObs = new IntersectionObserver(
           ([entry]) => {
-            inView = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.35);
+            inView = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.15);
           },
-          { threshold: [0, 0.35, 0.6] },
+          { threshold: [0, 0.15, 0.35, 0.6] },
         );
         viewObs.observe(stage);
       }
@@ -902,8 +793,7 @@ export function Glb3ScrollStage({
           }
         }
 
-        // Embed: auto-advance faces while in view (no page-scroll trap).
-        // On customize: wait until white is showing before leaving.
+        // Embed: auto-advance all 6 faces while in view. Arrows/swipe pause it.
         const plateDone =
           faceIdx !== PLATE_FACE ||
           !plateLooks ||
@@ -965,6 +855,8 @@ export function Glb3ScrollStage({
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchend", onTouchEnd);
+      stage.removeEventListener("touchstart", onTouchStart);
+      stage.removeEventListener("touchend", onTouchEnd);
       einkDispose?.();
       plateLooks?.dispose();
       renderer?.dispose();
@@ -997,6 +889,7 @@ export function Glb3ScrollStage({
         overflow: "hidden",
         background: STAGE_BG,
         color: "#171717",
+        touchAction: embed ? "pan-y" : undefined,
       }}
     >
       <canvas
@@ -1018,7 +911,7 @@ export function Glb3ScrollStage({
             aria-label="Previous face"
             disabled={status !== "ready"}
             onClick={() => stepNavRef.current?.prev()}
-            className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-sm ring-1 ring-black/10 transition hover:bg-white disabled:cursor-default disabled:opacity-40 sm:left-4 sm:h-11 sm:w-11"
+            className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-sm ring-1 ring-black/10 transition hover:bg-white disabled:cursor-default disabled:opacity-40 sm:left-4"
           >
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden>
               <path
@@ -1035,7 +928,7 @@ export function Glb3ScrollStage({
             aria-label="Next face"
             disabled={status !== "ready"}
             onClick={() => stepNavRef.current?.next()}
-            className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-sm ring-1 ring-black/10 transition hover:bg-white disabled:cursor-default disabled:opacity-40 sm:right-4 sm:h-11 sm:w-11"
+            className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-sm ring-1 ring-black/10 transition hover:bg-white disabled:cursor-default disabled:opacity-40 sm:right-4"
           >
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden>
               <path
@@ -1061,28 +954,32 @@ export function Glb3ScrollStage({
         1 / {FACES.length}
       </span>
 
-      <div
-        className={`pointer-events-none absolute inset-x-0 bottom-0 z-10 ${
-          embed ? "px-4 pb-4 sm:px-6 sm:pb-5" : "px-6 pb-8 sm:px-10"
-        }`}
-      >
+      {embed ? (
+        status !== "ready" ? (
+          <p className="pointer-events-none absolute inset-x-0 bottom-4 z-10 px-4 text-center text-xs text-neutral-500">
+            {status === "loading" ? "Loading…" : "Couldn’t load 3D preview"}
+          </p>
+        ) : (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#f6f5f2] from-40% to-transparent px-4 pb-4 pt-12 sm:px-5 sm:pb-5">
+            <p className="text-base font-medium tracking-tight text-neutral-900 sm:text-lg">
+              {frame.title}
+            </p>
+            <p className="mt-0.5 text-xs leading-snug text-neutral-600 sm:text-sm">
+              {frame.body}
+            </p>
+          </div>
+        )
+      ) : (
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-6 pb-8 sm:px-10">
         <div className="max-w-lg">
-          <p
-            className={`font-medium tracking-tight text-neutral-900 ${
-              embed ? "text-lg sm:text-xl" : "text-2xl sm:text-3xl"
-            }`}
-          >
+          <p className="text-2xl font-medium tracking-tight text-neutral-900 sm:text-3xl">
             {frame.title}
           </p>
-          <p
-            className={`mt-1 leading-snug text-neutral-600 ${
-              embed ? "text-sm" : "mt-2 text-base"
-            }`}
-          >
+          <p className="mt-2 text-base leading-snug text-neutral-600">
             {frame.body}
           </p>
         </div>
-        <div className={`h-px w-full bg-neutral-900/15 ${embed ? "mt-3" : "mt-5"}`}>
+        <div className="mt-5 h-px w-full bg-neutral-900/15">
           <div
             ref={barRef}
             className="h-px bg-neutral-900"
@@ -1091,13 +988,11 @@ export function Glb3ScrollStage({
         </div>
         <p className="mt-2 text-xs text-neutral-500">
           {status === "loading" && "Loading…"}
-          {status === "error" &&
-            (embed
-              ? "Couldn’t load 3D preview"
-              : "Couldn’t load /models/stripped_down_glb3.glb")}
-          {status === "ready" && (embed ? null : "Scroll · snaps each face")}
+          {status === "error" && "Couldn’t load /models/stripped_down_glb3.glb"}
+          {status === "ready" && "Scroll · snaps each face"}
         </p>
       </div>
+      )}
     </div>
   );
 }
