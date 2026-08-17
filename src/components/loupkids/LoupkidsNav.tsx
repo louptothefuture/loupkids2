@@ -7,7 +7,7 @@ import { useCart } from "@/components/cart/CartProvider";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_NAV, LOUPKIDS_NAV_DESKTOP } from "@/lib/content/loupkids-site";
 import { LoupLogoLink } from "./LoupLogo";
-import { useWaitlist } from "./waitlist/WaitlistProvider";
+import { StripeCheckoutButton } from "./conversion/StripeCheckoutButton";
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
@@ -35,7 +35,6 @@ function MenuIcon({ open }: { open: boolean }) {
 export function LoupkidsNav() {
   const pathname = usePathname();
   const { cart, openCart } = useCart();
-  const { openWaitlist } = useWaitlist();
   const count = cart?.totalQuantity ?? 0;
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -79,13 +78,10 @@ export function LoupkidsNav() {
           </nav>
 
           <div className="flex min-w-0 shrink items-center justify-end gap-1 sm:gap-3">
-            <button
-              type="button"
-              onClick={() => openWaitlist("nav")}
+            <StripeCheckoutButton
+              label={LOUPKIDS_CTA.nav}
               className="lk-btn lk-btn-sm min-w-0 cursor-pointer"
-            >
-              {LOUPKIDS_CTA.nav}
-            </button>
+            />
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -139,16 +135,12 @@ export function LoupkidsNav() {
             >
               Cart{count > 0 ? ` (${count})` : ""}
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                setMenuOpen(false);
-                openWaitlist("nav-mobile");
-              }}
-              className="lk-btn mt-8 w-full cursor-pointer"
-            >
-              {LOUPKIDS_CTA.primary}
-            </button>
+            <div className="mt-8 w-full">
+              <StripeCheckoutButton
+                label={LOUPKIDS_CTA.primary}
+                className="lk-btn w-full cursor-pointer"
+              />
+            </div>
           </nav>
         </div>
       )}

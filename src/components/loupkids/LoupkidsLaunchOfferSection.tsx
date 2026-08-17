@@ -9,17 +9,15 @@ import {
 } from "@/lib/content/loupkids-conversion";
 import { HOME_LAUNCH } from "@/lib/content/loupkids-home-arc";
 import { FadeIn } from "./FadeIn";
-import { useWaitlist } from "./waitlist/WaitlistProvider";
+import { StripeCheckoutButton } from "./conversion/StripeCheckoutButton";
 
 export function LoupkidsLaunchOfferSection() {
-  const { openWaitlist } = useWaitlist();
-
   return (
     <section className="lk-band bg-[var(--lk-bg)] text-[var(--lk-ink)]">
       <div className="mx-auto max-w-[720px] text-center">
         <FadeIn>
           <h2 className="lk-display text-[clamp(2rem,4vw,3rem)] leading-[1.08] text-[var(--lk-accent-ink)]">
-            Pre-orders coming soon.
+            Ready when you are.
           </h2>
 
           <div className="lk-card mt-8 text-left">
@@ -49,16 +47,13 @@ export function LoupkidsLaunchOfferSection() {
 
             <div className="my-5 border-t border-[var(--lk-line-soft)]" />
 
-            <button
-              type="button"
-              onClick={() => openWaitlist("offer")}
+            <StripeCheckoutButton
+              label={LOUPKIDS_CTA.product}
               className="lk-btn lk-btn-convert lk-btn-lg w-full cursor-pointer"
-            >
-              {LOUPKIDS_CTA.waitlist}
-            </button>
+              showGuarantee
+            />
 
             <div className="mt-4 space-y-1 text-xs leading-relaxed text-[var(--lk-muted)]">
-              <p>{LOUPKIDS_CTA.comingSoon} — we&apos;ll email you when founding pricing opens.</p>
               {LOUPKIDS_OFFER_CARD.logistics.map((line) => (
                 <p key={line}>{line}</p>
               ))}

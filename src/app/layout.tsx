@@ -4,7 +4,7 @@ import "./globals.css";
 import "./loupkids-theme.css";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { ConditionalChrome } from "@/components/layout/ConditionalChrome";
-import { Analytics } from "@/components/Analytics";
+import { CookieBanner } from "@/components/CookieBanner";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/site";
 
@@ -64,7 +64,7 @@ export default function RootLayout({
         <CartProvider>
           <ConditionalChrome>{children}</ConditionalChrome>
         </CartProvider>
-        <Analytics />
+        <CookieBanner />
       </body>
     </html>
   );

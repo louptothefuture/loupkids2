@@ -4,7 +4,24 @@
  * Client-side analytics helpers. Fire GA4 + Meta Pixel events in one call.
  * Purchase events are fired server-side from the Shopify orders/paid webhook
  * (see /api/webhooks/shopify) — these cover the browsing funnel.
+ * Scripts only load after cookie consent === "all".
  */
+
+export const CONSENT_KEY = "loup-cookie-consent";
+export type CookieConsent = "all" | "necessary";
+
+export function readCookieConsent(): CookieConsent | null {
+  try {
+    const v = localStorage.getItem(CONSENT_KEY);
+    return v === "all" || v === "necessary" ? v : null;
+  } catch {
+    return null;
+  }
+}
+
+function allowed() {
+  return readCookieConsent() === "all";
+}
 
 type Item = {
   item_id: string;
@@ -30,6 +47,7 @@ function fbq(...args: unknown[]) {
 }
 
 export function trackViewItem(item: Item) {
+  if (!allowed()) return;
   gtag("event", "view_item", {
     currency: "USD",
     value: item.price * item.quantity,
@@ -45,6 +63,7 @@ export function trackViewItem(item: Item) {
 }
 
 export function trackAddToCart(item: Item) {
+  if (!allowed()) return;
   gtag("event", "add_to_cart", {
     currency: "USD",
     value: item.price * item.quantity,
@@ -60,6 +79,7 @@ export function trackAddToCart(item: Item) {
 }
 
 export function trackBeginCheckout(items: Item[], value: number) {
+  if (!allowed()) return;
   gtag("event", "begin_checkout", { currency: "USD", value, items });
   fbq("track", "InitiateCheckout", {
     content_ids: items.map((i) => i.item_id),
@@ -71,6 +91,7 @@ export function trackBeginCheckout(items: Item[], value: number) {
 }
 
 export function trackLead(label: string) {
+  if (!allowed()) return;
   gtag("event", "generate_lead", { event_label: label });
   fbq("track", "Lead");
 }

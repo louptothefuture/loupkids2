@@ -6,7 +6,7 @@ import {
   LOUPKIDS_PRICE,
 } from "@/lib/content/loupkids-conversion";
 import { HOME_HERO } from "@/lib/content/loupkids-home-arc";
-import { useWaitlist } from "../waitlist/WaitlistProvider";
+import { StripeCheckoutButton } from "./StripeCheckoutButton";
 
 export function LoupkidsOrderCta({
   label = LOUPKIDS_CTA.primary,
@@ -15,7 +15,7 @@ export function LoupkidsOrderCta({
   size = "default",
   /** Hero: price + pill + short trust. Full: denser checkout stack. */
   density = "full",
-  source = "cta",
+  source: _source = "cta",
 }: {
   label?: string;
   variant?: "dark" | "light";
@@ -24,7 +24,6 @@ export function LoupkidsOrderCta({
   density?: "hero" | "full";
   source?: string;
 }) {
-  const { openWaitlist } = useWaitlist();
   const btnClass =
     variant === "dark"
       ? `lk-btn lk-btn-white${size === "large" ? " lk-btn-lg" : ""}`
@@ -41,12 +40,6 @@ export function LoupkidsOrderCta({
       className={`flex w-full max-w-md flex-col gap-3 ${alignStart ? "items-start" : "items-center"} ${size === "large" ? "max-w-lg" : ""} ${className}`}
     >
       <p
-        className={`text-sm font-medium uppercase tracking-[0.06em] ${alignStart ? "text-left" : "text-center"} ${ink}`}
-      >
-        {LOUPKIDS_CTA.comingSoon}
-      </p>
-
-      <p
         className={`flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 ${alignStart ? "justify-start" : "justify-center"} ${muted}`}
       >
         <span className={`text-2xl font-medium tracking-tight ${ink}`}>{LOUPKIDS_PRICE.formatted}</span>
@@ -62,20 +55,17 @@ export function LoupkidsOrderCta({
         </span>
       ) : null}
 
-      <button
-        type="button"
-        onClick={() => openWaitlist(source)}
+      <StripeCheckoutButton
+        label={label}
         className={`${btnClass} w-full cursor-pointer sm:w-auto`}
-      >
-        {label}
-      </button>
+        showGuarantee={density === "full"}
+        guaranteeVariant={variant === "dark" ? "dark" : "light"}
+      />
 
       <p
         className={`max-w-sm text-[0.8125rem] leading-snug ${alignStart ? "text-left" : "text-center"} ${muted}`}
       >
-        {density === "hero"
-          ? "Sign up and we’ll email you when pre-orders open."
-          : HOME_HERO.trustLine}
+        {HOME_HERO.trustLine}
       </p>
     </div>
   );

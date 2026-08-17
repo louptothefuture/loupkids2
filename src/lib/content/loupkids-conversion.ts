@@ -11,16 +11,16 @@ export const LOUPKIDS_PRICE = {
 } as const;
 
 export const LOUPKIDS_CTA = {
-  primary: "Stay in touch",
-  primaryShort: "Stay in touch",
-  hero: "Stay in touch",
-  product: "Stay in touch",
+  primary: "Pre-order Loup — $129",
+  primaryShort: "Pre-order Loup",
+  hero: "Pre-order Loup — $129",
+  product: "Pre-order Loup — $129",
   checkout: "Complete Order →",
   waitlist: "Notify me",
   newsletter: "Get launch updates",
-  sticky: "Stay in touch",
-  nav: "Stay in touch",
-  comingSoon: "Pre-orders coming soon",
+  sticky: "Pre-order Loup — $129",
+  nav: "Pre-order Loup",
+  comingSoon: "Pre-order Loup — $129",
 } as const;
 
 export const LOUPKIDS_OFFER = {

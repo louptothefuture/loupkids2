@@ -1,12 +1,17 @@
+"use client";
+
 import Script from "next/script";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
-export function Analytics() {
+/** Loads GA4 + Meta only after analytics consent. */
+export function Analytics({ enabled }: { enabled: boolean }) {
+  if (!enabled || (!GA_ID && !META_PIXEL_ID)) return null;
+
   return (
     <>
-      {GA_ID && (
+      {GA_ID ? (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
@@ -19,8 +24,8 @@ gtag('js', new Date());
 gtag('config', '${GA_ID}', { send_page_view: true });`}
           </Script>
         </>
-      )}
-      {META_PIXEL_ID && (
+      ) : null}
+      {META_PIXEL_ID ? (
         <Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -30,7 +35,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${META_PIXEL_ID}');
 fbq('track', 'PageView');`}
         </Script>
-      )}
+      ) : null}
     </>
   );
 }

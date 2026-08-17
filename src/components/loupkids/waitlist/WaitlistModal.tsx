@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { trackLead } from "@/lib/analytics";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 
 const SEEN_KEY = "loup-waitlist-popup-seen";
@@ -38,24 +39,13 @@ export function WaitlistModal({
     };
   }, [open, onClose]);
 
-  /** Auto popup once — delayed, not on every visit */
+  // ponytail: auto-popup off while Stripe checkout is live — CTAs buy, not email-capture
   useEffect(() => {
     try {
-      if (localStorage.getItem(SEEN_KEY) === "1") return;
+      localStorage.setItem(SEEN_KEY, "1");
     } catch {
-      return;
+      /* ignore */
     }
-    const timer = window.setTimeout(() => {
-      try {
-        if (localStorage.getItem(SEEN_KEY) === "1") return;
-        localStorage.setItem(SEEN_KEY, "1");
-      } catch {
-        /* ignore */
-      }
-      // Parent opens via custom event so provider stays the single open path
-      window.dispatchEvent(new CustomEvent("loup:waitlist-auto", { detail: "popup" }));
-    }, 12000);
-    return () => window.clearTimeout(timer);
   }, []);
 
   async function onSubmit(e: FormEvent) {
@@ -75,6 +65,7 @@ export function WaitlistModal({
         return;
       }
       setStatus("ok");
+      trackLead(source);
       try {
         localStorage.setItem(SEEN_KEY, "1");
       } catch {
@@ -89,7 +80,10 @@ export function WaitlistModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-end justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:items-center sm:pb-4" role="presentation">
+    <div
+      className="loupkids-theme fixed inset-0 z-[80] flex items-end justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:items-center sm:pb-4"
+      role="presentation"
+    >
       <button
         type="button"
         className="absolute inset-0 cursor-pointer bg-black/45"
@@ -100,7 +94,7 @@ export function WaitlistModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-[1] w-full max-w-md rounded-[1.75rem] border border-[var(--lk-line)] bg-[var(--lk-surface)] p-6 shadow-[var(--lk-card-shadow)] sm:p-8"
+        className="relative z-[1] w-full max-w-md rounded-[1.75rem] border border-[var(--lk-line)] bg-[#fafaf8] p-6 shadow-[0_24px_64px_rgba(0,0,0,0.28)] sm:p-8"
       >
         <button
           type="button"
@@ -114,14 +108,13 @@ export function WaitlistModal({
         </button>
 
         <p className="text-sm font-medium uppercase tracking-[0.06em] text-[var(--lk-muted)]">
-          {LOUPKIDS_CTA.comingSoon}
+          Updates
         </p>
         <h2 id={titleId} className="lk-display mt-2 text-2xl leading-tight sm:text-[1.75rem]">
           Stay in the loop
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-[var(--lk-muted)]">
-          Pre-orders aren&apos;t open yet. Leave your email and we&apos;ll tell you when founding
-          pricing goes live — no spam.
+          Leave your email for shipping and product updates — no spam.
         </p>
 
         {status === "ok" ? (
@@ -130,7 +123,10 @@ export function WaitlistModal({
           </p>
         ) : (
           <form onSubmit={onSubmit} className="mt-6 space-y-3">
-            <label className="block text-left text-sm font-medium text-[var(--lk-ink)]" htmlFor={`${titleId}-email`}>
+            <label
+              className="block text-left text-sm font-medium text-[var(--lk-ink)]"
+              htmlFor={`${titleId}-email`}
+            >
               Email
             </label>
             <input

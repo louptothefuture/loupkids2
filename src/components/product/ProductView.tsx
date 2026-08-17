@@ -11,7 +11,7 @@ import {
   LOUPKIDS_OFFER_CARD,
   LOUPKIDS_PRICE,
 } from "@/lib/content/loupkids-conversion";
-import { useWaitlist } from "@/components/loupkids/waitlist/WaitlistProvider";
+import { StripeCheckoutButton } from "@/components/loupkids/conversion/StripeCheckoutButton";
 
 function formatPrice(amount: string, currency: string) {
   return new Intl.NumberFormat("en-US", {
@@ -26,7 +26,6 @@ export function ProductView({ product }: { product: Product }) {
   const [selected, setSelected] = useState(product.variants[0]);
   const [activeImage, setActiveImage] = useState(0);
   const multiVariant = Boolean(optionName && product.options[0].values.length > 1);
-  const { openWaitlist } = useWaitlist();
 
   useEffect(() => {
     trackViewItem({
@@ -165,15 +164,12 @@ export function ProductView({ product }: { product: Product }) {
         )}
 
         <div>
-          <button
-            type="button"
-            onClick={() => openWaitlist("pdp")}
+          <StripeCheckoutButton
+            label={LOUPKIDS_CTA.product}
             className="lk-btn lk-btn-lg w-full cursor-pointer"
-          >
-            {LOUPKIDS_CTA.product}
-          </button>
+            showGuarantee
+          />
           <div className="mt-4 space-y-1 text-xs leading-relaxed text-[var(--lk-muted)]">
-            <p>{LOUPKIDS_CTA.comingSoon} — we&apos;ll email you when founding pricing opens.</p>
             {LOUPKIDS_OFFER_CARD.logistics.map((line) => (
               <p key={line}>{line}</p>
             ))}

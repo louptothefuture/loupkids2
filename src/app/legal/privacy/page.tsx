@@ -28,6 +28,12 @@ export default function PrivacyPage() {
         </a>{" "}
         page for details.
       </p>
+      <h2 className="display mt-8 text-2xl text-ink">Cookies</h2>
+      <p>
+        Necessary cookies run the shopping cart. If you accept analytics cookies, we use Google
+        Analytics and Meta Pixel to understand how people find this site — not to profile children
+        or serve ads. You can reject analytics cookies on the banner; cart cookies still work.
+      </p>
       <h2 className="display mt-8 text-2xl text-ink">Contact</h2>
       <p>
         Questions: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>

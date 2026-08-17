@@ -36,10 +36,12 @@ export const HOME_RELEVANCY = {
 /** Brief story — depth lives on /about */
 export const HOME_STORY = {
   eyebrow: "Why we built it",
-  headline: "Built for connection — and for childhood.",
+  headline: "Who will they call today?",
   paragraphs: [
-    "We wanted kids to call friends and family with confidence. Not because childhood needed less joy — because it needed more of the right kind: voices, playdates, and being present.",
-    "So we built a pocket phone that only reaches the people parents approve. Voice. Presence. Independence. Room left for being a kid.",
+    "We kept putting off the phone. Not because we didn't trust our kids — because we knew what came with it.",
+    "The endless scroll. Group chats that never quiet down. The slow, steady replacement of real life with a screen. Childhood isn't disappearing all at once. It's being borrowed, notification by notification.",
+    "So we built something different. Calls only. Approved contacts only. No apps, no alerts, no algorithm working against you.",
+    "Just kids, and the people who matter.",
   ],
   cta: { label: "How it started", href: "/about" },
   image: "/images/lifestyle-new/kids-phones-line.jpg",

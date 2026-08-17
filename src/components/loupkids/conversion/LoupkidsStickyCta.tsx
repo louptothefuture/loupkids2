@@ -3,13 +3,12 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
-import { useWaitlist } from "../waitlist/WaitlistProvider";
+import { StripeCheckoutButton } from "./StripeCheckoutButton";
 
 const DISMISS_KEY = "loup-sticky-cta-dismissed";
 
 export function LoupkidsStickyCta() {
   const pathname = usePathname();
-  const { openWaitlist } = useWaitlist();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(true);
 
@@ -49,12 +48,12 @@ export function LoupkidsStickyCta() {
         visible ? "translate-y-0" : "pointer-events-none translate-y-[110%]"
       }`}
       role="complementary"
-      aria-label="Pre-orders coming soon"
+      aria-label="Pre-order Loup"
       aria-hidden={!visible}
     >
       <div className="mx-auto flex max-w-lg items-center gap-3 sm:mx-0 sm:block sm:max-w-none">
         <div className="mb-0 hidden items-start justify-between gap-3 sm:mb-2.5 sm:flex">
-          <p className="text-sm text-[var(--lk-muted)]">{LOUPKIDS_CTA.comingSoon}</p>
+          <p className="text-sm text-[var(--lk-muted)]">First 500 · $129</p>
           <button
             type="button"
             aria-label="Dismiss"
@@ -74,14 +73,12 @@ export function LoupkidsStickyCta() {
             </span>
           </button>
         </div>
-        <button
-          type="button"
-          onClick={() => openWaitlist("sticky")}
-          className="lk-btn w-full flex-1 cursor-pointer whitespace-nowrap px-4 py-3 text-center text-sm sm:text-[0.9375rem]"
-          tabIndex={visible ? undefined : -1}
-        >
-          {LOUPKIDS_CTA.sticky}
-        </button>
+        <div className="min-w-0 flex-1" tabIndex={visible ? undefined : -1}>
+          <StripeCheckoutButton
+            label={LOUPKIDS_CTA.sticky}
+            className="lk-btn w-full cursor-pointer whitespace-nowrap px-4 py-3 text-center text-sm sm:text-[0.9375rem]"
+          />
+        </div>
         <button
           type="button"
           aria-label="Dismiss"
@@ -102,7 +99,7 @@ export function LoupkidsStickyCta() {
           </span>
         </button>
         <p className="mt-2.5 hidden text-center text-xs leading-snug text-[var(--lk-muted)] sm:block">
-          Sign up and we&apos;ll email you when founding pricing opens.
+          Ships within 60 days. 30-day trial on delivery.
         </p>
       </div>
     </div>
