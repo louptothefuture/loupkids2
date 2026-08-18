@@ -5,6 +5,9 @@ export const LOUPKIDS_PRICE = {
   compareAt: 199,
   formatted: "$129",
   compareFormatted: "$199",
+  pairAmount: 250,
+  pairQty: 2,
+  pairFormatted: "$250",
   /** Scarcity + deal framing for first-500 offer */
   launchNote: "First 500 · Save 33%",
   stackLine: "$129",
@@ -21,6 +24,7 @@ export const LOUPKIDS_CTA = {
   sticky: "Pre-order Loup — $129",
   nav: "Pre-order Loup",
   comingSoon: "Pre-order Loup — $129",
+  pair: "2 for $250",
 } as const;
 
 export const LOUPKIDS_OFFER = {
@@ -113,8 +117,9 @@ export const LOUPKIDS_CALLING_PRICING = {
     },
     {
       label: "External contacts",
-      price: "Year 1 free · then $10/mo",
-      body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10/mo (cancel anytime) — or keep Loup↔Loup and App→Loup free forever.",
+      price: "$10 a month",
+      stamp: "1 year free",
+      body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10 a month (cancel anytime) — or keep Loup↔Loup and App→Loup free forever.",
     },
   ],
   cta: { label: "Stay in touch", href: "/shop/loup" },

@@ -53,14 +53,14 @@ export function ContactForm() {
         </label>
         <label className="grid gap-2">
           <span className="lk-label">Topic</span>
-          <select name="topic" className={inputClass}>
-            <option>Question before I buy</option>
-            <option>Order / shipping</option>
-            <option>Returns / warranty</option>
-            <option>Calling plan</option>
-            <option>Press</option>
-            <option>Interest in investing</option>
-            <option>Something else</option>
+          <select name="topic" required defaultValue="" className={inputClass}>
+            <option value="" disabled>
+              Select a topic
+            </option>
+            <option value="Bulk ordering">Bulk ordering</option>
+            <option value="Media enquiries">Media enquiries</option>
+            <option value="Investment">Investment</option>
+            <option value="General questions">General questions</option>
           </select>
         </label>
         <label className="grid gap-2">

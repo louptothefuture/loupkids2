@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
  */
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
-  if (!body?.name || !body?.email || !body?.message) {
+  if (!body?.name || !body?.email || !body?.message || !body?.topic) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
   }
 

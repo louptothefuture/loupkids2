@@ -31,10 +31,10 @@ async function sendGa4Purchase(session: Stripe.Checkout.Session) {
               currency,
               items: [
                 {
-                  item_id: "loup-silver",
+                  item_id: session.metadata?.pack === "pair" ? "loup-silver-pair" : "loup-silver",
                   item_name: "Loup — Silver",
                   price: amountTotal,
-                  quantity: 1,
+                  quantity: Number(session.metadata?.quantity ?? 1) || 1,
                 },
               ],
             },

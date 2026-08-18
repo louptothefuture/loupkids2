@@ -1,14 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getStripe, isStripeConfigured, STRIPE_LOUP } from "@/lib/stripe";
 import { SITE } from "@/lib/site";
 
-export async function POST() {
+export async function POST(req: NextRequest) {
   if (!isStripeConfigured()) {
     return NextResponse.json(
       { error: "Stripe is not configured. Set STRIPE_SECRET_KEY." },
       { status: 503 },
     );
   }
+
+  const body = (await req.json().catch(() => null)) as { pack?: string } | null;
+  const pair = body?.pack === "pair";
 
   // Canonical origin only — never trust Host / X-Forwarded-Host for redirects.
   const origin = SITE.url.replace(/\/$/, "");
@@ -19,13 +22,13 @@ export async function POST() {
       mode: "payment",
       line_items: [
         {
-          quantity: 1,
+          quantity: pair ? STRIPE_LOUP.pairQuantity : 1,
           price_data: {
             currency: STRIPE_LOUP.currency,
-            unit_amount: STRIPE_LOUP.unitAmountCents,
+            unit_amount: pair ? STRIPE_LOUP.pairUnitAmountCents : STRIPE_LOUP.unitAmountCents,
             product_data: {
-              name: STRIPE_LOUP.name,
-              description: STRIPE_LOUP.description,
+              name: pair ? `${STRIPE_LOUP.name} × 2` : STRIPE_LOUP.name,
+              description: pair ? STRIPE_LOUP.pairDescription : STRIPE_LOUP.description,
               images: [`${origin}/images/renders/shop/a_4.jpg`],
             },
           },
@@ -39,6 +42,8 @@ export async function POST() {
       cancel_url: `${origin}/shop/loup`,
       metadata: {
         product: "loup-silver",
+        pack: pair ? "pair" : "single",
+        quantity: pair ? String(STRIPE_LOUP.pairQuantity) : "1",
         fulfillment: "preorder-october-2026",
       },
     });

@@ -52,6 +52,11 @@ export function LoupkidsLaunchOfferSection() {
               className="lk-btn lk-btn-convert lk-btn-lg w-full cursor-pointer"
               showGuarantee
             />
+            <StripeCheckoutButton
+              pack="pair"
+              label={LOUPKIDS_CTA.pair}
+              className="lk-btn lk-btn-outline lk-btn-lg mt-2 w-full cursor-pointer"
+            />
 
             <div className="mt-4 space-y-1 text-xs leading-relaxed text-[var(--lk-muted)]">
               {LOUPKIDS_OFFER_CARD.logistics.map((line) => (

@@ -14,6 +14,10 @@ export const STRIPE_LOUP = {
   description:
     "First 500 · $129 · Loup↔Loup + App→Loup free · year-1 external calling · ships within 60 days",
   unitAmountCents: SITE.price * 100,
+  pairQuantity: 2,
+  pairUnitAmountCents: 12_500, // $125 each → $250
+  pairDescription:
+    "2-pack · $250 · Loup↔Loup + App→Loup free · year-1 external calling · ships within 60 days",
   currency: "usd",
 } as const;
 
