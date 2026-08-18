@@ -117,8 +117,8 @@ export const LOUPKIDS_CALLING_PRICING = {
     },
     {
       label: "External contacts",
-      price: "$10 a month",
-      stamp: "1 year free",
+      price: "Free for first year",
+      comparePrice: "$10 a month",
       body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10 a month (cancel anytime) — or keep Loup↔Loup and App→Loup free forever.",
     },
   ],

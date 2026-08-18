@@ -55,22 +55,16 @@ export function LoupkidsCallingPricingSection({
                   {tier.label}
                 </p>
                 <p
-                  className={`lk-display relative mt-2 w-fit ${
-                    compact ? "py-3 text-2xl sm:text-[1.75rem]" : "mt-4 py-4 text-3xl sm:text-4xl"
+                  className={`lk-display mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1 ${
+                    compact ? "text-2xl sm:text-[1.75rem]" : "mt-4 text-3xl sm:text-4xl"
                   }`}
                 >
-                  {tier.price}
-                  {"stamp" in tier && tier.stamp ? (
-                    <>
-                      <span className="sr-only"> — {tier.stamp}</span>
-                      <span
-                        aria-hidden
-                        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-18deg] border-[2.5px] border-[var(--lk-ink)] px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-[0.16em] whitespace-nowrap opacity-90 sm:text-xs"
-                      >
-                        {tier.stamp}
-                      </span>
-                    </>
+                  {"comparePrice" in tier && tier.comparePrice ? (
+                    <span className="text-[0.55em] font-normal text-[var(--lk-muted)] line-through">
+                      {tier.comparePrice}
+                    </span>
                   ) : null}
+                  {tier.price}
                 </p>
                 <p
                   className={`mt-3 text-[var(--lk-muted)] ${
