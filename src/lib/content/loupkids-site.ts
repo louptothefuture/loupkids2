@@ -372,7 +372,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     q: "Are there monthly fees or subscriptions?",
     a: {
       paragraphs: [
-        "Loup↔Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
+        "Loup↔Loup + App→Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
         "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
       ],
     },

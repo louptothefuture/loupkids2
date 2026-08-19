@@ -53,7 +53,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
+      "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
   },
   {
     section: "Plans & Calling",
@@ -65,7 +65,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Does LOUP work away from home Wi-Fi?",
     answer:
-      "Loup connects over Wi-Fi — at home, school, or anywhere you trust. No SIM card and no carrier bill. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+      "Loup connects over Wi-Fi — at home, school, or anywhere you trust. No SIM card and no carrier bill. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   },
   {
     section: "Shipping",
