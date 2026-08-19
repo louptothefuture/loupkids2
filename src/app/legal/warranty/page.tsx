@@ -22,8 +22,9 @@ export default function WarrantyPage() {
       </p>
       <h2 className="display mt-8 text-2xl text-ink">How to start a claim</h2>
       <p>
-        Email {SITE.email} with your order number and a photo of the issue. Most claims resolve
-        within 3 business days.
+        Email{" "}
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with your order number and a photo of the
+        issue. Most claims resolve within 3 business days.
       </p>
     </LegalLayout>
   );

@@ -106,10 +106,10 @@ export const PRICING_TIERS = [
       "Everything in Wi-Fi LOUP",
       "Connectivity away from Wi-Fi (future)",
       "Same parent controls & contact list",
-      "Join the waitlist for launch pricing",
+      "Pre-order at $129 — First 500",
     ],
-    cta: "Join waitlist",
-    href: "/reserve",
+    cta: "Pre-order Loup",
+    href: "/shop/loup",
   },
 ];
 

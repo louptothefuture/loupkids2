@@ -58,10 +58,10 @@ export function PreOrderSection() {
               Pre-order — $129
             </Link>
             <Link
-              href="/reserve"
+              href="/shop/loup"
               className="self-center text-sm font-medium text-surface/70 underline-offset-4 hover:text-surface hover:underline"
             >
-              Join waitlist
+              Pre-order Loup
             </Link>
           </div>
         </Reveal>
