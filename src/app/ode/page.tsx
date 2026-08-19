@@ -9,35 +9,22 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Ode to the Screen",
   description:
-    "A joyful ode to screens at home — and the cheerful first phone that keeps childhood full of voice, play, and connection.",
+    "We love screens at their best — movie nights, playlists, games together. Loup is the pocket phone that gives kids connection without the algorithm.",
   alternates: { canonical: `${SITE.url}/ode` },
 };
 
 const TURN = 3;
 
 export default function OdePage() {
-  const praise = LOUPKIDS_ODE.paragraphs.slice(0, TURN);
-  const joy = LOUPKIDS_ODE.paragraphs.slice(TURN);
+  const intro = LOUPKIDS_ODE.paragraphs.slice(0, TURN);
+  const close = LOUPKIDS_ODE.paragraphs.slice(TURN);
 
   return (
     <article>
       <h1 className="sr-only">{LOUPKIDS_ODE.title}</h1>
 
-      <section className="px-[var(--lk-section-x)] bg-[var(--lk-accent-soft)] py-16 sm:py-20">
-        <FadeIn className="mx-auto max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--lk-accent-deep)]">
-            Ode to the Screen
-          </p>
-          <div className="mt-6 space-y-5 text-lg leading-relaxed text-[var(--lk-ink)] sm:text-xl">
-            {praise.map((p) => (
-              <p key={p.slice(0, 40)}>{p}</p>
-            ))}
-          </div>
-        </FadeIn>
-      </section>
-
       <FadeIn>
-        <figure className="px-[var(--lk-section-x)] bg-[var(--lk-bg)] py-10 sm:py-14">
+        <figure className="px-[var(--lk-section-x)] bg-[var(--lk-bg)] pt-10 pb-8 sm:pt-12 sm:pb-10">
           <div className="relative mx-auto aspect-[16/10] max-w-5xl overflow-hidden rounded-[1.75rem] shadow-[var(--lk-card-shadow)] sm:aspect-[2.2/1]">
             <LoupkidsImage
               src={LOUPKIDS_ODE.image}
@@ -51,10 +38,23 @@ export default function OdePage() {
         </figure>
       </FadeIn>
 
+      <section className="px-[var(--lk-section-x)] bg-[var(--lk-accent-soft)] py-16 sm:py-20">
+        <FadeIn className="mx-auto max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--lk-accent-deep)]">
+            Ode to the Screen
+          </p>
+          <div className="mt-6 space-y-5 text-lg leading-relaxed text-[var(--lk-ink)] sm:text-xl">
+            {intro.map((p) => (
+              <p key={p.slice(0, 40)}>{p}</p>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
+
       <section className="px-[var(--lk-section-x)] bg-[var(--lk-cobalt)] py-16 text-white sm:py-20">
         <FadeIn className="mx-auto max-w-2xl">
           <div className="space-y-5 text-lg leading-relaxed text-white/90 sm:text-xl">
-            {joy.map((p) => (
+            {close.map((p) => (
               <p key={p.slice(0, 40)}>{p}</p>
             ))}
           </div>
