@@ -173,7 +173,7 @@ export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
       source: "plain",
       blocks: [
         p(
-          "How did we get to the point where handing a ten-year-old unrestricted access to the internet feels like a mandatory milestone? Partly because giving a kid a smartphone is no longer treated as a strategic parenting decision. It's a tactical surrender.",
+          "How did we get to the point where handing a ten-year-old unrestricted access to the internet feels like a mandatory milestone? Partly because giving kids a smartphone is no longer treated as a strategic parenting decision. It's a tactical surrender.",
         ),
         p(
           "It has become the default path of least resistance, adopted primarily because the alternative feels socially unsurvivable. A smartphone has extrinsic convenience — it tracks them at practice, it keeps them quiet in the backseat — but it fails to be evaluated for its intrinsic damage.",
@@ -245,7 +245,7 @@ export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
           "E-Ink uses the room's light. It doesn't glow at you. It uses tiny particles of actual ink to show text. If the room is dark, the screen is dark. Just like a book. Zero flicker. It's static. It's calm.",
         ),
         p(
-          "When a kid uses a LOUP, the tech stays in its lane. It's there for a quick hey Mom, can I stay late — and then it goes right back into a pocket.",
+          "When kids use a LOUP, the tech stays in its lane. It's there for a quick hey Mom, can I stay late — and then it goes right back into a pocket.",
         ),
       ],
     },
@@ -298,7 +298,7 @@ export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
       source: "plain",
       blocks: [
         p(
-          "We are obsessed with smart. Smart watches, smart homes, smartphones. But for a kid trying to grow up, smart tech is actually a cage. It's a distraction machine that monitors their location and colonizes their attention.",
+          "We are obsessed with smart. Smart watches, smart homes, smartphones. But for kids trying to grow up, smart tech is actually a cage. It's a distraction machine that monitors their location and colonizes their attention.",
         ),
         p(
           "The most radical thing you can give a child today is something boring. LOUP is intentionally boring. It doesn't have a high-res screen. It doesn't have an App Store. It doesn't have a GPS chip. It just has a dial tone.",
@@ -330,7 +330,7 @@ export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
       source: "plain",
       blocks: [
         p(
-          "Every time you see a kid at a restaurant — neck bent, eyes glazed over by a YouTube unboxing video — you aren't looking at a tech-savvy child. You're looking at a hostage.",
+          "Every time you see kids at a restaurant — necks bent, eyes glazed over by a YouTube unboxing video — you aren't looking at tech-savvy children. You're looking at hostages.",
         ),
         p(
           "When we say childhood is being borrowed, we mean it literally. These apps aren't free. They're paid for with the only currency your kid actually has: minutes.",

@@ -174,7 +174,7 @@ export const LOUPKIDS_PHONE = {
 export const LOUPKIDS_PRODUCT_SHOTS = [
   { src: LOUPKIDS_IMAGES.productHiFace, alt: "Loup showing hi." },
   { src: LOUPKIDS_IMAGES.backpack, alt: "Loup in a backpack pocket" },
-  { src: LOUPKIDS_IMAGES.deskLoop, alt: "Loup on a kid desk" },
+  { src: LOUPKIDS_IMAGES.deskLoop, alt: "Loup on a kids' desk" },
 ] as const;
 
 /** Feature accordion — from loupkids-v2; no emergency calling */
@@ -215,7 +215,7 @@ export const LOUPKIDS_NOTHING = {
     { title: "Purity of Purpose", body: "No social media. No games. No rabbit holes." },
     { title: "WiFi Only", body: "No SIM card. No carrier bill. Connects over home or school Wi-Fi — simple and affordable." },
     { title: "Parent Control App", body: "Approve contacts, set call hours, and page them directly. Full control from your phone." },
-    { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive being a kid." },
+    { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive kids." },
     { title: "Data? Closed — you own it.", body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app." },
   ],
 } as const;
@@ -383,7 +383,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
       paragraphs: [
         "Some, yes. Less than others. Here's the honest comparison:",
         "Most kids phones in this category lock you into a carrier plan — $20–40/month on top of the device. LOUP runs on Wi-Fi. No SIM, no carrier, no monthly bill unless you want external calling (that's $10/month, cancel anytime). Over two years, LOUP typically costs less than the \"cheaper\" alternatives.",
-        "What you're also getting: aluminum construction built to last, a closed network we run ourselves (your family's data stays yours), and a device designed to look like something a kid actually wants to carry — not a plastic toy or a locked-down hand-me-down.",
+        "What you're also getting: aluminum construction built to last, a closed network we run ourselves (your family's data stays yours), and a device designed to look like something kids actually want to carry — not a plastic toy or a locked-down hand-me-down.",
         "We built LOUP because we couldn't find anything we'd actually want our own kid to have. The price reflects that.",
       ],
     },
@@ -567,7 +567,7 @@ export const LOUPKIDS_COMPARISON = {
     },
     { label: "Battery", values: ["Rechargeable & replaceable · 5 days", "Glued-in · 1 day", "1 day (less if used)", "Plugged in"] },
     {
-      label: "Survives being a kid's",
+      label: "Survives kids",
       values: ["Built for it", "Add a $60 case & pray", "Mostly", "Wall-mounted"],
     },
     {
