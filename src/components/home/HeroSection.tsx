@@ -19,7 +19,7 @@ export async function HeroSection() {
             <Link href="/shop/loup" className="btn-sticker bg-ink px-7 py-3.5 text-surface">
               {HERO.cta}
             </Link>
-            <Link href="/reserve" className="text-sm font-medium text-ink-soft underline-offset-4 hover:text-ink hover:underline">
+            <Link href="/shop/loup" className="text-sm font-medium text-ink-soft underline-offset-4 hover:text-ink hover:underline">
               {HERO.ctaSecondary}
             </Link>
           </div>

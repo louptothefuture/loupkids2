@@ -16,9 +16,9 @@ export default function TermsPage() {
       </p>
       <h2 className="display mt-8 text-2xl text-ink">Use of the service</h2>
       <p>
-        You are responsible for configuring approved contacts and household rules. LOUP is not a
-        substitute for emergency services monitoring — 911 access is provided as designed but
-        depends on network availability.
+        You are responsible for configuring approved contacts and household rules. Loup is a Wi-Fi
+        voice device and does not support E911 emergency dialing. Keep a phone available for
+        emergencies.
       </p>
       <h2 className="display mt-8 text-2xl text-ink">Purchases</h2>
       <p>

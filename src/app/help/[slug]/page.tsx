@@ -62,6 +62,20 @@ export default async function HelpArticlePage({ params }: Props) {
                 Contact support
               </Link>
             </p>
+            {article.related?.length ? (
+              <ul className="mt-4 space-y-2">
+                {article.related.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-sm underline underline-offset-4 text-[var(--lk-muted)] hover:text-[var(--lk-ink)]"
+                    >
+                      {item.label} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
         </FadeIn>
       </section>

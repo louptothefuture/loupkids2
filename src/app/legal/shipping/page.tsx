@@ -18,7 +18,9 @@ export default function ShippingPage() {
       <h2 className="display mt-8 text-2xl text-ink">International</h2>
       <p>
         Canadian orders may incur duties and taxes collected at delivery. Additional countries
-        coming — join the waitlist to be notified.
+        coming —{" "}
+        <a href={`mailto:${SITE.email}?subject=International%20shipping`}>email {SITE.email}</a> to
+        be notified.
       </p>
       <h2 className="display mt-8 text-2xl text-ink">Tax</h2>
       <p>

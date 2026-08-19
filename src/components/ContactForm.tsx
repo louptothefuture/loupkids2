@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackLead } from "@/lib/analytics";
+import { SITE } from "@/lib/site";
 
 const inputClass =
   "w-full border border-[var(--lk-line)] bg-[var(--lk-surface)] px-4 py-3 text-base outline-none transition-colors focus:border-[var(--lk-ink)]";
@@ -72,7 +73,11 @@ export function ContactForm() {
         </button>
         {status === "error" && (
           <p className="text-sm text-[var(--lk-muted)]">
-            Something broke. Email us directly at hello@loupkids.com.
+            Something broke. Email us directly at{" "}
+            <a href={`mailto:${SITE.email}`} className="underline underline-offset-4">
+              {SITE.email}
+            </a>
+            .
           </p>
         )}
       </div>
