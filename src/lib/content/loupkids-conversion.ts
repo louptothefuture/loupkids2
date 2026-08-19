@@ -28,15 +28,15 @@ export const LOUPKIDS_CTA = {
 } as const;
 
 export const LOUPKIDS_OFFER = {
-  callingBadge: "Loup↔Loup + App→Loup always free",
+  callingBadge: "Loup↔Loup always free",
   callingNote:
     "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
-  callingPill: "Loup↔Loup + App→Loup always free",
+  callingPill: "Loup↔Loup always free",
   priceStackNote: "First 500 · Save 33%",
   scarcityLine: "First 500 · Save 33%",
   /** Full economics line for bullets / meta */
   callingCanonical:
-    "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
 } as const;
 
 /** Homepage offer card + PDP buy-box — keep in sync */
@@ -47,7 +47,6 @@ export const LOUPKIDS_OFFER_CARD = {
     "A phone for your kid. No apps, no feeds, no strangers. Calls only — to the people you approve.",
   callingBullets: [
     "Loup ↔ Loup calls: always free",
-    "App → Loup paging: always free",
     "External contacts: free for 1 year, then $10/mo — cancel anytime",
   ],
   logistics: [
@@ -102,7 +101,7 @@ export const LOUPKIDS_CART_TRUST = [
 
 /**
  * Calling economics — keep in sync with LOUPKIDS_OFFER.callingCanonical
- * - Loup↔Loup + App→Loup = always free
+ * - Loup↔Loup = always free
  * - First 500: year 1 unlimited external contacts, then $10/mo
  */
 export const LOUPKIDS_CALLING_PRICING = {
@@ -111,15 +110,15 @@ export const LOUPKIDS_CALLING_PRICING = {
   intro: LOUPKIDS_OFFER.callingCanonical,
   tiers: [
     {
-      label: "Loup to Loup + App→Loup",
+      label: "Loup to Loup",
       price: "Always free",
-      body: "Calls between Loup devices and from the parent app to Loup are unlimited — no plan, no monthly bill.",
+      body: "Calls between Loup devices are unlimited — no plan, no monthly bill.",
     },
     {
       label: "External contacts",
       price: "Free for first year",
       comparePrice: "$10 a month",
-      body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10 a month (cancel anytime) — or keep Loup↔Loup and App→Loup free forever.",
+      body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10 a month (cancel anytime) — or keep Loup↔Loup free forever.",
     },
   ],
   cta: { label: "Stay in touch", href: "/shop/loup" },

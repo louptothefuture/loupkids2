@@ -53,7 +53,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
+      "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
   },
   {
     section: "Plans & Calling",
@@ -65,7 +65,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Does LOUP work away from home Wi-Fi?",
     answer:
-      "Loup connects over Wi-Fi — at home, school, or anywhere you trust. No SIM card and no carrier bill. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+      "Loup connects over Wi-Fi — at home, school, or anywhere you trust. No SIM card and no carrier bill. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   },
   {
     section: "Shipping",
@@ -174,12 +174,12 @@ export const FALLBACK_SPECS: Spec[] = [
   {
     group: "Calling",
     label: "Real phone numbers",
-    value: "Loup↔Loup + App→Loup always free · First 500: year 1 external · then $10/mo",
+    value: "Loup↔Loup always free · First 500: year 1 external · then $10/mo",
   },
   {
     group: "Calling",
     label: "Contacts",
-    value: "Unlimited parent-approved list; Loup↔Loup and App→Loup always free",
+    value: "Unlimited parent-approved list; Loup↔Loup always free",
   },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
   { group: "Battery & Charging", label: "Battery", value: "Rechargeable and replaceable" },
@@ -197,7 +197,7 @@ export const PRESS_KIT_FACTS = [
   { label: "Product", value: "LOUP — screenless voice phone for kids" },
   {
     label: "Price",
-    value: "$129 device · Loup↔Loup + App→Loup free · First 500 year-1 external",
+    value: "$129 device · Loup↔Loup free · First 500 year-1 external",
   },
   { label: "Category", value: "Smartphone alternative / anti-screen hardware" },
   { label: "Contact", value: "hi@loupkids.com" },

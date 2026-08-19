@@ -201,7 +201,7 @@ export const LOUPKIDS_ACCORDION = [
   },
   {
     title: "WiFi Only",
-    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   },
   {
     title: "Data? Closed — you own it.",
@@ -372,7 +372,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     q: "Are there monthly fees or subscriptions?",
     a: {
       paragraphs: [
-        "Loup↔Loup + App→Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
+        "Loup↔Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
         "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
       ],
     },
@@ -471,7 +471,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 export const LOUPKIDS_STORE = {
   headline: "Pre-order Loup",
   subheadline:
-    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
+    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -503,12 +503,12 @@ export const LOUPKIDS_SPECS = [
   {
     group: "Calling",
     label: "Real phone numbers",
-    value: "Loup↔Loup + App→Loup always free · First 500: year 1 external · then $10/mo",
+    value: "Loup↔Loup always free · First 500: year 1 external · then $10/mo",
   },
   {
     group: "Calling",
     label: "Contacts",
-    value: "Unlimited parent-approved list; Loup↔Loup and App→Loup always free",
+    value: "Unlimited parent-approved list; Loup↔Loup always free",
   },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card, parent app" },

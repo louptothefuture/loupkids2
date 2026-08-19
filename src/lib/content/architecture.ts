@@ -88,7 +88,7 @@ export const PRICING_TIERS = [
     period: "First 500 · $199 at launch",
     highlight: true,
     features: [
-      "Loup↔Loup + App→Loup always free",
+      "Loup↔Loup always free",
       "First 500: 1 year unlimited external contacts · then $10/mo",
       "Parent app — contacts, quiet hours, page",
       "Works on home, school & hotspot Wi-Fi",

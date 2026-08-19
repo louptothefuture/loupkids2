@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | LOUP",
   },
   description:
-    "Loup is the phone before their first smartphone — approved contacts only, no feeds, no algorithms. First 500 for $129 (Save 33%). Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
+    "Loup is the phone before their first smartphone — approved contacts only, no feeds, no algorithms. First 500 for $129 (Save 33%). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
   keywords: [
     "smartphone alternative for kids",
     "kids phone no screen",

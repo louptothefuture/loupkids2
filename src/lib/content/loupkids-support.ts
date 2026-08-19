@@ -46,7 +46,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Real phone numbers",
-        body: "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). Add contacts with phone numbers in the parent app — US and Canada only today. After year one, renew the calling plan in Billing if you want external numbers.",
+        body: "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). Add contacts with phone numbers in the parent app — US and Canada only today. After year one, renew the calling plan in Billing if you want external numbers.",
       },
       {
         heading: "Limits",
@@ -80,7 +80,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
+        body: "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
       },
       {
         heading: "Subscribe",
