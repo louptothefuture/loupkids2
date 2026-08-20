@@ -2,13 +2,13 @@
 /**
  * Daily Reddit digest for Loup: kids + phones/screens, last 24 hours.
  *
- * No pnpm. From the repo on a Mac:
+ * No pnpm. From a Mac home folder:
  *
- *   brew install node          # once, if `node -v` fails
- *   cd /path/to/loupkids2
- *   node scripts/reddit-daily.mjs
- *   node scripts/reddit-daily.mjs --watch
- *   node scripts/reddit-daily.mjs --self-check
+ *   cd ~
+ *   git clone -b cursor/reddit-daily-scraper-61e1 https://github.com/louptothefuture/loupkids2.git
+ *   cd loupkids2
+ *   ./scripts/reddit-daily
+ *   open data/reddit-daily/latest.html
  *
  * Read-only. Never comments or hijacks Tin Can threads.
  */
@@ -336,16 +336,16 @@ function printDigest(hits, nowMs, hours, skippedTinCan, scanned) {
 function printHelp() {
   console.log(`Loup Reddit daily — kids + phones/screens, last 24h. Read-only.
 
-Need Node 18+ (not pnpm). On a Mac:
+From your Mac home folder (Node is enough; skip pnpm):
 
-  brew install node
-  cd /path/to/loupkids2
-  node scripts/reddit-daily.mjs
+  cd ~
+  git clone -b cursor/reddit-daily-scraper-61e1 https://github.com/louptothefuture/loupkids2.git
+  cd loupkids2
+  ./scripts/reddit-daily
+  open data/reddit-daily/latest.html
 
 Writes data/reddit-daily/YYYY-MM-DD.json, .csv, and .html
-Open the HTML in a browser (not on loupkids.com):
-
-  open data/reddit-daily/latest.html
+(local files, not a page on loupkids.com)
 
 Options:
   --watch         run again every 24 hours

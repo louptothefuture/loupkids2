@@ -1,6 +1,9 @@
 #!/bin/sh
-# Mac launcher — no pnpm. Usage: ./scripts/reddit-daily
-# From anywhere: /path/to/loupkids2/scripts/reddit-daily
+# Mac launcher — no pnpm.
+#   cd ~
+#   git clone -b cursor/reddit-daily-scraper-61e1 https://github.com/louptothefuture/loupkids2.git
+#   cd loupkids2
+#   ./scripts/reddit-daily
 set -e
 HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$HERE/.."
