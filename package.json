@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "seed:sanity": "node --experimental-strip-types scripts/seed-sanity.ts",
-    "reddit:daily": "NODE_NO_WARNINGS=1 node --experimental-strip-types scripts/reddit-daily.ts"
+    "reddit:daily": "node scripts/reddit-daily.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^6.2.0",

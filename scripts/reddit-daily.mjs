@@ -1,17 +1,24 @@
+#!/usr/bin/env node
 /**
  * Daily Reddit digest for Loup: kids + phones/screens, last 24 hours.
  *
- * Read-only. Never comments, votes, or hijacks threads — especially Tin Can.
- * Reddit's JSON API is blocked from most datacenters; this uses public RSS.
+ * No pnpm. From the repo on a Mac:
  *
- *   pnpm reddit:daily
- *   pnpm reddit:daily -- --watch
- *   pnpm reddit:daily -- --self-check
+ *   brew install node          # once, if `node -v` fails
+ *   cd /path/to/loupkids2
+ *   node scripts/reddit-daily.mjs
+ *   node scripts/reddit-daily.mjs --watch
+ *   node scripts/reddit-daily.mjs --self-check
+ *
+ * Read-only. Never comments or hijacks Tin Can threads.
  */
 
 import { mkdir, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
+const HERE = dirname(fileURLToPath(import.meta.url));
+const REPO = join(HERE, "..");
 const HOUR_MS = 60 * 60 * 1000;
 const DEFAULT_HOURS = 24;
 /** ponytail: 5 RSS pages/feed (~500 posts). Upgrade: Reddit OAuth listing API. */
@@ -37,7 +44,7 @@ const FEEDS = [
     name: "screens",
     path: "nosurf+digitalminimalism+dumbphones",
   },
-] as const;
+];
 
 const TIN_CAN =
   /\btin[\s-]?cans?\b|\btincan(?:phone)?\b|\btin can phone\b/i;
@@ -62,34 +69,21 @@ const PARENTING_SUBS = new Set([
   "ParentingADHD",
 ]);
 
-type Post = {
-  id: string;
-  subreddit: string;
-  title: string;
-  body: string;
-  author: string;
-  url: string;
-  published: string;
-  publishedMs: number;
-};
-
-type Hit = Post & { score: number; reasons: string[] };
-
-function sleep(ms: number) {
+function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-function xmlText(block: string, tag: string): string {
+function xmlText(block, tag) {
   const m = block.match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)</${tag}>`, "i"));
   return m ? m[1].trim() : "";
 }
 
-function xmlAttr(block: string, tag: string, attr: string): string {
+function xmlAttr(block, tag, attr) {
   const m = block.match(new RegExp(`<${tag}[^>]*\\s${attr}="([^"]+)"`, "i"));
   return m ? m[1] : "";
 }
 
-function decodeEntities(s: string): string {
+function decodeEntities(s) {
   let cur = s;
   for (let i = 0; i < 3; i++) {
     const next = cur
@@ -107,7 +101,7 @@ function decodeEntities(s: string): string {
   return cur;
 }
 
-function htmlToText(html: string): string {
+function htmlToText(html) {
   const decoded = decodeEntities(html);
   return decoded
     .replace(/<br\s*\/?>/gi, "\n")
@@ -117,26 +111,21 @@ function htmlToText(html: string): string {
     .trim();
 }
 
-export function isTinCanThread(text: string): boolean {
+function isTinCanThread(text) {
   return TIN_CAN.test(text);
 }
 
-export function isWithinHours(publishedMs: number, nowMs: number, hours: number): boolean {
+function isWithinHours(publishedMs, nowMs, hours) {
   return publishedMs > nowMs - hours * HOUR_MS && publishedMs <= nowMs;
 }
 
-export function relevance(
-  title: string,
-  body: string,
-  subreddit = "",
-): { score: number; reasons: string[] } {
+function relevance(title, body, subreddit = "") {
   const text = `${title}\n${body}`;
   if (isTinCanThread(text)) return { score: 0, reasons: ["tincan"] };
   const kid = KID.test(text);
   const device = DEVICE.test(text);
   if (!kid || !device) return { score: 0, reasons: [] };
   const high = HIGH_SIGNAL.test(text);
-  // Adult screen/ADHD subs need first-phone / screen-time language, not a passing "kids".
   if (!PARENTING_SUBS.has(subreddit) && !high) return { score: 0, reasons: [] };
 
   let score = 2;
@@ -152,8 +141,8 @@ export function relevance(
   return { score, reasons };
 }
 
-export function parseAtom(xml: string, fallbackSub: string): Post[] {
-  const posts: Post[] = [];
+function parseAtom(xml, fallbackSub) {
+  const posts = [];
   const chunks = xml.split(/<entry>/i).slice(1);
   for (const chunk of chunks) {
     const entry = chunk.split(/<\/entry>/i)[0] ?? "";
@@ -180,7 +169,7 @@ export function parseAtom(xml: string, fallbackSub: string): Post[] {
   return posts;
 }
 
-async function fetchRss(url: string): Promise<{ status: number; xml: string }> {
+async function fetchRss(url) {
   for (let attempt = 0; attempt < 6; attempt++) {
     const res = await fetch(url, {
       headers: {
@@ -202,12 +191,8 @@ async function fetchRss(url: string): Promise<{ status: number; xml: string }> {
   return { status: 429, xml: "" };
 }
 
-async function postsFromFeed(
-  feed: (typeof FEEDS)[number],
-  nowMs: number,
-  hours: number,
-): Promise<Post[]> {
-  const kept: Post[] = [];
+async function postsFromFeed(feed, nowMs, hours) {
+  const kept = [];
   let after = "";
   for (let page = 0; page < MAX_PAGES; page++) {
     if (page > 0) await sleep(GAP_MS);
@@ -236,19 +221,13 @@ async function postsFromFeed(
   return kept;
 }
 
-function formatAge(ms: number, nowMs: number): string {
+function formatAge(ms, nowMs) {
   const h = Math.max(0, (nowMs - ms) / HOUR_MS);
   if (h < 1) return `${Math.round(h * 60)}m`;
   return `${h.toFixed(1)}h`;
 }
 
-function printDigest(
-  hits: Hit[],
-  nowMs: number,
-  hours: number,
-  skippedTinCan: number,
-  scanned: number,
-) {
+function printDigest(hits, nowMs, hours, skippedTinCan, scanned) {
   const since = new Date(nowMs - hours * HOUR_MS).toISOString();
   console.log(`Loup Reddit daily — last ${hours}h (since ${since})`);
   console.log(
@@ -270,13 +249,35 @@ function printDigest(
   }
 }
 
-function parseArgs(argv: string[]) {
+function printHelp() {
+  console.log(`Loup Reddit daily — kids + phones/screens, last 24h. Read-only.
+
+Need Node 18+ (not pnpm). On a Mac:
+
+  brew install node
+  cd /path/to/loupkids2
+  node scripts/reddit-daily.mjs
+
+Options:
+  --watch         run again every 24 hours
+  --self-check    no network; verify filters
+  --hours 24      lookback window
+  --out DIR       JSON output directory
+  --help
+`);
+}
+
+function parseArgs(argv) {
+  if (argv.includes("--help") || argv.includes("-h")) {
+    printHelp();
+    process.exit(0);
+  }
   const watch = argv.includes("--watch");
   const selfCheck = argv.includes("--self-check");
   const hoursIdx = argv.indexOf("--hours");
   const hours = hoursIdx >= 0 ? Number(argv[hoursIdx + 1]) : DEFAULT_HOURS;
   const outIdx = argv.indexOf("--out");
-  const outDir = outIdx >= 0 ? argv[outIdx + 1] : "data/reddit-daily";
+  const outDir = outIdx >= 0 ? argv[outIdx + 1] : join(REPO, "data/reddit-daily");
   if (!Number.isFinite(hours) || hours <= 0 || hours > 168) {
     throw new Error("--hours must be 1–168");
   }
@@ -285,7 +286,7 @@ function parseArgs(argv: string[]) {
 
 function selfCheck() {
   const now = Date.parse("2026-08-20T18:00:00Z");
-  const checks: Array<[string, boolean]> = [
+  const checks = [
     ["tincan title dropped", isTinCanThread("Anyone try the TinCan phone for kids?")],
     ["tincan spaced dropped", isTinCanThread("tin can vs gabb for a 9 year old")],
     ["tin canister kept", !isTinCanThread("tin canister of snacks at school")],
@@ -339,14 +340,14 @@ function selfCheck() {
   console.log(`self-check ok (${checks.length})`);
 }
 
-async function runOnce(hours: number, outDir: string) {
+async function runOnce(hours, outDir) {
   const nowMs = Date.now();
-  const seen = new Set<string>();
-  const windowPosts: Post[] = [];
+  const seen = new Set();
+  const windowPosts = [];
   let skippedTinCan = 0;
 
   for (let i = 0; i < FEEDS.length; i++) {
-    const feed = FEEDS[i]!;
+    const feed = FEEDS[i];
     if (i > 0) await sleep(GAP_MS);
     process.stderr.write(`fetch ${feed.name}…\n`);
     const posts = await postsFromFeed(feed, nowMs, hours);
@@ -357,7 +358,7 @@ async function runOnce(hours: number, outDir: string) {
     }
   }
 
-  const hits: Hit[] = [];
+  const hits = [];
   for (const post of windowPosts) {
     const rel = relevance(post.title, post.body, post.subreddit);
     if (rel.reasons.includes("tincan")) {
@@ -392,6 +393,10 @@ async function runOnce(hours: number, outDir: string) {
 }
 
 async function main() {
+  if (typeof fetch !== "function") {
+    console.error("Need Node 18+ (you have " + process.version + "). On a Mac: brew install node");
+    process.exit(1);
+  }
   const args = parseArgs(process.argv.slice(2));
   if (args.selfCheck) {
     selfCheck();
@@ -407,10 +412,7 @@ async function main() {
   }
 }
 
-const isMain = process.argv[1]?.includes("reddit-daily");
-if (isMain) {
-  main().catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
-}
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
