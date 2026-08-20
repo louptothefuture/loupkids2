@@ -50,7 +50,7 @@ export const USE_CASES = [
     headline: "Peace of mind, finally.",
     body: "You know exactly who they can reach — and who can't reach them. Approved contacts, quiet hours, and a device with nothing to scroll. Reachability without the anxiety of handing them the whole internet.",
     image: "/images/lifestyle/girl-crisscross.jpg",
-    alt: "A kid on a call with LOUP",
+    alt: "Kids on a call with LOUP",
   },
   {
     id: "kids",
@@ -58,7 +58,7 @@ export const USE_CASES = [
     headline: "This one's yours.",
     body: "Not a baby phone. Yours. Real calls to your people — no apps, no weird internet stuff. Do homework together. Plan your weekend. Catch up with friends. Make it yours.",
     image: "/images/street/phone-throw.jpg",
-    alt: "A kid with LOUP",
+    alt: "Kids with LOUP",
   },
   {
     id: "communities",
@@ -88,7 +88,7 @@ export const PRICING_TIERS = [
     period: "First 500 · $199 at launch",
     highlight: true,
     features: [
-      "Loup↔Loup + App→Loup always free",
+      "Loup↔Loup always free",
       "First 500: 1 year unlimited external contacts · then $10/mo",
       "Parent app — contacts, quiet hours, page",
       "Works on home, school & hotspot Wi-Fi",
@@ -106,10 +106,10 @@ export const PRICING_TIERS = [
       "Everything in Wi-Fi LOUP",
       "Connectivity away from Wi-Fi (future)",
       "Same parent controls & contact list",
-      "Join the waitlist for launch pricing",
+      "Pre-order at $129 — First 500",
     ],
-    cta: "Join waitlist",
-    href: "/reserve",
+    cta: "Pre-order Loup",
+    href: "/shop/loup",
   },
 ];
 

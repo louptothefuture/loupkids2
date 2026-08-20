@@ -115,7 +115,7 @@ const docs = [
     teamBlocks: [
       {
         title: "A parent who wanted another option",
-        body: "The question was simple: how do you give a kid independence without handing them the internet?",
+        body: "The question was simple: how do you give kids independence without handing them the internet?",
       },
       {
         title: "A daughter who named the wolf",

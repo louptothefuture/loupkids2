@@ -44,7 +44,7 @@ const HOW = [
     title: "Approved contacts only",
     body: "Give kids the freedom to connect while giving yourself total peace of mind. Only the contacts you approve in the LOUP parent app can call in or out.",
     image: "/images/lifestyle/pocket-sweatshirt.jpg",
-    alt: "LOUP peeking out of a kid's sweatshirt pocket",
+    alt: "LOUP peeking out of a kids' sweatshirt pocket",
   },
   {
     step: "02",
@@ -118,7 +118,7 @@ export default async function LegacyHomePage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-t-[2rem] border-2 border-b-0 border-ink bg-cream">
               <Image
                 src="/images/street/phone-throw.jpg"
-                alt="A kid grinning while tossing his LOUP in the air"
+                alt="Kids grinning while tossing a LOUP in the air"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 45vw"

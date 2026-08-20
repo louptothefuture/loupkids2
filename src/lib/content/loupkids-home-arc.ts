@@ -118,10 +118,9 @@ export const HOME_LAUNCH = {
   /** Prefer LOUPKIDS_OFFER_CARD in UI */
   scarcityLine: "Founding Offer · First 500 Only",
   bonusBanner:
-    "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   bullets: [
     "Loup ↔ Loup calls: always free",
-    "App → Loup paging: always free",
     "External contacts: free for 1 year, then $10/mo — cancel anytime",
   ],
   e911: "Wi-Fi only · No SIM · No carrier bill. Does not support E911 emergency dialing.",
@@ -142,6 +141,6 @@ export const HOME_PILLARS = [
   { title: "Customizable Plates", body: "Swap the plate. Show what you're into." },
   {
     title: "WiFi Only",
-    body: "No SIM. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
+    body: "No SIM. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
   },
 ] as const;

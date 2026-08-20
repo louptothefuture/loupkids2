@@ -103,7 +103,7 @@ export function LoupkidsHomeLegacy() {
             transition={{ delay: 0.85, duration: 0.5, ease }}
             className="flex flex-col gap-1 text-base text-white/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
           >
-            <Link href="/reserve" className="font-medium text-white underline-offset-2 hover:underline">
+            <Link href="/shop/loup" className="font-medium text-white underline-offset-2 hover:underline">
               Join the 1,000+ families on the waitlist
             </Link>
             <p>Shipping October 2026</p>
@@ -230,7 +230,7 @@ export function LoupkidsHomeLegacy() {
           <LoupkidsOrderCta variant="light" />
           <p className="text-sm text-[var(--lk-muted)]">
             Questions?{" "}
-            <Link href="/reserve" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+            <Link href="/shop/loup" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
               {LOUPKIDS_CTA.waitlist}
             </Link>
           </p>

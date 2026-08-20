@@ -48,23 +48,37 @@ export default function AccountPage() {
               {
                 title: "Track a shipment",
                 body: "Tracking links are emailed the moment your Loup ships — check your inbox for the shipping confirmation.",
+                href: "/contact",
+                label: "Ask about an order",
               },
               {
                 title: "Start a return",
-                body: "30 days, free label, full refund. Reply to your order confirmation email or sign in above.",
+                body: "30 days, free label, full refund. Reply to your order confirmation or contact us.",
+                href: "/legal/shipping",
+                label: "Shipping & returns",
               },
               {
                 title: "Warranty claim",
-                body: "Broke doing normal kid things? Covered for 2 years. Email us a photo and your order number.",
+                body: "Broke doing normal kid things? Covered for 2 years. Email a photo and your order number.",
+                href: "/help/warranty-claim",
+                label: "Start a warranty claim",
               },
               {
                 title: "Manage calling plan",
-                body: "Upgrade, downgrade, or cancel the $10/month real-numbers plan anytime from your account.",
+                body: "Upgrade, downgrade, or cancel the $10/month real-numbers plan anytime.",
+                href: "/help/calling-plan",
+                label: "Calling plan help",
               },
             ].map((card) => (
               <div key={card.title} className="lk-card lk-card-pad">
                 <h2 className="lk-display text-lg">{card.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--lk-muted)]">{card.body}</p>
+                <Link
+                  href={card.href}
+                  className="mt-3 inline-flex text-sm underline underline-offset-4 hover:text-[var(--lk-ink)]"
+                >
+                  {card.label} →
+                </Link>
               </div>
             ))}
           </div>

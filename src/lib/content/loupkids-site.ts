@@ -70,6 +70,9 @@ export const LOUPKIDS_VIDEOS = {
 
 /** Journal cover images scraped from loupkids.com/journal/[slug] */
 export const LOUPKIDS_JOURNAL_COVERS: Record<string, string> = {
+  "why-kids-brains-need-voice-not-texts": "/images/lifestyle-new/two-kids.jpg",
+  "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":
+    "/images/lifestyle-new/kids-phones-line.jpg",
   "the-pickup-paradox-why-100-skims-are-more-dangerous-than-one-movie":
     "/images/loupkids/journal/the-pickup-paradox-why-100-skims-are-more-dangerous-than-one-movie-unsplash-image-w13BMngq7JM.jpg",
   "why-spontaneous-talk-is-the-ultimate-brain-food-for-kids":
@@ -174,7 +177,7 @@ export const LOUPKIDS_PHONE = {
 export const LOUPKIDS_PRODUCT_SHOTS = [
   { src: LOUPKIDS_IMAGES.productHiFace, alt: "Loup showing hi." },
   { src: LOUPKIDS_IMAGES.backpack, alt: "Loup in a backpack pocket" },
-  { src: LOUPKIDS_IMAGES.deskLoop, alt: "Loup on a kid desk" },
+  { src: LOUPKIDS_IMAGES.deskLoop, alt: "Loup on a kids' desk" },
 ] as const;
 
 /** Feature accordion — from loupkids-v2; no emergency calling */
@@ -201,7 +204,7 @@ export const LOUPKIDS_ACCORDION = [
   },
   {
     title: "WiFi Only",
-    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   },
   {
     title: "Data? Closed — you own it.",
@@ -215,7 +218,7 @@ export const LOUPKIDS_NOTHING = {
     { title: "Purity of Purpose", body: "No social media. No games. No rabbit holes." },
     { title: "WiFi Only", body: "No SIM card. No carrier bill. Connects over home or school Wi-Fi — simple and affordable." },
     { title: "Parent Control App", body: "Approve contacts, set call hours, and page them directly. Full control from your phone." },
-    { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive being a kid." },
+    { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive kids." },
     { title: "Data? Closed — you own it.", body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app." },
   ],
 } as const;
@@ -324,13 +327,14 @@ export const LOUPKIDS_ABOUT = {
 export const LOUPKIDS_ODE = {
   title: "Ode to the Screen",
   paragraphs: [
-    "The technology in our homes is incredible. It provides information, facilitates deep learning, and offers new ways to connect.",
-    "It is a platform for gaming, media, music and connection.",
-    "Its value is undeniable.",
-    "We love movie nights, shared playlists, and the way a good game can fill a living room with laughter.",
-    "Screens can be wonderful — especially when the whole family is in on it together.",
-    "What we want next for kids is just as bright: real independence to call their people, with childhood still full of play, presence, and voice.",
-    "That is why we built Loup — a cheerful first phone for staying close to the pack, while the big screens stay for the moments you share at home.",
+    "We don't hate screens. Honestly, we love them.",
+    "Movie nights where everyone's on the couch and someone's already crying at the trailer. The group playlist that somehow becomes the soundtrack to a whole summer. The game that turns a Tuesday into a memory. Screens, at their best, are where families come together.",
+    "The technology in our homes is remarkable. It connects us, teaches us, entertains us. We're not here to argue against any of that.",
+    "But a smartphone in a kid's pocket is a different thing entirely.",
+    "It's not the screen — it's everything that comes with it. The algorithm designed to hold attention past the point of wanting to stop. The group chat that never quiets down. The slow, steady pressure to perform, to post, to keep up. That's not a screen problem. That's a product design problem.",
+    "Kids need to reach their people. They need to call home from a friend's house, check in from the field, hear a familiar voice when they're not sure how they feel. That's real. That matters.",
+    "So we built Loup. Not to take something away — but to give something back.",
+    "A pocket phone with one job: calls, to the people who matter, approved by you. No apps. No internet. No algorithm working against your kid's childhood.",
   ],
   image: LOUPKIDS_IMAGES.familyMovie,
   imageAlt: "A family watching a movie together at home",
@@ -383,7 +387,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
       paragraphs: [
         "Some, yes. Less than others. Here's the honest comparison:",
         "Most kids phones in this category lock you into a carrier plan — $20–40/month on top of the device. LOUP runs on Wi-Fi. No SIM, no carrier, no monthly bill unless you want external calling (that's $10/month, cancel anytime). Over two years, LOUP typically costs less than the \"cheaper\" alternatives.",
-        "What you're also getting: aluminum construction built to last, a closed network we run ourselves (your family's data stays yours), and a device designed to look like something a kid actually wants to carry — not a plastic toy or a locked-down hand-me-down.",
+        "What you're also getting: aluminum construction built to last, a closed network we run ourselves (your family's data stays yours), and a device designed to look like something kids actually want to carry — not a plastic toy or a locked-down hand-me-down.",
         "We built LOUP because we couldn't find anything we'd actually want our own kid to have. The price reflects that.",
       ],
     },
@@ -471,7 +475,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 export const LOUPKIDS_STORE = {
   headline: "Pre-order Loup",
   subheadline:
-    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
+    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -503,12 +507,12 @@ export const LOUPKIDS_SPECS = [
   {
     group: "Calling",
     label: "Real phone numbers",
-    value: "Loup↔Loup + App→Loup always free · First 500: year 1 external · then $10/mo",
+    value: "Loup↔Loup always free · First 500: year 1 external · then $10/mo",
   },
   {
     group: "Calling",
     label: "Contacts",
-    value: "Unlimited parent-approved list; Loup↔Loup and App→Loup always free",
+    value: "Unlimited parent-approved list; Loup↔Loup always free",
   },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card, parent app" },
@@ -567,7 +571,7 @@ export const LOUPKIDS_COMPARISON = {
     },
     { label: "Battery", values: ["Rechargeable & replaceable · 5 days", "Glued-in · 1 day", "1 day (less if used)", "Plugged in"] },
     {
-      label: "Survives being a kid's",
+      label: "Survives kids",
       values: ["Built for it", "Add a $60 case & pray", "Mostly", "Wall-mounted"],
     },
     {
@@ -579,6 +583,10 @@ export const LOUPKIDS_COMPARISON = {
 } as const;
 
 export const LOUPKIDS_JOURNAL_EXCERPTS: Record<string, string> = {
+  "why-kids-brains-need-voice-not-texts":
+    "The science of how children actually develop — and why calls aren't the old way of connecting. They're the right way.",
+  "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":
+    "Social comparison has always been part of adolescence. Handing kids an engine designed to maximize it is something else entirely.",
   "the-pickup-paradox-why-100-skims-are-more-dangerous-than-one-movie":
     "We've been fighting a war over 'Total Screen Time' for a decade, but 2026 data reveals we've been looking at the wrong number. It's not how long they stay on; it's how often they return. Discover why 'The Twitch'—the impulsive act of picking up a device—is the true thief of childhood focus, and how a new class of 'Boring Tech' is helping parents reclaim depth in an age of fragmented attention.",
   "why-spontaneous-talk-is-the-ultimate-brain-food-for-kids":

@@ -4,6 +4,7 @@ export type HelpArticle = {
   category: string;
   summary: string;
   sections: { heading?: string; body: string }[];
+  related?: { href: string; label: string }[];
 };
 
 export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
@@ -45,7 +46,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Real phone numbers",
-        body: "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). Add contacts with phone numbers in the parent app — US and Canada only today. After year one, renew the calling plan in Billing if you want external numbers.",
+        body: "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). Add contacts with phone numbers in the parent app — US and Canada only today. After year one, renew the calling plan in Billing if you want external numbers.",
       },
       {
         heading: "Limits",
@@ -79,7 +80,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
+        body: "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
       },
       {
         heading: "Subscribe",
@@ -102,7 +103,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Install a new plate",
-        body: "Align the replacement plate with the top edge first, then press down until you hear a click. Plates are sold separately in the store — browse patterns or upload a custom photo.",
+        body: "Align the replacement plate with the top edge first, then press down until you hear a click. Patterns and customs ship after launch — Silver first.",
       },
       {
         heading: "Care",
@@ -121,12 +122,17 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Start a claim",
-        body: "Email hello@loupkids.com with your order number, a short description of the issue, and photos if relevant. We respond within one business day.",
+        body: "Email hi@loupkids.com with your order number, a short description of the issue, and photos if relevant. We respond within one business day.",
       },
       {
         heading: "Returns",
-        body: "Not the right fit? You have 30 days for a full refund with free return shipping. See our shipping and returns policy for details.",
+        body: "Not the right fit? You have 30 days for a full refund with free return shipping.",
       },
+    ],
+    related: [
+      { href: "/contact", label: "Contact support" },
+      { href: "/legal/warranty", label: "Warranty & returns" },
+      { href: "/legal/shipping", label: "Shipping" },
     ],
   },
   {
@@ -312,7 +318,7 @@ export const LOUPKIDS_FOOTER_SUPPORT = [
   { href: "/help", label: "Help center" },
   { href: "/setup", label: "Setup guide" },
   { href: "/resources", label: "Parent resources" },
-  { href: "/reserve", label: "Waitlist" },
+  { href: "/help/warranty-claim", label: "Returns" },
 ] as const;
 
 export function getHelpArticle(slug: string) {

@@ -29,7 +29,8 @@ export default function CoppaPage() {
       <h2 className="display mt-8 text-2xl text-ink">Your rights</h2>
       <p>
         Parents may review, delete, or refuse further collection of a child&apos;s information by
-        contacting {SITE.email}.
+        contacting{" "}
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
       </p>
     </LegalLayout>
   );

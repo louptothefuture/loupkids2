@@ -174,12 +174,12 @@ export const FALLBACK_SPECS: Spec[] = [
   {
     group: "Calling",
     label: "Real phone numbers",
-    value: "Loup↔Loup + App→Loup always free · First 500: year 1 external · then $10/mo",
+    value: "Loup↔Loup always free · First 500: year 1 external · then $10/mo",
   },
   {
     group: "Calling",
     label: "Contacts",
-    value: "Unlimited parent-approved list; Loup↔Loup and App→Loup always free",
+    value: "Unlimited parent-approved list; Loup↔Loup always free",
   },
   { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
   { group: "Battery & Charging", label: "Battery", value: "Rechargeable and replaceable" },
@@ -197,7 +197,7 @@ export const PRESS_KIT_FACTS = [
   { label: "Product", value: "LOUP — screenless voice phone for kids" },
   {
     label: "Price",
-    value: "$129 device · Loup↔Loup + App→Loup free · First 500 year-1 external",
+    value: "$129 device · Loup↔Loup free · First 500 year-1 external",
   },
   { label: "Category", value: "Smartphone alternative / anti-screen hardware" },
   { label: "Contact", value: "hi@loupkids.com" },

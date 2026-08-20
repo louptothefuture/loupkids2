@@ -21,7 +21,7 @@ const COLUMNS = [
     heading: "Company",
     links: [
       { href: "/contact", label: "Contact" },
-      { href: "/faq#shipping", label: "Shipping & Returns" },
+      { href: "/legal/shipping", label: "Shipping & Returns" },
     ],
   },
 ];
