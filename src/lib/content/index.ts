@@ -50,18 +50,24 @@ export async function getPosts(): Promise<Post[]> {
     { next: { revalidate: 300, tags: ["post"] } },
   );
 
-  if (!raw?.length || raw.length < enrichedFallback.length) {
-    return enrichedFallback;
-  }
+  if (!raw?.length) return enrichedFallback;
 
-  return raw.map((r: any) => ({
+  const sanityPosts: Post[] = raw.map((r: any) => ({
     ...r,
     author: r.author ?? { name: "LOUP", role: "" },
     category: r.category ?? { title: "Journal", slug: "journal" },
-    coverImage: urlFor(r.coverImage),
+    coverImage: LOUPKIDS_JOURNAL_COVERS[r.slug] ?? urlFor(r.coverImage),
+    excerpt: LOUPKIDS_JOURNAL_EXCERPTS[r.slug] ?? r.excerpt,
     body: { source: "sanity", value: r.body },
     relatedSlugs: r.relatedSlugs ?? [],
   }));
+
+  // ponytail: merge code-only posts so Sanity never hides repo fallback articles
+  const sanitySlugs = new Set(sanityPosts.map((p) => p.slug));
+  const codeOnly = enrichedFallback.filter((p) => !sanitySlugs.has(p.slug));
+  return [...codeOnly, ...sanityPosts].sort((a, b) =>
+    b.publishedAt.localeCompare(a.publishedAt),
+  );
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
