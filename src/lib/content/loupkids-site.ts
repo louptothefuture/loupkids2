@@ -70,6 +70,9 @@ export const LOUPKIDS_VIDEOS = {
 
 /** Journal cover images scraped from loupkids.com/journal/[slug] */
 export const LOUPKIDS_JOURNAL_COVERS: Record<string, string> = {
+  "why-kids-brains-need-voice-not-texts": "/images/lifestyle-new/two-kids.jpg",
+  "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":
+    "/images/lifestyle-new/kids-phones-line.jpg",
   "the-pickup-paradox-why-100-skims-are-more-dangerous-than-one-movie":
     "/images/loupkids/journal/the-pickup-paradox-why-100-skims-are-more-dangerous-than-one-movie-unsplash-image-w13BMngq7JM.jpg",
   "why-spontaneous-talk-is-the-ultimate-brain-food-for-kids":
@@ -580,6 +583,10 @@ export const LOUPKIDS_COMPARISON = {
 } as const;
 
 export const LOUPKIDS_JOURNAL_EXCERPTS: Record<string, string> = {
+  "why-kids-brains-need-voice-not-texts":
+    "The science of how children actually develop — and why calls aren't the old way of connecting. They're the right way.",
+  "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":
+    "Social comparison has always been part of adolescence. Handing kids an engine designed to maximize it is something else entirely.",
   "the-pickup-paradox-why-100-skims-are-more-dangerous-than-one-movie":
     "We've been fighting a war over 'Total Screen Time' for a decade, but 2026 data reveals we've been looking at the wrong number. It's not how long they stay on; it's how often they return. Discover why 'The Twitch'—the impulsive act of picking up a device—is the true thief of childhood focus, and how a new class of 'Boring Tech' is helping parents reclaim depth in an age of fragmented attention.",
   "why-spontaneous-talk-is-the-ultimate-brain-food-for-kids":
