@@ -14,30 +14,29 @@ import { join } from "node:path";
 
 const HOUR_MS = 60 * 60 * 1000;
 const DEFAULT_HOURS = 24;
-/** ponytail: 5 RSS pages/sub (~500 posts). Upgrade: Reddit OAuth listing API. */
+/** ponytail: 5 RSS pages/feed (~500 posts). Upgrade: Reddit OAuth listing API. */
 const MAX_PAGES = 5;
 const PAGE_SIZE = 100;
-const GAP_MS = 1500;
+const GAP_MS = 8000;
 
 const USER_AGENT =
   process.env.REDDIT_USER_AGENT ??
   "Mozilla/5.0 (compatible; LoupKidsResearch/0.1; +https://loupkids.com; hi@loupkids.com)";
 
-const SUBREDDITS = [
-  "Mommit",
-  "daddit",
-  "Parenting",
-  "ScienceBasedParenting",
-  "ADHD",
-  "adhdwomen",
-  "ADHDparenting",
-  "ParentingADHD",
-  "toddlers",
-  "preteen",
-  "teenagers",
-  "nosurf",
-  "digitalminimalism",
-  "dumbphones",
+/** Combined RSS so we do not hit Reddit once per subreddit. */
+const FEEDS = [
+  {
+    name: "parenting",
+    path: "Mommit+daddit+Parenting+ScienceBasedParenting+toddlers+preteen",
+  },
+  {
+    name: "adhd",
+    path: "ADHD+adhdwomen+ADHDparenting+ParentingADHD",
+  },
+  {
+    name: "screens",
+    path: "nosurf+digitalminimalism+dumbphones",
+  },
 ] as const;
 
 const TIN_CAN =
@@ -50,7 +49,18 @@ const DEVICE =
   /\b(phones?|smartphones?|iphones?|ipads?|tablets?|dumbphones?|feature[- ]phones?|screen[- ]times?|screen[- ]free|screenfree|screen[- ]addiction|first[- ]phone|kids?'?[- ]phones?|android phones?|gabb|bark phone|pinwheel|troomi|ticktalk)\b/i;
 
 const HIGH_SIGNAL =
-  /\b(first[- ]phone|kids?'?[- ]phones?|screen[- ]free|screenfree|screen[- ]time|dumbphones?|too young for (?:a )?phone|phone (?:before|age))\b/i;
+  /\b(first[- ]phone|kids?'?[- ]phones?|screen[- ]free|screenfree|screen[- ]times?|too young for (?:a )?phone|phone (?:before|age)|no[- ]smartphone)\b/i;
+
+const PARENTING_SUBS = new Set([
+  "Mommit",
+  "daddit",
+  "Parenting",
+  "ScienceBasedParenting",
+  "toddlers",
+  "preteen",
+  "ADHDparenting",
+  "ParentingADHD",
+]);
 
 type Post = {
   id: string;
@@ -80,15 +90,21 @@ function xmlAttr(block: string, tag: string, attr: string): string {
 }
 
 function decodeEntities(s: string): string {
-  return s
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))
-    .replace(/&nbsp;/gi, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'");
+  let cur = s;
+  for (let i = 0; i < 3; i++) {
+    const next = cur
+      .replace(/&amp;/g, "&")
+      .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+      .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&apos;/g, "'");
+    if (next === cur) break;
+    cur = next;
+  }
+  return cur;
 }
 
 function htmlToText(html: string): string {
@@ -109,16 +125,23 @@ export function isWithinHours(publishedMs: number, nowMs: number, hours: number)
   return publishedMs > nowMs - hours * HOUR_MS && publishedMs <= nowMs;
 }
 
-export function relevance(title: string, body: string): { score: number; reasons: string[] } {
+export function relevance(
+  title: string,
+  body: string,
+  subreddit = "",
+): { score: number; reasons: string[] } {
   const text = `${title}\n${body}`;
   if (isTinCanThread(text)) return { score: 0, reasons: ["tincan"] };
   const kid = KID.test(text);
   const device = DEVICE.test(text);
   if (!kid || !device) return { score: 0, reasons: [] };
+  const high = HIGH_SIGNAL.test(text);
+  // Adult screen/ADHD subs need first-phone / screen-time language, not a passing "kids".
+  if (!PARENTING_SUBS.has(subreddit) && !high) return { score: 0, reasons: [] };
 
   let score = 2;
   const reasons = ["kids+phone/screens"];
-  if (HIGH_SIGNAL.test(text)) {
+  if (high) {
     score += 3;
     reasons.push("first-phone/screen-free");
   }
@@ -147,7 +170,11 @@ export function parseAtom(xml: string, fallbackSub: string): Post[] {
       xmlAttr(entry, "category", "label").replace(/^r\//, "") ||
       xmlAttr(entry, "category", "term") ||
       fallbackSub;
-    const body = htmlToText(xmlText(entry, "content"));
+    if (!sub || sub === "multi") continue;
+    const body = htmlToText(xmlText(entry, "content")).replace(
+      /\s*submitted by[\s\S]*$/i,
+      "",
+    );
     posts.push({ id, subreddit: sub, title, body, author, url, published, publishedMs });
   }
   return posts;
@@ -163,7 +190,8 @@ async function fetchRss(url: string): Promise<{ status: number; xml: string }> {
     });
     if (res.status === 429) {
       const retry = Number(res.headers.get("retry-after"));
-      const wait = (Number.isFinite(retry) && retry > 0 ? retry : 4 + attempt * 4) * 1000;
+      const wait =
+        (Number.isFinite(retry) && retry > 0 ? retry : 20 + attempt * 15) * 1000;
       console.error(`rate limited, waiting ${wait / 1000}s…`);
       await sleep(wait);
       continue;
@@ -174,24 +202,28 @@ async function fetchRss(url: string): Promise<{ status: number; xml: string }> {
   return { status: 429, xml: "" };
 }
 
-async function postsFromSub(sub: string, nowMs: number, hours: number): Promise<Post[]> {
+async function postsFromFeed(
+  feed: (typeof FEEDS)[number],
+  nowMs: number,
+  hours: number,
+): Promise<Post[]> {
   const kept: Post[] = [];
   let after = "";
   for (let page = 0; page < MAX_PAGES; page++) {
     if (page > 0) await sleep(GAP_MS);
     const qs = new URLSearchParams({ limit: String(PAGE_SIZE) });
     if (after) qs.set("after", after);
-    const url = `https://www.reddit.com/r/${sub}/new/.rss?${qs}`;
+    const url = `https://www.reddit.com/r/${feed.path}/new/.rss?${qs}`;
     const { status, xml } = await fetchRss(url);
     if (status === 404) {
-      console.error(`skip r/${sub} (missing)`);
+      console.error(`skip ${feed.name} (missing)`);
       return [];
     }
     if (status !== 200 || !xml.includes("<entry>")) {
-      if (page === 0) console.error(`skip r/${sub} (HTTP ${status})`);
+      if (page === 0) console.error(`skip ${feed.name} (HTTP ${status})`);
       break;
     }
-    const posts = parseAtom(xml, sub);
+    const posts = parseAtom(xml, feed.name);
     if (!posts.length) break;
     for (const post of posts) {
       if (isWithinHours(post.publishedMs, nowMs, hours)) kept.push(post);
@@ -210,16 +242,26 @@ function formatAge(ms: number, nowMs: number): string {
   return `${h.toFixed(1)}h`;
 }
 
-function printDigest(hits: Hit[], nowMs: number, hours: number, skippedTinCan: number) {
+function printDigest(
+  hits: Hit[],
+  nowMs: number,
+  hours: number,
+  skippedTinCan: number,
+  scanned: number,
+) {
   const since = new Date(nowMs - hours * HOUR_MS).toISOString();
   console.log(`Loup Reddit daily — last ${hours}h (since ${since})`);
-  console.log(`${hits.length} relevant posts · ${skippedTinCan} Tin Can threads skipped\n`);
+  console.log(
+    `${hits.length} relevant · scanned ${scanned} posts · ${skippedTinCan} Tin Can threads skipped\n`,
+  );
   if (!hits.length) {
     console.log("Nothing matched kids + phones/screens in this window.");
     return;
   }
   for (const hit of hits) {
-    console.log(`[r/${hit.subreddit}] ${formatAge(hit.publishedMs, nowMs)} ago · ${hit.reasons.join(", ")}`);
+    console.log(
+      `[r/${hit.subreddit}] ${formatAge(hit.publishedMs, nowMs)} ago · ${hit.reasons.join(", ")}`,
+    );
     console.log(hit.title);
     console.log(hit.url);
     const snippet = hit.body.slice(0, 220);
@@ -249,11 +291,29 @@ function selfCheck() {
     ["tin canister kept", !isTinCanThread("tin canister of snacks at school")],
     [
       "first phone hits",
-      relevance("When should my 10 year old get a phone?", "").score > 0,
+      relevance("When should my 10 year old get a phone?", "", "daddit").score > 0,
     ],
-    ["adult phone miss", relevance("Best flagship Android 2026", "").score === 0],
-    ["adhd phone without kid miss", relevance("ADHD makes me lose my phone", "").score === 0],
-    ["screen time hits", relevance("Screen time for my 8yo is out of control", "").score > 0],
+    ["adult phone miss", relevance("Best flagship Android 2026", "", "ADHD").score === 0],
+    [
+      "adhd phone without kid miss",
+      relevance("ADHD makes me lose my phone", "", "ADHD").score === 0,
+    ],
+    [
+      "screen time hits",
+      relevance("Screen time for my 8yo is out of control", "", "Mommit").score > 0,
+    ],
+    [
+      "adult dumbphone miss",
+      relevance(
+        "The dumbphone 2 is perfect",
+        "All my photos of my kids are in iCloud.",
+        "dumbphones",
+      ).score === 0,
+    ],
+    [
+      "teen phone-case miss",
+      relevance("Added Batman charm to my phone case", "", "teenagers").score === 0,
+    ],
     ["within 24h", isWithinHours(now - 2 * HOUR_MS, now, 24)],
     ["older than 24h", !isWithinHours(now - 25 * HOUR_MS, now, 24)],
     ["future dropped", !isWithinHours(now + HOUR_MS, now, 24)],
@@ -285,11 +345,11 @@ async function runOnce(hours: number, outDir: string) {
   const windowPosts: Post[] = [];
   let skippedTinCan = 0;
 
-  for (let i = 0; i < SUBREDDITS.length; i++) {
-    const sub = SUBREDDITS[i]!;
+  for (let i = 0; i < FEEDS.length; i++) {
+    const feed = FEEDS[i]!;
     if (i > 0) await sleep(GAP_MS);
-    process.stderr.write(`fetch r/${sub}…\n`);
-    const posts = await postsFromSub(sub, nowMs, hours);
+    process.stderr.write(`fetch ${feed.name}…\n`);
+    const posts = await postsFromFeed(feed, nowMs, hours);
     for (const post of posts) {
       if (seen.has(post.id)) continue;
       seen.add(post.id);
@@ -299,7 +359,7 @@ async function runOnce(hours: number, outDir: string) {
 
   const hits: Hit[] = [];
   for (const post of windowPosts) {
-    const rel = relevance(post.title, post.body);
+    const rel = relevance(post.title, post.body, post.subreddit);
     if (rel.reasons.includes("tincan")) {
       skippedTinCan++;
       continue;
@@ -309,7 +369,7 @@ async function runOnce(hours: number, outDir: string) {
   }
 
   hits.sort((a, b) => b.score - a.score || b.publishedMs - a.publishedMs);
-  printDigest(hits, nowMs, hours, skippedTinCan);
+  printDigest(hits, nowMs, hours, skippedTinCan, windowPosts.length);
 
   const day = new Date(nowMs).toISOString().slice(0, 10);
   await mkdir(outDir, { recursive: true });
