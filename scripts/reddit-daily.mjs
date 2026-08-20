@@ -13,7 +13,7 @@
  * Read-only. Never comments or hijacks Tin Can threads.
  */
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -227,6 +227,90 @@ function formatAge(ms, nowMs) {
   return `${h.toFixed(1)}h`;
 }
 
+function csvCell(value) {
+  const s = String(value ?? "");
+  if (/[",\n\r]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
+  return s;
+}
+
+function toCsv(hits) {
+  const header = ["published", "subreddit", "title", "url", "score", "reasons", "body"];
+  const rows = hits.map((h) =>
+    [
+      h.published,
+      h.subreddit,
+      h.title,
+      h.url,
+      h.score,
+      (h.reasons ?? []).join("|"),
+      h.body,
+    ].map(csvCell).join(","),
+  );
+  return [header.join(","), ...rows].join("\n") + "\n";
+}
+
+function htmlEscape(s) {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function toHtml(payload) {
+  const day = (payload.scrapedAt ?? "").slice(0, 10);
+  const posts = payload.posts ?? [];
+  const cards = posts
+    .map((h) => {
+      const snippet = htmlEscape((h.body ?? "").slice(0, 280));
+      return `<article>
+  <p class="meta">r/${htmlEscape(h.subreddit)} · ${htmlEscape(h.published)} · ${htmlEscape((h.reasons ?? []).join(", "))}</p>
+  <h2><a href="${htmlEscape(h.url)}">${htmlEscape(h.title)}</a></h2>
+  <p>${snippet}${(h.body ?? "").length > 280 ? "…" : ""}</p>
+</article>`;
+    })
+    .join("\n");
+  return `<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loup Reddit daily ${htmlEscape(day)}</title>
+<style>
+  body { margin: 0 auto; max-width: 44rem; padding: 2rem 1.25rem 4rem; font: 16px/1.45 ui-sans-serif, system-ui, sans-serif; color: #111; }
+  h1 { font-size: 1.4rem; font-weight: 650; }
+  .sub { color: #444; margin-bottom: 2rem; }
+  article { border-top: 1px solid #111; padding: 1.1rem 0 1.3rem; }
+  .meta { font-size: 0.8rem; letter-spacing: 0.02em; text-transform: uppercase; color: #555; }
+  h2 { font-size: 1.05rem; margin: 0.35rem 0 0.4rem; }
+  a { color: inherit; }
+  p { margin: 0.4rem 0 0; }
+</style>
+<h1>Loup Reddit daily</h1>
+<p class="sub">${htmlEscape(day)} · ${posts.length} posts · scanned ${payload.scanned ?? "?"} · ${payload.skippedTinCan ?? 0} Tin Can skipped · local file, not on loupkids.com</p>
+${cards || "<p>Nothing matched kids + phones/screens in this window.</p>"}
+</html>
+`;
+}
+
+async function writeReports(outDir, payload) {
+  const day = (payload.scrapedAt ?? new Date().toISOString()).slice(0, 10);
+  await mkdir(outDir, { recursive: true });
+  const jsonFile = join(outDir, `${day}.json`);
+  const csvFile = join(outDir, `${day}.csv`);
+  const htmlFile = join(outDir, `${day}.html`);
+  const latestHtml = join(outDir, "latest.html");
+  const latestCsv = join(outDir, "latest.csv");
+  await writeFile(jsonFile, JSON.stringify(payload, null, 2));
+  await writeFile(csvFile, toCsv(payload.posts ?? []));
+  const html = toHtml(payload);
+  await writeFile(htmlFile, html);
+  await writeFile(latestHtml, html);
+  await writeFile(latestCsv, toCsv(payload.posts ?? []));
+  console.error(`wrote ${jsonFile}`);
+  console.error(`wrote ${csvFile}`);
+  console.error(`open ${htmlFile}`);
+}
+
 function printDigest(hits, nowMs, hours, skippedTinCan, scanned) {
   const since = new Date(nowMs - hours * HOUR_MS).toISOString();
   console.log(`Loup Reddit daily — last ${hours}h (since ${since})`);
@@ -258,11 +342,17 @@ Need Node 18+ (not pnpm). On a Mac:
   cd /path/to/loupkids2
   node scripts/reddit-daily.mjs
 
+Writes data/reddit-daily/YYYY-MM-DD.json, .csv, and .html
+Open the HTML in a browser (not on loupkids.com):
+
+  open data/reddit-daily/latest.html
+
 Options:
   --watch         run again every 24 hours
   --self-check    no network; verify filters
   --hours 24      lookback window
-  --out DIR       JSON output directory
+  --out DIR       output directory
+  --from-json F   rebuild csv/html from a saved json
   --help
 `);
 }
@@ -281,7 +371,9 @@ function parseArgs(argv) {
   if (!Number.isFinite(hours) || hours <= 0 || hours > 168) {
     throw new Error("--hours must be 1–168");
   }
-  return { watch, selfCheck, hours, outDir };
+  const fromJsonIdx = argv.indexOf("--from-json");
+  const fromJson = fromJsonIdx >= 0 ? argv[fromJsonIdx + 1] : "";
+  return { watch, selfCheck, hours, outDir, fromJson };
 }
 
 function selfCheck() {
@@ -318,6 +410,8 @@ function selfCheck() {
     ["within 24h", isWithinHours(now - 2 * HOUR_MS, now, 24)],
     ["older than 24h", !isWithinHours(now - 25 * HOUR_MS, now, 24)],
     ["future dropped", !isWithinHours(now + HOUR_MS, now, 24)],
+    ["csv quotes commas", csvCell('a, "b"') === '"a, ""b"""'],
+    ["html escapes", htmlEscape("<x>") === "&lt;x&gt;"],
   ];
 
   const xml = `<?xml version="1.0"?><feed><entry><id>t3_abc123</id><title>First phone for my son?</title><published>2026-08-20T12:00:00+00:00</published><link href="https://www.reddit.com/r/daddit/comments/abc123/first_phone/" /><author><name>/u/dad</name></author><category term="daddit" label="r/daddit"/><content type="html">&lt;p&gt;He is 11.&lt;/p&gt;</content></entry></feed>`;
@@ -371,25 +465,13 @@ async function runOnce(hours, outDir) {
 
   hits.sort((a, b) => b.score - a.score || b.publishedMs - a.publishedMs);
   printDigest(hits, nowMs, hours, skippedTinCan, windowPosts.length);
-
-  const day = new Date(nowMs).toISOString().slice(0, 10);
-  await mkdir(outDir, { recursive: true });
-  const file = join(outDir, `${day}.json`);
-  await writeFile(
-    file,
-    JSON.stringify(
-      {
-        scrapedAt: new Date(nowMs).toISOString(),
-        hours,
-        skippedTinCan,
-        scanned: windowPosts.length,
-        posts: hits,
-      },
-      null,
-      2,
-    ),
-  );
-  console.error(`wrote ${file}`);
+  await writeReports(outDir, {
+    scrapedAt: new Date(nowMs).toISOString(),
+    hours,
+    skippedTinCan,
+    scanned: windowPosts.length,
+    posts: hits,
+  });
 }
 
 async function main() {
@@ -400,6 +482,11 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.selfCheck) {
     selfCheck();
+    return;
+  }
+  if (args.fromJson) {
+    const payload = JSON.parse(await readFile(args.fromJson, "utf8"));
+    await writeReports(args.outDir, payload);
     return;
   }
   await runOnce(args.hours, args.outDir);
