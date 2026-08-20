@@ -21,28 +21,26 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = join(HERE, "..");
 const HOUR_MS = 60 * 60 * 1000;
 const DEFAULT_HOURS = 24;
-/** ponytail: 5 RSS pages/feed (~500 posts). Upgrade: Reddit OAuth listing API. */
-const MAX_PAGES = 5;
-const PAGE_SIZE = 100;
-const GAP_MS = 8000;
+const GAP_MS = 12000;
 
 const USER_AGENT =
   process.env.REDDIT_USER_AGENT ??
-  "Mozilla/5.0 (compatible; LoupKidsResearch/0.1; +https://loupkids.com; hi@loupkids.com)";
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 
-/** Combined RSS so we do not hit Reddit once per subreddit. */
-const FEEDS = [
+/**
+ * One search RSS per cluster (`t=day`) instead of paging /new.
+ * Paging /new is what Reddit rate-limits.
+ */
+const SEARCHES = [
   {
     name: "parenting",
-    path: "Mommit+daddit+Parenting+ScienceBasedParenting+toddlers+preteen",
-  },
-  {
-    name: "adhd",
-    path: "ADHD+adhdwomen+ADHDparenting+ParentingADHD",
+    path: "Mommit+daddit+Parenting+ScienceBasedParenting+toddlers+preteen+ADHDparenting+ParentingADHD",
+    q: 'phone OR "screen time" OR ipad OR smartphone OR screenfree OR "first phone" OR gabb',
   },
   {
     name: "screens",
     path: "nosurf+digitalminimalism+dumbphones",
+    q: "(kid OR child OR son OR daughter) (phone OR \"screen time\" OR screenfree)",
   },
 ];
 
@@ -170,7 +168,7 @@ function parseAtom(xml, fallbackSub) {
 }
 
 async function fetchRss(url) {
-  for (let attempt = 0; attempt < 6; attempt++) {
+  for (let attempt = 0; attempt < 2; attempt++) {
     const res = await fetch(url, {
       headers: {
         "User-Agent": USER_AGENT,
@@ -178,12 +176,13 @@ async function fetchRss(url) {
       },
     });
     if (res.status === 429) {
-      const retry = Number(res.headers.get("retry-after"));
-      const wait =
-        (Number.isFinite(retry) && retry > 0 ? retry : 20 + attempt * 15) * 1000;
-      console.error(`rate limited, waiting ${wait / 1000}s…`);
-      await sleep(wait);
-      continue;
+      if (attempt === 0) {
+        console.error("Reddit asked us to slow down. Waiting 25s and retrying once…");
+        await sleep(25000);
+        continue;
+      }
+      console.error("Still blocked. Skipping this search.");
+      return { status: 429, xml: "" };
     }
     const xml = await res.text();
     return { status: res.status, xml };
@@ -191,34 +190,23 @@ async function fetchRss(url) {
   return { status: 429, xml: "" };
 }
 
-async function postsFromFeed(feed, nowMs, hours) {
-  const kept = [];
-  let after = "";
-  for (let page = 0; page < MAX_PAGES; page++) {
-    if (page > 0) await sleep(GAP_MS);
-    const qs = new URLSearchParams({ limit: String(PAGE_SIZE) });
-    if (after) qs.set("after", after);
-    const url = `https://www.reddit.com/r/${feed.path}/new/.rss?${qs}`;
-    const { status, xml } = await fetchRss(url);
-    if (status === 404) {
-      console.error(`skip ${feed.name} (missing)`);
-      return [];
-    }
-    if (status !== 200 || !xml.includes("<entry>")) {
-      if (page === 0) console.error(`skip ${feed.name} (HTTP ${status})`);
-      break;
-    }
-    const posts = parseAtom(xml, feed.name);
-    if (!posts.length) break;
-    for (const post of posts) {
-      if (isWithinHours(post.publishedMs, nowMs, hours)) kept.push(post);
-    }
-    const oldest = posts[posts.length - 1];
-    if (!oldest || oldest.publishedMs <= nowMs - hours * HOUR_MS) break;
-    after = oldest.id;
-    if (posts.length < 10) break;
+async function postsFromSearch(search, nowMs, hours) {
+  const qs = new URLSearchParams({
+    q: search.q,
+    restrict_sr: "1",
+    sort: "new",
+    t: "day",
+    limit: "100",
+  });
+  const url = `https://www.reddit.com/r/${search.path}/search.rss?${qs}`;
+  const { status, xml } = await fetchRss(url);
+  if (status !== 200 || !xml.includes("<entry>")) {
+    console.error(`skip ${search.name} (HTTP ${status})`);
+    return [];
   }
-  return kept;
+  return parseAtom(xml, search.name).filter((post) =>
+    isWithinHours(post.publishedMs, nowMs, hours),
+  );
 }
 
 function formatAge(ms, nowMs) {
@@ -336,13 +324,12 @@ function printDigest(hits, nowMs, hours, skippedTinCan, scanned) {
 function printHelp() {
   console.log(`Loup Reddit daily — kids + phones/screens, last 24h. Read-only.
 
-From your Mac home folder (Node is enough; skip pnpm):
+From your Mac, paste this whole block:
 
-  cd ~
-  git clone -b cursor/reddit-daily-scraper-61e1 https://github.com/louptothefuture/loupkids2.git
-  cd loupkids2
-  ./scripts/reddit-daily
-  open data/reddit-daily/latest.html
+  cd /Users/jen/loupkids2
+  git pull origin cursor/reddit-daily-scraper-61e1
+  /Users/jen/loupkids2/scripts/reddit-daily
+  open /Users/jen/loupkids2/data/reddit-daily/latest.csv
 
 Writes data/reddit-daily/YYYY-MM-DD.json, .csv, and .html
 (local files, not a page on loupkids.com)
@@ -470,14 +457,14 @@ async function runOnce(hours, outDir) {
   const csvPath = join(outDir, "latest.csv");
 
   console.error("Leave this window open. Do not start a second copy.");
-  console.error("Reddit may say 'rate limited' — that is normal. Wait.");
+  console.error("Two Reddit searches only (last 24h). CSV is written after the first one.");
   console.error(`The CSV does not exist until you see: OPEN CSV: open ${csvPath}`);
 
-  for (let i = 0; i < FEEDS.length; i++) {
-    const feed = FEEDS[i];
+  for (let i = 0; i < SEARCHES.length; i++) {
+    const search = SEARCHES[i];
     if (i > 0) await sleep(GAP_MS);
-    process.stderr.write(`fetch ${feed.name}…\n`);
-    const posts = await postsFromFeed(feed, nowMs, hours);
+    process.stderr.write(`search ${search.name}…\n`);
+    const posts = await postsFromSearch(search, nowMs, hours);
     for (const post of posts) {
       if (seen.has(post.id)) continue;
       seen.add(post.id);
