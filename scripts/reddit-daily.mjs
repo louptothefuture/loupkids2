@@ -434,11 +434,44 @@ function selfCheck() {
   console.log(`self-check ok (${checks.length})`);
 }
 
+function collectHits(windowPosts) {
+  let skippedTinCan = 0;
+  const hits = [];
+  for (const post of windowPosts) {
+    const rel = relevance(post.title, post.body, post.subreddit);
+    if (rel.reasons.includes("tincan")) {
+      skippedTinCan++;
+      continue;
+    }
+    if (rel.score <= 0) continue;
+    hits.push({ ...post, ...rel });
+  }
+  hits.sort((a, b) => b.score - a.score || b.publishedMs - a.publishedMs);
+  return { hits, skippedTinCan };
+}
+
+async function saveHits(outDir, nowMs, hours, windowPosts) {
+  const { hits, skippedTinCan } = collectHits(windowPosts);
+  await writeReports(outDir, {
+    scrapedAt: new Date(nowMs).toISOString(),
+    hours,
+    skippedTinCan,
+    scanned: windowPosts.length,
+    posts: hits,
+  });
+  console.error(`OPEN CSV: open ${join(outDir, "latest.csv")}`);
+  return { hits, skippedTinCan };
+}
+
 async function runOnce(hours, outDir) {
   const nowMs = Date.now();
   const seen = new Set();
   const windowPosts = [];
-  let skippedTinCan = 0;
+  const csvPath = join(outDir, "latest.csv");
+
+  console.error("Leave this window open. Do not start a second copy.");
+  console.error("Reddit may say 'rate limited' — that is normal. Wait.");
+  console.error(`The CSV does not exist until you see: OPEN CSV: open ${csvPath}`);
 
   for (let i = 0; i < FEEDS.length; i++) {
     const feed = FEEDS[i];
@@ -450,28 +483,11 @@ async function runOnce(hours, outDir) {
       seen.add(post.id);
       windowPosts.push(post);
     }
+    await saveHits(outDir, nowMs, hours, windowPosts);
   }
 
-  const hits = [];
-  for (const post of windowPosts) {
-    const rel = relevance(post.title, post.body, post.subreddit);
-    if (rel.reasons.includes("tincan")) {
-      skippedTinCan++;
-      continue;
-    }
-    if (rel.score <= 0) continue;
-    hits.push({ ...post, ...rel });
-  }
-
-  hits.sort((a, b) => b.score - a.score || b.publishedMs - a.publishedMs);
+  const { hits, skippedTinCan } = collectHits(windowPosts);
   printDigest(hits, nowMs, hours, skippedTinCan, windowPosts.length);
-  await writeReports(outDir, {
-    scrapedAt: new Date(nowMs).toISOString(),
-    hours,
-    skippedTinCan,
-    scanned: windowPosts.length,
-    posts: hits,
-  });
 }
 
 async function main() {
