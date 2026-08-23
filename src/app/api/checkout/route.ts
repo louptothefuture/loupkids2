@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
             product_data: {
               name: pair ? `${STRIPE_LOUP.name} × 2` : STRIPE_LOUP.name,
               description: pair ? STRIPE_LOUP.pairDescription : STRIPE_LOUP.description,
-              images: [`${origin}/images/renders/shop/a_4.jpg`],
+              images: [`${origin}/images/renders/shop/studio/01-three-quarter.jpg`],
             },
           },
         },

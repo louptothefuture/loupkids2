@@ -75,7 +75,7 @@ export function ProductView({ product }: { product: Product }) {
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain object-center p-2 sm:p-5"
+                  className="object-contain object-center"
                 />
               )}
             </motion.div>
@@ -93,7 +93,7 @@ export function ProductView({ product }: { product: Product }) {
                 i === activeImage ? "border-[var(--lk-ink)]" : "border-[var(--lk-line)]"
               }`}
             >
-              <Image src={img.url} alt="" fill sizes="80px" className="object-contain object-center p-1.5" />
+              <Image src={img.url} alt="" fill sizes="80px" className="object-contain object-center" />
             </button>
           ))}
         </div>

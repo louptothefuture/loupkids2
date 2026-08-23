@@ -130,17 +130,17 @@ export const LOUPKIDS_BUILT_LIKE_GEAR = {
   title: "Built like gear, not like a toy",
   cards: [
     {
-      src: "/images/renders/shop/a_bottom.jpg",
+      src: "/images/renders/shop/studio/04-usb.jpg",
       title: "Rechargeable & replaceable battery",
       body: "USB-C charges in 70 minutes, runs ~5 days. The battery is rechargeable and replaceable — not glued shut.",
     },
     {
-      src: "/images/renders/shop/face-back.jpg",
+      src: "/images/renders/shop/studio/03-back.jpg",
       title: "Customizable back plates",
       body: "Swap the plate when you want a new look. Patterns and customs ship after launch — Silver first.",
     },
     {
-      src: "/images/renders/shop/a_4.jpg",
+      src: "/images/renders/shop/studio/01-three-quarter.jpg",
       title: "Aluminum + ABS",
       body: "Machined aluminum sides and buttons, ABS front — built to survive a backpack, not look like a toy.",
     },
