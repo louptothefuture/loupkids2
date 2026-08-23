@@ -59,13 +59,13 @@ export function ProductView({ product }: { product: Product }) {
     <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
       <div className="min-w-0">
         <div className="relative aspect-square overflow-hidden rounded-2xl bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={shown?.url}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.01 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               className="absolute inset-0"
             >
               {shown && (
@@ -75,7 +75,7 @@ export function ProductView({ product }: { product: Product }) {
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain p-3 sm:p-8"
+                  className="object-contain object-center"
                 />
               )}
             </motion.div>
@@ -93,7 +93,7 @@ export function ProductView({ product }: { product: Product }) {
                 i === activeImage ? "border-[var(--lk-ink)]" : "border-[var(--lk-line)]"
               }`}
             >
-              <Image src={img.url} alt="" fill sizes="80px" className="object-contain p-2.5" />
+              <Image src={img.url} alt="" fill sizes="80px" className="object-contain object-center" />
             </button>
           ))}
         </div>

@@ -69,6 +69,8 @@ export async function shopifyFetch<T>({
 }
 
 export async function getProduct(handle: string): Promise<Product | null> {
+  // Shop PDP always uses the in-repo studio gallery. Shopify catalog images stay stale.
+  if (handle === "loup") return findMockProduct("loup");
   if (!isShopifyConfigured) return findMockProduct(handle);
   const data = await shopifyFetch<{ product: unknown }>({
     query: GET_PRODUCT_QUERY,
@@ -85,7 +87,10 @@ export async function getProducts(first = 20): Promise<Product[]> {
     variables: { first },
     revalidate: 300,
   });
-  return flatten(data.products).map(reshapeProduct);
+  return flatten(data.products).map((raw) => {
+    const product = reshapeProduct(raw);
+    return product.handle === "loup" ? (findMockProduct("loup") ?? product) : product;
+  });
 }
 
 export async function createCart(lines: { merchandiseId: string; quantity: number }[]): Promise<Cart> {
