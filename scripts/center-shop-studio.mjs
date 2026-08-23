@@ -13,10 +13,9 @@ const SIZE = 1400;
 const JOBS = [
   { src: "public/images/renders/shop/a_9.jpg", out: "01-three-quarter.jpg" },
   { src: "public/images/renders/shop/a_1.jpg", out: "02-volume.jpg" },
-  { src: "public/images/renders/shop/a_8.jpg", out: "03-back.jpg" },
-  { src: "public/images/renders/shop/a_bottom.jpg", out: "04-usb.jpg" },
-  { src: "public/images/renders/shop/a_10.jpg", out: "05-front.jpg" },
-  { src: "public/images/renders/shop/a_3.jpg", out: "06-scroll.jpg" },
+  { src: "public/images/renders/shop/a_3.jpg", out: "03-scroll.jpg" },
+  { src: "public/images/renders/shop/a_8.jpg", out: "04-back.jpg" },
+  { src: "public/images/renders/shop/a_bottom.jpg", out: "05-usb.jpg" },
 ];
 
 async function sampleBg(file) {
