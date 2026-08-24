@@ -7,6 +7,7 @@ import { ConditionalChrome } from "@/components/layout/ConditionalChrome";
 import { CookieBanner } from "@/components/CookieBanner";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 const atkinson = localFont({
   src: [
@@ -65,6 +66,7 @@ export default function RootLayout({
           <ConditionalChrome>{children}</ConditionalChrome>
         </CartProvider>
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );
