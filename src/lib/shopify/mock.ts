@@ -35,8 +35,8 @@ export const MOCK_LOUP: Product = {
       compareAtPrice: money(199),
       selectedOptions: [{ name: "Finish", value: "Silver" }],
       image: {
-        url: "/images/renders/shop/studio-three-quarter.png",
-        altText: "Loup — studio product shot",
+        url: "/images/renders/shop/studio-contacts-front.png",
+        altText: "Loup — showing contact list",
         width: 768,
         height: 1024,
       },
@@ -44,14 +44,20 @@ export const MOCK_LOUP: Product = {
   ],
   images: [
     {
-      url: "/images/renders/shop/studio-three-quarter.png",
-      altText: "Loup silver — three-quarter studio view",
+      url: "/images/renders/shop/studio-contacts-front.png",
+      altText: "Loup silver — front with contact list",
       width: 768,
       height: 1024,
     },
     {
-      url: "/images/renders/shop/studio-front.png",
-      altText: "Loup silver — front studio view",
+      url: "/images/renders/shop/studio-hi.png",
+      altText: "Loup silver — displaying hi",
+      width: 768,
+      height: 1024,
+    },
+    {
+      url: "/images/renders/shop/studio-contacts-side.png",
+      altText: "Loup silver — side angle with contacts",
       width: 768,
       height: 1024,
     },
