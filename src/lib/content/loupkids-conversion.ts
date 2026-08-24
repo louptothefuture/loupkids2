@@ -44,7 +44,7 @@ export const LOUPKIDS_OFFER_CARD = {
   label: "Founding Offer · First 500 Only",
   saveNote: "Save 33%",
   productLine:
-    "A phone for your kid. No apps, no feeds, no strangers. Calls only — to the people you approve.",
+    "A kids phone. No apps, no feeds, no strangers. Calls only — to the people you approve.",
   callingBullets: [
     "Loup ↔ Loup calls: always free",
     "External contacts: free for 1 year, then $10/mo — cancel anytime",

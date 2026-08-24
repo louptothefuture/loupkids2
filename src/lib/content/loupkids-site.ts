@@ -334,7 +334,7 @@ export const LOUPKIDS_ODE = {
     "It's not the screen — it's everything that comes with it. The algorithm designed to hold attention past the point of wanting to stop. The group chat that never quiets down. The slow, steady pressure to perform, to post, to keep up. That's not a screen problem. That's a product design problem.",
     "Kids need to reach their people. They need to call home from a friend's house, check in from the field, hear a familiar voice when they're not sure how they feel. That's real. That matters.",
     "So we built Loup. Not to take something away — but to give something back.",
-    "A pocket phone with one job: calls, to the people who matter, approved by you. No apps. No internet. No algorithm working against your kid's childhood.",
+    "A pocket phone with one job: calls, to the people who matter, approved by you. No apps. No internet. No algorithm working against childhood.",
   ],
   image: LOUPKIDS_IMAGES.familyMovie,
   imageAlt: "A family watching a movie together at home",
