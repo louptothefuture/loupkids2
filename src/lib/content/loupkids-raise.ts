@@ -48,7 +48,7 @@ export const RAISE_ORIGIN = {
 export const RAISE_PROBLEM = {
   eyebrow: "The problem",
   headline: "Parents are forced into smartphones. The alternative does not exist.",
-  body: "80% of parents feel pushed to buy a smartphone too early — for safety, for school, for a ride home. No compelling screenless alternative exists. That's a $4B unmet need, growing 7–18% a year on the back of school phone bans and youth digital-wellness regulation.",
+  body: "80% of parents feel pushed to buy a smartphone too early — for safety, for school, for a ride home. No compelling screenless alternative exists. That's a $4B unmet need, growing 7–18% a year on the back of school phone bans and youth digital-wellness regulation. Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
   proof:
     "Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
   pillars: [
@@ -85,6 +85,14 @@ export const RAISE_PRODUCT = {
   eyebrow: "The product",
   headline: "A voice device kids can own. A control layer parents trust.",
   body: "Loup gives kids a real device — something they hold, carry, and call their own. Screenless by design, not by subtraction: no feed, no browser, no algorithm. E-ink display, tactile scroll wheel, USB-C, mute, speaker, volume. Atkinson Hyperlegible type from the Braille Institute, because the interface is meant to be read, not stared at. WiFi voice in v1. Full cellular in v2.",
+  features: [
+    { title: "Screenless", lines: ["No feed.", "No browser.", "No algorithm."] },
+    { title: "Parent-controlled", lines: ["App pairs over WiFi.", "You set contacts and hours."] },
+    {
+      title: "WiFi voice → Cellular",
+      lines: ["Loup-to-Loup free.", "External lines optional.", "v2 adds cellular."],
+    },
+  ],
   steps: [
     {
       step: "01",
@@ -122,7 +130,7 @@ export const RAISE_COMPARE = {
 
 export const RAISE_TRACTION = {
   eyebrow: "Traction",
-  headline: "Before we ship a single unit, the numbers look like this.",
+  headline: "Pre-launch. Already outperforming.",
   body: "Direct relationships with Wired, the Boston Globe, and parenting press. 5,000+ high-intent parent subscribers. PTA and school seeding already in motion. The site is live and taking founding pre-orders at $129.",
   latest: [
     { stat: "3.57%", label: "CTR — 7× startup / 2× tech" },
