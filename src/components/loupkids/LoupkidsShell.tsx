@@ -10,6 +10,7 @@ import { WaitlistProvider } from "./waitlist/WaitlistProvider";
 export function LoupkidsShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isRaise = pathname === "/raise" || pathname.startsWith("/raise/");
 
   return (
     <WaitlistProvider>
@@ -21,7 +22,7 @@ export function LoupkidsShell({ children }: { children: ReactNode }) {
         <main id="main" className="lk-main flex-1">
           {children}
         </main>
-        {!isHome && <LoupkidsFooter />}
+        {!isHome && !isRaise && <LoupkidsFooter />}
         <LoupkidsStickyCta />
       </div>
     </WaitlistProvider>
