@@ -48,7 +48,9 @@ export const RAISE_ORIGIN = {
 export const RAISE_PROBLEM = {
   eyebrow: "The problem",
   headline: "Parents are forced into smartphones. The alternative does not exist.",
-  body: "80% of parents feel pushed to buy a smartphone too early — for safety, for school, for a ride home. No compelling screenless alternative exists. That's a $4B unmet need, growing 7–18% a year on the back of school phone bans and youth digital-wellness regulation. Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
+  opportunity: "$4B unmet need. Growing 7–18% a year.",
+  opportunityNote: "School phone bans and youth digital-wellness regulation. No one owns it yet.",
+  body: "80% of parents feel pushed to buy a smartphone too early — for safety, for school, for a ride home. No compelling screenless alternative exists. Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
   proof:
     "Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
   pillars: [
@@ -136,7 +138,6 @@ export const RAISE_TRACTION = {
     { stat: "3.57%", label: "CTR — 7× startup / 2× tech" },
     { stat: "$3.17", label: "CPL — 4× / 9× better" },
     { stat: "30.39%", label: "Email CTR — 15× tech" },
-    { stat: "25", label: "VIP deposits in a single week" },
   ],
   weeks: {
     headers: ["15 Dec", "22 Dec", "29 Dec", "5 Jan"],
