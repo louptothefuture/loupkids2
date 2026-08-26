@@ -89,6 +89,10 @@ export default function RaisePage() {
             <h2 className="lk-display mt-3 max-w-3xl text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.08]">
               {RAISE_PROBLEM.headline}
             </h2>
+            <p className="lk-display mt-6 max-w-3xl text-[clamp(1.5rem,3vw,2.15rem)] leading-[1.1]">
+              {RAISE_PROBLEM.opportunity}
+            </p>
+            <p className="mt-2 max-w-3xl text-sm text-[var(--lk-muted)]">{RAISE_PROBLEM.opportunityNote}</p>
             <p className="mt-5 max-w-3xl text-[0.975rem] leading-relaxed text-[var(--lk-ink)]/75 sm:text-base">
               {RAISE_PROBLEM.body}
             </p>
@@ -179,7 +183,7 @@ export default function RaisePage() {
               {RAISE_TRACTION.body}
             </p>
           </FadeIn>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {RAISE_TRACTION.latest.map((item, i) => (
               <FadeIn key={item.label} delay={i * 0.04} className="lk-card rounded-2xl p-5">
                 <p className="lk-display text-2xl">{item.stat}</p>
