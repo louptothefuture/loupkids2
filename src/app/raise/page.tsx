@@ -92,10 +92,6 @@ export default function RaisePage() {
             <p className="mt-5 max-w-3xl text-[0.975rem] leading-relaxed text-[var(--lk-ink)]/75 sm:text-base">
               {RAISE_PROBLEM.body}
             </p>
-            <p className="mt-4 max-w-3xl text-[0.975rem] leading-relaxed text-[var(--lk-ink)]/75 sm:text-base">
-              {RAISE_PROBLEM.proof}
-            </p>
-            <p className="mt-8 text-sm text-[var(--lk-muted)]">{RAISE_MARKET.numbers}</p>
           </FadeIn>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             <FadeIn className="lk-card rounded-2xl border border-[var(--lk-line)] p-6 md:rounded-3xl">
@@ -119,42 +115,56 @@ export default function RaisePage() {
       </section>
 
       <section className="bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-16 sm:py-20">
-        <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mx-auto max-w-[1200px]">
           <FadeIn>
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)]">
-              <LoupkidsImage
-                src="/images/renders/shop/studio/01-three-quarter.jpg"
-                alt="Loup three-quarter studio shot"
-                fill
-                sizes="(max-width: 767px) 100vw, 50vw"
-                className="object-contain p-8"
-              />
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.06}>
             <SectionLabel>{RAISE_PRODUCT.eyebrow}</SectionLabel>
-            <h2 className="lk-display mt-3 text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.08]">
+            <h2 className="lk-display mt-3 max-w-3xl text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.08]">
               {RAISE_PRODUCT.headline}
             </h2>
-            <p className="mt-5 text-[0.975rem] leading-relaxed text-[var(--lk-ink)]/75">{RAISE_PRODUCT.body}</p>
-            <ol className="mt-8 space-y-5">
-              {RAISE_PRODUCT.steps.map((step) => (
-                <li key={step.step} className="flex gap-4">
-                  <span className="lk-display shrink-0 text-sm text-[var(--lk-muted)]">{step.step}</span>
-                  <div>
-                    <p className="font-medium">{step.title}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-[var(--lk-muted)]">{step.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-8 text-sm leading-relaxed text-[var(--lk-muted)]">{RAISE_PRODUCT.access}</p>
-            <p className="mt-6 text-sm">
-              <Link href="/about" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
-                Why we built this
-              </Link>
-            </p>
           </FadeIn>
+          <div className="mt-8 grid gap-8 border-t border-[var(--lk-line)] pt-8 sm:grid-cols-3">
+            {RAISE_PRODUCT.features.map((feature, i) => (
+              <FadeIn key={feature.title} delay={i * 0.04}>
+                <h3 className="lk-display text-xl">{feature.title}</h3>
+                <ul className="mt-3 space-y-1 text-sm leading-relaxed text-[var(--lk-muted)]">
+                  {feature.lines.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </FadeIn>
+            ))}
+          </div>
+          <div className="mt-12 grid items-center gap-10 md:grid-cols-2 md:gap-14">
+            <FadeIn>
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)]">
+                <LoupkidsImage
+                  src={LOUPKIDS_IMAGES.threeQuarter}
+                  alt="Loup three-quarter product view"
+                  fill
+                  sizes="(max-width: 767px) 100vw, 50vw"
+                  className="object-contain p-8"
+                />
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.06}>
+              <ol className="space-y-5">
+                {RAISE_PRODUCT.steps.map((step) => (
+                  <li key={step.step} className="flex gap-4">
+                    <span className="lk-display shrink-0 text-sm text-[var(--lk-muted)]">{step.step}</span>
+                    <div>
+                      <p className="font-medium">{step.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-[var(--lk-muted)]">{step.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-6 text-sm">
+                <Link href="/about" className="underline underline-offset-4 hover:text-[var(--lk-ink)]">
+                  Why we built this
+                </Link>
+              </p>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -162,7 +172,7 @@ export default function RaisePage() {
         <div className="mx-auto max-w-[1200px]">
           <FadeIn>
             <SectionLabel>{RAISE_TRACTION.eyebrow}</SectionLabel>
-            <h2 className="lk-display mt-3 max-w-3xl text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.08]">
+            <h2 className="lk-display mt-3 max-w-3xl text-[clamp(1.35rem,2.5vw,1.75rem)] leading-[1.08]">
               {RAISE_TRACTION.headline}
             </h2>
             <p className="mt-5 max-w-3xl text-[0.975rem] leading-relaxed text-[var(--lk-ink)]/75">

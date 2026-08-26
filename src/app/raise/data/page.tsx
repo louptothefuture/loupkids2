@@ -10,6 +10,7 @@ import {
   RAISE_MAILTO,
   RAISE_ORIGIN,
   RAISE_PROBLEM,
+  RAISE_PRODUCT,
   RAISE_ROADMAP,
   RAISE_TEAM,
   RAISE_TRACTION,
@@ -63,6 +64,9 @@ export default function RaiseDataPage() {
               <p key={p.slice(0, 40)}>{p}</p>
             ))}
           </div>
+          <p className="lk-card mt-8 max-w-2xl rounded-2xl p-6 text-sm leading-relaxed text-[var(--lk-muted)]">
+            {RAISE_PRODUCT.access}
+          </p>
         </FadeIn>
       </section>
 
