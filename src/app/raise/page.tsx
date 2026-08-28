@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
+import { RaiseGlbStage } from "@/components/raise/RaiseGlbStage";
 import {
   RAISE,
   RAISE_ECONOMICS,
@@ -58,14 +59,14 @@ export default function RaisePage() {
               </a>
             </div>
           </div>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[var(--lk-card-shadow)] sm:aspect-[5/6] md:aspect-auto md:min-h-[28rem] md:self-stretch">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-ink)] shadow-[var(--lk-card-shadow)] sm:aspect-[5/6] md:aspect-auto md:min-h-[28rem] md:self-stretch">
             <LoupkidsImage
-              src={LOUPKIDS_IMAGES.hero}
-              alt="Hand holding Loup — hi."
+              src={LOUPKIDS_IMAGES.rawPhonePrototype}
+              alt="Loup prototype — e-ink showing who will you call"
               fill
               priority
               sizes="(max-width: 767px) 100vw, 50vw"
-              className="object-cover object-[70%_38%] md:object-center"
+              className="object-cover object-center"
             />
           </div>
         </div>
@@ -140,15 +141,7 @@ export default function RaisePage() {
           </div>
           <div className="mt-12 grid items-center gap-10 md:grid-cols-2 md:gap-14">
             <FadeIn>
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-cream)] shadow-[var(--lk-card-shadow)]">
-                <LoupkidsImage
-                  src={LOUPKIDS_IMAGES.threeQuarter}
-                  alt="Loup three-quarter product view"
-                  fill
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                  className="object-contain p-8"
-                />
-              </div>
+              <RaiseGlbStage />
             </FadeIn>
             <FadeIn delay={0.06}>
               <ol className="space-y-5">

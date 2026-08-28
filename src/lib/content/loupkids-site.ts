@@ -55,6 +55,7 @@ export const LOUPKIDS_IMAGES = {
   productBack: R("shop/a_8.jpg"),
   productHi: R("shop/a_10.jpg"),
   cutoutPhone: R("cutout-phone.jpg"),
+  rawPhonePrototype: R("raw-phone-prototype.png"),
   // ode
   familyMovie: L("family+watching+movie+.png"),
   laptop: L("laptop.png"),
