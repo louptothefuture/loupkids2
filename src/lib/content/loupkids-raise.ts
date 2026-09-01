@@ -92,7 +92,7 @@ export const RAISE_PRODUCT = {
     { title: "Parent-controlled", lines: ["App pairs over WiFi.", "You set contacts and hours."] },
     {
       title: "WiFi voice → Cellular",
-      lines: ["Loup-to-Loup free.", "External lines optional.", "v2 adds cellular."],
+      lines: ["Loup-to-Loup WiFi: free.", "External / cellular: $10–$20/mo.", "v2 adds cellular."],
     },
   ],
   steps: [
@@ -104,7 +104,7 @@ export const RAISE_PRODUCT = {
     {
       step: "02",
       title: "Kids call their people",
-      body: "Loup-to-Loup calling is always free. Approved external numbers sit behind a small optional subscription.",
+      body: "Loup-to-Loup audio over WiFi is always free. External lines and cellular mobility are $10–$20/month.",
     },
     {
       step: "03",
@@ -127,13 +127,13 @@ export const RAISE_COMPARE = {
     ["Zero subscription lock-in", "Core free*", "Monthly required", "Contract", "Bill required"],
     ["Designed across ages", "Yes", "Kids only", "Adults only", "Young kids"],
   ],
-  note: "*Loup-to-Loup audio is free. Optional plans add external lines. v2 adds cellular mobility.",
+  note: "*Loup-to-Loup WiFi audio is free. External lines and cellular mobility are $10–$20/month.",
 } as const;
 
 export const RAISE_TRACTION = {
   eyebrow: "Traction",
   headline: "Pre-launch. Already outperforming.",
-  body: "Direct relationships with Wired, the Boston Globe, and parenting press. 5,000+ high-intent parent subscribers. PTA and school seeding already in motion. The site is live and taking founding pre-orders at $129.",
+  body: "Direct relationships with Wired, the Boston Globe, and parenting press. 5,000+ high-intent parent subscribers. PTA and school seeding already in motion. The site is live and taking early-bird pre-orders at $149.",
   latest: [
     { stat: "3.57%", label: "CTR — 7× startup / 2× tech" },
     { stat: "$3.17", label: "CPL — 4× / 9× better" },
@@ -158,21 +158,21 @@ export const RAISE_ECONOMICS = {
   cards: [
     {
       title: "Hardware (v1)",
-      price: "$179–$199",
-      meta: "Landed COGS ~$50 · ~60% gross margin",
-      body: "Founding pre-order is $129 (first 500). Launch price $199. Manufacturing costs include a 60% buffer above our $38 base — conservative by design.",
+      price: "$149 / $179 / $199",
+      meta: "Early bird · Standard · Retail · ~60% gross margin",
+      body: "Early bird $149. Standard $179. Late / retail $199. Landed COGS ~$50 — 60% buffer on a $38 base.",
     },
     {
       title: "Plates & accessories",
       price: "$20",
       meta: "COGS ~$1 · 95% gross margin",
-      body: "High-margin personalization. Attach rate is the second revenue line on every device.",
+      body: "Custom faceplates and accessories. Attach rate is the second revenue line on every device.",
     },
     {
       title: "Calling plans",
       price: "$10–$20/mo",
-      meta: "Loup↔Loup free · 90% gross margin on external",
-      body: "External calling and cellular (v2) run on a recurring subscription. Loup-to-Loup is always free. Subscription revenue overtakes hardware in year 4.",
+      meta: "Loup-to-Loup WiFi free · 90% gross margin on external",
+      body: "Core Loup-to-Loup audio over WiFi is free. External lines and cellular mobility are $10–$20/month. Subscriptions overtake hardware in year 4.",
     },
   ],
 } as const;
