@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { LOUPKIDS_CTA, LOUPKIDS_PRICE } from "@/lib/content/loupkids-conversion";
 import { StripeCheckoutButton } from "./StripeCheckoutButton";
 
 const DISMISS_KEY = "loup-sticky-cta-dismissed";
@@ -55,7 +55,7 @@ export function LoupkidsStickyCta() {
     >
       <div className="mx-auto flex max-w-lg items-center gap-3 sm:mx-0 sm:block sm:max-w-none">
         <div className="mb-0 hidden items-start justify-between gap-3 sm:mb-2.5 sm:flex">
-          <p className="text-sm text-[var(--lk-muted)]">First 500 · $129</p>
+          <p className="text-sm text-[var(--lk-muted)]">First 500 · {LOUPKIDS_PRICE.formatted}</p>
           <button
             type="button"
             aria-label="Dismiss"

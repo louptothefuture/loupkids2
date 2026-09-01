@@ -114,7 +114,7 @@ export const HOME_HOW_IT_WORKS = [
 
 export const HOME_LAUNCH = {
   eyebrow: "Order",
-  priceHeader: "$129",
+  priceHeader: "$149",
   /** Prefer LOUPKIDS_OFFER_CARD in UI */
   scarcityLine: "Founding Offer · First 500 Only",
   bonusBanner:

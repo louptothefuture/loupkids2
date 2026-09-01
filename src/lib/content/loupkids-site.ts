@@ -475,7 +475,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 export const LOUPKIDS_STORE = {
   headline: "Pre-order Loup",
   subheadline:
-    "Aluminum sides & buttons, ABS front — First 500 for $129 ($199 at launch). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
+    "Aluminum sides & buttons, ABS front — First 500 for $149 ($199 at launch). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -483,7 +483,7 @@ export const LOUPKIDS_STORE = {
 export const LOUPKIDS_STORE_PRODUCTS = [
   {
     title: "Loup — Silver",
-    price: 129,
+    price: 149,
     compareAt: 199 as number | null,
     note: "Order · Ships within 60 days · First 500 year-1 external calling",
     image: LOUPKIDS_IMAGES.loupAluminium,
@@ -578,7 +578,7 @@ export const LOUPKIDS_COMPARISON = {
       label: "First-year calling",
       values: ["$0 included", "$30+/mo typical", "$30+/mo typical", "Plan required"],
     },
-    { label: "Price", values: ["$129", "$400–1,200", "$150–400 + plan", "$20–80 + plan"] },
+    { label: "Price", values: ["$149", "$400–1,200", "$150–400 + plan", "$20–80 + plan"] },
   ],
 } as const;
 

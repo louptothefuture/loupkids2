@@ -10,7 +10,7 @@ export const FALLBACK_HOMEPAGE: HomepageCopy = {
   heroHeadline: "Their first phone. Safe from day one.",
   heroSubline:
     "Total security for you, real connection for them. A voice-only phone designed to block strangers and screen addiction so kids can just be kids.",
-  heroCta: "Order Loup — $129",
+  heroCta: "Order Loup — $149",
   manifestoLines: [
     "The vanishing playground.",
     "5.5 hours a day on screens.",
@@ -197,7 +197,7 @@ export const PRESS_KIT_FACTS = [
   { label: "Product", value: "LOUP — screenless voice phone for kids" },
   {
     label: "Price",
-    value: "$129 device · Loup↔Loup free · First 500 year-1 external",
+    value: "$149 device · Loup↔Loup free · First 500 year-1 external",
   },
   { label: "Category", value: "Smartphone alternative / anti-screen hardware" },
   { label: "Contact", value: "hi@loupkids.com" },
