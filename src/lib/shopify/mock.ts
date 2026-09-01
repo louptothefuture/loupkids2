@@ -16,14 +16,14 @@ export const MOCK_LOUP: Product = {
   handle: "loup",
   title: "Loup",
   description:
-    "The phone before their first smartphone. Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet. First 500 for $129. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
+    "The phone before their first smartphone. Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet. First 500 for $149. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
   descriptionHtml:
     "<p>The phone before their first smartphone.</p><p>Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet.</p>",
   availableForSale: true,
   options: [{ name: "Finish", values: ["Silver"] }],
   priceRange: {
-    minVariantPrice: money(129),
-    maxVariantPrice: money(129),
+    minVariantPrice: money(149),
+    maxVariantPrice: money(149),
   },
   variants: [
     {
@@ -31,7 +31,7 @@ export const MOCK_LOUP: Product = {
       title: "Silver",
       availableForSale: true,
       quantityAvailable: 250,
-      price: money(129),
+      price: money(149),
       compareAtPrice: money(199),
       selectedOptions: [{ name: "Finish", value: "Silver" }],
       image: {
@@ -75,9 +75,9 @@ export const MOCK_LOUP: Product = {
     },
   ],
   seo: {
-    title: "Order Loup — Silver | $129",
+    title: "Order Loup — Silver | $149",
     description:
-      "Loup is the smartphone alternative for kids. Aluminum sides and buttons, ABS front. Voice calls to a parent-approved list. First 500 for $129 (Save 33% vs $199). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Ships within 60 days.",
+      "Loup is the smartphone alternative for kids. Aluminum sides and buttons, ABS front. Voice calls to a parent-approved list. First 500 for $149 (Save 25% vs $199). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Ships within 60 days.",
   },
 };
 

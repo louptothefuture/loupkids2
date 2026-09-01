@@ -6,7 +6,7 @@ import "./launch.css";
 export const metadata: Metadata = {
   title: "Launch — Their phone safe from day one",
   description:
-    "Peace of mind for you, real connection for them. Pre-order Loup for $129 — voice-only, approved contacts, no feeds.",
+    "Peace of mind for you, real connection for them. Pre-order Loup for $149 — voice-only, approved contacts, no feeds.",
   robots: { index: false, follow: false },
   alternates: { canonical: `${SITE.url}/launch` },
 };

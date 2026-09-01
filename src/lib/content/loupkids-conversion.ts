@@ -1,30 +1,30 @@
 /** Shared conversion copy — CTAs, hero, feature cards, trust signals */
 
 export const LOUPKIDS_PRICE = {
-  amount: 129,
+  amount: 149,
   compareAt: 199,
-  formatted: "$129",
+  formatted: "$149",
   compareFormatted: "$199",
-  pairAmount: 250,
+  pairAmount: 298,
   pairQty: 2,
-  pairFormatted: "$250",
+  pairFormatted: "$298",
   /** Scarcity + deal framing for first-500 offer */
-  launchNote: "First 500 · Save 33%",
-  stackLine: "$129",
+  launchNote: "First 500 · Save 25%",
+  stackLine: "$149",
 } as const;
 
 export const LOUPKIDS_CTA = {
-  primary: "Pre-order Loup — $129",
+  primary: "Pre-order Loup — $149",
   primaryShort: "Pre-order Loup",
-  hero: "Pre-order Loup — $129",
-  product: "Pre-order Loup — $129",
+  hero: "Pre-order Loup — $149",
+  product: "Pre-order Loup — $149",
   checkout: "Complete Order →",
   waitlist: "Notify me",
   newsletter: "Get launch updates",
-  sticky: "Pre-order Loup — $129",
+  sticky: "Pre-order Loup — $149",
   nav: "Pre-order Loup",
-  comingSoon: "Pre-order Loup — $129",
-  pair: "2 for $250",
+  comingSoon: "Pre-order Loup — $149",
+  pair: "2 for $298",
 } as const;
 
 export const LOUPKIDS_OFFER = {
@@ -32,8 +32,8 @@ export const LOUPKIDS_OFFER = {
   callingNote:
     "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
   callingPill: "Loup↔Loup always free",
-  priceStackNote: "First 500 · Save 33%",
-  scarcityLine: "First 500 · Save 33%",
+  priceStackNote: "First 500 · Save 25%",
+  scarcityLine: "First 500 · Save 25%",
   /** Full economics line for bullets / meta */
   callingCanonical:
     "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
@@ -42,7 +42,7 @@ export const LOUPKIDS_OFFER = {
 /** Homepage offer card + PDP buy-box — keep in sync */
 export const LOUPKIDS_OFFER_CARD = {
   label: "Founding Offer · First 500 Only",
-  saveNote: "Save 33%",
+  saveNote: "Save 25%",
   productLine:
     "A kids phone. No apps, no feeds, no strangers. Calls only — to the people you approve.",
   callingBullets: [
@@ -63,7 +63,7 @@ export const LOUPKIDS_HERO_COPY = {
   headline: "Their first phone. Safe from day one.",
   subline:
     "Total security for you, real connection for them. A voice-only phone designed to block strangers and screen addiction so kids can just be kids.",
-  priceLine: "$129",
+  priceLine: "$149",
 } as const;
 
 /** Category-creator H1 for press / PR landing pages */
@@ -235,7 +235,7 @@ export const LOUPKIDS_PRESS_QUOTES = [
 
 export const LOUPKIDS_FINAL_CTA = {
   headline: "Ready when you are.",
-  body: `The phone before their first smartphone — First 500 for $129 (Save 33%). ${LOUPKIDS_OFFER.callingCanonical} Ships within 60 days.`,
+  body: `The phone before their first smartphone — First 500 for $149 (Save 25%). ${LOUPKIDS_OFFER.callingCanonical} Ships within 60 days.`,
 } as const;
 
 export const LOUPKIDS_IN_THE_BOX = [

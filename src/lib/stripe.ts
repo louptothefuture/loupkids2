@@ -12,12 +12,12 @@ export function getStripe() {
 export const STRIPE_LOUP = {
   name: "Loup — Silver",
   description:
-    "First 500 · $129 · Loup↔Loup free · year-1 external calling · ships within 60 days",
+    "First 500 · $149 · Loup↔Loup free · year-1 external calling · ships within 60 days",
   unitAmountCents: SITE.price * 100,
   pairQuantity: 2,
-  pairUnitAmountCents: 12_500, // $125 each → $250
+  pairUnitAmountCents: 14_900, // $149 each → $298
   pairDescription:
-    "2-pack · $250 · Loup↔Loup free · year-1 external calling · ships within 60 days",
+    "2-pack · $298 · Loup↔Loup free · year-1 external calling · ships within 60 days",
   currency: "usd",
 } as const;
 

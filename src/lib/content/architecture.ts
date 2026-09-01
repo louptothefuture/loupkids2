@@ -14,7 +14,7 @@ export const HERO = {
   headline: "Phones for the anti-screen age.",
   subline:
     "A real phone — calls, voice messages, a mute button. No apps, no feed, no algorithm. Just your people.",
-  cta: "Pre-order — $129",
+  cta: "Pre-order — $149",
   ctaSecondary: "Join the waitlist",
   trust: ["Free shipping", "30-day returns", "2-year warranty"],
   videoPoster: "/images/street/phone-throw.jpg",
@@ -84,7 +84,7 @@ export const GALLERY = [
 export const PRICING_TIERS = [
   {
     name: "Wi-Fi LOUP",
-    price: "$129",
+    price: "$149",
     period: "First 500 · $199 at launch",
     highlight: true,
     features: [
@@ -106,7 +106,7 @@ export const PRICING_TIERS = [
       "Everything in Wi-Fi LOUP",
       "Connectivity away from Wi-Fi (future)",
       "Same parent controls & contact list",
-      "Pre-order at $129 — First 500",
+      "Pre-order at $149 — First 500",
     ],
     cta: "Pre-order Loup",
     href: "/shop/loup",
