@@ -26,6 +26,17 @@ export const metadata: Metadata = {
     "Loup is raising a $750K pre-seed SAFE to manufacture the screenless kids phone and scale DTC. Real hardware. Live pre-orders.",
   robots: { index: false, follow: false },
   alternates: { canonical: `${SITE.url}/raise` },
+  openGraph: {
+    title: "Raise — $750K Pre-Seed | LOUP",
+    description:
+      "Loup is raising a $750K pre-seed SAFE to manufacture the screenless kids phone and scale DTC. Real hardware. Live pre-orders.",
+    url: `${SITE.url}/raise`,
+    images: [{ url: "/images/og-raise.png", width: 647, height: 875 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/og-raise.png"],
+  },
 };
 
 function SectionLabel({ children }: { children: string }) {
@@ -60,14 +71,14 @@ export default function RaisePage() {
               </a>
             </div>
           </div>
-          <div className="flex h-full items-center">
+          <div className="flex min-h-0 items-center overflow-hidden">
             <LoupkidsImage
               src={LOUPKIDS_IMAGES.rawPhonePrototype}
               alt="Loup prototype — e-ink showing who will you call"
               width={1152}
               height={1536}
               priority
-              sizes="(max-width: 767px) 100vw, 50vw"
+              sizes="(max-width: 767px) 100vw, 40vw"
               className="h-full w-auto rounded-[1.75rem]"
             />
           </div>
