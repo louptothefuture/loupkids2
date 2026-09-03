@@ -36,8 +36,8 @@ export default function RaisePage() {
   return (
     <article>
       <section className="relative bg-[var(--lk-bg)] text-[var(--lk-ink)]">
-        <div className="mx-auto grid max-w-[1200px] items-center gap-8 px-[var(--lk-section-x)] py-12 sm:py-14 md:min-h-[min(78vh,760px)] md:grid-cols-2 md:gap-12 lg:gap-16 lg:py-20">
-          <div>
+        <div className="mx-auto grid max-w-[1200px] items-stretch gap-8 px-[var(--lk-section-x)] py-12 sm:py-14 md:grid-cols-2 md:gap-12 lg:gap-16 lg:py-20">
+          <div className="flex flex-col justify-center">
             <SectionLabel>{RAISE.eyebrow}</SectionLabel>
             <h1 className="lk-display mt-3 text-[clamp(2.35rem,5vw,3.75rem)] leading-[1.05] tracking-tight">
               {RAISE.headline}
@@ -60,14 +60,15 @@ export default function RaisePage() {
               </a>
             </div>
           </div>
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-bg)] shadow-[var(--lk-card-shadow)]">
+          <div className="flex h-full items-center">
             <LoupkidsImage
               src={LOUPKIDS_IMAGES.rawPhonePrototype}
               alt="Loup prototype — e-ink showing who will you call"
-              fill
+              width={1152}
+              height={1536}
               priority
               sizes="(max-width: 767px) 100vw, 50vw"
-              className="object-contain object-center"
+              className="h-full w-auto rounded-[1.75rem]"
             />
           </div>
         </div>
