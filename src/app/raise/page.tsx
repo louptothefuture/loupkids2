@@ -60,14 +60,14 @@ export default function RaisePage() {
               </a>
             </div>
           </div>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-ink)] shadow-[var(--lk-card-shadow)] sm:aspect-[5/6] md:aspect-auto md:min-h-[28rem] md:self-stretch">
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[1.75rem] bg-[var(--lk-bg)] shadow-[var(--lk-card-shadow)]">
             <LoupkidsImage
               src={LOUPKIDS_IMAGES.rawPhonePrototype}
               alt="Loup prototype — e-ink showing who will you call"
               fill
               priority
               sizes="(max-width: 767px) 100vw, 50vw"
-              className="object-cover object-center"
+              className="object-contain object-center"
             />
           </div>
         </div>

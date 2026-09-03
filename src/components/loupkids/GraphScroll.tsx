@@ -17,9 +17,21 @@ function xAt(year: number) {
   return PAD.l + ((year - 1) / 4) * (W - PAD.l - PAD.r);
 }
 
-function scrollProgress(track: HTMLElement) {
+const MOBILE_MQ = "(max-width: 767px)";
+
+function scrollProgress(track: HTMLElement, mobileViewport = false) {
   const rect = track.getBoundingClientRect();
   const viewH = window.innerHeight || 1;
+  const isMobile = window.matchMedia(MOBILE_MQ).matches;
+
+  if (isMobile && mobileViewport) {
+    const navH =
+      parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--lk-nav-h")) || 72;
+    const start = viewH * 0.88;
+    const end = navH;
+    return Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+  }
+
   const total = rect.height - viewH;
   if (total <= 1) return 0;
   return Math.min(1, Math.max(0, -rect.top / total));
@@ -211,6 +223,7 @@ function useGraphPaint(
   trackRef: RefObject<HTMLDivElement | null>,
   markerRef: RefObject<SVGLineElement | null>,
   yearRef?: RefObject<HTMLParagraphElement | null>,
+  mobileViewport = false,
 ) {
   useEffect(() => {
     const track = trackRef.current;
@@ -224,9 +237,11 @@ function useGraphPaint(
     };
     const onScroll = () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => paint(reduce ? 1 : scrollProgress(track)));
+      raf = requestAnimationFrame(() =>
+        paint(reduce ? 1 : scrollProgress(track, mobileViewport)),
+      );
     };
-    paint(reduce ? 1 : scrollProgress(track));
+    paint(reduce ? 1 : scrollProgress(track, mobileViewport));
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
@@ -234,21 +249,18 @@ function useGraphPaint(
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [trackRef, markerRef, yearRef]);
+  }, [trackRef, markerRef, yearRef, mobileViewport]);
 }
 
 /** Raise page — scroll-drawn, same as /graph but in-page. */
 export function GraphRaiseScroll() {
   const trackRef = useRef<HTMLDivElement>(null);
   const markerRef = useRef<SVGLineElement>(null);
-  useGraphPaint(trackRef, markerRef);
+  useGraphPaint(trackRef, markerRef, undefined, true);
 
   return (
-    <div ref={trackRef} className="relative w-full" style={{ height: "320vh" }}>
-      <div
-        className="sticky flex flex-col justify-center py-6"
-        style={{ top: "var(--lk-nav-h)", height: "calc(100svh - var(--lk-nav-h))" }}
-      >
+    <div ref={trackRef} className="relative w-full md:h-[320vh]">
+      <div className="py-1 md:sticky md:top-[var(--lk-nav-h)] md:flex md:h-[calc(100svh-var(--lk-nav-h))] md:flex-col md:justify-center md:py-6">
         <GraphPanel year={1} markerRef={markerRef} />
       </div>
     </div>
