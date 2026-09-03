@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
+import { GraphRaiseScroll } from "@/components/loupkids/GraphScroll";
 import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
 import { RaiseGlbStage } from "@/components/raise/RaiseGlbStage";
 import {
@@ -199,6 +200,12 @@ export default function RaisePage() {
               </FadeIn>
             ))}
           </div>
+          <FadeIn className="mt-16">
+            <SectionLabel>Five-year</SectionLabel>
+            <div className="mt-8 w-full">
+              <GraphRaiseScroll />
+            </div>
+          </FadeIn>
         </div>
       </section>
 

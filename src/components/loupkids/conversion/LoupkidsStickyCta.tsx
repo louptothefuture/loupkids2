@@ -18,6 +18,7 @@ export function LoupkidsStickyCta() {
     pathname === "/hardware" ||
     pathname === "/raise" ||
     pathname.startsWith("/raise/") ||
+    pathname === "/graph" ||
     pathname.startsWith("/studio") ||
     pathname === "/home-full";
 
