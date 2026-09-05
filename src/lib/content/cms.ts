@@ -154,7 +154,7 @@ const DEFAULT_ABOUT: AboutPageContent = {
   ],
   teamBlocks: [
     {
-      title: "A parent who wanted another option",
+      title: "Two parents who wanted another option",
       body: "The question was simple: how do you give kids more independence while keeping connection feeling safe?",
     },
     {
