@@ -1,0 +1,26 @@
+#!/bin/sh
+# Mac launcher — no pnpm.
+#   cd ~
+#   git clone -b cursor/reddit-daily-scraper-61e1 https://github.com/louptothefuture/loupkids2.git
+#   cd loupkids2
+#   ./scripts/reddit-daily
+set -e
+HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+cd "$HERE/.."
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "Node.js is missing (pnpm is not needed for this script)." >&2
+  echo "On a Mac:" >&2
+  echo "  brew install node" >&2
+  echo "Then from this repo:" >&2
+  echo "  ./scripts/reddit-daily" >&2
+  exit 127
+fi
+
+MAJOR=$(node -p "process.versions.node.split('.')[0]")
+if [ "$MAJOR" -lt 18 ]; then
+  echo "Need Node 18+. You have $(node -v). On a Mac: brew upgrade node" >&2
+  exit 1
+fi
+
+exec node "$HERE/reddit-daily.mjs" "$@"
