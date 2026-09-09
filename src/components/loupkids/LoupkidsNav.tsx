@@ -7,7 +7,6 @@ import { useCart } from "@/components/cart/CartProvider";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { LOUPKIDS_NAV, LOUPKIDS_NAV_DESKTOP } from "@/lib/content/loupkids-site";
 import { LoupLogoLink } from "./LoupLogo";
-import { StripeCheckoutButton } from "./conversion/StripeCheckoutButton";
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
@@ -78,10 +77,12 @@ export function LoupkidsNav() {
           </nav>
 
           <div className="flex min-w-0 shrink items-center justify-end gap-1 sm:gap-3">
-            <StripeCheckoutButton
-              label={LOUPKIDS_CTA.nav}
-              className="lk-btn lk-btn-sm min-w-0 cursor-pointer"
-            />
+            <Link
+              href="/shop/loup"
+              className="lk-btn lk-btn-sm min-w-0"
+            >
+              {LOUPKIDS_CTA.nav}
+            </Link>
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -136,10 +137,9 @@ export function LoupkidsNav() {
               Cart{count > 0 ? ` (${count})` : ""}
             </button>
             <div className="mt-8 w-full">
-              <StripeCheckoutButton
-                label={LOUPKIDS_CTA.primary}
-                className="lk-btn w-full cursor-pointer"
-              />
+              <Link href="/shop/loup" className="lk-btn w-full text-center" onClick={() => setMenuOpen(false)}>
+                {LOUPKIDS_CTA.primary}
+              </Link>
             </div>
           </nav>
         </div>

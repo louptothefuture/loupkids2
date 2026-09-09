@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LOUPKIDS_CTA, LOUPKIDS_PRICE } from "@/lib/content/loupkids-conversion";
-import { StripeCheckoutButton } from "./StripeCheckoutButton";
 
 const DISMISS_KEY = "loup-sticky-cta-dismissed";
 
@@ -77,10 +77,13 @@ export function LoupkidsStickyCta() {
           </button>
         </div>
         <div className="min-w-0 flex-1" tabIndex={visible ? undefined : -1}>
-          <StripeCheckoutButton
-            label={LOUPKIDS_CTA.sticky}
-            className="lk-btn w-full cursor-pointer whitespace-nowrap px-4 py-3 text-center text-sm sm:text-[0.9375rem]"
-          />
+          <Link
+            href="/shop/loup"
+            className="lk-btn w-full whitespace-nowrap px-4 py-3 text-center text-sm sm:text-[0.9375rem]"
+            tabIndex={visible ? undefined : -1}
+          >
+            {LOUPKIDS_CTA.sticky}
+          </Link>
         </div>
         <button
           type="button"
