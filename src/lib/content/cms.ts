@@ -155,11 +155,11 @@ const DEFAULT_ABOUT: AboutPageContent = {
   teamBlocks: [
     {
       title: "Two parents who wanted another option",
-      body: "The question was simple: how do you give kids more independence while keeping connection feeling safe?",
+      body: "The question was simple: how do you give kids more independence while keeping them safely connected?",
     },
     {
-      title: "A daughter who named the wolf",
-      body: "She turned Loop into Loup—and gave the product its reason for being: staying close to the pack.",
+      title: "A daughter who named the phone",
+      body: "She got a pair of walkie-talkies instead of a smartphone—and turned Loop into Loup, the French word for wolf, giving the product its reason for being: staying close to the pack.",
     },
   ],
   manufacturingTitle: "From idea to prototype.",
