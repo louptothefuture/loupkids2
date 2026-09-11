@@ -3,9 +3,11 @@ import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { GraphRaiseScroll } from "@/components/loupkids/GraphScroll";
 import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
+import { RaiseCompareGrid } from "@/components/raise/RaiseCompareGrid";
 import { RaiseGlbStage } from "@/components/raise/RaiseGlbStage";
 import {
   RAISE,
+  RAISE_COMPARE_GRID,
   RAISE_ECONOMICS,
   RAISE_EMAIL,
   RAISE_MAILTO,
@@ -175,6 +177,21 @@ export default function RaisePage() {
               </p>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--lk-line)] bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-16 sm:py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <FadeIn>
+            <SectionLabel>{RAISE_COMPARE_GRID.eyebrow}</SectionLabel>
+            <h2 className="lk-display mt-3 max-w-3xl text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.08]">
+              {RAISE_COMPARE_GRID.headline}
+            </h2>
+          </FadeIn>
+          <FadeIn className="mt-8">
+            <RaiseCompareGrid tiles={RAISE_COMPARE_GRID.tiles} />
+            <p className="mt-4 text-xs text-[var(--lk-muted)]">{RAISE_COMPARE_GRID.note}</p>
+          </FadeIn>
         </div>
       </section>
 

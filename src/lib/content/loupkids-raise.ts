@@ -116,6 +116,13 @@ export const RAISE_PRODUCT = {
     "Screenless architecture removes the sensory chaos that overwhelms neurodivergent kids — no visual overstimulation, no notification anxiety, no design tricks engineered to hijack attention. For blind and low-vision users, Loup is built for them from the ground up, not retrofitted after the fact.",
 } as const;
 
+export type RaiseCompareGridTile = {
+  eyebrow: string;
+  stat: string;
+  sub: readonly [string, string];
+  dark: boolean;
+};
+
 export const RAISE_COMPARE = {
   eyebrow: "Category",
   headline: "Everyone else is a smartphone with the apps removed. We never added them.",
@@ -128,6 +135,39 @@ export const RAISE_COMPARE = {
     ["Designed across ages", "Yes", "Kids only", "Adults only", "Young kids"],
   ],
   note: "*Loup-to-Loup WiFi audio is free. External lines and cellular mobility are $10–$20/month.",
+} as const;
+
+/** 2×2 competitive grid — deck comparison matrix distilled for the raise page. */
+export const RAISE_COMPARE_GRID = {
+  eyebrow: RAISE_COMPARE.eyebrow,
+  headline: RAISE_COMPARE.headline,
+  note: RAISE_COMPARE.note,
+  tiles: [
+    {
+      eyebrow: "Screenless architecture",
+      stat: "Built in",
+      sub: ["No feed. No browser. No algorithm.", "Gabb & TickTalk: lobotomized smartphones."],
+      dark: true,
+    },
+    {
+      eyebrow: "Local / mesh Wi-Fi voice",
+      stat: "Free v1",
+      sub: ["Loup-to-Loup WiFi voice at launch.", "Dumb phones & landlines: none."],
+      dark: false,
+    },
+    {
+      eyebrow: "Zero subscription lock-in",
+      stat: "Core free",
+      sub: ["Loup-to-Loup audio stays free.", "Gabb: monthly. Dumb phones: carrier contract."],
+      dark: false,
+    },
+    {
+      eyebrow: "Designed across ages",
+      stat: "All ages",
+      sub: ["A first phone kids can own.", "Toys: kids only. Dumb phones: adults only."],
+      dark: true,
+    },
+  ] satisfies readonly RaiseCompareGridTile[],
 } as const;
 
 export const RAISE_TRACTION = {
