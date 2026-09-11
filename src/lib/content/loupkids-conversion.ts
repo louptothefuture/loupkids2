@@ -177,8 +177,8 @@ export const LOUPKIDS_WHY_NOT_JUST = {
     {
       title: "Why not stick with a landline?",
       body: [
-        "A landline stays in one room. Kids still have to remember which button is grandma — and they can't take it to school or a friend's house.",
-        "LOUP travels. Home, school, grandparents' — any Wi-Fi, same contacts, same controls.",
+        "A landline stays in one room. Kids still have to remember which button is grandma — and they can't take it with them.",
+        "LOUP travels. Home, friends' house, grandparents', on vacation — any Wi-Fi, same contacts, same controls.",
       ],
       but: "A fixed landline isn't independence.",
     },
