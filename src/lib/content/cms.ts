@@ -159,7 +159,7 @@ const DEFAULT_ABOUT: AboutPageContent = {
     },
     {
       title: "A daughter who named the phone",
-      body: "She got a pair of walkie-talkies instead of a smartphone—and turned Loop into Loup, the French word for wolf, giving the product its reason for being: staying close to the pack.",
+      body: "She turned Loop into Loup, the French word for wolf, giving the product its reason for being: staying close to the pack.",
     },
   ],
   manufacturingTitle: "From idea to prototype.",
