@@ -36,9 +36,9 @@ export const RAISE_STATS = [
 
 export const RAISE_ORIGIN = {
   eyebrow: "Why this exists",
-  headline: "It began with my daughter.",
+  headline: "It began with our daughter.",
   paragraphs: [
-    "She found an old '80s analog phone. Picking it up, she instantly started pretending to call people — telling stories into a static receiver.",
+    "She came into our office and found an old '80s analog phone on the floor. Picking it up, she instantly started pretending to call people — telling stories into a static receiver.",
     "The game became real when we gave her walkie-talkies. She was immediately sharing secrets and silly stories with a friend down the street. Simple. Immediate. Real.",
     "The power of connection for kids isn't in the screen, the scroll, or the algorithm. It's in the simplicity of a voice and someone who picks up.",
     "We built the first phone designed for joyful, safe connection — not distraction.",
