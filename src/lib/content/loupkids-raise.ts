@@ -298,6 +298,12 @@ export const RAISE_EXIT = {
   body: "Youth on-ramp devices sit on the roadmap at every major hardware platform. Apple, Google, and Samsung need a first-phone story. Family hardware ecosystems — Sonos, Bose, Logitech — need the wedge. Toy and entertainment companies — LEGO, Mattel, Hasbro, Disney — need the IP. Telcos building family plans and kid-tech roll-ups like Gabb and Relay need the brand. Amazon already sells the adjacent aisle.",
 } as const;
 
+export const RAISE_VIDEO = {
+  headline: "The 15 minute version",
+  youtubeId: "zb_HMXQskJo",
+  url: "https://www.youtube.com/watch?v=zb_HMXQskJo",
+} as const;
+
 export const RAISE_USE = {
   eyebrow: "Use of proceeds",
   headline: "$750K to build, ship, and scale the first phone kids can actually own.",

@@ -18,6 +18,7 @@ import {
   RAISE_TERMS,
   RAISE_TRACTION,
   RAISE_USE,
+  RAISE_VIDEO,
 } from "@/lib/content/loupkids-raise";
 import { LOUPKIDS_IMAGES } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
@@ -280,6 +281,24 @@ export default function RaisePage() {
               {RAISE_EMAIL}
             </a>
           </p>
+        </FadeIn>
+      </section>
+
+      <section className="border-t border-[var(--lk-line)] bg-[var(--lk-bg)] px-[var(--lk-section-x)] py-16 sm:py-20">
+        <FadeIn className="mx-auto max-w-[960px]">
+          <h2 className="lk-display text-center text-[clamp(1.5rem,4vw,2.5rem)] leading-[1.08]">
+            {RAISE_VIDEO.headline}
+          </h2>
+          <div className="relative mt-8 aspect-video w-full overflow-hidden bg-[#111]">
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src={`https://www.youtube.com/embed/${RAISE_VIDEO.youtubeId}`}
+              title={RAISE_VIDEO.headline}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
         </FadeIn>
       </section>
     </article>
