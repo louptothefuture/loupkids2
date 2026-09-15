@@ -3,9 +3,11 @@ import Link from "next/link";
 import { FadeIn } from "@/components/loupkids/FadeIn";
 import { GraphRaiseScroll } from "@/components/loupkids/GraphScroll";
 import { LoupkidsImage } from "@/components/loupkids/LoupkidsImage";
+import { RaiseCompareGrid } from "@/components/raise/RaiseCompareGrid";
 import { RaiseGlbStage } from "@/components/raise/RaiseGlbStage";
 import {
   RAISE,
+  RAISE_COMPARE_GRID,
   RAISE_ECONOMICS,
   RAISE_EMAIL,
   RAISE_MAILTO,
@@ -16,6 +18,7 @@ import {
   RAISE_TERMS,
   RAISE_TRACTION,
   RAISE_USE,
+  RAISE_VIDEO,
 } from "@/lib/content/loupkids-raise";
 import { LOUPKIDS_IMAGES } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
@@ -74,9 +77,9 @@ export default function RaisePage() {
           <div className="flex min-h-0 items-center overflow-hidden">
             <LoupkidsImage
               src={LOUPKIDS_IMAGES.rawPhonePrototype}
-              alt="Loup prototype — e-ink showing who will you call"
-              width={1152}
-              height={1536}
+              alt="Loup prototype — contact list on e-ink"
+              width={1424}
+              height={1402}
               priority
               sizes="(max-width: 767px) 100vw, 40vw"
               className="h-full w-auto rounded-[1.75rem]"
@@ -178,6 +181,21 @@ export default function RaisePage() {
         </div>
       </section>
 
+      <section className="border-t border-[var(--lk-line)] bg-[var(--lk-surface)] px-[var(--lk-section-x)] py-16 sm:py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <FadeIn>
+            <SectionLabel>{RAISE_COMPARE_GRID.eyebrow}</SectionLabel>
+            <h2 className="lk-display mt-3 max-w-3xl text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.08]">
+              {RAISE_COMPARE_GRID.headline}
+            </h2>
+          </FadeIn>
+          <FadeIn className="mt-8">
+            <RaiseCompareGrid tiles={RAISE_COMPARE_GRID.tiles} />
+            <p className="mt-4 text-xs text-[var(--lk-muted)]">{RAISE_COMPARE_GRID.note}</p>
+          </FadeIn>
+        </div>
+      </section>
+
       <section className="bg-[var(--lk-bg)] px-[var(--lk-section-x)] py-16 sm:py-20">
         <div className="mx-auto max-w-[1200px]">
           <FadeIn>
@@ -263,6 +281,24 @@ export default function RaisePage() {
               {RAISE_EMAIL}
             </a>
           </p>
+        </FadeIn>
+      </section>
+
+      <section className="border-t border-[var(--lk-line)] bg-[var(--lk-bg)] px-[var(--lk-section-x)] py-16 sm:py-20">
+        <FadeIn className="mx-auto max-w-[960px]">
+          <h2 className="lk-display text-center text-[clamp(1.5rem,4vw,2.5rem)] leading-[1.08]">
+            {RAISE_VIDEO.headline}
+          </h2>
+          <div className="relative mt-8 aspect-video w-full overflow-hidden bg-[#111]">
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src={`https://www.youtube.com/embed/${RAISE_VIDEO.youtubeId}`}
+              title={RAISE_VIDEO.headline}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
         </FadeIn>
       </section>
     </article>
