@@ -20,7 +20,7 @@ import {
   RAISE_USE,
   RAISE_VIDEO,
 } from "@/lib/content/loupkids-raise";
-import { LOUPKIDS_IMAGES } from "@/lib/content/loupkids-site";
+
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default function RaisePage() {
           </div>
           <div className="flex min-h-0 items-center overflow-hidden">
             <LoupkidsImage
-              src={LOUPKIDS_IMAGES.raiseHeroContacts}
+              src="/images/renders/raise-hero-contacts.png"
               alt="Loup prototype — contact list on e-ink"
               width={1424}
               height={1402}
