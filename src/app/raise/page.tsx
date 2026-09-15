@@ -77,9 +77,9 @@ export default function RaisePage() {
           <div className="flex min-h-0 items-center overflow-hidden">
             <LoupkidsImage
               src={LOUPKIDS_IMAGES.rawPhonePrototype}
-              alt="Loup prototype — e-ink showing who will you call"
-              width={1152}
-              height={1536}
+              alt="Loup prototype — contact list on e-ink"
+              width={1424}
+              height={1402}
               priority
               sizes="(max-width: 767px) 100vw, 40vw"
               className="h-full w-auto rounded-[1.75rem]"
