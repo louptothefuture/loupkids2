@@ -61,7 +61,7 @@ export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
     publishedAt: "2026-09-16",
     author: AUTHOR,
     category: CATEGORY,
-    coverImage: "/images/lifestyle-new/kid-outside.jpg",
+    coverImage: "/images/loupkids/journal/ai-and-kids-retro-robot-serving-boy.jpg",
     relatedSlugs: [
       "why-kids-brains-need-voice-not-texts",
       "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid",

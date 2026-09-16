@@ -74,7 +74,7 @@ export const LOUPKIDS_VIDEOS = {
 /** Journal cover images scraped from loupkids.com/journal/[slug] */
 export const LOUPKIDS_JOURNAL_COVERS: Record<string, string> = {
   "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us":
-    "/images/lifestyle-new/kid-outside.jpg",
+    "/images/loupkids/journal/ai-and-kids-retro-robot-serving-boy.jpg",
   "why-kids-brains-need-voice-not-texts": "/images/lifestyle-new/two-kids.jpg",
   "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":
     "/images/lifestyle-new/kids-phones-line.jpg",
