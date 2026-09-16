@@ -70,6 +70,8 @@ export const LOUPKIDS_VIDEOS = {
 
 /** Journal cover images scraped from loupkids.com/journal/[slug] */
 export const LOUPKIDS_JOURNAL_COVERS: Record<string, string> = {
+  "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us":
+    "/images/lifestyle-new/kid-outside.jpg",
   "why-kids-brains-need-voice-not-texts": "/images/lifestyle-new/two-kids.jpg",
   "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":
     "/images/lifestyle-new/kids-phones-line.jpg",
@@ -583,6 +585,8 @@ export const LOUPKIDS_COMPARISON = {
 } as const;
 
 export const LOUPKIDS_JOURNAL_EXCERPTS: Record<string, string> = {
+  "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us":
+    "AI tutors, creative tools, and accessibility aids are real wins for kids — but chatbot companions, data harvesting, and displaced human conversation are real risks. Here's what the evidence says, and where Loup fits.",
   "why-kids-brains-need-voice-not-texts":
     "The science of how children actually develop — and why calls aren't the old way of connecting. They're the right way.",
   "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":

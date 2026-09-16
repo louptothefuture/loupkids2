@@ -8,6 +8,8 @@ const CATEGORY = { title: "Journal", slug: "journal" };
 
 /** Topic tags for journal filtering — not separate CMS categories yet */
 export const LOUPKIDS_JOURNAL_TOPICS: Record<string, string> = {
+  "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us":
+    "Parenting",
   "why-kids-brains-need-voice-not-texts": "Development",
   "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid":
     "Screen time",
@@ -51,6 +53,144 @@ const COVERS = [
 
 /** Journal articles sourced from loupkids.com/journal */
 export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
+  {
+    slug: "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us",
+    title: "AI and Kids: What the Research Gets Right — and Where It Warns Us",
+    excerpt:
+      "AI tutors, creative tools, and accessibility aids are real wins for kids — but chatbot companions, data harvesting, and displaced human conversation are real risks. Here's what the evidence says, and where Loup fits.",
+    publishedAt: "2026-09-16",
+    author: AUTHOR,
+    category: CATEGORY,
+    coverImage: "/images/lifestyle-new/kid-outside.jpg",
+    relatedSlugs: [
+      "why-kids-brains-need-voice-not-texts",
+      "the-funhouse-mirror-why-the-algorithm-is-the-worst-thing-to-hand-a-kid",
+      "the-borrowed-childhood",
+    ],
+    seoTitle: "AI and Kids — Benefits, Risks, and the Loup Alternative",
+    seoDescription:
+      "Sourced guide to AI's upside for kids (tutoring, accessibility, creativity) and documented risks (chatbot dependency, privacy, lost conversation) — plus why Loup keeps connection human.",
+    body: {
+      source: "plain",
+      blocks: [
+        p(
+          "Artificial intelligence is already in kids' lives — homework help, YouTube recommendations, voice assistants in the kitchen, chatbot characters on tablets. The question for parents is no longer whether kids will encounter AI. It's which forms of AI help childhood, and which ones quietly reshape it.",
+        ),
+        p(
+          "The honest answer, according to researchers, educators, and pediatric health bodies, is both. AI can be a remarkable tutor and a troubling companion — sometimes in the same app. This article walks through the goods first, then the documented risks, then what we think the role of Loup — and loupkids.com — should be in a world rushing to put AI in every pocket.",
+        ),
+        h2("What AI Gets Right for Kids"),
+        p(
+          "Start with the genuine upside, because it is real and worth protecting.",
+        ),
+        p(
+          "Personalized learning is the clearest win. Adaptive tutoring systems can meet kids where they are — adjusting difficulty in real time, offering hints instead of answers, and giving struggling students unlimited patience in a way even the best classroom teacher cannot always provide one-on-one.",
+        ),
+        p(
+          "UNESCO's 2023 guidance on generative AI in education found that, used well, AI tools can support differentiated instruction, reduce repetitive grading load on teachers, and help students practice skills at their own pace — particularly in literacy and mathematics.",
+        ),
+        p(
+          "UNESCO — Guidance for Generative AI in Education and Research: https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+        ),
+        p(
+          "Independent evaluations of AI tutoring products have found measurable gains when tools are embedded in structured learning — not used as open-ended chat. A 2024 study in a large Khan Academy field trial reported that students using an AI tutor (Khanmigo) showed higher engagement and problem-solving persistence compared to control groups, with the strongest effects among students who had previously struggled.",
+        ),
+        p(
+          "Khan Academy — Khanmigo learning impact research: https://www.khanacademy.org/khan-labs",
+        ),
+        p(
+          "Accessibility is the second major benefit. AI-powered speech recognition, text-to-speech, live captioning, and translation tools can remove barriers for kids with dyslexia, hearing differences, or language-learning needs — giving them access to material that was previously out of reach.",
+        ),
+        p(
+          "The U.S. Department of Education's 2023 report on AI and the future of teaching and learning emphasized that assistive applications of AI could expand educational equity if deployed with appropriate safeguards and human oversight.",
+        ),
+        p(
+          "U.S. Department of Education — Artificial Intelligence and the Future of Teaching and Learning: https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf",
+        ),
+        p(
+          "Creative tools round out the positive case. Age-appropriate AI can help kids brainstorm story ideas, explore music composition, or iterate on art projects — functioning less like a replacement for imagination and more like a sketchpad that responds. OECD research on AI in education notes that when AI is framed as a collaborator rather than an oracle, students can develop critical thinking by evaluating and refining machine-generated suggestions.",
+        ),
+        p(
+          "OECD — AI and the Future of Skills: https://www.oecd.org/education/artificial-intelligence-and-the-future-of-skills-653a1a0a-en.htm",
+        ),
+        p(
+          "The through-line in the optimistic research is consistent: AI helps kids most when it is bounded, supervised, goal-directed, and secondary to human relationships — not when it is always-on, open-ended, and alone in the room with a child.",
+        ),
+        h2("Where the Evidence Turns Cautionary"),
+        p(
+          "The same technology that adapts a math lesson to your child's level can also simulate friendship, validate unhealthy thoughts, and collect behavioral data at a scale no previous generation of children's products has matched.",
+        ),
+        p(
+          "Chatbot companions are the most urgent concern. In 2023, the nonprofit Common Sense Media reviewed popular AI chatbots and found that most lacked meaningful age verification, transparent data practices, and safeguards against emotionally manipulative conversation — even on platforms marketed to teens.",
+        ),
+        p(
+          "Common Sense Media — AI Chatbots and Kids: https://www.commonsensemedia.org/research/the-state-of-kids-and-ai-chatbots-2024",
+        ),
+        p(
+          "The American Psychological Association's 2023 health advisory on social media and youth mental health — its first ever — explicitly extended concern to algorithmically mediated platforms that encourage validation-seeking and parasocial attachment. AI companion apps intensify both dynamics: they are designed to be always available, never offended, and increasingly personalized to keep users engaged.",
+        ),
+        p(
+          "American Psychological Association — Health Advisory on Social Media Use in Adolescence: https://www.apa.org/topics/social-media-internet/health-advisory-social-media-use-in-adolescence",
+        ),
+        p(
+          "Real-world harm has followed. After a Florida teenager died by suicide in 2024, his family filed suit alleging that prolonged interaction with a Character.AI chatbot contributed to his emotional deterioration — a case that drew national attention to how convincingly AI can simulate intimacy without any of the accountability of a human relationship.",
+        ),
+        p(
+          "Reuters — Character.AI lawsuit coverage: https://www.reuters.com/legal/litigation/ai-chatbot-company-characterai-sued-over-teens-suicide-2024-10-23/",
+        ),
+        p(
+          "Confident wrong answers are a quieter but pervasive problem. Large language models can generate plausible-sounding misinformation — inventing citations, mangling history, or offering unsafe advice — while presenting it with the same authoritative tone as a verified source. MIT researchers have documented that users, including students, consistently over-trust AI-generated responses when outputs are fluent and well-structured.",
+        ),
+        p(
+          "MIT Sloan — Why we trust AI (and why we shouldn't): https://mitsloan.mit.edu/ideas-made-to-matter/why-we-trust-ai-and-why-we-shouldnt",
+        ),
+        p(
+          "Data privacy is the third rail. AI systems learn from inputs — which means a child's conversations, drawings, voice recordings, and behavioral patterns may be stored, analyzed, and used to train future models. The FTC has repeatedly warned that companies deploying AI in products for minors must comply with COPPA's requirements for parental consent and data minimization — and has taken enforcement action when they do not.",
+        ),
+        p(
+          "FTC — COPPA and AI: https://www.ftc.gov/business-guidance/resources/complying-coppa-frequently-asked-questions",
+        ),
+        p(
+          "Finally — and this is the concern that sits closest to why we built Loup — AI displaces the conversations that grow kids' brains. Harvard's Center on the Developing Child has shown that \"serve-and-return\" interaction between children and caring adults is the primary mechanism for building emotional regulation, language, and social reasoning. An AI that answers every question, soothes every boredom, and never pushes back is not a developmental substitute for a parent, a grandparent, or a friend on the phone.",
+        ),
+        p(
+          "Harvard Center on the Developing Child — Serve and Return: https://developingchild.harvard.edu/science/key-concepts/serve-and-return/",
+        ),
+        p(
+          "UNESCO's guidance puts it plainly: schools and families should prioritize AI literacy and human oversight — not hand children open-ended conversational AI and hope for the best.",
+        ),
+        h2("What Parents Can Actually Do"),
+        p(
+          "The research converges on a practical middle path, not a blanket ban.",
+        ),
+        p(
+          "Use AI for bounded tasks — tutoring, accessibility, creative brainstorming — with you nearby or in the loop. Avoid always-on AI companions, especially for kids under 14. Teach kids that AI is a tool that can be wrong, not an authority. And protect unstructured time for real conversation, real boredom, and real relationships — the conditions under which human social-emotional development actually happens.",
+        ),
+        p(
+          "Common Sense Media recommends treating AI chatbots with the same skepticism you'd apply to unrestricted social media: delay access, monitor use, and prioritize products with transparent privacy policies and age-appropriate design.",
+        ),
+        h2("Where Loup — and loupkids.com — Fits"),
+        p(
+          "We built Loup because we believe the first phone in a kid's pocket should expand their world, not outsource their inner life to a machine.",
+        ),
+        p(
+          "Loup is intentionally not an AI device. There is no chatbot. No generative companion. No algorithm deciding what your child sees, hears, or feels. It is a voice-only phone — calls to approved contacts, period. The intelligence in the system is yours: who they can reach, when, and how.",
+        ),
+        p(
+          "That design is not anti-technology. It is pro-childhood. The research is clear that AI can help kids learn, create, and access support — when it is bounded and supervised. It is equally clear that open-ended AI companionship, unchecked data collection, and displaced human conversation carry real developmental and psychological risk.",
+        ),
+        p(
+          "Loup occupies the space between those truths. Kids get to call home from a friend's house, check in from the field, and hear a familiar voice when they're not sure how they feel. They do not get an AI friend who never sleeps, never disagrees, and never tells you what they talked about.",
+        ),
+        p(
+          "That is the role we think loupkids.com should play in an AI-saturated world: not another platform racing to embed a chatbot in every screen, but a deliberate alternative. Connection to real people. No apps. No internet. No algorithm working against your kid's childhood.",
+        ),
+        p(
+          "AI is going to keep getting better. Childhood does not get a redo. The wins are real — use them wisely. The warnings are documented — take them seriously. And when it is time for kids to carry a phone, give them one built for calling the people who actually know them — not for confiding in a machine that does not.",
+        ),
+      ],
+    },
+  },
   {
     slug: "why-kids-brains-need-voice-not-texts",
     title: "Why Kids' Brains Need Voice, Not Texts",
