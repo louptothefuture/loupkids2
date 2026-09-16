@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
+import { splitUrls } from "@/lib/autolink";
 import { getPost, getPosts } from "@/lib/content";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { SITE } from "@/lib/site";
@@ -105,7 +106,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     {block.text}
                   </h2>
                 ) : (
-                  <p key={i}>{block.text}</p>
+                  <p key={i}>
+                    {splitUrls(block.text).map((segment, j) =>
+                      segment.type === "url" ? (
+                        <a
+                          key={j}
+                          href={segment.value}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-4 hover:text-[var(--lk-ink)]"
+                        >
+                          {segment.value}
+                        </a>
+                      ) : (
+                        segment.value
+                      ),
+                    )}
+                  </p>
                 ),
               )
             : /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
