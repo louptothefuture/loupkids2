@@ -1,14 +1,29 @@
-import type { FAQPage, Organization, Product as ProductSchema, WithContext } from "schema-dts";
+import type { BreadcrumbList, FAQPage, Organization, Product as ProductSchema, WithContext } from "schema-dts";
 import { SITE } from "@/lib/site";
 import type { Product } from "@/lib/shopify/types";
 
-function JsonLdScript({ data }: { data: WithContext<Organization | ProductSchema | FAQPage> }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function JsonLdScript({ data }: { data: WithContext<any> }) {
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
+}
+
+export function BreadcrumbJsonLd({ crumbs }: { crumbs: { name: string; url: string }[] }) {
+  const data: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem" as const,
+      position: i + 1,
+      name: c.name,
+      item: c.url,
+    })),
+  };
+  return <JsonLdScript data={data} />;
 }
 
 export function OrganizationJsonLd() {

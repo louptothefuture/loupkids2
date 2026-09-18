@@ -7,13 +7,14 @@ import { SITE } from "@/lib/site";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [posts, products] = await Promise.all([getPosts(), getProducts()]);
 
+  const now = new Date().toISOString();
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE.url, changeFrequency: "weekly", priority: 1 },
-    { url: `${SITE.url}/about`, changeFrequency: "monthly", priority: 0.8 },
+    { url: SITE.url, changeFrequency: "weekly", priority: 1, lastModified: now },
+    { url: `${SITE.url}/about`, changeFrequency: "monthly", priority: 0.8, lastModified: now },
     { url: `${SITE.url}/ode`, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${SITE.url}/shop`, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE.url}/journal`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE.url}/resources`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${SITE.url}/shop`, changeFrequency: "weekly", priority: 0.9, lastModified: now },
+    { url: `${SITE.url}/journal`, changeFrequency: "weekly", priority: 0.8, lastModified: now },
+    { url: `${SITE.url}/resources`, changeFrequency: "weekly", priority: 0.7, lastModified: now },
     { url: `${SITE.url}/setup`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE.url}/help`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE.url}/faq`, changeFrequency: "monthly", priority: 0.6 },
