@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import { splitUrls } from "@/lib/autolink";
 import { getPost, getPosts } from "@/lib/content";
 import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 300;
@@ -63,6 +64,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: "Home", url: SITE.url },
+          { name: "Journal", url: `${SITE.url}/journal` },
+          { name: post.title, url: `${SITE.url}/journal/${post.slug}` },
+        ]}
       />
 
       <div className="lk-container-narrow">

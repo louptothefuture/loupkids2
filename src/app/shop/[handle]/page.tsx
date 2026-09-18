@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { getProduct, getProducts } from "@/lib/shopify";
 import { getSpecs } from "@/lib/content";
 import { ProductView } from "@/components/product/ProductView";
-import { ProductJsonLd } from "@/components/seo/JsonLd";
+import { BreadcrumbJsonLd, ProductJsonLd } from "@/components/seo/JsonLd";
+import { LOUPKIDS_TRUST } from "@/lib/content/loupkids-conversion";
+import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
 import { LoupkidsBuiltLikeGear } from "@/components/loupkids/LoupkidsBuiltLikeGear";
 import { LoupkidsCallingPricingSection } from "@/components/loupkids/LoupkidsCallingPricingSection";
 import { LoupkidsCustomizeStoreSection } from "@/components/loupkids/LoupkidsCustomizeStoreSection";
@@ -66,9 +68,28 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
   const specGroups = [...new Set(specs.map((s) => s.group))];
 
+  const reviewData = isDevice
+    ? {
+        rating: LOUPKIDS_TRUST.rating,
+        count: LOUPKIDS_TRUST.reviewCount,
+        items: FALLBACK_TESTIMONIALS.slice(0, 5).map((t) => ({
+          author: t.attribution,
+          rating: t.rating,
+          body: t.quote,
+        })),
+      }
+    : undefined;
+
   return (
     <>
-      <ProductJsonLd product={product} />
+      <ProductJsonLd product={product} reviews={reviewData} />
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: "Home", url: SITE.url },
+          { name: "Shop", url: `${SITE.url}/shop` },
+          { name: product.title, url: `${SITE.url}/shop/${product.handle}` },
+        ]}
+      />
 
       <section className="lk-section-header border-b border-[var(--lk-line)]">
         <div className="lk-container">
