@@ -8,6 +8,8 @@ const CATEGORY = { title: "Journal", slug: "journal" };
 
 /** Topic tags for journal filtering — not separate CMS categories yet */
 export const LOUPKIDS_JOURNAL_TOPICS: Record<string, string> = {
+  "what-kids-phones-actually-collect-gabb-ticktalk-pinwheel-troomi-bark":
+    "Screen time",
   "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us":
     "Parenting",
   "why-kids-brains-need-voice-not-texts": "Development",
@@ -53,6 +55,135 @@ const COVERS = [
 
 /** Journal articles sourced from loupkids.com/journal */
 export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
+  {
+    slug: "what-kids-phones-actually-collect-gabb-ticktalk-pinwheel-troomi-bark",
+    title: "What Kids' Phones Actually Collect — And Why the Fine Print Matters",
+    excerpt:
+      "Gabb, TickTalk, Pinwheel, Troomi, and Bark sell safety. Their own policies describe GPS trails, message copies, photos, usage habits, and third-party apps. Here's what they collect — and why Loup was built not to.",
+    publishedAt: "2026-09-19",
+    author: AUTHOR,
+    category: CATEGORY,
+    coverImage: "/images/lifestyle/kids-stoop.jpg",
+    relatedSlugs: [
+      "the-parental-control-myth",
+      "the-problem-with-locking-down-a-smartphone",
+      "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us",
+    ],
+    seoTitle: "Kids Phone Data Collection: Gabb, TickTalk, Pinwheel, Troomi, Bark",
+    seoDescription:
+      "A sourced look at how Gabb, TickTalk, Pinwheel, Troomi, and Bark collect children's location, messages, and usage data — and why a screenless first phone doesn't need that pile.",
+    body: {
+      source: "plain",
+      blocks: [
+        p(
+          "Parents buy a kids' phone because they want two things: a way to reach their child, and a way not to hand them the internet. The category that showed up to meet that need — Gabb, TickTalk, Pinwheel, Troomi, Bark — markets itself as the responsible alternative to an iPhone.",
+        ),
+        p(
+          "Read the privacy policies. The alternative is still a data product. Location. Message content. Photos. Voice notes. Usage habits. Device IDs. In some cases, third-party apps that Gabb itself says it cannot control. The pitch is safety. The architecture is surveillance-with-a-parent-login.",
+        ),
+        p(
+          "This is not a claim that these companies are secretly selling kids' data to advertisers. Most of them say they do not. The problem is simpler: once a child's precise location, texts, and media live on a company's servers, that child has a data trail. COPPA is the floor, not the design. The FTC has already warned kids-device makers that geolocation is personal information — and gone after toys that shipped children's location to third parties without consent.",
+        ),
+        p(
+          "FTC — Where in the world? Warning letters address geolocation and COPPA: https://www.ftc.gov/business-guidance/blog/2018/04/where-world-warning-letters-address-geolocation-coppa-coverage",
+        ),
+        p(
+          "FTC — Action against robot toy maker Apitor for third-party collection of children's geolocation (Sept 2025): https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-takes-action-against-robot-toy-maker-allowing-collection-childrens-data-without-parental-consent",
+        ),
+        h2("Gabb: a \"no social media\" phone that still copies the child's life"),
+        p(
+          "Gabb is the brand most parents name first. No App Store. No social media. No browser. GPS every 15 minutes. That is the ad.",
+        ),
+        p(
+          "Gabb's own Children's Privacy section is more specific. After a parent creates a GabbID, Gabb may collect the child's photographs and videos, the content of text messages sent on the device, voice recordings from videos and voice notes, calendar entries, notes, music preferences — plus, automatically, precise device location, IP address, serial number, UDID, and \"usage habits.\"",
+        ),
+        p(
+          "Gabb Wireless Privacy Policy — Children's Privacy: https://gabb.com/privacy-policy/",
+        ),
+        p(
+          "Parents can view text and call logs, download them, and get Safe Zone alerts. Gabb Cloud backs up the phone every night. Gabb Maps partners with HERE; Gabb says children's personal information is not sold for ads, and optional anonymous navigation data may go to HERE. That is better than a smartphone. It is still a cloud copy of a child's communications and a recurring GPS ping.",
+        ),
+        p(
+          "Gabb Help Center — parental controls, logs, Gabb Cloud: https://gabb.com/support/en/articles/11331843-gabb-parental-controls",
+        ),
+        p(
+          "Gabb Help Center — GPS updates every 15 minutes: https://gabb.com/support/en/articles/11159726-how-gps-location-works",
+        ),
+        p(
+          "The line that should stop a parent mid-scroll is this one, also from Gabb: third-party apps enabled at a parent's discretion \"may collect and transmit personal data to advertisers, including children's general location, IP addresses, and other personal data.\" Gabb says it cannot control that access. A locked-down phone with an unlockable side door is still a smartphone with extra steps.",
+        ),
+        h2("TickTalk: location you cannot turn off"),
+        p(
+          "TickTalk is a kids' smartwatch sold as calling plus locating. The privacy policy is unusually plain: \"We will automatically collect the physical precise location from your Child's TickTalk Device at all times when activated.\" Collection uses GPS and cell towers. \"You may not disable location-based data collection from the TickTalk Device and/or Services.\"",
+        ),
+        p(
+          "TickTalk Privacy Policy: https://www.myticktalk.com/policies/privacy-policy",
+        ),
+        p(
+          "TickTalk says it does not share precise geolocation with advertisers, encrypts data in transit, and uses Google Maps and AWS. Fine. The product still requires a continuous location stream to exist. Contacts granted \"Full Access\" can see the child's location. The company can access latitude and longitude on the backend \"if needed\" with parental consent. That is a tracking device that also makes calls — not a phone that happens to have a map.",
+        ),
+        p(
+          "TickTalk Support — how TickTalk protects children's information: https://ticktalk.onsitesupport.io/knowledge-base/article/how-does-ticktalk-protect-my-childs-information",
+        ),
+        h2("Pinwheel: deleted texts still show up"),
+        p(
+          "Pinwheel markets a phone that \"grows with your child\" — safelist contacts, then loosen the leash. The growth feature is monitoring. Pinwheel's own how-it-works page tells parents they can read texts and monitor calls \"without having to ask them to hand over their phone.\" The next sentence is the tell: \"Even deleted texts still show up.\"",
+        ),
+        p(
+          "Pinwheel — How it works (monitor text and call history, GPS): https://www.pinwheel.com/howitworks",
+        ),
+        p(
+          "There is also a GPS locator, arrival/departure alerts, and a Caregiver Portal that can check current latitude and longitude. Pinwheel is honest about the product: it is a smartphone you administer. Honesty does not make the data pile smaller. A child who deletes a message is still leaving a copy for the parent — and for whatever systems store that history.",
+        ),
+        h2("Troomi: a wireless company that lists texts, images, and biometrics"),
+        p(
+          "Troomi sells a \"safe phone that grows with your child\" and content filtering on calls and texts. The privacy notice reads like a carrier document because that is what it is. Troomi lists location generated by cell towers, Wi-Fi, Bluetooth, and GPS; device IDs; network performance; and — when analytics are enabled — \"voice recordings, text messages (including emojis), and/or images transmitted to or from your device.\" The same notice lists biometric examples: fingerprints, voice prints, face scans.",
+        ),
+        p(
+          "Troomi Privacy Policy: https://troomi.com/privacy-policy/",
+        ),
+        p(
+          "Troomi's content-moderation consent page is clearer still: parents agree to let Troomi \"monitor, grade, and process texts, images, videos, emojis, and GIFS sent and received by my child.\" Troomi says it does not share kids' personal information with third parties for spam and ads. The scan still happens. A filter that grades a child's texts is a copy of a child's texts.",
+        ),
+        p(
+          "Troomi — Content Moderation Terms and Consent: https://troomi.com/content-moderation-terms-and-consent/",
+        ),
+        h2("Bark: safety as a full-content scan"),
+        p(
+          "Bark began as a monitoring layer on regular phones and now sells Bark Phone. The privacy policy describes what \"safety\" means in data terms: content scanned from accounts — text messages, email, chat, social posts — plus metadata, telemetry, location, persistent identifiers, and biometrics, with verifiable parental consent for kids under 13.",
+        ),
+        p(
+          "Bark Privacy Policy: https://www.bark.us/privacy/",
+        ),
+        p(
+          "If the job is \"alert me if something is wrong,\" Bark is built to ingest the child's communications to do that job. That is a legitimate parental choice. It is not a low-data childhood. It is a high-data one with a dashboard.",
+        ),
+        h2("The pattern is the product"),
+        p(
+          "These brands are not identical. Gabb strips the App Store and still copies messages, media, and GPS. TickTalk will not let you disable location. Pinwheel keeps deleted texts. Troomi can grade texts and images. Bark scans accounts. The common architecture is: put a computer on a child, stream enough of their life to the cloud that a parent (and the vendor) can reconstruct it.",
+        ),
+        p(
+          "That is why COPPA keeps showing up in this category. In 2018 the FTC warned Gator Group and Tinitell — kids' GPS watches marketed as first phones — that collecting precise geolocation required direct parental notice and verifiable consent. In 2025 the FTC went after Apitor, a kids' robot, after its app let a third-party SDK send children's geolocation to a company in China. The lesson is not \"only the shady imports do this.\" The lesson is that kids' hardware plus an app plus location is a regulated data system — even when the box says safe.",
+        ),
+        p(
+          "FTC warning letter to Gator Group (April 26, 2018): https://www.ftc.gov/system/files/attachments/press-releases/ftc-warns-gator-group-tinitell-online-services-might-violate-coppa/coppa_gator_group_co_ltd_letter_4-26-18.pdf",
+        ),
+        h2("What Loup collects — and what it refuses to build"),
+        p(
+          "Loup is a screenless voice device. Approved contacts. Quiet hours. No browser, no feed, no app store, no camera roll for the algorithm to index. v1 is Wi-Fi voice. There is no GPS ping every 15 minutes because there is no map product. There is no text archive because there is no texting product. There is no deleted-message ghost because we do not store a child's conversations as a feature.",
+        ),
+        p(
+          "Parents still control the device: who can call, when it works. That is a whitelist, not a wiretap. The companion app is for the adult. The child's device does not need to become a telemetry satellite to be useful.",
+        ),
+        p(
+          "We are not pretending a connected device collects nothing. Pairing, account email, and the fact that a call happened on our network are the minimum to make a phone a phone. The difference is design: we do not need usage habits, photo backups, message bodies, or a location history to deliver the one job — let a kid call their people.",
+        ),
+        p(
+          "If you want a smartphone with training wheels, the other brands will sell you one, and they will tell you so in the policy. If you want childhood without a dossier, start with a device that has nothing to dossier.",
+        ),
+      ],
+    },
+  },
   {
     slug: "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us",
     title: "AI and Kids: What the Research Gets Right — and Where It Warns Us",
