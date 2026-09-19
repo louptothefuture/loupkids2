@@ -63,7 +63,8 @@ export const LOUPKIDS_JOURNAL_POSTS: Post[] = [
     publishedAt: "2026-09-19",
     author: AUTHOR,
     category: CATEGORY,
-    coverImage: "/images/lifestyle/kids-stoop.jpg",
+    coverImage:
+      "/images/loupkids/journal/what-kids-phones-actually-collect-camera-cash.png",
     relatedSlugs: [
       "the-parental-control-myth",
       "the-problem-with-locking-down-a-smartphone",

@@ -73,6 +73,8 @@ export const LOUPKIDS_VIDEOS = {
 
 /** Journal cover images scraped from loupkids.com/journal/[slug] */
 export const LOUPKIDS_JOURNAL_COVERS: Record<string, string> = {
+  "what-kids-phones-actually-collect-gabb-ticktalk-pinwheel-troomi-bark":
+    "/images/loupkids/journal/what-kids-phones-actually-collect-camera-cash.png",
   "ai-and-kids-what-the-research-gets-right-and-where-it-warns-us":
     "/images/loupkids/journal/ai-and-kids-retro-robot-serving-boy.jpg",
   "why-kids-brains-need-voice-not-texts": "/images/lifestyle-new/two-kids.jpg",
