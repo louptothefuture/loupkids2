@@ -25,8 +25,16 @@ export function LoupkidsCallingPricingSection({ compact = false }: { compact?: b
           >
             What it costs to stay connected
           </h2>
-          <p className={`mt-3 max-w-2xl text-[var(--lk-muted)] ${compact ? "text-sm" : "mt-4 text-[0.975rem]"}`}>
-            LOUP↔LOUP is always free on both models. The monthly cost depends on what you choose.
+
+          {/* LOUP↔LOUP always free — primary callout */}
+          <div className="mt-6 inline-flex items-center gap-3 rounded-full bg-[var(--lk-ink)] px-5 py-2.5">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
+            <span className="lk-display text-base text-white tracking-tight">
+              LOUP↔LOUP calls — always free
+            </span>
+          </div>
+          <p className={`mt-4 max-w-2xl text-[var(--lk-muted)] ${compact ? "text-sm" : "text-[0.975rem]"}`}>
+            The monthly cost below is for external contacts and LTE. Calls between Loup devices cost nothing, ever.
           </p>
         </FadeIn>
 
