@@ -53,8 +53,8 @@ export const LOUPKIDS_OFFER_CARD = {
     "Ships within 60 days · 100% refundable before dispatch · 30-day trial on delivery",
   ],
   disclaimer: [
-    "WiFi + LTE option includes eSIM · No open internet · Parent-controlled network",
-    "Does not support E911 emergency dialing",
+    "WiFi + LTE includes eSIM · LTE model supports 911 · WiFi model does not",
+    "No open internet · Parent-controlled network · Closed contacts only",
   ],
 } as const;
 
@@ -144,10 +144,9 @@ export const LOUPKIDS_SHIPPING = {
     "Order today — guaranteed shipping within 60 days. 100% refundable anytime prior to dispatch.",
 } as const;
 
-/** Wi-Fi device — no E911 */
 export const LOUPKIDS_E911 = {
   short:
-    "Voice device: WiFi, or WiFi + LTE (eSIM). Closed contact network. Does not support E911 emergency dialing.",
+    "LOUP WiFi + LTE supports 911. LOUP WiFi does not — keep a phone available for emergencies.",
 } as const;
 
 export const LOUPKIDS_COPPA = {

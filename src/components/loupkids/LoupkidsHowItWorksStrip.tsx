@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { HOME_HOW_IT_WORKS } from "@/lib/content/loupkids-home-arc";
 import { FadeIn } from "./FadeIn";
-import { StepPhoneIcon, StepWifiIcon } from "./LoupkidsHowItWorksIcons";
+import { StepPhoneIcon, StepWheelIcon, StepWifiIcon } from "./LoupkidsHowItWorksIcons";
 
 const Glb3Embed = dynamic(
   () =>
@@ -21,11 +21,12 @@ const Glb3Embed = dynamic(
   },
 );
 
-const [STEP_WIFI, STEP_CONTACTS] = HOME_HOW_IT_WORKS;
+const [STEP_WIFI, STEP_CONTACTS, STEP_CALL] = HOME_HOW_IT_WORKS;
 
 const SETUP = [
   { ...STEP_WIFI, Icon: StepWifiIcon },
   { ...STEP_CONTACTS, Icon: StepPhoneIcon },
+  { ...STEP_CALL, Icon: StepWheelIcon },
 ] as const;
 
 function GlbStage() {
@@ -95,14 +96,20 @@ export function LoupkidsHowItWorksStrip({
               ))}
             </ol>
 
-            {showSetupLink ? (
-              <Link
-                href="/setup"
-                className="mt-8 hidden text-sm font-medium text-[var(--lk-ink)] underline underline-offset-4 hover:opacity-70 lg:inline-flex"
-              >
-                Full setup guide →
-              </Link>
-            ) : null}
+            <div className="mt-8 flex flex-wrap gap-4">
+              {showSetupLink ? (
+                <Link
+                  href="/setup"
+                  className="hidden text-sm font-medium text-[var(--lk-ink)] underline underline-offset-4 hover:opacity-70 lg:inline-flex"
+                >
+                  Full setup guide →
+                </Link>
+              ) : (
+                <Link href="/shop/loup" className="lk-btn lk-btn-sm">
+                  Choose WiFi or LTE
+                </Link>
+              )}
+            </div>
           </FadeIn>
 
           <FadeIn delay={0.06}>

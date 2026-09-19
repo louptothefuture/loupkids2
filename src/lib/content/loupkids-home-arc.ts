@@ -97,13 +97,13 @@ export const HOME_GALLERY = {
 export const HOME_HOW_IT_WORKS = [
   {
     step: "01",
-    title: "Connect over Wi-Fi",
-    body: "Pair Loup to your home network in the parent app — about two minutes.",
+    title: "Pair in the parent app",
+    body: "WiFi connects at home, school, or anywhere you've saved a network. WiFi + LTE adds cellular — same setup, no dead zones.",
   },
   {
     step: "02",
     title: "Approve contacts",
-    body: "In the parent app, choose who kids can call. No strangers, spam, or surprise calls.",
+    body: "Choose who kids can call. No strangers, spam, or surprise calls. Same list on both models.",
   },
   {
     step: "03",
@@ -123,7 +123,7 @@ export const HOME_LAUNCH = {
     "Loup ↔ Loup calls: always free",
     "External contacts: free for 1 year, then $10/mo — cancel anytime",
   ],
-  e911: "WiFi + LTE option includes eSIM · No open internet · Parent-controlled network. Does not support E911 emergency dialing.",
+  e911: "LOUP WiFi + LTE supports 911. LOUP WiFi does not — keep a phone available for emergencies.",
 } as const;
 
 /** @deprecated aliases — keep old imports from breaking during rebuild */

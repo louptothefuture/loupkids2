@@ -360,7 +360,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Does Loup support 911 / E911?",
-    a: "No. Neither model supports E911. LOUP is a closed voice device — WiFi, or WiFi + LTE for coverage. Keep a phone available for emergencies.",
+    a: "It depends on the model. LOUP WiFi does not support E911 — it operates over saved WiFi networks and parent hotspot only. LOUP WiFi + LTE does support 911 via the LTE cellular connection. Keep a phone available when your child has the WiFi model.",
   },
   {
     q: "Does Loup require a SIM card or a carrier plan?",
