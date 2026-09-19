@@ -8,6 +8,7 @@ import { LOUPKIDS_TRUST } from "@/lib/content/loupkids-conversion";
 import { FALLBACK_TESTIMONIALS } from "@/lib/content/fallback";
 import { LoupkidsBuiltLikeGear } from "@/components/loupkids/LoupkidsBuiltLikeGear";
 import { LoupkidsCallingPricingSection } from "@/components/loupkids/LoupkidsCallingPricingSection";
+import { LoupkidsModelsCompare } from "@/components/loupkids/LoupkidsModelsCompare";
 import { LoupkidsCustomizeStoreSection } from "@/components/loupkids/LoupkidsCustomizeStoreSection";
 import { LOUPKIDS_COMPARISON } from "@/lib/content/loupkids-site";
 import { SITE } from "@/lib/site";
@@ -99,6 +100,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
       {isDevice && (
         <>
+          <LoupkidsModelsCompare />
           <LoupkidsBuiltLikeGear />
           <LoupkidsCallingPricingSection />
 

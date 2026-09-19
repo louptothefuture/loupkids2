@@ -53,7 +53,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Is there a monthly fee?",
     answer:
-      "Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
+      "LOUP↔LOUP always free. External contacts $10/mo. WiFi + LTE includes LTE — no extra carrier plan.",
   },
   {
     section: "Plans & Calling",
@@ -65,7 +65,7 @@ export const FALLBACK_FAQS: Faq[] = [
     section: "Plans & Calling",
     question: "Does LOUP work away from home Wi-Fi?",
     answer:
-      "Loup connects over Wi-Fi — at home, school, or anywhere you trust. No SIM card and no carrier bill. Loup↔Loup + App→Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+      "LOUP WiFi works at home, school, saved networks, or a parent hotspot. LOUP WiFi + LTE adds cellular when WiFi isn't around. Same approved contacts. Same parent controls. No open internet.",
   },
   {
     section: "Shipping",
@@ -174,7 +174,7 @@ export const FALLBACK_SPECS: Spec[] = [
   {
     group: "Calling",
     label: "Real phone numbers",
-    value: "Loup↔Loup always free · First 500: year 1 external · then $10/mo",
+    value: "LOUP↔LOUP always free · External contacts $10/mo",
   },
   {
     group: "Calling",
@@ -197,7 +197,7 @@ export const PRESS_KIT_FACTS = [
   { label: "Product", value: "LOUP — screenless voice phone for kids" },
   {
     label: "Price",
-    value: "$149 device · Loup↔Loup free · First 500 year-1 external",
+    value: "WiFi $149 · WiFi + LTE $199 · LOUP↔LOUP free · External $10/mo",
   },
   { label: "Category", value: "Smartphone alternative / anti-screen hardware" },
   { label: "Contact", value: "hi@loupkids.com" },

@@ -21,6 +21,7 @@ import { LoupkidsOrderCta } from "./conversion";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsAccordion } from "./LoupkidsAccordion";
 import { LoupkidsCallingPricingSection } from "./LoupkidsCallingPricingSection";
+import { LoupkidsModelsCompare } from "./LoupkidsModelsCompare";
 import { LoupkidsSetupCardsSection } from "./LoupkidsSetupCardsSection";
 import { LoupkidsComparisonSection, LoupkidsSpecsSection } from "./LoupkidsSpecsSections";
 import { LoupkidsFooter } from "./LoupkidsFooter";
@@ -216,6 +217,7 @@ export function LoupkidsHomeLegacy() {
       </section>
 
       <LoupkidsSpecsSection />
+      <LoupkidsModelsCompare />
       <LoupkidsCallingPricingSection />
 
       {/* Final CTA */}

@@ -96,6 +96,27 @@ export function connectivityFromVariantTitle(title: string): LoupConnectivityId 
   return title.includes("LTE") ? "lte" : "wifi";
 }
 
+/** Clear difference between the two SKUs — shop + homepage. */
+export const LOUPKIDS_MODELS_COMPARE = {
+  eyebrow: "Two models",
+  headline: "WiFi, or WiFi + LTE. Same Loup.",
+  subline:
+    "Same approved contacts. Same parent controls. Same closed network. The only difference is how far they can go without a saved WiFi network.",
+  columns: ["LOUP WiFi", "LOUP WiFi + LTE"],
+  rows: [
+    { label: "Pre-order", values: ["$149", "$199"] },
+    { label: "At launch", values: ["$199", "$249"] },
+    { label: "Home, school, saved WiFi", values: ["Yes", "Yes"] },
+    { label: "Away from WiFi", values: ["Parent hotspot", "LTE included"] },
+    { label: "LOUP↔LOUP calls", values: ["Always free", "Always free"] },
+    { label: "External contacts", values: ["$10/mo", "$10/mo"] },
+    { label: "eSIM / cellular", values: ["No", "Yes — through LOUP"] },
+    { label: "Carrier contract", values: ["None", "None"] },
+    { label: "Open internet / browser", values: ["No", "No"] },
+    { label: "Location tracking", values: ["No", "No"] },
+  ],
+} as const;
+
 export const LOUPKIDS_HERO_COPY = {
   eyebrow: "The phone before the smartphone",
   headline: "Their first phone. Safe from day one.",
@@ -134,19 +155,13 @@ export const LOUPKIDS_COPPA = {
 export const LOUPKIDS_CART_TRUST = [
   "Ships Within 60 Days",
   "100% Refundable Before Dispatch",
-  "First 500: year 1 external calling included",
+  "LOUP↔LOUP free · External $10/mo",
 ] as const;
 
-/**
- * Calling economics — keep in sync with LOUPKIDS_OFFER.callingCanonical
- * - Loup↔Loup = always free
- * - First 500: year 1 unlimited external contacts, then $10/mo
- */
 export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
-  intro:
-    "LOUP↔LOUP always free. External contacts $10/mo. WiFi + LTE includes LTE — same approved contacts, no open internet.",
+  intro: "Same calling on both models. Coverage is what changes.",
   tiers: [
     {
       label: "Loup to Loup",
@@ -155,12 +170,11 @@ export const LOUPKIDS_CALLING_PRICING = {
     },
     {
       label: "External contacts",
-      price: "Free for first year",
-      comparePrice: "$10 a month",
-      body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10 a month (cancel anytime) — or keep Loup↔Loup free forever.",
+      price: "$10/mo",
+      body: "Approved numbers on regular phones. Cancel anytime. LOUP↔LOUP stays free either way.",
     },
   ],
-  cta: { label: "Stay in touch", href: "/shop/loup" },
+  cta: { label: "Choose WiFi or LTE", href: "/shop/loup" },
   helpLink: { label: "How calling plans work", href: "/help/calling-plan" },
 } as const;
 
@@ -217,7 +231,7 @@ export const LOUPKIDS_WHY_NOT_JUST = {
       title: "Why not stick with a landline?",
       body: [
         "A landline stays in one room. Kids still have to remember which button is grandma — and they can't take it with them.",
-        "LOUP travels. Home, friends' house, grandparents', on vacation — any Wi-Fi, same contacts, same controls.",
+        "LOUP travels. Home, friends' house, grandparents' — saved WiFi, or LTE if you choose that model. Same contacts. Same controls.",
       ],
       but: "A fixed landline isn't independence.",
     },

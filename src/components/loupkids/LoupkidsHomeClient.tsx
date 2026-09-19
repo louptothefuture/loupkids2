@@ -9,6 +9,7 @@ import { HOME_HERO, HOME_STORY } from "@/lib/content/loupkids-home-arc";
 import { LoupkidsOrderCta } from "./conversion";
 import { FadeIn } from "./FadeIn";
 import { LoupkidsCallingPricingSection } from "./LoupkidsCallingPricingSection";
+import { LoupkidsModelsCompare } from "./LoupkidsModelsCompare";
 import { LoupkidsFeaturePlay } from "./LoupkidsFeaturePlay";
 import { LoupkidsFooter } from "./LoupkidsFooter";
 import { LoupkidsImage } from "./LoupkidsImage";
@@ -142,6 +143,7 @@ export function LoupkidsHomeClient({ content }: { content: MarketingHomepage }) 
       </section>
 
       <LoupkidsFeaturePlay />
+      <LoupkidsModelsCompare compact />
       <LoupkidsCallingPricingSection compact />
       <LoupkidsWhyNotJustSection />
       <LoupkidsLaunchOfferSection />

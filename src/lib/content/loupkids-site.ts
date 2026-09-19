@@ -325,7 +325,7 @@ export const LOUPKIDS_ABOUT = {
     "We're not against screens—cartoons on the weekends, we watch movies and play video games together—but we didn't want her first experience of independent connection to be through something designed to keep her scrolling.",
     "We also didn't want social media pressure, spam, or the open internet to arrive before she was ready. There had to be a gentler middle step.",
     "A lot of parents we know feel the same quiet unease: kids need to reach us, and each other, but smartphones ask for more attention than most eight-year-olds can spare. We wanted connection without the constant pull of a feed.",
-    "So we started building. We wanted something small and safe, but still beautiful. A way for kids to talk and stay close, without being pulled into feeds or apps. That became Loup—a screenless, SIM-free voice device that lets kids connect while parents stay in control. Freedom for her. Peace of mind for us.",
+    "So we started building. We wanted something small and safe, but still beautiful. A way for kids to talk and stay close, without being pulled into feeds or apps. That became Loup—a screenless voice device on a closed contact network, WiFi or WiFi + LTE. Freedom for her. Peace of mind for us.",
     "The name started as loop—a safe circle of connection. But our daughter said it should be written as Loup, the French word for wolf. \"Because wolves howl to stay close to their pack,\" she had learned. And that just made sense.",
     "Loup isn't another smartphone for kids. It's something new—a smarter first phone. With your support, we can help kids grow up connected in the ways that really matter.",
   ],
@@ -360,7 +360,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Does Loup support 911 / E911?",
-    a: "No. Loup is a Wi-Fi voice device. It operates over Wi-Fi networks and parent mobile hotspots. It does not support E911 emergency dialing. Keep a phone available for emergencies when off Wi-Fi.",
+    a: "No. Neither model supports E911. LOUP is a closed voice device — WiFi, or WiFi + LTE for coverage. Keep a phone available for emergencies.",
   },
   {
     q: "Does Loup require a SIM card or a carrier plan?",
@@ -498,7 +498,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 export const LOUPKIDS_STORE = {
   headline: "Pre-order Loup",
   subheadline:
-    "Aluminum sides & buttons, ABS front — First 500 for $149 ($199 at launch). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
+    "Aluminum sides & buttons, ABS front — WiFi $149 / WiFi + LTE $199 pre-order. LOUP↔LOUP always free. External contacts $10/mo. Ships within 60 days.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -508,7 +508,7 @@ export const LOUPKIDS_STORE_PRODUCTS = [
     title: "Loup — Silver",
     price: 149,
     compareAt: 199 as number | null,
-    note: "Order · Ships within 60 days · First 500 year-1 external calling",
+    note: "WiFi $149 or WiFi + LTE $199 · Ships within 60 days",
     image: LOUPKIDS_IMAGES.loupAluminium,
     href: "/shop/loup",
     sizes: [] as string[],
@@ -530,7 +530,7 @@ export const LOUPKIDS_SPECS = [
   {
     group: "Calling",
     label: "Real phone numbers",
-    value: "Loup↔Loup always free · First 500: year 1 external · then $10/mo",
+    value: "LOUP↔LOUP always free · External contacts $10/mo",
   },
   {
     group: "Calling",
@@ -559,7 +559,7 @@ export const LOUPKIDS_COMPARISON = {
     },
     {
       label: "Goes where kids go",
-      values: ["Pocket + any Wi-Fi", "Yes", "Yes", "One room only"],
+      values: ["WiFi, or WiFi + LTE", "Yes", "Yes", "One room only"],
     },
     {
       label: "Parent-approved contacts only",
@@ -577,7 +577,7 @@ export const LOUPKIDS_COMPARISON = {
     {
       label: "Monthly cost",
       values: [
-        "$0 core · First 500 year-1 external",
+        "LOUP↔LOUP free · External $10/mo",
         "Carrier plan required",
         "Carrier plan required",
         "Home phone plan",

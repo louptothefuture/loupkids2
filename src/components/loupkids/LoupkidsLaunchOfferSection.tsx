@@ -1,15 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import {
-  LOUPKIDS_CTA,
-  LOUPKIDS_IN_THE_BOX,
-  LOUPKIDS_OFFER_CARD,
-  LOUPKIDS_PRICE,
-} from "@/lib/content/loupkids-conversion";
-import { HOME_LAUNCH } from "@/lib/content/loupkids-home-arc";
+import { LOUPKIDS_IN_THE_BOX, LOUPKIDS_OFFER_CARD } from "@/lib/content/loupkids-conversion";
 import { FadeIn } from "./FadeIn";
-import { StripeCheckoutButton } from "./conversion/StripeCheckoutButton";
 
 export function LoupkidsLaunchOfferSection() {
   return (
@@ -24,39 +17,35 @@ export function LoupkidsLaunchOfferSection() {
             <p className="text-sm font-medium uppercase tracking-[0.06em] text-[var(--lk-ink)]">
               {LOUPKIDS_OFFER_CARD.label}
             </p>
-            <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p className="lk-display text-3xl sm:text-4xl">{HOME_LAUNCH.priceHeader}</p>
-              <p className="text-base text-[var(--lk-muted)] line-through">
-                {LOUPKIDS_PRICE.compareFormatted}
-              </p>
-              <p className="text-sm font-medium text-[var(--lk-ink)]">
-                {LOUPKIDS_OFFER_CARD.saveNote}
-              </p>
-            </div>
             <p className="mt-3 text-sm leading-snug text-[var(--lk-ink)]">
               {LOUPKIDS_OFFER_CARD.productLine}
             </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <p className="text-sm">
+                <span className="font-medium">LOUP WiFi</span>
+                <span className="mt-1 block lk-display text-2xl">$149</span>
+                <span className="text-[var(--lk-muted)]">$199 at launch</span>
+              </p>
+              <p className="text-sm">
+                <span className="font-medium">LOUP WiFi + LTE</span>
+                <span className="mt-1 block lk-display text-2xl">$199</span>
+                <span className="text-[var(--lk-muted)]">$249 at launch</span>
+              </p>
+            </div>
 
             <div className="my-5 border-t border-[var(--lk-line-soft)]" />
 
             <ul className="space-y-2 text-sm leading-snug text-[var(--lk-muted)]">
-              {LOUPKIDS_OFFER_CARD.callingBullets.map((b) => (
-                <li key={b}>✓ {b}</li>
-              ))}
+              <li>✓ Same closed contacts on both</li>
+              <li>✓ LOUP↔LOUP always free · External $10/mo</li>
+              <li>✓ LTE = coverage, not the internet</li>
             </ul>
 
             <div className="my-5 border-t border-[var(--lk-line-soft)]" />
 
-            <StripeCheckoutButton
-              label={LOUPKIDS_CTA.product}
-              className="lk-btn lk-btn-convert lk-btn-lg w-full cursor-pointer"
-              showGuarantee
-            />
-            <StripeCheckoutButton
-              pack="pair"
-              label={LOUPKIDS_CTA.pair}
-              className="lk-btn lk-btn-outline lk-btn-lg mt-2 w-full cursor-pointer"
-            />
+            <Link href="/shop/loup" className="lk-btn lk-btn-convert lk-btn-lg inline-flex w-full justify-center">
+              Choose WiFi or LTE
+            </Link>
 
             <div className="mt-4 space-y-1 text-xs leading-relaxed text-[var(--lk-muted)]">
               {LOUPKIDS_OFFER_CARD.logistics.map((line) => (

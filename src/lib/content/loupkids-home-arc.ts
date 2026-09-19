@@ -118,7 +118,7 @@ export const HOME_LAUNCH = {
   /** Prefer LOUPKIDS_OFFER_CARD in UI */
   scarcityLine: "Founding Offer · First 500 Only",
   bonusBanner:
-    "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    "LOUP↔LOUP always free. External contacts $10/mo. WiFi $149 or WiFi + LTE $199 pre-order.",
   bullets: [
     "Loup ↔ Loup calls: always free",
     "External contacts: free for 1 year, then $10/mo — cancel anytime",
