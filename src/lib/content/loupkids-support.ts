@@ -80,11 +80,11 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "LOUP↔LOUP always free. External contacts $10/mo (cancel anytime). WiFi + LTE includes cellular coverage through LOUP — no extra carrier plan.",
+        body: "LOUP↔LOUP always free. External contacts $10/mo. LTE connectivity (WiFi + LTE model) $10/mo — $20/mo total. Cancel anytime.",
       },
       {
         heading: "Subscribe",
-        body: "In the parent app under Billing → Calling Plan. $10/month per Loup for external numbers; cancel anytime. LTE is included on the WiFi + LTE model.",
+        body: "In the parent app under Billing → Calling Plan. WiFi model: $10/month for external contacts. WiFi + LTE model: $20/month total (includes LTE). Cancel anytime, no penalty.",
       },
       {
         heading: "What's included",

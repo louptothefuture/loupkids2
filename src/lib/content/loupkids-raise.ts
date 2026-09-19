@@ -214,9 +214,9 @@ export const RAISE_ECONOMICS = {
     },
     {
       title: "Calling plans",
-      price: "$10–$20/mo",
-      meta: "Loup-to-Loup WiFi free · 90% gross margin on external",
-      body: "Core Loup-to-Loup audio over WiFi is free. External lines and cellular mobility are $10–$20/month. Subscriptions overtake hardware in year 4.",
+      price: "$10/mo · $20/mo",
+      meta: "LOUP↔LOUP free · WiFi model $10/mo · LTE model $20/mo",
+      body: "LOUP↔LOUP always free. WiFi model: external contacts $10/mo. WiFi + LTE model: external contacts + LTE $20/mo total. Subscriptions overtake hardware in year 4.",
     },
   ],
 } as const;

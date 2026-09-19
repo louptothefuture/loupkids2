@@ -64,31 +64,35 @@ export const LOUPKIDS_CONNECTIVITY = {
   wifi: {
     id: "wifi" as const,
     name: "LOUP WiFi",
+    tagline: "Home, school, saved networks.",
     preorder: 149,
     launch: 199,
-    cta: "Pre-order Loup — $149",
-    pairLabel: "2 for $298",
+    cta: "Pre-order — $149",
+    pairLabel: "Pre-order 2 for $298",
     pairAmount: 298,
-    callingBullets: [
-      "LOUP↔LOUP always free",
-      "External contacts $10/mo",
-    ],
+    monthlyTotal: null,
+    monthlyBreakdown: ["LOUP↔LOUP — always free", "External contacts — $10/mo"],
+    coverage: "Works on saved WiFi networks and parent hotspot. Same closed contact list.",
     note: null,
   },
   lte: {
     id: "lte" as const,
     name: "LOUP WiFi + LTE",
+    tagline: "Reachable anywhere. Same rules.",
     preorder: 199,
     launch: 249,
-    cta: "Pre-order Loup — $199",
-    pairLabel: "2 for $398",
+    cta: "Pre-order — $199",
+    pairLabel: "Pre-order 2 for $398",
     pairAmount: 398,
-    callingBullets: [
-      "LOUP↔LOUP always free",
-      "External contacts $10/mo",
-      "LTE included",
+    monthlyTotal: 20,
+    monthlyBreakdown: [
+      "LOUP↔LOUP — always free",
+      "External contacts — $10/mo",
+      "LTE connectivity — $10/mo",
+      "Total — $20/mo",
     ],
-    note: "LTE keeps them reachable when WiFi isn't around. Same approved contacts. Same parent controls. No dead zones.",
+    coverage: "WiFi everywhere you have it — plus LTE when you don't. Same approved contacts. Same parent controls. No open internet. No dead zones.",
+    note: "LTE is handled through LOUP — no separate carrier contract.",
   },
 } as const;
 
@@ -101,16 +105,16 @@ export const LOUPKIDS_MODELS_COMPARE = {
   eyebrow: "Two models",
   headline: "WiFi, or WiFi + LTE. Same Loup.",
   subline:
-    "Same approved contacts. Same parent controls. Same closed network. The only difference is how far they can go without a saved WiFi network.",
+    "Same approved contacts. Same parent controls. Same closed network. The only difference is how far they can go — and what you pay per month.",
   columns: ["LOUP WiFi", "LOUP WiFi + LTE"],
   rows: [
     { label: "Pre-order", values: ["$149", "$199"] },
     { label: "At launch", values: ["$199", "$249"] },
-    { label: "Home, school, saved WiFi", values: ["Yes", "Yes"] },
-    { label: "Away from WiFi", values: ["Parent hotspot", "LTE included"] },
     { label: "LOUP↔LOUP calls", values: ["Always free", "Always free"] },
     { label: "External contacts", values: ["$10/mo", "$10/mo"] },
-    { label: "eSIM / cellular", values: ["No", "Yes — through LOUP"] },
+    { label: "LTE connectivity", values: ["—", "$10/mo"] },
+    { label: "Monthly total", values: ["$10/mo", "$20/mo"] },
+    { label: "Coverage away from WiFi", values: ["Parent hotspot", "LTE anywhere"] },
     { label: "Carrier contract", values: ["None", "None"] },
     { label: "Open internet / browser", values: ["No", "No"] },
     { label: "Location tracking", values: ["No", "No"] },
@@ -158,10 +162,12 @@ export const LOUPKIDS_CART_TRUST = [
   "LOUP↔LOUP free · External $10/mo",
 ] as const;
 
+// ponytail: LOUPKIDS_CALLING_PRICING is now only used by legacy/campaign components.
+// Shop and home use LoupkidsCallingPricingSection which reads LOUPKIDS_CONNECTIVITY directly.
 export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
-  intro: "Same calling on both models. Coverage is what changes.",
+  intro: "LOUP↔LOUP always free. WiFi model: $10/mo. WiFi + LTE model: $20/mo total.",
   tiers: [
     {
       label: "Loup to Loup",
@@ -171,7 +177,7 @@ export const LOUPKIDS_CALLING_PRICING = {
     {
       label: "External contacts",
       price: "$10/mo",
-      body: "Approved numbers on regular phones. Cancel anytime. LOUP↔LOUP stays free either way.",
+      body: "Approved numbers on regular phones. Included on both models. Cancel anytime.",
     },
   ],
   cta: { label: "Choose WiFi or LTE", href: "/shop/loup" },

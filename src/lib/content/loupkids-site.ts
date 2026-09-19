@@ -368,11 +368,15 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Does LOUP now come with LTE?",
-    a: "Yes — as an option. LOUP WiFi works exactly as before: home, school, saved networks, parent hotspot. LOUP WiFi + LTE adds cellular coverage as a backup so kids are reachable anywhere. The closed contact network is identical on both.",
+    a: "Yes — as an option. LOUP WiFi ($149 pre-order) works at home, school, saved networks, and parent hotspot. LOUP WiFi + LTE ($199 pre-order) adds cellular so kids are reachable anywhere. The closed contact network is identical on both.",
   },
   {
-    q: "Do I need a carrier plan for LTE?",
-    a: "No separate carrier plan needed. LTE is handled through LOUP directly — included in the WiFi + LTE model. No new contracts.",
+    q: "What does LTE cost per month?",
+    a: "LOUP WiFi + LTE is $20/month total: $10/month for external contacts plus $10/month for LTE connectivity. LOUP↔LOUP calls are free on both models. LTE is handled through LOUP — no separate carrier contract.",
+  },
+  {
+    q: "Do I need a separate carrier plan for LTE?",
+    a: "No. LTE is included through LOUP directly on the WiFi + LTE model. No new contract, no carrier signup.",
   },
   {
     q: "Does LTE mean my kid can browse the internet?",
@@ -400,7 +404,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     a: {
       paragraphs: [
         "Loup↔Loup + App→Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
-        "LOUP↔LOUP always free. External contacts $10/mo. WiFi + LTE includes LTE — no extra carrier plan. Pre-order $149 / $199; $199 / $249 at launch.",
+        "LOUP↔LOUP always free. WiFi: $10/mo external. WiFi + LTE: $20/mo total (external + LTE). Pre-order $149 WiFi / $199 LTE; $199 / $249 at launch.",
       ],
     },
   },
