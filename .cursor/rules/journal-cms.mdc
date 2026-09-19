@@ -1,0 +1,9 @@
+# Journal → Sanity
+
+When you write or edit a journal article, **publish it to Sanity in the same turn**. Do not leave it as a code-only deploy.
+
+1. Keep the post in `src/lib/content/journal.ts` (fallback + topic map).
+2. Run `npm run publish:journal -- --slug <slug>` (or without `--slug` to sync all).
+3. Requires `NEXT_PUBLIC_SANITY_PROJECT_ID` and `SANITY_API_WRITE_TOKEN` in the environment. If they are missing, stop and say so — do not pretend the CMS is updated.
+4. If `SANITY_REVALIDATE_SECRET` is set, the script hits `/api/revalidate` so loupkids.com updates without a Vercel rebuild.
+5. Do not invent a new CMS. Sanity + this script is the path.
