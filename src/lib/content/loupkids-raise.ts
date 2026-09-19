@@ -8,7 +8,7 @@ export const RAISE = {
   eyebrow: "Pre-seed · August 2026",
   headline: "Childhood, uninterrupted.",
   subline:
-    "The screenless, parent-controlled first phone — WiFi voice, real hardware, live DTC. Raising $750K to manufacture v1 and scale.",
+    "The screenless, parent-controlled first phone — available in WiFi and WiFi + LTE — $149/$199 pre-order, $199/$249 at launch. Raising $750K to manufacture v1 and scale.",
   proofLine: "Real hardware, not vapor.",
   cta: "Get the deck",
   ctaNote: "thomas@loupkids.com",
@@ -50,7 +50,7 @@ export const RAISE_PROBLEM = {
   headline: "Parents are forced into smartphones. The alternative does not exist.",
   opportunity: "$4B unmet need. Growing 7–18% a year.",
   opportunityNote: "School phone bans and youth digital-wellness regulation. No one owns it yet.",
-  body: "80% of parents feel pushed to buy a smartphone too early — for safety, for school, for a ride home. No compelling screenless alternative exists. Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
+  body: "80% of parents feel pushed to buy a smartphone too early — for safety, for school, for a ride home. No compelling screenless alternative exists. WiFi + LTE removes the \"must be on WiFi\" friction — school, travel, and anywhere outside the home network stay on the same closed contact list. Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
   proof:
     "Demand isn't theoretical. Tin Can — a tethered landline — sold a million units in just over a year. The category is waiting for a real first phone.",
   pillars: [
@@ -86,13 +86,17 @@ export const RAISE_MARKET = {
 export const RAISE_PRODUCT = {
   eyebrow: "The product",
   headline: "A voice device kids can own. A control layer parents trust.",
-  body: "Loup gives kids a real device — something they hold, carry, and call their own. Screenless by design, not by subtraction: no feed, no browser, no algorithm. E-ink display, tactile scroll wheel, USB-C, mute, speaker, volume. Atkinson Hyperlegible type from the Braille Institute, because the interface is meant to be read, not stared at. WiFi voice in v1. Full cellular in v2.",
+  body: "Loup gives kids a real device — something they hold, carry, and call their own. Screenless by design, not by subtraction: no feed, no browser, no algorithm. E-ink display, tactile scroll wheel, USB-C, mute, speaker, volume. Atkinson Hyperlegible type from the Braille Institute, because the interface is meant to be read, not stared at. Available in WiFi and WiFi + LTE — $149/$199 pre-order, $199/$249 at launch.",
   features: [
     { title: "Screenless", lines: ["No feed.", "No browser.", "No algorithm."] },
     { title: "Parent-controlled", lines: ["App pairs over WiFi.", "You set contacts and hours."] },
     {
-      title: "WiFi voice → Cellular",
-      lines: ["Loup-to-Loup WiFi: free.", "External / cellular: $10–$20/mo.", "v2 adds cellular."],
+      title: "WiFi and WiFi + LTE",
+      lines: [
+        "Loup-to-Loup: always free.",
+        "External contacts: $10/mo.",
+        "LTE option: eSIM, closed network — not an open internet.",
+      ],
     },
   ],
   steps: [
@@ -104,7 +108,7 @@ export const RAISE_PRODUCT = {
     {
       step: "02",
       title: "Kids call their people",
-      body: "Loup-to-Loup audio over WiFi is always free. External lines and cellular mobility are $10–$20/month.",
+      body: "Loup-to-Loup audio is always free. External contacts are $10/month. WiFi + LTE keeps the same whitelist when they leave the house.",
     },
     {
       step: "03",
@@ -134,7 +138,7 @@ export const RAISE_COMPARE = {
     ["Zero subscription lock-in", "Core free*", "Monthly required", "Contract", "Bill required"],
     ["Designed across ages", "Yes", "Kids only", "Adults only", "Young kids"],
   ],
-  note: "*Loup-to-Loup WiFi audio is free. External lines and cellular mobility are $10–$20/month.",
+  note: "*Loup-to-Loup is free. External contacts $10/mo. WiFi + LTE includes eSIM on a closed contact network — not an open internet.",
 } as const;
 
 /** 2×2 competitive grid — deck comparison matrix distilled for the raise page. */
@@ -158,7 +162,7 @@ export const RAISE_COMPARE_GRID = {
     {
       eyebrow: "Zero subscription lock-in",
       stat: "Core free",
-      sub: ["Loup-to-Loup audio stays free.", "Gabb: monthly. Dumb phones: carrier contract."],
+      sub: ["Closed contacts on WiFi or LTE.", "Others: open smartphones or carrier lock-in."],
       dark: false,
     },
     {
@@ -198,9 +202,9 @@ export const RAISE_ECONOMICS = {
   cards: [
     {
       title: "Hardware (v1)",
-      price: "$149 / $179 / $199",
-      meta: "Early bird · Standard · Retail · ~60% gross margin",
-      body: "Early bird $149. Standard $179. Late / retail $199. Landed COGS ~$50 — 60% buffer on a $38 base.",
+      price: "$149 / $199 · $199 / $249",
+      meta: "WiFi / WiFi + LTE · pre-order · launch · ~60% gross margin",
+      body: "WiFi $149 pre-order, $199 launch. WiFi + LTE $199 pre-order, $249 launch. Landed COGS ~$50 — 60% buffer on a $38 base.",
     },
     {
       title: "Plates & accessories",

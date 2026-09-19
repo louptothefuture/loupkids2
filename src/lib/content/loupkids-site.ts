@@ -210,8 +210,8 @@ export const LOUPKIDS_ACCORDION = [
     body: "Swap the back plate. Pick a vibe. Show what you're into — without turning the phone into a screen.",
   },
   {
-    title: "WiFi Only",
-    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    title: "WiFi + LTE — Always Reachable",
+    body: "LOUP runs on WiFi at home, and anywhere you've pre-saved a network. Choose the LTE model and they're reachable anywhere — same approved contacts, same parent controls, no dead zones. No open internet. Ever.",
   },
   {
     title: "Data? Closed — you own it.",
@@ -223,7 +223,7 @@ export const LOUPKIDS_NOTHING = {
   headline: "Chock Full of Nothing. No social media. No games. No rabbit holes.",
   items: [
     { title: "Purity of Purpose", body: "No social media. No games. No rabbit holes." },
-    { title: "WiFi Only", body: "No SIM card. No carrier bill. Connects over home or school Wi-Fi — simple and affordable." },
+    { title: "WiFi + LTE — Always Reachable", body: "LOUP runs on WiFi at home, and anywhere you've pre-saved a network. Choose the LTE model and they're reachable anywhere — same approved contacts, same parent controls, no dead zones. No open internet. Ever." },
     { title: "Parent Control App", body: "Approve contacts, set call hours, and page them directly. Full control from your phone." },
     { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive kids." },
     { title: "Data? Closed — you own it.", body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app." },
@@ -364,7 +364,23 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Does Loup require a SIM card or a carrier plan?",
-    a: "No, Loup is SIM-Free and works over Wi-Fi. This eliminates the need for carrier contracts and recurring data plans.",
+    a: "LOUP WiFi does not — it runs on saved WiFi and hotspots. LOUP WiFi + LTE includes an eSIM handled by LOUP. No separate carrier contract on either model.",
+  },
+  {
+    q: "Does LOUP now come with LTE?",
+    a: "Yes — as an option. LOUP WiFi works exactly as before: home, school, saved networks, parent hotspot. LOUP WiFi + LTE adds cellular coverage as a backup so kids are reachable anywhere. The closed contact network is identical on both.",
+  },
+  {
+    q: "Do I need a carrier plan for LTE?",
+    a: "No separate carrier plan needed. LTE is handled through LOUP directly — included in the WiFi + LTE model. No new contracts.",
+  },
+  {
+    q: "Does LTE mean my kid can browse the internet?",
+    a: "No. LTE gives connectivity, not access. The device has no browser, no app store, no open network. Calls go to approved contacts only — same as WiFi. The connection changed. The rules didn't.",
+  },
+  {
+    q: "Does LTE enable location tracking?",
+    a: "LOUP is not a tracking device. Adding LTE doesn't change that. We don't track or share location data.",
   },
   {
     q: "How is Loup different from a regular phone or a \"dumb phone\"?",
@@ -374,7 +390,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
       ],
       bullets: [
         "App-less, voice-only interaction (dopamine loops).",
-        "SIM-Free operation over Wi-Fi , meaning no monthly data plans or recurring fees needed.",
+        "Closed network over WiFi, with optional LTE — connectivity, not an open internet.",
         "A Closed, Trusted Network where kids can only talk to contacts parents have approved. No strangers and no outside exposure.",
       ],
     },
@@ -384,7 +400,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     a: {
       paragraphs: [
         "Loup↔Loup + App→Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
-        "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
+        "LOUP↔LOUP always free. External contacts $10/mo. WiFi + LTE includes LTE — no extra carrier plan. Pre-order $149 / $199; $199 / $249 at launch.",
       ],
     },
   },
@@ -393,7 +409,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     a: {
       paragraphs: [
         "Some, yes. Less than others. Here's the honest comparison:",
-        "Most kids phones in this category lock you into a carrier plan — $20–40/month on top of the device. LOUP runs on Wi-Fi. No SIM, no carrier, no monthly bill unless you want external calling (that's $10/month, cancel anytime). Over two years, LOUP typically costs less than the \"cheaper\" alternatives.",
+        "Most kids phones in this category lock you into a carrier plan — $20–40/month on top of the device. LOUP WiFi has no carrier bill. LOUP WiFi + LTE includes LTE through LOUP — no extra contract. External calling is $10/month, cancel anytime. Over two years, LOUP typically costs less than the \"cheaper\" alternatives.",
         "What you're also getting: aluminum construction built to last, a closed network we run ourselves (your family's data stays yours), and a device designed to look like something kids actually want to carry — not a plastic toy or a locked-down hand-me-down.",
         "We built LOUP because we couldn't find anything we'd actually want our own kid to have. The price reflects that.",
       ],
@@ -521,7 +537,7 @@ export const LOUPKIDS_SPECS = [
     label: "Contacts",
     value: "Unlimited parent-approved list; Loup↔Loup always free",
   },
-  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
+  { group: "Calling", label: "Connectivity", value: "WiFi, or WiFi + LTE (eSIM) — closed network, no open internet" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card, parent app" },
   { group: "In the Box", label: "Also included", value: "30-day trial from arrival · refundable pre-ship" },
 ] as const;

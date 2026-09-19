@@ -6,10 +6,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/shopify/types";
 import { trackViewItem } from "@/lib/analytics";
 import {
-  LOUPKIDS_CTA,
+  connectivityFromVariantTitle,
+  LOUPKIDS_CONNECTIVITY,
   LOUPKIDS_IN_THE_BOX,
   LOUPKIDS_OFFER_CARD,
-  LOUPKIDS_PRICE,
 } from "@/lib/content/loupkids-conversion";
 import { StripeCheckoutButton } from "@/components/loupkids/conversion/StripeCheckoutButton";
 
@@ -46,6 +46,7 @@ export function ProductView({ product }: { product: Product }) {
   }, [product.images, selected]);
 
   const shown = gallery[Math.min(activeImage, gallery.length - 1)];
+  const connectivity = LOUPKIDS_CONNECTIVITY[connectivityFromVariantTitle(selected.title)];
 
   const selectVariant = (value: string) => {
     const v = product.variants.find((v) => v.title === value);
@@ -102,7 +103,7 @@ export function ProductView({ product }: { product: Product }) {
       {/* Buy box — matches homepage offer card hierarchy */}
       <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:max-w-md lg:justify-self-end xl:max-w-lg">
         <div>
-          <h1 className="lk-display text-3xl sm:text-4xl">{product.title}</h1>
+          <h1 className="lk-display text-3xl sm:text-4xl">{selected.title}</h1>
           <p className="mt-3 text-sm font-medium uppercase tracking-[0.06em] text-[var(--lk-ink)]">
             {LOUPKIDS_OFFER_CARD.label}
           </p>
@@ -111,9 +112,10 @@ export function ProductView({ product }: { product: Product }) {
               {formatPrice(selected.price.amount, selected.price.currencyCode)}
             </span>
             <span className="text-base text-[var(--lk-muted)] line-through">
-              {selected.compareAtPrice
-                ? formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)
-                : LOUPKIDS_PRICE.compareFormatted}
+              {formatPrice(
+                selected.compareAtPrice?.amount ?? String(connectivity.launch),
+                selected.compareAtPrice?.currencyCode ?? selected.price.currencyCode,
+              )}
             </span>
             <span className="text-sm font-medium text-[var(--lk-ink)]">
               {LOUPKIDS_OFFER_CARD.saveNote}
@@ -127,10 +129,13 @@ export function ProductView({ product }: { product: Product }) {
         <div className="border-t border-[var(--lk-line-soft)]" />
 
         <ul className="space-y-2 text-sm leading-snug text-[var(--lk-muted)]">
-          {LOUPKIDS_OFFER_CARD.callingBullets.map((b) => (
+          {connectivity.callingBullets.map((b) => (
             <li key={b}>✓ {b}</li>
           ))}
         </ul>
+        {connectivity.note ? (
+          <p className="text-sm leading-snug text-[var(--lk-ink)]">{connectivity.note}</p>
+        ) : null}
 
         <div className="border-t border-[var(--lk-line-soft)]" />
 
@@ -165,13 +170,15 @@ export function ProductView({ product }: { product: Product }) {
 
         <div>
           <StripeCheckoutButton
-            label={LOUPKIDS_CTA.product}
+            connectivity={connectivity.id}
+            label={connectivity.cta}
             className="lk-btn lk-btn-lg w-full cursor-pointer"
             showGuarantee
           />
           <StripeCheckoutButton
+            connectivity={connectivity.id}
             pack="pair"
-            label={LOUPKIDS_CTA.pair}
+            label={connectivity.pairLabel}
             className="lk-btn lk-btn-outline lk-btn-lg mt-2 w-full cursor-pointer"
           />
           <div className="mt-4 space-y-1 text-xs leading-relaxed text-[var(--lk-muted)]">

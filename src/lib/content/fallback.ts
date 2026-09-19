@@ -181,7 +181,7 @@ export const FALLBACK_SPECS: Spec[] = [
     label: "Contacts",
     value: "Unlimited parent-approved list; Loup↔Loup always free",
   },
-  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
+  { group: "Calling", label: "Connectivity", value: "WiFi, or WiFi + LTE (eSIM) — closed network, no open internet" },
   { group: "Battery & Charging", label: "Battery", value: "Rechargeable and replaceable" },
   { group: "Battery & Charging", label: "Battery life", value: "5 days typical use" },
   { group: "Battery & Charging", label: "Charging", value: "USB-C, 0–100% in 70 minutes" },

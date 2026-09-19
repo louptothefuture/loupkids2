@@ -46,17 +46,55 @@ export const LOUPKIDS_OFFER_CARD = {
   productLine:
     "A kids phone. No apps, no feeds, no strangers. Calls only — to the people you approve.",
   callingBullets: [
-    "Loup ↔ Loup calls: always free",
-    "External contacts: free for 1 year, then $10/mo — cancel anytime",
+    "LOUP↔LOUP always free",
+    "External contacts $10/mo",
   ],
   logistics: [
     "Ships within 60 days · 100% refundable before dispatch · 30-day trial on delivery",
   ],
   disclaimer: [
-    "Wi-Fi only · No SIM · No carrier bill",
+    "WiFi + LTE option includes eSIM · No open internet · Parent-controlled network",
     "Does not support E911 emergency dialing",
   ],
 } as const;
+
+export type LoupConnectivityId = "wifi" | "lte";
+
+export const LOUPKIDS_CONNECTIVITY = {
+  wifi: {
+    id: "wifi" as const,
+    name: "LOUP WiFi",
+    preorder: 149,
+    launch: 199,
+    cta: "Pre-order Loup — $149",
+    pairLabel: "2 for $298",
+    pairAmount: 298,
+    callingBullets: [
+      "LOUP↔LOUP always free",
+      "External contacts $10/mo",
+    ],
+    note: null,
+  },
+  lte: {
+    id: "lte" as const,
+    name: "LOUP WiFi + LTE",
+    preorder: 199,
+    launch: 249,
+    cta: "Pre-order Loup — $199",
+    pairLabel: "2 for $398",
+    pairAmount: 398,
+    callingBullets: [
+      "LOUP↔LOUP always free",
+      "External contacts $10/mo",
+      "LTE included",
+    ],
+    note: "LTE keeps them reachable when WiFi isn't around. Same approved contacts. Same parent controls. No dead zones.",
+  },
+} as const;
+
+export function connectivityFromVariantTitle(title: string): LoupConnectivityId {
+  return title.includes("LTE") ? "lte" : "wifi";
+}
 
 export const LOUPKIDS_HERO_COPY = {
   eyebrow: "The phone before the smartphone",
@@ -84,7 +122,7 @@ export const LOUPKIDS_SHIPPING = {
 /** Wi-Fi device — no E911 */
 export const LOUPKIDS_E911 = {
   short:
-    "Wi-Fi Voice Device: Operates over Wi-Fi networks and parent mobile hotspots. Does not support E911 emergency dialing.",
+    "Voice device: WiFi, or WiFi + LTE (eSIM). Closed contact network. Does not support E911 emergency dialing.",
 } as const;
 
 export const LOUPKIDS_COPPA = {
@@ -107,7 +145,8 @@ export const LOUPKIDS_CART_TRUST = [
 export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
-  intro: LOUPKIDS_OFFER.callingCanonical,
+  intro:
+    "LOUP↔LOUP always free. External contacts $10/mo. WiFi + LTE includes LTE — same approved contacts, no open internet.",
   tiers: [
     {
       label: "Loup to Loup",
@@ -217,8 +256,8 @@ export const LOUPKIDS_FEATURE_CARDS = [
   },
   {
     icon: "📶",
-    title: "Wi-Fi Voice Network",
-    body: "No SIM. No surprise bills. Home, school, or parent hotspot.",
+    title: "WiFi + LTE",
+    body: "WiFi at home and saved networks. LTE option for anywhere — same contacts, no open internet.",
   },
   {
     icon: "🔒",

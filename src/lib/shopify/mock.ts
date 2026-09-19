@@ -16,24 +16,39 @@ export const MOCK_LOUP: Product = {
   handle: "loup",
   title: "Loup",
   description:
-    "The phone before their first smartphone. Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet. First 500 for $149. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
+    "The phone before their first smartphone. Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet. Available in WiFi ($149 pre-order) and WiFi + LTE ($199 pre-order). LOUP↔LOUP always free. External contacts $10/mo.",
   descriptionHtml:
     "<p>The phone before their first smartphone.</p><p>Kids stay reachable. You stay in control. Parent-approved contacts only — no feeds, no apps, no open internet.</p>",
   availableForSale: true,
-  options: [{ name: "Finish", values: ["Silver"] }],
+  options: [{ name: "Connectivity", values: ["LOUP WiFi", "LOUP WiFi + LTE"] }],
   priceRange: {
     minVariantPrice: money(149),
-    maxVariantPrice: money(149),
+    maxVariantPrice: money(199),
   },
   variants: [
     {
-      id: "gid://shopify/ProductVariant/loup-silver",
-      title: "Silver",
+      id: "gid://shopify/ProductVariant/loup-wifi",
+      title: "LOUP WiFi",
       availableForSale: true,
       quantityAvailable: 250,
       price: money(149),
       compareAtPrice: money(199),
-      selectedOptions: [{ name: "Finish", value: "Silver" }],
+      selectedOptions: [{ name: "Connectivity", value: "LOUP WiFi" }],
+      image: {
+        url: "/images/renders/shop/studio/01-three-quarter.jpg",
+        altText: "Loup silver — three-quarter view",
+        width: 1400,
+        height: 1400,
+      },
+    },
+    {
+      id: "gid://shopify/ProductVariant/loup-wifi-lte",
+      title: "LOUP WiFi + LTE",
+      availableForSale: true,
+      quantityAvailable: 250,
+      price: money(199),
+      compareAtPrice: money(249),
+      selectedOptions: [{ name: "Connectivity", value: "LOUP WiFi + LTE" }],
       image: {
         url: "/images/renders/shop/studio/01-three-quarter.jpg",
         altText: "Loup silver — three-quarter view",
@@ -75,9 +90,9 @@ export const MOCK_LOUP: Product = {
     },
   ],
   seo: {
-    title: "Order Loup — Silver | $149",
+    title: "Order Loup — WiFi $149 · WiFi + LTE $199",
     description:
-      "Loup is the smartphone alternative for kids. Aluminum sides and buttons, ABS front. Voice calls to a parent-approved list. First 500 for $149 (Save 25% vs $199). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Ships within 60 days.",
+      "Loup is the smartphone alternative for kids. WiFi $149 pre-order ($199 launch) or WiFi + LTE $199 pre-order ($249 launch). LOUP↔LOUP always free. External contacts $10/mo. Closed network. Ships within 60 days.",
   },
 };
 
