@@ -10,6 +10,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 300;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const posts = await getPosts();

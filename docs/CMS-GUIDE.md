@@ -63,6 +63,16 @@ Changes appear on the live site within about 5 minutes, or immediately if the Sa
 2. Edit title, excerpt, cover image (with alt text), body, SEO title, and SEO description.
 3. Publish.
 
+### From Cursor / agents (no Studio click)
+
+Repo copy stays in `src/lib/content/journal.ts`. After writing a post, push it to Sanity:
+
+```bash
+npm run publish:journal -- --slug the-post-slug
+```
+
+Needs `SANITY_API_WRITE_TOKEN` (Editor) plus `NEXT_PUBLIC_SANITY_PROJECT_ID`. Optional: `SANITY_REVALIDATE_SECRET` so production cache drops immediately. Without the token, the article only exists in git until someone publishes in Studio or a deploy lands.
+
 ## Add alt text to images
 
 Every Sanity image field has a companion **alt text** field. Always fill it in before publishing.
