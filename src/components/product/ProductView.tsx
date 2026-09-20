@@ -6,10 +6,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/shopify/types";
 import { trackViewItem } from "@/lib/analytics";
 import {
-  LOUPKIDS_CTA,
+  connectivityFromVariantTitle,
+  LOUPKIDS_CONNECTIVITY,
   LOUPKIDS_IN_THE_BOX,
   LOUPKIDS_OFFER_CARD,
-  LOUPKIDS_PRICE,
 } from "@/lib/content/loupkids-conversion";
 import { StripeCheckoutButton } from "@/components/loupkids/conversion/StripeCheckoutButton";
 
@@ -46,6 +46,7 @@ export function ProductView({ product }: { product: Product }) {
   }, [product.images, selected]);
 
   const shown = gallery[Math.min(activeImage, gallery.length - 1)];
+  const connectivity = LOUPKIDS_CONNECTIVITY[connectivityFromVariantTitle(selected.title)];
 
   const selectVariant = (value: string) => {
     const v = product.variants.find((v) => v.title === value);
@@ -99,79 +100,91 @@ export function ProductView({ product }: { product: Product }) {
         </div>
       </div>
 
-      {/* Buy box — matches homepage offer card hierarchy */}
+      {/* Buy box */}
       <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:max-w-md lg:justify-self-end xl:max-w-lg">
         <div>
-          <h1 className="lk-display text-3xl sm:text-4xl">{product.title}</h1>
-          <p className="mt-3 text-sm font-medium uppercase tracking-[0.06em] text-[var(--lk-ink)]">
-            {LOUPKIDS_OFFER_CARD.label}
-          </p>
-          <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="text-2xl font-medium tracking-tight sm:text-3xl">
-              {formatPrice(selected.price.amount, selected.price.currencyCode)}
-            </span>
-            <span className="text-base text-[var(--lk-muted)] line-through">
-              {selected.compareAtPrice
-                ? formatPrice(selected.compareAtPrice.amount, selected.compareAtPrice.currencyCode)
-                : LOUPKIDS_PRICE.compareFormatted}
-            </span>
-            <span className="text-sm font-medium text-[var(--lk-ink)]">
-              {LOUPKIDS_OFFER_CARD.saveNote}
-            </span>
-          </div>
-          <p className="mt-3 text-sm leading-snug text-[var(--lk-ink)]">
+          <h1 className="lk-display text-3xl sm:text-4xl">Loup</h1>
+          <p className="mt-2 text-sm leading-snug text-[var(--lk-muted)]">
             {LOUPKIDS_OFFER_CARD.productLine}
           </p>
         </div>
 
-        <div className="border-t border-[var(--lk-line-soft)]" />
+        {/* Model chooser — the whole card is the selector */}
+        <fieldset className="grid grid-cols-2 gap-3">
+          <legend className="sr-only">Choose model</legend>
+          {product.options[0].values.map((value) => {
+            const variant = product.variants.find((v) => v.title === value);
+            const c = LOUPKIDS_CONNECTIVITY[connectivityFromVariantTitle(value)];
+            const active = selected.title === value;
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => selectVariant(value)}
+                disabled={!variant?.availableForSale}
+                className={`group relative flex flex-col rounded-2xl border-2 p-4 text-left transition-all disabled:cursor-not-allowed disabled:opacity-40 ${
+                  active
+                    ? "border-[var(--lk-ink)] bg-[var(--lk-ink)] text-white"
+                    : "border-[var(--lk-line)] hover:border-[var(--lk-ink)]/40"
+                }`}
+              >
+                <span className={`text-[0.65rem] font-semibold uppercase tracking-[0.1em] ${active ? "text-white/70" : "text-[var(--lk-muted)]"}`}>
+                  {active ? "Selected" : "Select"}
+                </span>
+                <span className={`lk-display mt-1 text-base font-medium leading-tight ${active ? "text-white" : "text-[var(--lk-ink)]"}`}>
+                  {c.name}
+                </span>
+                <span className={`mt-2 lk-display text-2xl ${active ? "text-white" : "text-[var(--lk-ink)]"}`}>
+                  ${c.preorder}
+                </span>
+                <span className={`text-xs ${active ? "text-white/60" : "text-[var(--lk-muted)]"}`}>
+                  ${c.launch} at launch
+                </span>
+                <span className={`mt-3 text-xs leading-snug ${active ? "text-white/75" : "text-[var(--lk-muted)]"}`}>
+                  {c.tagline}
+                </span>
+                {c.monthlyTotal && (
+                  <span className={`mt-2 inline-block rounded-full px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide ${active ? "bg-white/20 text-white" : "bg-[var(--lk-ink)]/8 text-[var(--lk-ink)]"}`}>
+                    ${c.monthlyTotal}/mo
+                  </span>
+                )}
+                {!c.monthlyTotal && (
+                  <span className={`mt-2 inline-block rounded-full px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide ${active ? "bg-white/20 text-white" : "bg-[var(--lk-ink)]/8 text-[var(--lk-ink)]"}`}>
+                    $10/mo
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </fieldset>
 
-        <ul className="space-y-2 text-sm leading-snug text-[var(--lk-muted)]">
-          {LOUPKIDS_OFFER_CARD.callingBullets.map((b) => (
-            <li key={b}>✓ {b}</li>
-          ))}
-        </ul>
-
-        <div className="border-t border-[var(--lk-line-soft)]" />
-
-        {multiVariant && (
-          <fieldset>
-            <legend className="mb-2 text-sm font-medium text-[var(--lk-ink)]">
-              {optionName}: {selected.title}
-            </legend>
-            <div className="flex flex-wrap gap-2">
-              {product.options[0].values.map((value) => {
-                const variant = product.variants.find((v) => v.title === value);
-                const active = selected.title === value;
-                return (
-                  <button
-                    key={value}
-                    type="button"
-                    onClick={() => selectVariant(value)}
-                    disabled={!variant?.availableForSale}
-                    className={`cursor-pointer border px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
-                      active
-                        ? "border-[var(--lk-ink)] bg-[var(--lk-ink)] text-white"
-                        : "border-[var(--lk-line)] hover:border-[var(--lk-ink)]"
-                    }`}
-                  >
-                    {value}
-                  </button>
-                );
-              })}
-            </div>
-          </fieldset>
-        )}
+        {/* What's included for the selected model */}
+        <div className="rounded-xl bg-[var(--lk-surface)] p-4 text-sm">
+          <p className="font-medium text-[var(--lk-ink)]">{connectivity.coverage}</p>
+          <ul className="mt-3 space-y-1.5 text-[var(--lk-muted)]">
+            {connectivity.monthlyBreakdown.map((b) => (
+              <li key={b} className="flex items-baseline gap-2">
+                <span className="shrink-0 text-[var(--lk-ink)]">·</span>
+                {b}
+              </li>
+            ))}
+          </ul>
+          {connectivity.note && (
+            <p className="mt-3 text-xs text-[var(--lk-muted)]">{connectivity.note}</p>
+          )}
+        </div>
 
         <div>
           <StripeCheckoutButton
-            label={LOUPKIDS_CTA.product}
+            connectivity={connectivity.id}
+            label={connectivity.cta}
             className="lk-btn lk-btn-lg w-full cursor-pointer"
             showGuarantee
           />
           <StripeCheckoutButton
+            connectivity={connectivity.id}
             pack="pair"
-            label={LOUPKIDS_CTA.pair}
+            label={connectivity.pairLabel}
             className="lk-btn lk-btn-outline lk-btn-lg mt-2 w-full cursor-pointer"
           />
           <div className="mt-4 space-y-1 text-xs leading-relaxed text-[var(--lk-muted)]">

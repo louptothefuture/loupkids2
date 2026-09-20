@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How It Works",
   description:
-    "Box to first call — pair Wi-Fi and approve contacts in the parent app, then kids scroll and call on Loup.",
+    "Box to first call — pair in the parent app (WiFi or WiFi + LTE), approve contacts, then kids scroll and call on Loup.",
   alternates: { canonical: `${SITE.url}/setup` },
 };
 

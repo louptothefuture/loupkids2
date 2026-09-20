@@ -10,8 +10,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const body = (await req.json().catch(() => null)) as { pack?: string } | null;
+  const body = (await req.json().catch(() => null)) as {
+    pack?: string;
+    connectivity?: string;
+  } | null;
   const pair = body?.pack === "pair";
+  const connectivity = body?.connectivity === "lte" ? "lte" : "wifi";
+  const sku = STRIPE_LOUP[connectivity];
 
   // Canonical origin only — never trust Host / X-Forwarded-Host for redirects.
   const origin = SITE.url.replace(/\/$/, "");
@@ -25,10 +30,10 @@ export async function POST(req: NextRequest) {
           quantity: pair ? STRIPE_LOUP.pairQuantity : 1,
           price_data: {
             currency: STRIPE_LOUP.currency,
-            unit_amount: pair ? STRIPE_LOUP.pairUnitAmountCents : STRIPE_LOUP.unitAmountCents,
+            unit_amount: pair ? sku.pairUnitAmountCents : sku.unitAmountCents,
             product_data: {
-              name: pair ? `${STRIPE_LOUP.name} × 2` : STRIPE_LOUP.name,
-              description: pair ? STRIPE_LOUP.pairDescription : STRIPE_LOUP.description,
+              name: pair ? `${sku.name} × 2` : sku.name,
+              description: pair ? sku.pairDescription : sku.description,
               images: [`${origin}/images/renders/shop/studio/01-three-quarter.jpg`],
             },
           },
@@ -41,7 +46,7 @@ export async function POST(req: NextRequest) {
       success_url: `${origin}/order/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/shop/loup`,
       metadata: {
-        product: "loup-silver",
+        product: connectivity === "lte" ? "loup-wifi-lte" : "loup-wifi",
         pack: pair ? "pair" : "single",
         quantity: pair ? String(STRIPE_LOUP.pairQuantity) : "1",
         fulfillment: "preorder-october-2026",

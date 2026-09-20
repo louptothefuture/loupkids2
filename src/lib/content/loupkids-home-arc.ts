@@ -97,13 +97,13 @@ export const HOME_GALLERY = {
 export const HOME_HOW_IT_WORKS = [
   {
     step: "01",
-    title: "Connect over Wi-Fi",
-    body: "Pair Loup to your home network in the parent app — about two minutes.",
+    title: "Pair in the parent app",
+    body: "WiFi connects at home, school, or anywhere you've saved a network. WiFi + LTE adds cellular — same setup, no dead zones.",
   },
   {
     step: "02",
     title: "Approve contacts",
-    body: "In the parent app, choose who kids can call. No strangers, spam, or surprise calls.",
+    body: "Choose who kids can call. No strangers, spam, or surprise calls. Same list on both models.",
   },
   {
     step: "03",
@@ -118,12 +118,12 @@ export const HOME_LAUNCH = {
   /** Prefer LOUPKIDS_OFFER_CARD in UI */
   scarcityLine: "Founding Offer · First 500 Only",
   bonusBanner:
-    "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    "LOUP↔LOUP always free. External contacts $10/mo. WiFi $149 or WiFi + LTE $199 pre-order.",
   bullets: [
     "Loup ↔ Loup calls: always free",
     "External contacts: free for 1 year, then $10/mo — cancel anytime",
   ],
-  e911: "Wi-Fi only · No SIM · No carrier bill. Does not support E911 emergency dialing.",
+  e911: "LOUP WiFi + LTE supports 911. LOUP WiFi does not — keep a phone available for emergencies.",
 } as const;
 
 /** @deprecated aliases — keep old imports from breaking during rebuild */
@@ -140,7 +140,7 @@ export const HOME_PILLARS = [
   { title: "App to Phone Pager", body: "Page kids from the parent app — call or bell, $0 forever." },
   { title: "Customizable Plates", body: "Swap the plate. Show what you're into." },
   {
-    title: "WiFi Only",
-    body: "No SIM. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo.",
+    title: "WiFi + LTE — Always Reachable",
+    body: "LOUP runs on WiFi at home, and anywhere you've pre-saved a network. Choose the LTE model and they're reachable anywhere — same approved contacts, same parent controls, no dead zones. No open internet. Ever.",
   },
 ] as const;

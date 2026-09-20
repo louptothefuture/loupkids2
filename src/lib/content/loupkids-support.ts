@@ -46,7 +46,7 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
       },
       {
         heading: "Real phone numbers",
-        body: "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). Add contacts with phone numbers in the parent app — US and Canada only today. After year one, renew the calling plan in Billing if you want external numbers.",
+        body: "LOUP↔LOUP always free. External contacts $10/mo (cancel anytime). Add contacts with phone numbers in the parent app — US and Canada only today. WiFi and WiFi + LTE use the same approved list.",
       },
       {
         heading: "Limits",
@@ -80,11 +80,11 @@ export const LOUPKIDS_HELP_ARTICLES: HelpArticle[] = [
     summary: "Enable real phone numbers so Loup can reach smartphones and landlines.",
     sections: [
       {
-        body: "Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep Wi-Fi core free.",
+        body: "LOUP↔LOUP always free. External contacts $10/mo. LTE connectivity (WiFi + LTE model) $10/mo — $20/mo total. Cancel anytime.",
       },
       {
         heading: "Subscribe",
-        body: "After the included First 500 year, renew in the parent app under Billing → Calling Plan. $10/month per Loup device; cancel anytime with no penalty.",
+        body: "In the parent app under Billing → Calling Plan. WiFi model: $10/month for external contacts. WiFi + LTE model: $20/month total (includes LTE). Cancel anytime, no penalty.",
       },
       {
         heading: "What's included",

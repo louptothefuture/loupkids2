@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import { trackBeginCheckout } from "@/lib/analytics";
-import { LOUPKIDS_CTA, LOUPKIDS_PRICE } from "@/lib/content/loupkids-conversion";
-import { SITE } from "@/lib/site";
+import {
+  LOUPKIDS_CONNECTIVITY,
+  LOUPKIDS_CTA,
+  LOUPKIDS_PRICE,
+  type LoupConnectivityId,
+} from "@/lib/content/loupkids-conversion";
 import { LoupkidsGuaranteeBadge } from "./LoupkidsGuaranteeBadge";
 
 export function StripeCheckoutButton({
@@ -12,12 +16,14 @@ export function StripeCheckoutButton({
   showGuarantee = false,
   guaranteeVariant = "light",
   pack = "single",
+  connectivity = "wifi",
 }: {
   label?: string;
   className?: string;
   showGuarantee?: boolean;
   guaranteeVariant?: "light" | "dark";
   pack?: "single" | "pair";
+  connectivity?: LoupConnectivityId;
 }) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -25,14 +31,15 @@ export function StripeCheckoutButton({
   const startCheckout = async () => {
     setPending(true);
     setError(null);
+    const option = LOUPKIDS_CONNECTIVITY[connectivity];
     const quantity = pack === "pair" ? LOUPKIDS_PRICE.pairQty : 1;
-    const value = pack === "pair" ? LOUPKIDS_PRICE.pairAmount : SITE.price;
+    const value = pack === "pair" ? option.pairAmount : option.preorder;
     trackBeginCheckout(
       [
         {
-          item_id: pack === "pair" ? "loup-silver-pair" : "loup-silver",
-          item_name: pack === "pair" ? "Loup — Silver × 2" : "Loup — Silver",
-          item_variant: "Silver",
+          item_id: pack === "pair" ? `loup-${connectivity}-pair` : `loup-${connectivity}`,
+          item_name: pack === "pair" ? `${option.name} × 2` : option.name,
+          item_variant: option.name,
           price: value / quantity,
           quantity,
         },
@@ -43,7 +50,7 @@ export function StripeCheckoutButton({
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pack }),
+        body: JSON.stringify({ pack, connectivity }),
       });
       const data = (await res.json()) as { url?: string; error?: string };
       if (!res.ok || !data.url) {

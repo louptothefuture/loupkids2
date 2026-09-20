@@ -1,5 +1,4 @@
 import Stripe from "stripe";
-import { SITE } from "@/lib/site";
 
 /** Server-only Stripe client. Requires STRIPE_SECRET_KEY. */
 export function getStripe() {
@@ -10,14 +9,21 @@ export function getStripe() {
 }
 
 export const STRIPE_LOUP = {
-  name: "Loup — Silver",
-  description:
-    "First 500 · $149 · Loup↔Loup free · year-1 external calling · ships within 60 days",
-  unitAmountCents: SITE.price * 100,
+  wifi: {
+    name: "LOUP WiFi",
+    description: "Pre-order · $149 · LOUP↔LOUP free · external $10/mo · ships within 60 days",
+    unitAmountCents: 14_900,
+    pairUnitAmountCents: 14_900,
+    pairDescription: "2-pack · $298 · LOUP WiFi · ships within 60 days",
+  },
+  lte: {
+    name: "LOUP WiFi + LTE",
+    description: "Pre-order · $199 · LOUP↔LOUP free · external $10/mo · LTE included · ships within 60 days",
+    unitAmountCents: 19_900,
+    pairUnitAmountCents: 19_900,
+    pairDescription: "2-pack · $398 · LOUP WiFi + LTE · ships within 60 days",
+  },
   pairQuantity: 2,
-  pairUnitAmountCents: 14_900, // $149 each → $298
-  pairDescription:
-    "2-pack · $298 · Loup↔Loup free · year-1 external calling · ships within 60 days",
   currency: "usd",
 } as const;
 

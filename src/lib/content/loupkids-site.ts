@@ -210,8 +210,8 @@ export const LOUPKIDS_ACCORDION = [
     body: "Swap the back plate. Pick a vibe. Show what you're into — without turning the phone into a screen.",
   },
   {
-    title: "WiFi Only",
-    body: "No SIM card. No carrier bill. Connects over home, school, or a parent hotspot. Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime).",
+    title: "WiFi + LTE — Always Reachable",
+    body: "LOUP runs on WiFi at home, and anywhere you've pre-saved a network. Choose the LTE model and they're reachable anywhere — same approved contacts, same parent controls, no dead zones. No open internet. Ever.",
   },
   {
     title: "Data? Closed — you own it.",
@@ -223,7 +223,7 @@ export const LOUPKIDS_NOTHING = {
   headline: "Chock Full of Nothing. No social media. No games. No rabbit holes.",
   items: [
     { title: "Purity of Purpose", body: "No social media. No games. No rabbit holes." },
-    { title: "WiFi Only", body: "No SIM card. No carrier bill. Connects over home or school Wi-Fi — simple and affordable." },
+    { title: "WiFi + LTE — Always Reachable", body: "LOUP runs on WiFi at home, and anywhere you've pre-saved a network. Choose the LTE model and they're reachable anywhere — same approved contacts, same parent controls, no dead zones. No open internet. Ever." },
     { title: "Parent Control App", body: "Approve contacts, set call hours, and page them directly. Full control from your phone." },
     { title: "Designed With Kids", body: "Durable, pocket-sized, and designed to survive kids." },
     { title: "Data? Closed — you own it.", body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app." },
@@ -325,7 +325,7 @@ export const LOUPKIDS_ABOUT = {
     "We're not against screens—cartoons on the weekends, we watch movies and play video games together—but we didn't want her first experience of independent connection to be through something designed to keep her scrolling.",
     "We also didn't want social media pressure, spam, or the open internet to arrive before she was ready. There had to be a gentler middle step.",
     "A lot of parents we know feel the same quiet unease: kids need to reach us, and each other, but smartphones ask for more attention than most eight-year-olds can spare. We wanted connection without the constant pull of a feed.",
-    "So we started building. We wanted something small and safe, but still beautiful. A way for kids to talk and stay close, without being pulled into feeds or apps. That became Loup—a screenless, SIM-free voice device that lets kids connect while parents stay in control. Freedom for her. Peace of mind for us.",
+    "So we started building. We wanted something small and safe, but still beautiful. A way for kids to talk and stay close, without being pulled into feeds or apps. That became Loup—a screenless voice device on a closed contact network, WiFi or WiFi + LTE. Freedom for her. Peace of mind for us.",
     "The name started as loop—a safe circle of connection. But our daughter said it should be written as Loup, the French word for wolf. \"Because wolves howl to stay close to their pack,\" she had learned. And that just made sense.",
     "Loup isn't another smartphone for kids. It's something new—a smarter first phone. With your support, we can help kids grow up connected in the ways that really matter.",
   ],
@@ -360,11 +360,31 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Does Loup support 911 / E911?",
-    a: "No. Loup is a Wi-Fi voice device. It operates over Wi-Fi networks and parent mobile hotspots. It does not support E911 emergency dialing. Keep a phone available for emergencies when off Wi-Fi.",
+    a: "It depends on the model. LOUP WiFi does not support E911 — it operates over saved WiFi networks and parent hotspot only. LOUP WiFi + LTE does support 911 via the LTE cellular connection. Keep a phone available when your child has the WiFi model.",
   },
   {
     q: "Does Loup require a SIM card or a carrier plan?",
-    a: "No, Loup is SIM-Free and works over Wi-Fi. This eliminates the need for carrier contracts and recurring data plans.",
+    a: "LOUP WiFi does not — it runs on saved WiFi and hotspots. LOUP WiFi + LTE includes an eSIM handled by LOUP. No separate carrier contract on either model.",
+  },
+  {
+    q: "Does LOUP now come with LTE?",
+    a: "Yes — as an option. LOUP WiFi ($149 pre-order) works at home, school, saved networks, and parent hotspot. LOUP WiFi + LTE ($199 pre-order) adds cellular so kids are reachable anywhere. The closed contact network is identical on both.",
+  },
+  {
+    q: "What does LTE cost per month?",
+    a: "LOUP WiFi + LTE is $20/month total: $10/month for external contacts plus $10/month for LTE connectivity. LOUP↔LOUP calls are free on both models. LTE is handled through LOUP — no separate carrier contract.",
+  },
+  {
+    q: "Do I need a separate carrier plan for LTE?",
+    a: "No. LTE is included through LOUP directly on the WiFi + LTE model. No new contract, no carrier signup.",
+  },
+  {
+    q: "Does LTE mean my kid can browse the internet?",
+    a: "No. LTE gives connectivity, not access. The device has no browser, no app store, no open network. Calls go to approved contacts only — same as WiFi. The connection changed. The rules didn't.",
+  },
+  {
+    q: "Does LTE enable location tracking?",
+    a: "LOUP is not a tracking device. Adding LTE doesn't change that. We don't track or share location data.",
   },
   {
     q: "How is Loup different from a regular phone or a \"dumb phone\"?",
@@ -374,7 +394,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
       ],
       bullets: [
         "App-less, voice-only interaction (dopamine loops).",
-        "SIM-Free operation over Wi-Fi , meaning no monthly data plans or recurring fees needed.",
+        "Closed network over WiFi, with optional LTE — connectivity, not an open internet.",
         "A Closed, Trusted Network where kids can only talk to contacts parents have approved. No strangers and no outside exposure.",
       ],
     },
@@ -384,7 +404,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     a: {
       paragraphs: [
         "Loup↔Loup + App→Loup always free. Parent app and unlimited approved contacts included — no forced subscription.",
-        "First 500: 1 year unlimited calls to external contacts · then $10/mo (cancel anytime). After year one, renew for $10/mo — or keep using Wi-Fi core for free. Price goes to $199 at launch.",
+        "LOUP↔LOUP always free. WiFi: $10/mo external. WiFi + LTE: $20/mo total (external + LTE). Pre-order $149 WiFi / $199 LTE; $199 / $249 at launch.",
       ],
     },
   },
@@ -393,7 +413,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
     a: {
       paragraphs: [
         "Some, yes. Less than others. Here's the honest comparison:",
-        "Most kids phones in this category lock you into a carrier plan — $20–40/month on top of the device. LOUP runs on Wi-Fi. No SIM, no carrier, no monthly bill unless you want external calling (that's $10/month, cancel anytime). Over two years, LOUP typically costs less than the \"cheaper\" alternatives.",
+        "Most kids phones in this category lock you into a carrier plan — $20–40/month on top of the device. LOUP WiFi has no carrier bill. LOUP WiFi + LTE includes LTE through LOUP — no extra contract. External calling is $10/month, cancel anytime. Over two years, LOUP typically costs less than the \"cheaper\" alternatives.",
         "What you're also getting: aluminum construction built to last, a closed network we run ourselves (your family's data stays yours), and a device designed to look like something kids actually want to carry — not a plastic toy or a locked-down hand-me-down.",
         "We built LOUP because we couldn't find anything we'd actually want our own kid to have. The price reflects that.",
       ],
@@ -482,7 +502,7 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
 export const LOUPKIDS_STORE = {
   headline: "Pre-order Loup",
   subheadline:
-    "Aluminum sides & buttons, ABS front — First 500 for $149 ($199 at launch). Loup↔Loup always free. First 500: 1 year unlimited calls to external contacts · then $10/mo. Guaranteed shipping within 60 days.",
+    "Aluminum sides & buttons, ABS front — WiFi $149 / WiFi + LTE $199 pre-order. LOUP↔LOUP always free. External contacts $10/mo. Ships within 60 days.",
   sectionLabel: "Store",
   footerCta: "Have Questions?",
 };
@@ -492,7 +512,7 @@ export const LOUPKIDS_STORE_PRODUCTS = [
     title: "Loup — Silver",
     price: 149,
     compareAt: 199 as number | null,
-    note: "Order · Ships within 60 days · First 500 year-1 external calling",
+    note: "WiFi $149 or WiFi + LTE $199 · Ships within 60 days",
     image: LOUPKIDS_IMAGES.loupAluminium,
     href: "/shop/loup",
     sizes: [] as string[],
@@ -514,14 +534,14 @@ export const LOUPKIDS_SPECS = [
   {
     group: "Calling",
     label: "Real phone numbers",
-    value: "Loup↔Loup always free · First 500: year 1 external · then $10/mo",
+    value: "LOUP↔LOUP always free · External contacts $10/mo",
   },
   {
     group: "Calling",
     label: "Contacts",
     value: "Unlimited parent-approved list; Loup↔Loup always free",
   },
-  { group: "Calling", label: "Connectivity", value: "Wi-Fi only — no SIM card, no carrier bill" },
+  { group: "Calling", label: "Connectivity", value: "WiFi, or WiFi + LTE (eSIM) — closed network, no open internet" },
   { group: "In the Box", label: "Included", value: "LOUP device, USB-C cable, stickers, quick-start card, parent app" },
   { group: "In the Box", label: "Also included", value: "30-day trial from arrival · refundable pre-ship" },
 ] as const;
@@ -543,7 +563,7 @@ export const LOUPKIDS_COMPARISON = {
     },
     {
       label: "Goes where kids go",
-      values: ["Pocket + any Wi-Fi", "Yes", "Yes", "One room only"],
+      values: ["WiFi, or WiFi + LTE", "Yes", "Yes", "One room only"],
     },
     {
       label: "Parent-approved contacts only",
@@ -561,7 +581,7 @@ export const LOUPKIDS_COMPARISON = {
     {
       label: "Monthly cost",
       values: [
-        "$0 core · First 500 year-1 external",
+        "LOUP↔LOUP free · External $10/mo",
         "Carrier plan required",
         "Carrier plan required",
         "Home phone plan",

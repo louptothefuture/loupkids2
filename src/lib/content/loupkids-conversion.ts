@@ -46,15 +46,78 @@ export const LOUPKIDS_OFFER_CARD = {
   productLine:
     "A kids phone. No apps, no feeds, no strangers. Calls only — to the people you approve.",
   callingBullets: [
-    "Loup ↔ Loup calls: always free",
-    "External contacts: free for 1 year, then $10/mo — cancel anytime",
+    "LOUP↔LOUP always free",
+    "External contacts $10/mo",
   ],
   logistics: [
     "Ships within 60 days · 100% refundable before dispatch · 30-day trial on delivery",
   ],
   disclaimer: [
-    "Wi-Fi only · No SIM · No carrier bill",
-    "Does not support E911 emergency dialing",
+    "WiFi + LTE includes eSIM · LTE model supports 911 · WiFi model does not",
+    "No open internet · Parent-controlled network · Closed contacts only",
+  ],
+} as const;
+
+export type LoupConnectivityId = "wifi" | "lte";
+
+export const LOUPKIDS_CONNECTIVITY = {
+  wifi: {
+    id: "wifi" as const,
+    name: "LOUP WiFi",
+    tagline: "Home, school, saved networks.",
+    preorder: 149,
+    launch: 199,
+    cta: "Pre-order — $149",
+    pairLabel: "Pre-order 2 for $298",
+    pairAmount: 298,
+    monthlyTotal: null,
+    monthlyBreakdown: ["LOUP↔LOUP — always free", "External contacts — $10/mo"],
+    coverage: "Works on saved WiFi networks and parent hotspot. Same closed contact list.",
+    note: null,
+  },
+  lte: {
+    id: "lte" as const,
+    name: "LOUP WiFi + LTE",
+    tagline: "Reachable anywhere. Same rules.",
+    preorder: 199,
+    launch: 249,
+    cta: "Pre-order — $199",
+    pairLabel: "Pre-order 2 for $398",
+    pairAmount: 398,
+    monthlyTotal: 20,
+    monthlyBreakdown: [
+      "LOUP↔LOUP — always free",
+      "External contacts — $10/mo",
+      "LTE connectivity — $10/mo",
+      "Total — $20/mo",
+    ],
+    coverage: "WiFi everywhere you have it — plus LTE when you don't. Same approved contacts. Same parent controls. No open internet. No dead zones.",
+    note: "LTE is handled through LOUP — no separate carrier contract.",
+  },
+} as const;
+
+export function connectivityFromVariantTitle(title: string): LoupConnectivityId {
+  return title.includes("LTE") ? "lte" : "wifi";
+}
+
+/** Clear difference between the two SKUs — shop + homepage. */
+export const LOUPKIDS_MODELS_COMPARE = {
+  eyebrow: "Two models",
+  headline: "WiFi, or WiFi + LTE. Same Loup.",
+  subline:
+    "Same approved contacts. Same parent controls. Same closed network. The only difference is how far they can go — and what you pay per month.",
+  columns: ["LOUP WiFi", "LOUP WiFi + LTE"],
+  rows: [
+    { label: "Pre-order", values: ["$149", "$199"] },
+    { label: "At launch", values: ["$199", "$249"] },
+    { label: "LOUP↔LOUP calls", values: ["Always free", "Always free"] },
+    { label: "External contacts", values: ["$10/mo", "$10/mo"] },
+    { label: "LTE connectivity", values: ["—", "$10/mo"] },
+    { label: "Monthly total", values: ["$10/mo", "$20/mo"] },
+    { label: "Coverage away from WiFi", values: ["Parent hotspot", "LTE anywhere"] },
+    { label: "Carrier contract", values: ["None", "None"] },
+    { label: "Open internet / browser", values: ["No", "No"] },
+    { label: "Location tracking", values: ["No", "No"] },
   ],
 } as const;
 
@@ -81,10 +144,9 @@ export const LOUPKIDS_SHIPPING = {
     "Order today — guaranteed shipping within 60 days. 100% refundable anytime prior to dispatch.",
 } as const;
 
-/** Wi-Fi device — no E911 */
 export const LOUPKIDS_E911 = {
   short:
-    "Wi-Fi Voice Device: Operates over Wi-Fi networks and parent mobile hotspots. Does not support E911 emergency dialing.",
+    "LOUP WiFi + LTE supports 911. LOUP WiFi does not — keep a phone available for emergencies.",
 } as const;
 
 export const LOUPKIDS_COPPA = {
@@ -96,18 +158,15 @@ export const LOUPKIDS_COPPA = {
 export const LOUPKIDS_CART_TRUST = [
   "Ships Within 60 Days",
   "100% Refundable Before Dispatch",
-  "First 500: year 1 external calling included",
+  "LOUP↔LOUP free · External $10/mo",
 ] as const;
 
-/**
- * Calling economics — keep in sync with LOUPKIDS_OFFER.callingCanonical
- * - Loup↔Loup = always free
- * - First 500: year 1 unlimited external contacts, then $10/mo
- */
+// ponytail: LOUPKIDS_CALLING_PRICING is now only used by legacy/campaign components.
+// Shop and home use LoupkidsCallingPricingSection which reads LOUPKIDS_CONNECTIVITY directly.
 export const LOUPKIDS_CALLING_PRICING = {
   eyebrow: "Calling",
   title: "What it costs to stay connected",
-  intro: LOUPKIDS_OFFER.callingCanonical,
+  intro: "LOUP↔LOUP always free. WiFi model: $10/mo. WiFi + LTE model: $20/mo total.",
   tiers: [
     {
       label: "Loup to Loup",
@@ -116,12 +175,11 @@ export const LOUPKIDS_CALLING_PRICING = {
     },
     {
       label: "External contacts",
-      price: "Free for first year",
-      comparePrice: "$10 a month",
-      body: "First 500: unlimited US & Canada calls to external contacts included for year one. After that, $10 a month (cancel anytime) — or keep Loup↔Loup free forever.",
+      price: "$10/mo",
+      body: "Approved numbers on regular phones. Included on both models. Cancel anytime.",
     },
   ],
-  cta: { label: "Stay in touch", href: "/shop/loup" },
+  cta: { label: "Choose WiFi or LTE", href: "/shop/loup" },
   helpLink: { label: "How calling plans work", href: "/help/calling-plan" },
 } as const;
 
@@ -178,7 +236,7 @@ export const LOUPKIDS_WHY_NOT_JUST = {
       title: "Why not stick with a landline?",
       body: [
         "A landline stays in one room. Kids still have to remember which button is grandma — and they can't take it with them.",
-        "LOUP travels. Home, friends' house, grandparents', on vacation — any Wi-Fi, same contacts, same controls.",
+        "LOUP travels. Home, friends' house, grandparents' — saved WiFi, or LTE if you choose that model. Same contacts. Same controls.",
       ],
       but: "A fixed landline isn't independence.",
     },
@@ -217,8 +275,8 @@ export const LOUPKIDS_FEATURE_CARDS = [
   },
   {
     icon: "📶",
-    title: "Wi-Fi Voice Network",
-    body: "No SIM. No surprise bills. Home, school, or parent hotspot.",
+    title: "WiFi + LTE",
+    body: "WiFi at home and saved networks. LTE option for anywhere — same contacts, no open internet.",
   },
   {
     icon: "🔒",

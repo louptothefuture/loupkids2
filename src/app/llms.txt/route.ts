@@ -20,8 +20,8 @@ LOUP is a screenless, parent-controlled first phone for children. It replaces th
 ## Product
 
 - **Name:** LOUP
-- **Price:** $129 pre-order / $169 launch / $199 retail
-- **Calling:** Loup-to-Loup WiFi voice is free. External lines and cellular mobility are $10–$20/month.
+- **Price:** WiFi $149 pre-order / $199 launch · WiFi + LTE $199 pre-order / $249 launch
+- **Calling:** Loup-to-Loup is free. External contacts $10/month. LTE included on the WiFi + LTE model.
 - **Hardware:** E-ink display, tactile scroll wheel, anodized aluminum sides, USB-C, mute, speaker, volume
 - **Parent app:** iOS and Android; whitelist contacts, set quiet hours, page the device
 - **Website:** ${SITE.url}

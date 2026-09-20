@@ -1,12 +1,8 @@
 "use client";
 
-import {
-  LOUPKIDS_CTA,
-  LOUPKIDS_OFFER,
-  LOUPKIDS_PRICE,
-} from "@/lib/content/loupkids-conversion";
+import Link from "next/link";
+import { LOUPKIDS_CTA } from "@/lib/content/loupkids-conversion";
 import { HOME_HERO } from "@/lib/content/loupkids-home-arc";
-import { StripeCheckoutButton } from "./StripeCheckoutButton";
 
 export function LoupkidsOrderCta({
   label = LOUPKIDS_CTA.primary,
@@ -42,25 +38,16 @@ export function LoupkidsOrderCta({
       <p
         className={`flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 ${alignStart ? "justify-start" : "justify-center"} ${muted}`}
       >
-        <span className={`text-2xl font-medium tracking-tight ${ink}`}>{LOUPKIDS_PRICE.formatted}</span>
-        <span className="text-base line-through opacity-55">{LOUPKIDS_PRICE.compareFormatted}</span>
-        <span className={`text-sm font-medium ${ink}`}>{LOUPKIDS_PRICE.launchNote}</span>
+        <span className={`text-2xl font-medium tracking-tight ${ink}`}>From $149</span>
+        <span className={`text-sm font-medium opacity-70 ${ink}`}>WiFi or LTE</span>
       </p>
 
-      {density !== "hero" ? (
-        <span
-          className={`inline-flex max-w-full rounded-full px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.06em] ring-1 ${pillBg}`}
-        >
-          {LOUPKIDS_OFFER.callingPill}
-        </span>
-      ) : null}
-
-      <StripeCheckoutButton
-        label={label}
-        className={`${btnClass} w-full cursor-pointer sm:w-auto`}
-        showGuarantee={density === "full"}
-        guaranteeVariant={variant === "dark" ? "dark" : "light"}
-      />
+      <Link
+        href="/shop/loup"
+        className={`${btnClass} w-full cursor-pointer text-center sm:w-auto`}
+      >
+        See both models
+      </Link>
 
       <p
         className={`max-w-sm text-[0.8125rem] leading-snug ${alignStart ? "text-left" : "text-center"} ${muted}`}
