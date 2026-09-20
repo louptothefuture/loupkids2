@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/studio", "/api/", "/checkout-preview", "/cart", "/account", "/raise", "/graph"],
+        disallow: ["/studio", "/api/", "/checkout-preview", "/cart", "/account", "/raise", "/graph", "/phones"],
       },
       // Explicitly allow AI crawlers so LOUP can be cited in AI search
       { userAgent: "GPTBot", allow: "/" },
