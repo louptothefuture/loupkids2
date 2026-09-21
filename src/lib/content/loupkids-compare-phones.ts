@@ -300,7 +300,19 @@ export const COMPARE_ROWS: CompareRow[] = [
   {
     section: "Privacy & data",
     label: "Sells or shares data for advertising",
-    values: [n(), n(), n(), n(), n(), n(), n(), n(), n(), p("Varies by carrier")],
+    detail: "Per each company's own privacy policy",
+    values: [
+      n(),
+      n(),
+      p("Doesn't sell child data — but runs ad trackers on site; enabled apps may share child data to advertisers"),
+      p("Sells adult user data under CCPA (their own CA disclosure). Children under 16 carved out."),
+      n(),
+      p("Policy permits behavioral ad cookies; shares aggregated child behavior data with business partners"),
+      n(),
+      n(),
+      p("Varies by provider"),
+      p("Carrier + Apple/Google ad ecosystems"),
+    ],
   },
 
   // ── Calling & cost ────────────────────────────────────────────
