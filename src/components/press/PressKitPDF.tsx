@@ -200,10 +200,10 @@ function PressKitDocument() {
             {/* Stats strip */}
             <View style={s.statsRow}>
               {[
-                ["80%", "of parents feel pushed to give kids a smartphone too early"],
+                ["80%", "of parents pushed to give kids a smartphone too early"],
                 ["5.5 hrs", "avg daily screen time, kids 8–12"],
-                ["1M+", "Tin Can units sold — demand is real"],
-                ["$4B", "TAM with no real product to own it"],
+                ["$4B", "US TAM · $45M SAM · 7–18% CAGR · no one owns it"],
+                ["Global", "school phone bans: Australia, UK, EU & growing"],
               ].map(([n, l]) => (
                 <View key={n} style={s.statCell}>
                   <Text style={s.statNum}>{n}</Text>
