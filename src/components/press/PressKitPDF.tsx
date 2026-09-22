@@ -16,196 +16,106 @@ const C = {
   muted: "#444444",
   faint: "#999999",
   line: "#e0e0e0",
-  bg: "#f7f7f5",
+  bg: "#f5f5f3",
   white: "#ffffff",
-  accent: "#111111",
 };
 
-// A4: 595 × 842 pt  |  margins: top 32, bottom 30, sides 38
-// Usable: 519 × 780 pt
-// Left col: 188pt (image, full height)
-// Right col: 311pt (text)
-// Gutter: 20pt
-
-const MARGIN_H = 38;
-const MARGIN_T = 32;
-const MARGIN_B = 30;
-const MASTHEAD_H = 44;
-const FOOTER_H = 34;
-const GUTTER = 18;
-const LEFT_W = 190;
-const RIGHT_W = 519 - LEFT_W - GUTTER; // 311
-
-const BODY_H = 842 - MARGIN_T - MARGIN_B - MASTHEAD_H - FOOTER_H; // ≈ 706
+// A4: 595 × 842 pt  |  margins: 32 top, 28 bottom, 36 sides
+// Usable: 523 × 782 pt
+// Left: 186pt  Gutter: 16pt  Right: 321pt
+// Masthead: 44pt  Footer: 34pt  Body: ~668pt
 
 const s = StyleSheet.create({
   page: {
     fontFamily: "Helvetica",
     backgroundColor: C.white,
-    paddingTop: MARGIN_T,
-    paddingBottom: MARGIN_B,
-    paddingHorizontal: MARGIN_H,
-    fontSize: 8.5,
+    paddingTop: 32,
+    paddingBottom: 28,
+    paddingHorizontal: 36,
+    fontSize: 8,
     color: C.ink,
   },
 
-  // ── Masthead ──────────────────────────────────────────────
+  // Masthead
   masthead: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    height: MASTHEAD_H,
     borderBottomWidth: 1.5,
     borderBottomColor: C.ink,
     paddingBottom: 7,
-    marginBottom: 0,
+    marginBottom: 12,
   },
-  wordmark: {
-    fontSize: 34,
-    fontFamily: "Helvetica-Bold",
-    letterSpacing: -0.8,
-    lineHeight: 1,
-    color: C.ink,
-  },
-  mastheadMeta: {
-    fontSize: 6.5,
-    color: C.faint,
-    letterSpacing: 0.5,
-    lineHeight: 1.5,
-    marginBottom: 1,
-  },
-  tagline: {
-    fontSize: 7,
-    color: C.muted,
-    marginTop: 1.5,
-  },
-  contactBlock: {
-    textAlign: "right",
-    fontSize: 7,
-    color: C.muted,
-    lineHeight: 1.7,
-  },
+  wordmark: { fontSize: 32, fontFamily: "Helvetica-Bold", letterSpacing: -0.6, lineHeight: 1 },
+  mastheadEyebrow: { fontSize: 6, textTransform: "uppercase", letterSpacing: 1.4, color: C.faint, marginBottom: 2 },
+  tagline: { fontSize: 7, color: C.muted, marginTop: 2 },
+  contactBlock: { textAlign: "right", fontSize: 6.5, color: C.muted, lineHeight: 1.6 },
 
-  // ── Body ─────────────────────────────────────────────────
-  body: {
-    flexDirection: "row",
-    height: BODY_H,
-    marginTop: 0,
-    paddingTop: 14,
-  },
+  // Body layout
+  body: { flexDirection: "row" },
+  leftCol: { width: 186, flexDirection: "column" },
+  gutter: { width: 16 },
+  rightCol: { width: 321, flexDirection: "column" },
 
-  // ── Left column ───────────────────────────────────────────
-  leftCol: {
-    width: LEFT_W,
-    flexDirection: "column",
-  },
-  phoneImage: {
-    width: LEFT_W,
-    height: Math.round(LEFT_W * 1.38), // ~262pt — fills ~37% of page
-    objectFit: "cover",
-    objectPosition: "center top",
-  },
-  leftLower: {
-    flex: 1,
-    paddingTop: 12,
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-
-  // ── Gutter ────────────────────────────────────────────────
-  gutter: {
-    width: GUTTER,
-  },
-
-  // ── Right column ──────────────────────────────────────────
-  rightCol: {
-    width: RIGHT_W,
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-
-  // ── Type ─────────────────────────────────────────────────
+  // Type
   label: {
-    fontSize: 5.5,
-    fontFamily: "Helvetica-Bold",
-    textTransform: "uppercase",
-    letterSpacing: 1.5,
-    color: C.faint,
-    marginBottom: 4,
+    fontSize: 5.5, fontFamily: "Helvetica-Bold",
+    textTransform: "uppercase", letterSpacing: 1.5,
+    color: C.faint, marginBottom: 3,
   },
   headline: {
-    fontSize: 18,
-    fontFamily: "Helvetica-Bold",
-    lineHeight: 1.15,
-    letterSpacing: -0.4,
-    color: C.ink,
-    marginBottom: 7,
+    fontSize: 16, fontFamily: "Helvetica-Bold",
+    lineHeight: 1.2, letterSpacing: -0.3,
+    color: C.ink, marginBottom: 6,
   },
-  body1: {
-    fontSize: 8.5,
-    lineHeight: 1.6,
-    color: C.muted,
-  },
-  body1Dark: {
-    fontSize: 8.5,
-    lineHeight: 1.6,
-    color: C.ink,
-  },
-  body2: {
-    fontSize: 8,
-    lineHeight: 1.55,
-    color: C.muted,
-  },
+  bodyText: { fontSize: 8, lineHeight: 1.6, color: C.muted },
+  bodyDark: { fontSize: 8, lineHeight: 1.6, color: C.ink },
 
-  rule: {
-    borderTopWidth: 0.5,
-    borderTopColor: C.line,
-    marginVertical: 9,
+  rule: { borderTopWidth: 0.5, borderTopColor: C.line, marginVertical: 8 },
+
+  // Stats strip
+  statsRow: {
+    flexDirection: "row",
+    borderTopWidth: 0.5, borderBottomWidth: 0.5,
+    borderColor: C.line,
+    paddingVertical: 7,
+    marginBottom: 9,
+    gap: 0,
+  },
+  statCell: { flex: 1 },
+  statNum: { fontSize: 14, fontFamily: "Helvetica-Bold", color: C.ink, lineHeight: 1 },
+  statLabel: { fontSize: 5.5, color: C.faint, marginTop: 2, lineHeight: 1.4 },
+
+  // Enemy / pull quote
+  enemyBlock: {
+    borderLeftWidth: 2, borderLeftColor: C.ink,
+    paddingLeft: 8, marginBottom: 9,
   },
 
   // Steps
-  stepRow: { flexDirection: "row", gap: 6, marginBottom: 5 },
-  stepNum: { fontSize: 7, fontFamily: "Helvetica-Bold", color: C.ink, width: 14 },
+  stepRow: { flexDirection: "row", gap: 5, marginBottom: 4 },
+  stepNum: { fontSize: 6.5, fontFamily: "Helvetica-Bold", color: C.ink, width: 12 },
   stepText: { flex: 1, fontSize: 8, lineHeight: 1.55, color: C.muted },
 
-  // Specs grid
-  specsGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  specCell: { width: "50%", marginBottom: 6, paddingRight: 8 },
-  specLabel: {
-    fontSize: 5,
-    fontFamily: "Helvetica-Bold",
-    textTransform: "uppercase",
-    letterSpacing: 1.3,
-    color: C.faint,
-    marginBottom: 1,
-  },
-  specValue: { fontSize: 7.5, color: C.ink },
+  // Specs
+  specsGrid: { flexDirection: "row", flexWrap: "wrap" },
+  specCell: { width: "50%", marginBottom: 5, paddingRight: 6 },
+  specLabel: { fontSize: 5, fontFamily: "Helvetica-Bold", textTransform: "uppercase", letterSpacing: 1.2, color: C.faint },
+  specValue: { fontSize: 7, color: C.ink, marginTop: 1 },
 
   // Founder
-  founderBlock: {
-    backgroundColor: C.bg,
-    borderRadius: 3,
-    padding: 9,
-  },
-  founderName: { fontSize: 9.5, fontFamily: "Helvetica-Bold", marginBottom: 0.5 },
-  founderRole: { fontSize: 6, color: C.faint, marginBottom: 5 },
+  founderBlock: { backgroundColor: C.bg, borderRadius: 3, padding: 8 },
+  founderName: { fontSize: 9, fontFamily: "Helvetica-Bold", marginBottom: 0.5 },
+  founderRole: { fontSize: 5.5, color: C.faint, marginBottom: 4 },
 
   // Footer
   footer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-    borderTopWidth: 1.5,
-    borderTopColor: C.ink,
-    paddingTop: 8,
-    marginTop: 8,
-    height: FOOTER_H,
+    flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end",
+    borderTopWidth: 1.5, borderTopColor: C.ink,
+    paddingTop: 7, marginTop: 10,
   },
-  footerLeft: { fontSize: 7.5, lineHeight: 1.6 },
-  footerRight: { fontSize: 6, color: C.faint, textAlign: "right", lineHeight: 1.7 },
+  footerLeft: { fontSize: 7, lineHeight: 1.6 },
+  footerRight: { fontSize: 5.5, color: C.faint, textAlign: "right", lineHeight: 1.7 },
 });
 
 function PressKitDocument() {
@@ -213,10 +123,10 @@ function PressKitDocument() {
     <Document title="LOUP Media Kit 2026" author="LOUP">
       <Page size="A4" orientation="portrait" style={s.page}>
 
-        {/* ── Masthead ── */}
+        {/* Masthead */}
         <View style={s.masthead}>
           <View>
-            <Text style={s.mastheadMeta}>Media Kit · 2026</Text>
+            <Text style={s.mastheadEyebrow}>Media Kit · 2026</Text>
             <Text style={s.wordmark}>LOUP</Text>
             <Text style={s.tagline}>Phones for the anti-screen age.</Text>
           </View>
@@ -226,58 +136,57 @@ function PressKitDocument() {
           </View>
         </View>
 
-        {/* ── Body ── */}
+        {/* Body */}
         <View style={s.body}>
 
-          {/* Left column */}
+          {/* ── LEFT COLUMN ── */}
           <View style={s.leftCol}>
             <Image
-              style={s.phoneImage}
+              style={{ width: 186, height: 248, objectFit: "cover", objectPosition: "center top", borderRadius: 3 }}
               src="/images/press-hand-hi.jpg"
             />
 
-            <View style={s.leftLower}>
-              {/* Who it's for */}
-              <View>
-                <Text style={s.label}>Who it&apos;s for</Text>
-                <Text style={s.body2}>
-                  Kids 6–16. Parents who want their kids reachable without handing them
-                  the internet. Families in the gap between too young for a smartphone
-                  and ready for one.
-                </Text>
-              </View>
+            <View style={{ marginTop: 10 }}>
+              <Text style={s.label}>Who it&apos;s for</Text>
+              <Text style={s.bodyText}>
+                Kids 6–16. Parents who want their kids reachable without handing them
+                the internet. Families navigating the gap between too young for a
+                smartphone and ready for one — which is most families.
+              </Text>
+            </View>
 
-              <View style={s.rule} />
+            <View style={s.rule} />
 
-              {/* Founder */}
-              <View style={s.founderBlock}>
-                <Text style={s.label}>Founder</Text>
-                <Text style={s.founderName}>Thomas O&apos;Connell</Text>
-                <Text style={s.founderRole}>CEO + Founder</Text>
-                <Text style={s.body2}>
-                  Thomas spent 20 years building brands for Nike, LEGO, and Google —
-                  organizations very good at capturing attention. Then he had kids and
-                  watched the same machinery get aimed at them. LOUP is what he built
-                  instead.
-                </Text>
-              </View>
+            {/* Founder */}
+            <View style={s.founderBlock}>
+              <Text style={s.label}>Founders</Text>
+              <Text style={s.founderName}>Thomas O&apos;Connell</Text>
+              <Text style={s.founderRole}>CEO + Founder</Text>
+              <Text style={s.bodyText}>
+                When Thomas and his wife became parents, the pressure to hand kids a
+                phone arrived years before it should have. Thomas had spent 20 years
+                building attention machinery — brand strategy for Nike, LEGO, Google.
+                His wife watched the same forces shape their kids&apos; world from the
+                other side. The answer they needed didn&apos;t exist. So they built it.
+              </Text>
+            </View>
 
-              {/* Specs */}
-              <View style={{ marginTop: 10 }}>
-                <Text style={s.label}>At a glance</Text>
-                <View style={s.specsGrid}>
-                  {[
-                    ["Price", "WiFi $149 · LTE $199"],
-                    ["Monthly", "WiFi $10 · LTE $20"],
-                    ["Ages", "6–16"],
-                    ["Ships", "Within 60 days"],
-                  ].map(([l, v]) => (
-                    <View key={l} style={s.specCell}>
-                      <Text style={s.specLabel}>{l}</Text>
-                      <Text style={s.specValue}>{v}</Text>
-                    </View>
-                  ))}
-                </View>
+            <View style={{ marginTop: 9 }}>
+              <Text style={s.label}>At a glance</Text>
+              <View style={s.specsGrid}>
+                {[
+                  ["Category", "Screenless voice phone"],
+                  ["Display", "E-ink, no glow"],
+                  ["Connectivity", "WiFi · WiFi + LTE"],
+                  ["Calling", "Approved contacts only"],
+                  ["Price", "From $149 pre-order"],
+                  ["Monthly", "From $10/mo"],
+                ].map(([l, v]) => (
+                  <View key={l} style={s.specCell}>
+                    <Text style={s.specLabel}>{l}</Text>
+                    <Text style={s.specValue}>{v}</Text>
+                  </View>
+                ))}
               </View>
             </View>
           </View>
@@ -285,118 +194,110 @@ function PressKitDocument() {
           {/* Gutter */}
           <View style={s.gutter} />
 
-          {/* Right column */}
+          {/* ── RIGHT COLUMN ── */}
           <View style={s.rightCol}>
 
-            {/* Problem */}
-            <View>
+            {/* Stats strip */}
+            <View style={s.statsRow}>
+              {[
+                ["80%", "of parents feel pushed to give kids a smartphone too early"],
+                ["5.5 hrs", "avg daily screen time, kids 8–12"],
+                ["1M+", "Tin Can units sold — demand is real"],
+                ["$4B", "TAM with no real product to own it"],
+              ].map(([n, l]) => (
+                <View key={n} style={s.statCell}>
+                  <Text style={s.statNum}>{n}</Text>
+                  <Text style={s.statLabel}>{l}</Text>
+                </View>
+              ))}
+            </View>
+
+            {/* The problem */}
+            <View style={{ marginBottom: 8 }}>
               <Text style={s.label}>The problem</Text>
               <Text style={s.headline}>
                 The first phone used to be a rite of passage.{"\n"}
                 Now it&apos;s a liability.
               </Text>
-              <Text style={s.body1}>
+              <Text style={s.bodyText}>
                 A portal to attention merchants, social comparison, and
                 algorithmically-optimized distraction. Parents know it. Kids feel it.
-                And for a decade, the only available answer has been parental controls
-                layered onto a device that was never designed to be controlled. The
-                category that should exist — a purposeful first phone — didn&apos;t.
-                Until now.
+                And the pressure to hand one over — for safety, for logistics, for not
+                being the only family that hasn&apos;t — arrives years before it should.
+              </Text>
+            </View>
+
+            {/* The enemy */}
+            <View style={s.enemyBlock}>
+              <Text style={s.label}>Big tech knows</Text>
+              <Text style={{ ...s.bodyDark, fontSize: 8.5, fontFamily: "Helvetica-Bold", marginBottom: 3 }}>
+                They designed it this way.
+              </Text>
+              <Text style={s.bodyText}>
+                Meta&apos;s own internal research showed Instagram was harming teenage
+                girls&apos; mental health. They kept going. The feeds, the loops, the
+                dopamine hits — none of it is accidental. Attention is the product.
+                Children are the market. The industry monetizes the anxiety it creates.
               </Text>
             </View>
 
             <View style={s.rule} />
 
-            {/* What it is */}
-            <View>
+            {/* Alternatives */}
+            <View style={{ marginBottom: 8 }}>
+              <Text style={s.label}>The alternatives are bandaids</Text>
+              <Text style={s.bodyText}>
+                Gabb and TickTalk remove the apps but keep the architecture — lobotomized
+                smartphones, designed for 5-year-olds, that require carrier plans and
+                continuously GPS-track children. They&apos;re not a philosophy.
+                They&apos;re a workaround. LOUP is built from the ground up.
+              </Text>
+            </View>
+
+            <View style={s.rule} />
+
+            {/* What LOUP is */}
+            <View style={{ marginBottom: 8 }}>
               <Text style={s.label}>What LOUP is</Text>
-              <Text style={s.body1Dark}>
-                LOUP is a WiFi voice device for kids — calls only, to the people parents
-                have approved, and nobody else. No texts, no internet, no apps, no feeds,
-                no algorithm deciding what comes next. The hardware is purpose-built:
-                anodized aluminum frame, tactile rotary scroll dial, e-ink display. v1 is
-                WiFi-only. v2 adds LTE — same closed contact list, cellular range. It
-                looks like something worth carrying. It is.
+              <Text style={s.bodyDark}>
+                A WiFi voice device for kids — calls only, to approved contacts.
+                No texts, no internet, no apps, no feeds. Anodized aluminum frame,
+                e-ink display, tactile scroll dial. v1 WiFi-only. v2 adds LTE — same
+                closed contact list, cellular range.
               </Text>
             </View>
 
             <View style={s.rule} />
 
             {/* How it works */}
-            <View>
+            <View style={{ marginBottom: 8 }}>
               <Text style={s.label}>How it works</Text>
               <View style={s.stepRow}>
                 <Text style={s.stepNum}>01</Text>
-                <Text style={s.stepText}>
-                  Parents whitelist contacts in the companion app. Nobody outside the
-                  list can call in or out.
-                </Text>
+                <Text style={s.stepText}>Parents whitelist contacts. Nobody else can call in or out.</Text>
               </View>
               <View style={s.stepRow}>
                 <Text style={s.stepNum}>02</Text>
-                <Text style={s.stepText}>
-                  Kids scroll the dial, find a name, press call. That&apos;s the whole
-                  interface.
-                </Text>
+                <Text style={s.stepText}>Kids scroll the dial, find a name, press call. That&apos;s it.</Text>
               </View>
               <View style={s.stepRow}>
                 <Text style={s.stepNum}>03</Text>
-                <Text style={s.stepText}>
-                  Quiet hours, schedules, and parent-to-device paging live in the
-                  companion app. Setup takes about ten minutes.
-                </Text>
-              </View>
-            </View>
-
-            <View style={s.rule} />
-
-            {/* Hardware */}
-            <View>
-              <Text style={s.label}>The hardware</Text>
-              <Text style={s.body1}>
-                Anodized aluminum frame. E-ink display — no glow, no video, no
-                algorithm. Tactile scroll dial. Designed to be held, carried, and kept —
-                not stared at. This is not a plastic toy. It is a considered object built
-                for the space between a walkie-talkie and a smartphone.
-              </Text>
-            </View>
-
-            <View style={s.rule} />
-
-            {/* Specs — right side */}
-            <View>
-              <Text style={s.label}>Technical</Text>
-              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-                {[
-                  ["Category", "Screenless voice phone for kids"],
-                  ["Display", "E-ink — no glow, no video, no apps"],
-                  ["Connectivity", "WiFi (v1) · WiFi + LTE (v2)"],
-                  ["Calling", "Approved contacts only — no open dialing"],
-                ].map(([l, v]) => (
-                  <View key={l} style={{ width: "50%", marginBottom: 7, paddingRight: 8 }}>
-                    <Text style={s.specLabel}>{l}</Text>
-                    <Text style={s.specValue}>{v}</Text>
-                  </View>
-                ))}
+                <Text style={s.stepText}>Quiet hours, schedules, parent paging. Setup: ten minutes.</Text>
               </View>
             </View>
 
           </View>
         </View>
 
-        {/* ── Footer ── */}
+        {/* Footer */}
         <View style={s.footer}>
           <View>
-            <Text style={{ ...s.footerLeft, fontFamily: "Helvetica-Bold" }}>
-              Press contact
-            </Text>
+            <Text style={{ ...s.footerLeft, fontFamily: "Helvetica-Bold" }}>Press contact</Text>
             <Text style={s.footerLeft}>hi@loupkids.com · loupkids.com</Text>
           </View>
           <View>
-            <Text style={s.footerRight}>
-              High-res images and product renders available on request.
-            </Text>
-            <Text style={s.footerRight}>Founder available for interview.</Text>
+            <Text style={s.footerRight}>High-res images and product renders available on request.</Text>
+            <Text style={s.footerRight}>Founders available for interview.</Text>
           </View>
         </View>
 
@@ -424,12 +325,8 @@ export function PressKitDownload() {
   };
 
   return (
-    <button
-      type="button"
-      onClick={download}
-      disabled={loading}
-      className="lk-btn lk-btn-sm disabled:opacity-60"
-    >
+    <button type="button" onClick={download} disabled={loading}
+      className="lk-btn lk-btn-sm disabled:opacity-60">
       {loading ? "Generating PDF…" : "Download Media Kit PDF"}
     </button>
   );
