@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PressActions } from "@/components/press/PressActions";
 import { PrintButton } from "@/components/press/PrintButton";
 import { SITE } from "@/lib/site";
 
@@ -319,8 +320,9 @@ export default function PressPage() {
           </div>
         </article>
 
-        {/* Save as PDF — screen only */}
-        <div className="no-print mt-12 flex justify-center">
+        {/* Download / print buttons — screen only */}
+        <div className="no-print mt-12 flex flex-wrap justify-center gap-3">
+          <PressActions />
           <PrintButton />
         </div>
       </div>
