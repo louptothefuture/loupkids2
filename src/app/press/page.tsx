@@ -45,10 +45,10 @@ export default function PressPage() {
         {/* Stats strip */}
         <div className="mb-10 grid grid-cols-4 gap-6 border-b border-t border-[var(--lk-line)] py-6">
           {[
-            ["80%", "of parents feel pushed to give kids a smartphone too early"],
-            ["5.5 hrs", "avg daily screen time, kids 8–12"],
-            ["$4B", "US TAM · $45M SAM · 7–18% CAGR — no one owns it yet"],
-            ["Global", "school phone bans accelerating — Australia, UK, EU, and growing"],
+            ["80%", "of parents feel pushed to buy their kid a smartphone before they're ready"],
+            ["5.5 hrs", "of screens every day for the average 8–12 year old"],
+            ["$27B", "global market for kids' connected devices — growing at 18% a year, six times faster than all of tech"],
+            ["Worldwide", "governments are banning smartphones in schools. Australia, France, UK, Spain. The window is open."],
           ].map(([n, l]) => (
             <div key={n}>
               <p className="lk-display text-[1.75rem] leading-none">{n}</p>

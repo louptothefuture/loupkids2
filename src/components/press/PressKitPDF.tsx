@@ -200,10 +200,10 @@ function PressKitDocument() {
             {/* Stats strip */}
             <View style={s.statsRow}>
               {[
-                ["80%", "of parents pushed to give kids a smartphone too early"],
-                ["5.5 hrs", "avg daily screen time, kids 8–12"],
-                ["$4B", "US TAM · $45M SAM · 7–18% CAGR · no one owns it"],
-                ["Global", "school phone bans: Australia, UK, EU & growing"],
+                ["80%", "of parents feel pushed to buy their kid a smartphone before they're ready"],
+                ["5.5 hrs", "of screens every day for the average 8–12 year old"],
+                ["$27B", "global market for kids' connected devices — growing 18% a year, six times faster than all of tech"],
+                ["Worldwide", "Australia, France, UK, Spain. Governments are banning phones in schools. The window is open."],
               ].map(([n, l]) => (
                 <View key={n} style={s.statCell}>
                   <Text style={s.statNum}>{n}</Text>
