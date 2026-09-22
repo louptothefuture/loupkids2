@@ -32,7 +32,7 @@ export default function PressPage() {
         {/* Masthead */}
         <header className="mb-10 flex items-end justify-between border-b-2 border-[var(--lk-ink)] pb-5">
           <div>
-            <p className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[var(--lk-muted)]">Media Kit · {YEAR}</p>
+            <p className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[var(--lk-muted)]">2026</p>
             <h1 className="lk-display mt-1 text-[3.5rem] leading-none tracking-[-0.04em]">LOUP</h1>
             <p className="mt-1.5 text-sm text-[var(--lk-muted)]">Phones for the anti-screen age.</p>
           </div>
@@ -131,7 +131,7 @@ export default function PressPage() {
           <section>
             <p className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[var(--lk-muted)]">Who it&apos;s for</p>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--lk-ink)]">
-              Kids 6–16. Parents who want their kids reachable without handing them the internet. Families navigating the gap between too young for a smartphone and ready for one.
+              Kids 6–16. Families in the gap between too young for a smartphone and ready for one.
             </p>
           </section>
 

@@ -55,7 +55,7 @@ const s = StyleSheet.create({
   body: { flexDirection: "row" },
   leftCol: { width: 186, flexDirection: "column" },
   gutter: { width: 16 },
-  rightCol: { width: 321, flexDirection: "column" },
+  rightCol: { width: 321, flexDirection: "column", justifyContent: "space-between" },
 
   // Type
   label: {
@@ -126,7 +126,7 @@ function PressKitDocument() {
         {/* Masthead */}
         <View style={s.masthead}>
           <View>
-            <Text style={s.mastheadEyebrow}>Media Kit · 2026</Text>
+            <Text style={s.mastheadEyebrow}>2026</Text>
             <Text style={s.wordmark}>LOUP</Text>
             <Text style={s.tagline}>Phones for the anti-screen age.</Text>
           </View>
@@ -149,9 +149,8 @@ function PressKitDocument() {
             <View style={{ marginTop: 10 }}>
               <Text style={s.label}>Who it&apos;s for</Text>
               <Text style={s.bodyText}>
-                Kids 6–16. Parents who want their kids reachable without handing them
-                the internet. Families navigating the gap between too young for a
-                smartphone and ready for one — which is most families.
+                Kids 6–16. Families in the gap between too young for a smartphone
+                and ready for one — which is most families.
               </Text>
             </View>
 
