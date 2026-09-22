@@ -8,6 +8,7 @@ import {
   COMPARE_SECTIONS,
   type PhoneValue,
 } from "@/lib/content/loupkids-compare-phones";
+import { ComparisonActions } from "@/components/phones/ComparisonActions";
 
 // ── Value cell content ────────────────────────────────────────────────────────
 
@@ -73,6 +74,7 @@ export default function PhonesPage() {
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link href="/shop/loup" className="lk-btn">Pre-order LOUP — from $149</Link>
+            <ComparisonActions />
             <Link href="/phones#sources" className="lk-btn lk-btn-outline">Sources</Link>
           </div>
         </div>
@@ -87,9 +89,8 @@ export default function PhonesPage() {
           >
             {/* Sticky header row */}
             <thead>
-              <tr className="sticky top-[var(--lk-nav-h,56px)] z-20">
-                {/* Row label spacer */}
-                <th className="border-b-2 border-[var(--lk-ink)] bg-[var(--lk-bg)] w-[220px] min-w-[220px] px-4 py-4 text-left align-bottom">
+              <tr>
+                <th className="sticky top-[var(--lk-nav-h,56px)] z-20 border-b-2 border-[var(--lk-ink)] bg-[var(--lk-bg)] w-[220px] min-w-[220px] px-4 py-4 text-left align-bottom">
                   <span className="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-[var(--lk-muted)]">Feature</span>
                 </th>
 
@@ -100,7 +101,7 @@ export default function PhonesPage() {
                       key={phone.id}
                       onMouseEnter={() => setHoveredCol(ci)}
                       onMouseLeave={() => setHoveredCol(null)}
-                      className={`border-b-2 border-[var(--lk-ink)] px-4 py-4 text-left align-bottom min-w-[140px] cursor-default transition-colors duration-100 ${
+                      className={`sticky top-[var(--lk-nav-h,56px)] z-20 border-b-2 border-[var(--lk-ink)] px-4 py-4 text-left align-bottom min-w-[140px] cursor-default transition-colors duration-100 ${
                         phone.isLoup
                           ? "bg-[var(--lk-ink)]"
                           : colHighlighted
