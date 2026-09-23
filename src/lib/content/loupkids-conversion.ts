@@ -151,7 +151,7 @@ export const LOUPKIDS_E911 = {
 
 export const LOUPKIDS_COPPA = {
   badge:
-    "Kids' Privacy Guaranteed: Zero data harvesting, zero ads, end-to-end encrypted voice loops. COPPA Compliant.",
+    "Kids' privacy guaranteed. No data sold. No ads. No location tracking. No profiles. COPPA compliant.",
   href: "/legal/coppa",
 } as const;
 

@@ -215,7 +215,7 @@ export const LOUPKIDS_ACCORDION = [
   },
   {
     title: "Data? Closed — you own it.",
-    body: "No ads, no profiling, no selling your family's data. Loup runs on a closed network you control from the parent app.",
+    body: "LOUP does not sell your data or your child's data. No ads. No profiles. No location tracking. No messages to scan — there are no messages. The device was built so we could never collect what we have no right to.",
   },
 ] as const;
 
@@ -384,7 +384,18 @@ export const LOUPKIDS_FAQ: { q: string; a: LoupkidsFaqAnswer }[] = [
   },
   {
     q: "Does LTE enable location tracking?",
-    a: "LOUP is not a tracking device. Adding LTE doesn't change that. We don't track or share location data.",
+    a: "No. LOUP has no GPS on any model. We do not track, store, or share where your child is — ever. Adding LTE gives connectivity, not surveillance. The device cannot report a location because it has no hardware to determine one.",
+  },
+  {
+    q: "What data does LOUP collect from my child?",
+    a: {
+      paragraphs: [
+        "Very little — and only what is needed to make the phone work.",
+        "We collect: a device identifier (serial number linked to your account) and call logs (who called whom, when — not the content of calls).",
+        "We do not collect: messages (LOUP doesn't have texting), photos (no camera), browsing history (no browser), location (no GPS), app usage (no apps), biometrics, or behavioral data.",
+        "We do not sell this data. We do not share it with advertisers. We do not build profiles of your child. See our full privacy policy and COPPA compliance page for the complete picture.",
+      ],
+    },
   },
   {
     q: "How is Loup different from a regular phone or a \"dumb phone\"?",
